@@ -1,0 +1,257 @@
+/* ============================================================
+   Portal do BPC — Design Tokens
+   colors_and_type.css
+   
+   Import in any HTML/UI kit page:
+   <link rel="stylesheet" href="/colors_and_type.css">
+   ============================================================ */
+
+/* --------- Fonts (Google Fonts substitutions — see README) --- */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ===== COLORS — DARK theme (matches carloscostaprev visual) ===== */
+
+  /* Terracotta (primary) — unchanged; the brand */
+  --terra-50:  #fbf2e9;
+  --terra-100: #f4e3d4;
+  --terra-200: #ecd0b3;
+  --terra-300: #e0b388;
+  --terra-400: #d68559;
+  --terra-500: #c4673a;   /* ← brand primary */
+  --terra-600: #c4673a;
+  --terra-700: #a8542d;
+  --terra-800: #813f22;
+  --terra-900: #5d2d18;
+
+  /* Warm DARK surfaces */
+  --cream:    #14100c;    /* page background — very dark warm */
+  --bone:     #1f1812;    /* elevated surface / cards */
+  --bone-2:   #2a2018;    /* hover / pressed surface */
+  --line:     #382a20;    /* borders, dividers */
+  --line-2:   #4a382c;    /* stronger borders */
+
+  /* Ink (warm CREAM tones on dark) */
+  --ink-900:  #f5ede0;    /* primary text */
+  --ink-700:  #f5ede0;    /* headings — same as 900 on dark */
+  --ink-500:  #b9a995;    /* secondary text */
+  --ink-300:  #6e5d4e;    /* tertiary / disabled */
+
+  /* Complementary (olive — health, growth, approval) */
+  --olive-100: #2a3025;
+  --olive-500: #8a9a76;
+  --olive-700: #a5b58e;
+  --olive-900: #c4d4a8;
+
+  /* Semantic — bright fg + dark tinted bg */
+  --ok:    #8fc48f;
+  --ok-bg: #1f2e1f;
+  --warn:    #e0b240;
+  --warn-bg: #2e2412;
+  --err:    #d97970;
+  --err-bg: #2e1815;
+  --info:    #8da8c4;
+  --info-bg: #1c2630;
+
+  /* WhatsApp brand */
+  --wa: #25d366;
+  --wa-dark: #128c7e;
+
+  /* ===== TYPOGRAPHY ===== */
+
+  --font-serif:  'Fraunces', 'Source Serif Pro', Georgia, serif;
+  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fluid type scale */
+  --text-display: clamp(3rem, 5.5vw + 1rem, 6rem);
+  --text-h1:      clamp(2.25rem, 2.5vw + 1rem, 3.5rem);
+  --text-h2:      clamp(1.75rem, 1.4vw + 1rem, 2.25rem);
+  --text-h3:      clamp(1.25rem, 0.4vw + 1rem, 1.5rem);
+  --text-lead:    1.25rem;
+  --text-body:    1.125rem;
+  --text-small:   1rem;
+  --text-tiny:    0.875rem;
+
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-eyebrow: 0.12em;
+  --tracking-tight:   -0.02em;
+
+  /* ===== SPACING (4-base) ===== */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ===== RADIUS ===== */
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --radius-xl:    24px;
+  --radius-pill:  999px;
+
+  /* ===== SHADOWS — on dark, shadows are darker AND subtle terra glow ===== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.4);
+  --shadow-press: 0 1px 0 rgba(0, 0, 0, 0.3);
+  --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  --glow-terra: 0 0 40px rgba(196, 103, 58, 0.25);
+
+  /* ===== TRANSITIONS ===== */
+  --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 200ms;
+  --dur-comp:  350ms;
+  --dur-hero:  600ms;
+
+  /* ===== LAYOUT ===== */
+  --container: 1200px;
+  --container-narrow: 880px;
+  --header-h: 76px;
+}
+
+/* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  color: var(--ink-900);
+  background: var(--cream);
+  /* Subtle grid pattern — signature of the dark warm theme */
+  background-image:
+    linear-gradient(rgba(196, 103, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 103, 58, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-attachment: fixed;
+  text-wrap: pretty;
+}
+
+/* ============================================================
+   SEMANTIC TYPOGRAPHY
+   ============================================================ */
+
+h1, h2, h3, h4 {
+  font-family: var(--font-serif);
+  color: var(--ink-900);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  font-weight: 600;
+  margin: 0 0 var(--space-4) 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--text-h1); }
+h2 { font-size: var(--text-h2); }
+h3 { font-size: var(--text-h3); font-weight: 600; }
+h4 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; font-family: var(--font-sans); color: var(--ink-900); }
+
+/* Display — for hero only */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--ink-900);
+  margin: 0;
+  text-wrap: balance;
+}
+
+/* Italic accent inside headings (signature device) */
+h1 em, h2 em, .display em {
+  font-style: italic;
+  color: var(--terra-500);
+  font-weight: 600;
+}
+
+/* Lead paragraph */
+.lead {
+  font-size: var(--text-lead);
+  line-height: var(--leading-snug);
+  color: var(--ink-500);
+}
+
+p {
+  margin: 0 0 var(--space-4) 0;
+  line-height: var(--leading-normal);
+}
+
+a {
+  color: var(--terra-400);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color var(--dur-micro) var(--ease-out);
+}
+
+a:hover {
+  color: var(--terra-300);
+  text-decoration: underline;
+}
+
+small, .small { font-size: var(--text-small); }
+.tiny { font-size: var(--text-tiny); }
+.muted { color: var(--ink-500); }
+.faint { color: var(--ink-300); }
+
+/* Eyebrow / kicker — signature device */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--terra-400);
+  margin: 0 0 var(--space-4) 0;
+}
+
+.eyebrow::before {
+  content: "✦";
+  font-size: 1em;
+  line-height: 1;
+}
+
+/* Eyebrow without the asterisk (for inside cards) */
+.eyebrow--plain::before { content: none; }
+
+/* ============================================================
+   FOCUS RING (accessibility)
+   ============================================================ */
+
+:focus-visible {
+  outline: 3px solid var(--terra-500);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--terra-200);
+  color: var(--ink-900);
+}
