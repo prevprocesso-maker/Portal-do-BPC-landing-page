@@ -493,16 +493,34 @@ const FAQ_CATS = [
 
 function FAQ() {
   const [filter, setFilter] = useState('all');
-  const filtered = filter === 'all' ? FAQ_ITEMS : FAQ_ITEMS.filter(it => it.cat === filter);
+  const [query, setQuery] = useState('');
+  const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const q = norm(query.trim());
+  const filtered = FAQ_ITEMS
+    .filter(it => filter === 'all' || it.cat === filter)
+    .filter(it => !q || norm(it.q).includes(q) || norm(it.a).includes(q));
   return (
     <section id="faq" className="bg-bone">
       <div className="container-narrow">
         <div className="section-head">
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Perguntas frequentes</div>
           <h2>Tire suas <em>dúvidas</em>.</h2>
-          <p style={{ color: 'var(--ink-500)', maxWidth: 600, margin: '12px auto 0', textAlign: 'center' }}>
-            {FAQ_ITEMS.length} das perguntas que mais aparecem no nosso WhatsApp — respondidas com base na lei vigente (LOAS, Lei 13.146/2015, Decreto 6.214/2007). Sua dúvida não está aqui? A gente responde no WhatsApp.
+          <p style={{ color: 'var(--ink-500)', maxWidth: 620, margin: '12px auto 0', textAlign: 'center' }}>
+            {FAQ_ITEMS.length} das perguntas que mais aparecem no nosso WhatsApp. <strong>Clique em qualquer pergunta para abrir a resposta</strong> — explicação direta com as referências legais (LOAS, Lei 13.146/2015, Decreto 6.214/2007, súmulas da TNU). Sua dúvida não está aqui? A gente responde no WhatsApp.
           </p>
+        </div>
+        <div className="faq-search" role="search">
+          <span className="faq-search-icon" aria-hidden="true">🔎</span>
+          <input
+            type="search"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Pesquise por palavra-chave: autismo, pensão, recurso, CadÚnico…"
+            aria-label="Pesquisar nas perguntas frequentes"
+          />
+          {query && (
+            <button className="faq-search-clear" onClick={() => setQuery('')} aria-label="Limpar pesquisa">×</button>
+          )}
         </div>
         <div className="faq-filters" role="tablist">
           {FAQ_CATS.map(c => (
@@ -521,8 +539,14 @@ function FAQ() {
           ))}
         </div>
         <div className="faq">
+          {filtered.length === 0 && (
+            <div className="faq-empty">
+              <p>Nada encontrado pra <strong>"{query}"</strong>.</p>
+              <a className="btn btn--primary" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">Perguntar no WhatsApp</a>
+            </div>
+          )}
           {filtered.map((it, i) => (
-            <details className="faq-item" key={`${filter}-${i}`} open={i === 0}>
+            <details className="faq-item" key={`${filter}-${q}-${i}`}>
               <summary>{it.q}</summary>
               <div className="answer">{it.a}</div>
             </details>
