@@ -663,6 +663,13 @@ function Footer() {
               </div>
             </div>
             <p className="footer-desc">Informação clara e atendimento humano sobre o Benefício de Prestação Continuada (BPC/LOAS).</p>
+            <p className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 6 }}>Faz parte do escritório</span>
+              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, textDecoration: 'none' }}>
+                CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span>
+              </a>
+              <span style={{ display: 'block', marginTop: 4, fontSize: 13, opacity: 0.7 }}>Aposentadorias, pensões, auxílios e BPC</span>
+            </p>
           </div>
           <div>
             <h5>Navegação</h5>
@@ -715,7 +722,7 @@ function Footer() {
         </div>
 
         {/* Map */}
-        <div style={{ marginTop: 8, marginBottom: 32, borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ marginTop: 8, marginBottom: 24, borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
           <iframe
             src="https://www.google.com/maps?q=Pra%C3%A7a+Nossa+Senhora+da+Apresenta%C3%A7%C3%A3o,+223,+Iraj%C3%A1,+Rio+de+Janeiro,+RJ,+21231-230&output=embed"
             width="100%" height="260" style={{ border: 0, display: 'block', filter: 'grayscale(0.3) brightness(0.9)' }}
@@ -723,6 +730,29 @@ function Footer() {
             title="Mapa — Portal do BPC, Irajá/RJ">
           </iframe>
         </div>
+
+        {/* Google Review CTA */}
+        <a
+          href="https://g.page/r/CcJNe240Go7AEBM/review"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="footer-review"
+        >
+          <div className="footer-review-left">
+            <div className="footer-review-stars" aria-hidden="true">★★★★★</div>
+            <div>
+              <div className="footer-review-title">A gente ajudou você? Conta pra próxima família.</div>
+              <div className="footer-review-sub">Deixe uma avaliação no Google em 30 segundos. Sua história ajuda quem ainda está perdido no INSS a encontrar o caminho.</div>
+            </div>
+          </div>
+          <div className="footer-review-right">
+            <div className="footer-review-qr" aria-hidden="true">
+              <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&format=svg&data=https%3A%2F%2Fg.page%2Fr%2FCcJNe240Go7AEBM%2Freview" alt="QR Code para avaliação no Google" width="92" height="92" loading="lazy" />
+              <span className="footer-review-qr-label">Aponte a câmera</span>
+            </div>
+            <span className="footer-review-cta">Avaliar no Google <span aria-hidden="true">↗</span></span>
+          </div>
+        </a>
 
         <div className="footer-bottom">
           <span>© 2026 Portal do BPC. Todos os direitos reservados.</span>
