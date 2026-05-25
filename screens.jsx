@@ -12,7 +12,9 @@ function ScreenLanding({ onNavigate }) {
       <StatsStrip />
       <Especialidades />
       <PatologiasGrid onNavigate={onNavigate} />
+      <RecursosDestaque onNavigate={onNavigate} />
       <SobrePortal />
+      <NossoEscritorio />
       <Depoimentos />
       <Blog />
       <FAQ />
@@ -45,7 +47,7 @@ const PATOLOGIA_DETAIL = {
       { tit: 'Comprovantes de renda de TODOS os moradores', desc: 'Salários, aposentadorias, bicos, bolsa família. Tudo entra na conta da renda per capita.' },
     ],
     pericia: [
-      'A avaliação no INSS para BPC PcD tem duas etapas: <strong>perícia médica</strong> (avalia o impedimento) e <strong>avaliação social</strong> (avalia as barreiras na vida diária).',
+      'A avaliação no INSS para BPC deficiente tem duas etapas: <strong>perícia médica</strong> (avalia o impedimento) e <strong>avaliação social</strong> (avalia as barreiras na vida diária).',
       'Para o autismo, a avaliação social pesa muito: o perito quer entender como o TEA afeta a rotina — autonomia para comer, vestir-se, comunicar-se, frequentar escola, conviver socialmente.',
       'Leve <strong>vídeos curtos do dia a dia</strong> e exemplos concretos. Não dependa só do laudo.',
     ],
@@ -142,7 +144,7 @@ const PATOLOGIA_DETAIL = {
     ],
     legislacao: {
       titulo: 'Caminhos para o BPC com Alzheimer',
-      texto: 'Se a pessoa tem 65 anos ou mais, vale a pena pedir <strong>BPC do Idoso</strong> — exige apenas idade + renda, sem perícia médica de incapacidade. Se for mais nova (Alzheimer precoce, antes dos 65), entra-se com <strong>BPC PcD</strong>, que exige a perícia. Os dois benefícios têm o mesmo valor e mesmas regras de renda.',
+      texto: 'Se a pessoa tem 65 anos ou mais, vale a pena pedir <strong>BPC do Idoso</strong> — exige apenas idade + renda, sem perícia médica de incapacidade. Se for mais nova (Alzheimer precoce, antes dos 65), entra-se com <strong>BPC deficiente</strong>, que exige a perícia. Os dois benefícios têm o mesmo valor e mesmas regras de renda.',
       destaque: 'Idoso com Alzheimer: peça pelo BPC do Idoso. É mais simples e direto.',
     },
     docs: [
@@ -154,11 +156,11 @@ const PATOLOGIA_DETAIL = {
     ],
     pericia: [
       'Em casos avançados, a perícia médica é dispensável (BPC idoso) — basta o cadastro e a renda.',
-      'Em Alzheimer precoce (BPC PcD), a avaliação foca na capacidade cognitiva e na dependência de terceiros.',
+      'Em Alzheimer precoce (BPC deficiente), a avaliação foca na capacidade cognitiva e na dependência de terceiros.',
       'Leve sempre <strong>um acompanhante</strong> que conheça bem a rotina. O perito vai perguntar coisas que o próprio paciente não conseguirá responder.',
     ],
     erros: [
-      'Insistir em BPC PcD quando o idoso já tem 65+ — perde tempo',
+      'Insistir em BPC deficiente quando o idoso já tem 65+ — perde tempo',
       'Achar que aposentadoria do cônjuge impede o BPC — depende do valor total',
       'Não levar o MEEM ou outro teste cognitivo aplicado',
       'Não declarar despesas com cuidador (na via judicial isso importa)',
@@ -956,92 +958,372 @@ function FactCard({ kicker, valor }) {
 }
 
 /* ---------- Simulador ---------- */
+const SIM_QUEM_LABEL = {
+  idoso: 'Idoso (65 anos ou mais)',
+  pcd: 'Pessoa com deficiência',
+  estrangeiro: 'Estrangeiro residente no Brasil',
+  pente_fino_user: 'Beneficiário em pente fino (revisão)',
+};
+const SIM_SITUACAO_LABEL = {
+  nunca: 'Nunca deu entrada no BPC',
+  negado: 'Deu entrada e foi negado (cabe recurso)',
+  pente_fino: 'Já recebia e caiu no pente fino (revisão)',
+};
+const SIM_BENEFICIO_LABEL = {
+  nao: 'Não recebe nenhum benefício',
+  sim_inss: 'Já recebe benefício do INSS (aposentadoria, pensão, auxílio)',
+  sim_outro: 'Recebe outro benefício do governo (não Bolsa Família)',
+  bolsa: 'Recebe apenas Bolsa Família',
+};
+const SIM_CAD_LABEL = {
+  sim: 'Atualizado nos últimos 2 anos',
+  desatualizado: 'Desatualizado (mais de 2 anos)',
+  nao: 'Não tenho / não sei',
+};
+const SALARIO_MIN_2026 = 1621;
+const TETO_FAMILIAR = SALARIO_MIN_2026; // R$ 1.621 — limite máximo de renda familiar total
+const TETO_PER_CAPITA = SALARIO_MIN_2026 / 4; // R$ 405,25 — limite legal estrito (¼ do salário mínimo)
+
+function fmtBR(v) {
+  return v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+
 function ScreenSimulador({ onNavigate }) {
   const [step, setStep] = useStateS(0);
-  const [answers, setAnswers] = useStateS({});
+  const [answers, setAnswers] = useStateS({
+    quem: null,
+    situacao: null,
+    ja_recebe: null,
+    patologia: null,
+    pessoas_casa: 1,
+    renda_total: '',
+    cad: null,
+    nome: '',
+    sobrenome: '',
+  });
 
+  // Build dynamic step list
   const steps = [
-    {
-      q: 'Para quem é o benefício?',
-      key: 'quem',
-      opts: [
-        { v: 'idoso', l: 'Para um idoso (65 anos ou mais)' },
-        { v: 'pcd', l: 'Para uma pessoa com deficiência' },
-        { v: 'nao_sei', l: 'Não tenho certeza' },
-      ],
-    },
-    {
-      q: 'A pessoa já recebe outro benefício do INSS?',
-      key: 'outro_bnf',
-      opts: [
-        { v: 'nao', l: 'Não recebe nada do INSS' },
-        { v: 'sim', l: 'Recebe (aposentadoria, pensão, etc)' },
-        { v: 'nao_sei', l: 'Não sei dizer' },
-      ],
-    },
-    {
-      q: 'Qual a renda total da família por mês?',
-      key: 'renda',
-      opts: [
-        { v: 'ate_353', l: 'Menos de R$ 353 por pessoa' },
-        { v: 'ate_700', l: 'Entre R$ 353 e R$ 700 por pessoa' },
-        { v: 'mais', l: 'Mais de R$ 700 por pessoa' },
-      ],
-    },
-    {
-      q: 'O CadÚnico da família está atualizado?',
-      key: 'cad',
-      opts: [
-        { v: 'sim', l: 'Sim, atualizado nos últimos 2 anos' },
-        { v: 'desatualizado', l: 'Está desatualizado' },
-        { v: 'nao_sei', l: 'Não sei / não tem CadÚnico' },
-      ],
-    },
+    { kind: 'choice', key: 'quem' },
   ];
+  if (answers.quem !== 'pente_fino_user') {
+    steps.push({ kind: 'choice', key: 'situacao' });
+    steps.push({ kind: 'choice', key: 'ja_recebe' });
+  }
+  const pulaPatologia = answers.quem === 'idoso' || answers.quem === 'pente_fino_user' || answers.situacao === 'pente_fino';
+  if (answers.quem === 'pcd' && !pulaPatologia) {
+    steps.push({ kind: 'patologia', key: 'patologia' });
+  }
+  steps.push({ kind: 'pessoas', key: 'pessoas_casa' });
+  steps.push({ kind: 'renda', key: 'renda_total' });
+  steps.push({ kind: 'choice', key: 'cad' });
+  steps.push({ kind: 'contato', key: 'contato' });
 
-  if (step >= steps.length) {
-    // Result screen
-    const elegivel = answers.quem !== undefined && answers.outro_bnf === 'nao' && answers.renda === 'ate_353';
+  const cur = steps[step] || steps[steps.length - 1];
+
+  const set = (k, v) => setAnswers({ ...answers, [k]: v });
+  const next = () => setStep(Math.min(step + 1, steps.length - 1));
+  const back = () => { if (step > 0) setStep(step - 1); else onNavigate('home'); };
+
+  // Eligibilidade — heurística
+  const rendaCents = parseInt(String(answers.renda_total).replace(/\D/g, ''), 10) || 0;
+  const renda = rendaCents / 100;
+  const pessoas = Math.max(1, Number(answers.pessoas_casa) || 1);
+  const perCapita = renda / pessoas;
+  const dentroFamiliar = renda > 0 && renda <= TETO_FAMILIAR;
+  const dentroPerCapita = renda > 0 && perCapita <= TETO_PER_CAPITA;
+  const rendaOk = dentroFamiliar; // critério amplo: renda familiar até 1 salário mínimo
+  const recebeOutro = answers.ja_recebe === 'sim_inss' || answers.ja_recebe === 'sim_outro';
+  const elegivel = answers.quem && answers.situacao && rendaOk && !recebeOutro;
+
+  // Monta mensagem do WhatsApp
+  const buildWhatsAppUrl = () => {
+    const nomeCompleto = `${answers.nome || ''} ${answers.sobrenome || ''}`.trim();
+    const linhas = [
+      `Olá! Sou ${nomeCompleto || '[nome]'}, vim pelo Portal do BPC.`,
+      '',
+      '📋 *Resumo do meu caso:*',
+      `• Beneficiário: ${SIM_QUEM_LABEL[answers.quem] || '—'}`,
+      `• Situação: ${SIM_SITUACAO_LABEL[answers.situacao] || '—'}`,
+    ];
+    if (answers.ja_recebe) linhas.push(`• Benefício atual: ${SIM_BENEFICIO_LABEL[answers.ja_recebe] || '—'}`);
+    if (answers.patologia) linhas.push(`• Patologia: ${answers.patologia}`);
+    linhas.push(`• Pessoas em casa: ${pessoas}`);
+    if (renda > 0) {
+      linhas.push(`• Renda familiar: R$ ${fmtBR(renda)}/mês (R$ ${fmtBR(perCapita)} por pessoa)`);
+    }
+    linhas.push(`• CadÚnico: ${SIM_CAD_LABEL[answers.cad] || '—'}`);
+    linhas.push('');
+    linhas.push('Gostaria de conversar sobre o meu caso.');
+    return `https://wa.me/5521964238080?text=${encodeURIComponent(linhas.join('\n'))}`;
+  };
+
+  /* ---------- Render por tipo de passo ---------- */
+  const renderChoice = () => {
+    const map = {
+      quem: {
+        q: 'Para quem é o benefício?',
+        opts: [
+          { v: 'idoso', l: 'Idoso (65 anos ou mais)' },
+          { v: 'pcd', l: 'Pessoa com deficiência' },
+          { v: 'estrangeiro', l: 'Estrangeiro residente no Brasil', d: 'Naturalizado, refugiado ou com residência permanente — idoso ou deficiente' },
+          { v: 'pente_fino_user', l: 'Já recebia e caiu no pente fino', d: 'Benefício suspenso/cessado por aumento de renda, CadÚnico desatualizado ou auditoria do INSS' },
+        ],
+      },
+      situacao: {
+        q: 'Qual a situação hoje?',
+        sub: 'Isso muda completamente o caminho a seguir.',
+        opts: [
+          { v: 'nunca', l: 'Nunca dei entrada no BPC', d: 'Quero pedir pela primeira vez' },
+          { v: 'negado', l: 'Dei entrada e foi negado', d: 'Cabe recurso administrativo ou judicial' },
+          { v: 'pente_fino', l: 'Já recebia e caiu no pente fino', d: 'Benefício suspenso/cessado por aumento de renda, CadÚnico desatualizado ou auditoria do INSS' },
+        ],
+      },
+      ja_recebe: {
+        q: 'A pessoa já recebe algum benefício?',
+        sub: 'O BPC não pode ser acumulado com aposentadoria, pensão ou outro benefício do INSS. Bolsa Família pode somar normalmente.',
+        opts: [
+          { v: 'nao', l: 'Não recebe nada', d: 'Pode pedir o BPC' },
+          { v: 'bolsa', l: 'Recebe apenas Bolsa Família', d: 'Bolsa Família não impede o BPC' },
+          { v: 'sim_inss', l: 'Recebe aposentadoria, pensão ou auxílio do INSS', d: 'Em regra, não cabe BPC — mas vale conversar' },
+          { v: 'sim_outro', l: 'Recebe outro benefício do governo', d: 'Vamos analisar caso a caso' },
+        ],
+      },
+      cad: {
+        q: 'O CadÚnico da família está atualizado?',
+        sub: 'Sem CadÚnico em dia, o BPC não sai (ou pode ser bloqueado).',
+        opts: [
+          { v: 'sim', l: 'Sim, atualizado nos últimos 2 anos' },
+          { v: 'desatualizado', l: 'Está desatualizado (mais de 2 anos)' },
+          { v: 'nao', l: 'Não tenho CadÚnico / não sei' },
+        ],
+      },
+    };
+    const cfg = map[cur.key];
     return (
-      <section className="hero" style={{ paddingBottom: 96 }}>
-        <div className="container-narrow">
-          <div className="wizard">
-            <div className="wizard-steps">
-              {steps.map((_, i) => <div key={i} className="wizard-step done"></div>)}
-            </div>
-            <div style={{ textAlign: 'center', padding: '40px 0' }}>
-              {elegivel ? (
-                <>
-                  <div style={{ width: 80, height: 80, borderRadius: 999, background: 'var(--ok-bg)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, fontSize: 36 }}>✓</div>
-                  <div className="eyebrow" style={{ justifyContent: 'center' }}>Resultado da análise</div>
-                  <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>Você <em>pode</em> ter direito ao BPC.</h1>
-                  <p className="lead" style={{ color: 'var(--ink-500)', marginBottom: 32 }}>
-                    Suas respostas indicam que os requisitos básicos podem estar preenchidos. O próximo passo é a documentação.
-                  </p>
-                </>
-              ) : (
-                <>
-                  <div style={{ width: 80, height: 80, borderRadius: 999, background: 'var(--warn-bg)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 24, fontSize: 36 }}>?</div>
-                  <div className="eyebrow" style={{ justifyContent: 'center' }}>Resultado da análise</div>
-                  <h1 style={{ fontSize: 'clamp(2rem, 3.5vw, 3rem)' }}>Seu caso exige <em>análise</em>.</h1>
-                  <p className="lead" style={{ color: 'var(--ink-500)', marginBottom: 32 }}>
-                    Algumas das suas respostas indicam pontos que precisam ser olhados de perto. Vale uma conversa.
-                  </p>
-                </>
-              )}
-              <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080">Falar com nossa equipe</a>
-                <button className="btn btn--secondary btn--lg" onClick={() => { setStep(0); setAnswers({}); }}>Refazer simulação</button>
+      <>
+        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: cfg.sub ? 12 : 32 }}>{cfg.q}</h1>
+        {cfg.sub && <p style={{ color: 'var(--ink-500)', marginBottom: 32, fontSize: 17 }}>{cfg.sub}</p>}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+          {cfg.opts.map(o => (
+            <button
+              key={o.v}
+              className="btn btn--secondary"
+              style={{ justifyContent: 'flex-start', padding: '18px 22px', fontSize: 17, textAlign: 'left', flexDirection: 'column', alignItems: 'flex-start', gap: 4 }}
+              onClick={() => {
+                if (cur.key === 'quem' && o.v === 'pente_fino_user') {
+                  setAnswers({ ...answers, quem: 'pente_fino_user', situacao: 'pente_fino' });
+                } else {
+                  set(cur.key, o.v);
+                }
+                next();
+              }}
+            >
+              <span style={{ fontWeight: 600 }}>{o.l}</span>
+              {o.d && <span style={{ fontSize: 14, color: 'var(--ink-500)', fontWeight: 400 }}>{o.d}</span>}
+            </button>
+          ))}
+        </div>
+      </>
+    );
+  };
+
+  const renderPatologia = () => {
+    const cats = ['desenv', 'neuro', 'mental', 'sensorial', 'onco', 'cronica'];
+    return (
+      <>
+        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Qual é a patologia?</h1>
+        <p style={{ color: 'var(--ink-500)', marginBottom: 28, fontSize: 17 }}>
+          Selecione a condição principal. Se houver mais de uma, escolha a mais grave — a gente detalha depois.
+        </p>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 24 }}>
+          {cats.map(c => {
+            const lista = PATOLOGIAS.filter(p => p.cat === c);
+            if (lista.length === 0) return null;
+            const cat = CATEGORIAS[c];
+            return (
+              <div key={c}>
+                <div style={{ fontSize: 12, fontWeight: 700, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>{cat.label}</div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
+                  {lista.map(p => (
+                    <button
+                      key={p.sigla}
+                      className="btn btn--secondary"
+                      style={{ justifyContent: 'flex-start', padding: '14px 16px', fontSize: 15, textAlign: 'left' }}
+                      onClick={() => { set('patologia', p.nome); next(); }}
+                    >
+                      {p.nome}
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
+            );
+          })}
+          <div>
+            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>Outra</div>
+            <button
+              className="btn btn--secondary"
+              style={{ width: '100%', justifyContent: 'flex-start', padding: '14px 16px', fontSize: 15, textAlign: 'left' }}
+              onClick={() => { set('patologia', 'Outra (a detalhar)'); next(); }}
+            >
+              Não está na lista — vou detalhar pelo WhatsApp
+            </button>
           </div>
         </div>
-      </section>
+      </>
     );
-  }
+  };
 
-  const cur = steps[step];
+  const renderPessoas = () => {
+    const v = Math.max(1, Number(answers.pessoas_casa) || 1);
+    const dec = () => set('pessoas_casa', Math.max(1, v - 1));
+    const inc = () => set('pessoas_casa', Math.min(15, v + 1));
+    return (
+      <>
+        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Quantas pessoas moram na casa?</h1>
+        <p style={{ color: 'var(--ink-500)', marginBottom: 32, fontSize: 17 }}>
+          Conte todo mundo que mora junto: cônjuge, filhos, pais, irmãos. <strong>Inclua a própria pessoa que vai receber o BPC.</strong>
+        </p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, padding: '32px 0', background: 'var(--bone)', borderRadius: 16, marginBottom: 32 }}>
+          <button
+            type="button"
+            onClick={dec}
+            disabled={v <= 1}
+            style={{ width: 56, height: 56, borderRadius: 999, border: '1px solid var(--line)', background: 'var(--paper)', fontSize: 28, cursor: v <= 1 ? 'not-allowed' : 'pointer', opacity: v <= 1 ? 0.4 : 1, color: 'var(--ink-900)' }}
+            aria-label="Diminuir"
+          >−</button>
+          <div style={{ minWidth: 120, textAlign: 'center' }}>
+            <div style={{ fontFamily: 'var(--font-serif)', fontSize: 64, fontWeight: 600, lineHeight: 1, color: 'var(--ink-900)' }}>{v}</div>
+            <div style={{ fontSize: 14, color: 'var(--ink-500)', marginTop: 6 }}>{v === 1 ? 'pessoa' : 'pessoas'}</div>
+          </div>
+          <button
+            type="button"
+            onClick={inc}
+            disabled={v >= 15}
+            style={{ width: 56, height: 56, borderRadius: 999, border: '1px solid var(--line)', background: 'var(--paper)', fontSize: 28, cursor: v >= 15 ? 'not-allowed' : 'pointer', opacity: v >= 15 ? 0.4 : 1, color: 'var(--ink-900)' }}
+            aria-label="Aumentar"
+          >+</button>
+        </div>
+        <button className="btn btn--primary btn--lg" style={{ width: '100%' }} onClick={next}>Continuar →</button>
+      </>
+    );
+  };
 
+  const renderRenda = () => {
+    const digits = String(answers.renda_total ?? '').replace(/\D/g, '');
+    const cents = digits === '' ? 0 : parseInt(digits, 10);
+    const num = cents / 100;
+    const display = digits === '' ? '' : num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pc = num / pessoas;
+    const dentroFam = num > 0 && num <= TETO_FAMILIAR;
+    const dentroPc = num > 0 && pc <= TETO_PER_CAPITA;
+    const dentro = num > 0 && pc <= TETO_PER_CAPITA;
+    return (
+      <>
+        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Qual a renda total da família?</h1>
+        <p style={{ color: 'var(--ink-500)', marginBottom: 24, fontSize: 17 }}>
+          <strong>Some tudo que entra na casa por mês</strong>: salários, aposentadorias, pensões, bicos, BPC de outro morador. <strong>Não</strong> some Bolsa Família (não conta pra LOAS). Em 2026, a renda familiar total precisa ficar até <strong>R$ {fmtBR(TETO_FAMILIAR)}</strong> (1 salário mínimo) — mas o critério legal estrito é <strong>R$ {fmtBR(TETO_PER_CAPITA)} por pessoa</strong> (¼ do salário).
+        </p>
+        <div style={{ padding: '24px 24px 8px', background: 'var(--bone)', borderRadius: 16, marginBottom: 24 }}>
+          <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Renda familiar mensal</label>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
+            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 40, color: 'var(--ink-500)' }}>R$</span>
+            <input
+              type="text"
+              inputMode="numeric"
+              placeholder="0,00"
+              value={display}
+              onChange={e => set('renda_total', e.target.value.replace(/\D/g, ''))}
+              style={{ flex: 1, fontFamily: 'var(--font-serif)', fontSize: 40, fontWeight: 600, color: 'var(--ink-900)', border: 'none', background: 'transparent', outline: 'none', padding: '4px 0', width: '100%' }}
+              autoFocus
+            />
+          </div>
+          <div style={{ borderTop: '1px solid var(--line)', marginTop: 16, paddingTop: 16, paddingBottom: 12 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
+              <span style={{ fontSize: 14, color: 'var(--ink-500)' }}>÷ {pessoas} {pessoas === 1 ? 'pessoa' : 'pessoas'} = </span>
+              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 22, fontWeight: 600, color: num > 0 ? (dentroPc ? '#1f6b3a' : '#8a4214') : 'var(--ink-500)' }}>
+                R$ {fmtBR(pc)} por pessoa
+              </span>
+            </div>
+            {num > 0 && (
+              <div style={{ marginTop: 12, padding: '10px 14px', borderRadius: 10, background: dentroFam ? 'var(--ok-bg, #e6f0ea)' : 'var(--warn-bg, #f6e8d8)', fontSize: 14, color: dentroFam ? '#1f5e36' : '#7a3a10' }}>
+                {dentroFam && dentroPc && <>✓ <strong>Dentro do critério estrito</strong> — renda por pessoa até R$ {fmtBR(TETO_PER_CAPITA)} (¼ do salário mínimo). Caso forte.</>}
+                {dentroFam && !dentroPc && <>✓ <strong>Renda familiar dentro do limite</strong> (até R$ {fmtBR(TETO_FAMILIAR)}). Acima do ¼ per-capita, mas há exceções legais que podem se aplicar — vale conversar.</>}
+                {!dentroFam && <>⚠ Renda familiar acima de R$ {fmtBR(TETO_FAMILIAR)}/mês. O caso exige análise específica — ainda assim, vale conversar.</>}
+              </div>
+            )}
+          </div>
+        </div>
+        <button
+          className="btn btn--primary btn--lg"
+          style={{ width: '100%' }}
+          onClick={next}
+          disabled={num <= 0}
+        >Continuar →</button>
+      </>
+    );
+  };
+
+  const renderContato = () => {
+    const ok = answers.nome.trim().length >= 2 && answers.sobrenome.trim().length >= 2;
+    return (
+      <>
+        <div style={{ textAlign: 'center', marginBottom: 32 }}>
+          <div style={{ width: 80, height: 80, borderRadius: 999, background: elegivel ? '#e6f0ea' : '#f6e8d8', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, fontSize: 36 }}>
+            {elegivel ? '✓' : '?'}
+          </div>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>Última etapa</div>
+          <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>
+            {elegivel ? <>Seu caso parece <em>elegível</em>.</> : <>Seu caso exige <em>análise</em>.</>}
+          </h1>
+          <p style={{ color: 'var(--ink-500)', fontSize: 17, maxWidth: 520, margin: '0 auto' }}>
+            {elegivel
+              ? 'Os requisitos básicos parecem preenchidos. Deixe seu nome pra eu te chamar no WhatsApp e organizar a documentação.'
+              : 'Há pontos que precisam ser olhados de perto. Deixe seu nome que eu te chamo no WhatsApp pra entender o caso.'}
+          </p>
+        </div>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 24 }}>
+          <label style={{ display: 'block' }}>
+            <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Nome</span>
+            <input
+              type="text"
+              autoComplete="given-name"
+              placeholder="Seu primeiro nome"
+              value={answers.nome}
+              onChange={e => set('nome', e.target.value)}
+              style={{ width: '100%', padding: '16px 18px', fontSize: 17, border: '1px solid var(--line)', borderRadius: 12, background: 'var(--paper)', color: 'var(--ink-900)', fontFamily: 'inherit' }}
+            />
+          </label>
+          <label style={{ display: 'block' }}>
+            <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Sobrenome</span>
+            <input
+              type="text"
+              autoComplete="family-name"
+              placeholder="Seu sobrenome"
+              value={answers.sobrenome}
+              onChange={e => set('sobrenome', e.target.value)}
+              style={{ width: '100%', padding: '16px 18px', fontSize: 17, border: '1px solid var(--line)', borderRadius: 12, background: 'var(--paper)', color: 'var(--ink-900)', fontFamily: 'inherit' }}
+            />
+          </label>
+        </div>
+        <a
+          className="btn btn--primary btn--lg"
+          href={ok ? buildWhatsAppUrl() : '#'}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={e => { if (!ok) e.preventDefault(); }}
+          style={{ width: '100%', justifyContent: 'center', opacity: ok ? 1 : 0.5, cursor: ok ? 'pointer' : 'not-allowed', pointerEvents: ok ? 'auto' : 'none' }}
+        >
+          📱 Falar com especialista no WhatsApp
+        </a>
+        <p style={{ fontSize: 13, color: 'var(--ink-500)', textAlign: 'center', marginTop: 14 }}>
+          Você será direcionado pro WhatsApp <strong>(21) 96423-8080</strong> com um resumo do seu caso já preenchido.
+        </p>
+      </>
+    );
+  };
+
+  /* ---------- Wrapper ---------- */
   return (
     <section className="hero" style={{ paddingBottom: 96 }}>
       <div className="container-narrow">
@@ -1052,20 +1334,12 @@ function ScreenSimulador({ onNavigate }) {
             ))}
           </div>
           <div className="eyebrow">Simulador · passo {step + 1} de {steps.length}</div>
-          <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 32 }}>{cur.q}</h1>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
-            {cur.opts.map(o => (
-              <button
-                key={o.v}
-                className="btn btn--secondary"
-                style={{ justifyContent: 'flex-start', padding: '18px 22px', fontSize: 17, textAlign: 'left' }}
-                onClick={() => { setAnswers({ ...answers, [cur.key]: o.v }); setStep(step + 1); }}
-              >
-                {o.l}
-              </button>
-            ))}
-          </div>
-          <button className="btn btn--ghost" onClick={() => { if (step > 0) setStep(step - 1); else onNavigate('home'); }}>
+          {cur.kind === 'choice' && renderChoice()}
+          {cur.kind === 'patologia' && renderPatologia()}
+          {cur.kind === 'pessoas' && renderPessoas()}
+          {cur.kind === 'renda' && renderRenda()}
+          {cur.kind === 'contato' && renderContato()}
+          <button className="btn btn--ghost" style={{ marginTop: 8 }} onClick={back}>
             ← {step === 0 ? 'Voltar ao início' : 'Pergunta anterior'}
           </button>
         </div>
@@ -1080,7 +1354,7 @@ function ScreenBlog() {
     { cat: 'BPC Idoso', titulo: 'Como dar entrada no BPC sem sair de casa', desc: 'Passo a passo do pedido pelo Meu INSS.', date: '12 mai 2026' },
     { cat: 'Recurso', titulo: 'INSS negou? Veja os 4 motivos mais comuns', desc: 'O que fazer quando o benefício é indeferido.', date: '08 mai 2026' },
     { cat: 'Documentos', titulo: 'CadÚnico atualizado: por que é tão importante', desc: 'Sem CadÚnico em dia, o BPC pode ser bloqueado.', date: '02 mai 2026' },
-    { cat: 'BPC PcD', titulo: 'Lei Berenice Piana e o BPC para autistas', desc: 'O que diz a lei e como aplicar no seu caso.', date: '28 abr 2026' },
+    { cat: 'BPC deficiente', titulo: 'Lei Berenice Piana e o BPC para autistas', desc: 'O que diz a lei e como aplicar no seu caso.', date: '28 abr 2026' },
     { cat: 'Renda', titulo: 'Como calcular a renda per capita corretamente', desc: 'Erros comuns que levam à negativa.', date: '20 abr 2026' },
     { cat: 'Perícia', titulo: 'Perícia médica do INSS: como se preparar', desc: 'Documentos, laudos e o que dizer ao perito.', date: '12 abr 2026' },
   ];
@@ -1109,4 +1383,514 @@ function ScreenBlog() {
   );
 }
 
-Object.assign(window, { ScreenLanding, ScreenPatologia, ScreenSimulador, ScreenBlog });
+/* ========================================================
+   ScreenPericias — perícia médica e social com lead-gate
+   ======================================================== */
+function ScreenPericias({ onNavigate }) {
+  const [tab, setTab] = useStateS('medica');
+  const [form, setForm] = useStateS({ nome: '', whatsapp: '', open: false });
+
+  // formatar telefone (21) 96423-8080
+  const formatPhone = (raw) => {
+    const d = raw.replace(/\D/g, '').slice(0, 11);
+    if (d.length <= 2) return d;
+    if (d.length <= 6) return `(${d.slice(0,2)}) ${d.slice(2)}`;
+    if (d.length <= 10) return `(${d.slice(0,2)}) ${d.slice(2,6)}-${d.slice(6)}`;
+    return `(${d.slice(0,2)}) ${d.slice(2,7)}-${d.slice(7)}`;
+  };
+
+  const phoneDigits = form.whatsapp.replace(/\D/g, '');
+  const isValid = form.nome.trim().length >= 3 && phoneDigits.length >= 10;
+
+  const submitGate = (e) => {
+    e.preventDefault();
+    if (!isValid) return;
+    // Open WhatsApp pre-filled lead + checklist in new tab
+    const msg = encodeURIComponent(
+      `Olá! Sou ${form.nome.trim()}, baixei o checklist da perícia BPC no site. Gostaria de orientação sobre o meu caso.`
+    );
+    window.open('checklist-pericia.html', '_blank', 'noopener');
+    setTimeout(() => {
+      window.open(`https://wa.me/5521964238080?text=${msg}`, '_blank', 'noopener');
+    }, 400);
+    setForm({ nome: '', whatsapp: '', open: false });
+  };
+
+  /* ----- conteúdo das abas ----- */
+  const TAB_DATA = {
+    medica: {
+      label: 'Perícia médica',
+      kicker: 'Avalia clinicamente a deficiência ou condição',
+      passos: [
+        { n: '01', t: 'Agendamento', d: 'Pelo app Meu INSS ou ligando 135. Em algumas situações é automático após o requerimento.' },
+        { n: '02', t: 'Comparecimento', d: 'Na agência marcada, com 30min de antecedência. Em casos de imobilidade, perícia domiciliar.' },
+        { n: '03', t: 'Avaliação', d: 'Em média 15 minutos. O perito lê laudos, faz exame físico e perguntas sobre a rotina.' },
+        { n: '04', t: 'Resultado', d: 'Disponível em 5 a 30 dias no Meu INSS — conceder, indeferir ou exigir mais exames.' },
+      ],
+      docsTitle: 'Documentos essenciais para levar',
+      docs: [
+        { t: 'Documento de identidade com foto', n: 'RG, CNH ou CTPS.' },
+        { t: 'CPF', n: 'Pode ser o digital pelo gov.br.' },
+        { t: 'Comprovante de residência', n: 'Atualizado (90 dias).' },
+        { t: 'Agendamento impresso ou no celular', n: 'Sem isso, em algumas agências você é mandado embora.' },
+        { t: 'Laudo médico atualizado (90 dias)', n: 'Com CID, prognóstico, tempo de tratamento.' },
+        { t: 'Receituários dos últimos 6 meses', n: 'Mostram que o tratamento é contínuo.' },
+        { t: 'Exames complementares', n: 'Laboratoriais, imagem, biópsias.' },
+        { t: 'Relatórios de internação', n: 'Se houver.' },
+        { t: 'Caixa ou foto dos medicamentos', n: 'A complexidade do tratamento fala por si.' },
+        { t: 'Equipamentos de apoio', n: 'Cadeira de rodas, bengala, andador — leve no dia.' },
+      ],
+      dicasTitle: 'Como se comportar',
+      dicas: [
+        { n: '01', t: 'Não minimize sua condição', d: 'Descreva a PIOR fase, não o melhor dia. "Estou bem hoje" derruba o pedido.' },
+        { n: '02', t: 'Mostre os medicamentos', d: 'Caixas, receitas, frequência. Visual é poderoso.' },
+        { n: '03', t: 'Descreva a rotina', d: 'Quem ajuda, o que você não consegue fazer sozinho.' },
+        { n: '04', t: 'Use os equipamentos', d: 'Se usa bengala, vá com bengala. Não dispense em hipótese alguma.' },
+        { n: '05', t: 'Roupas confortáveis', d: 'Que permitam mostrar limitações (subir manga, agachar).' },
+        { n: '06', t: 'Acompanhante', d: 'Direito garantido por lei para idoso 60+ e deficiente. Use.' },
+      ],
+    },
+    social: {
+      label: 'Perícia social',
+      kicker: 'Só para deficiente — avalia o impacto da deficiência no dia a dia',
+      passos: [
+        { n: '01', t: 'Agendamento', d: 'Costuma vir junto com a médica, ou em momento separado, conforme a agência.' },
+        { n: '02', t: 'Entrevista', d: 'Com assistente social do INSS. Pode ser na agência ou visita domiciliar.' },
+        { n: '03', t: 'Avaliação social', d: 'Perguntas sobre família, renda, cuidados, barreiras do dia a dia.' },
+        { n: '04', t: 'Relatório', d: 'Vai junto com o laudo médico para a decisão final do INSS.' },
+      ],
+      docsTitle: 'Documentos da família para mostrar',
+      docs: [
+        { t: 'Documentos de todos os moradores', n: 'RG, CPF, certidão de nascimento de cada um.' },
+        { t: 'CadÚnico atualizado nos últimos 24 meses', n: 'Sem isso o BPC não sai.' },
+        { t: 'Comprovantes de renda de todos', n: 'Carteira assinada, declaração de bicos, pensões.' },
+        { t: 'Comprovantes de despesa médica', n: 'Medicamentos, fralda, terapia, transporte para tratamento.' },
+        { t: 'Receituários e laudos de dependência', n: 'Que mostrem precisar de outra pessoa.' },
+        { t: 'Declaração escolar ou de AEE', n: 'No caso de criança/adolescente deficiente.' },
+        { t: 'Fotos da residência', n: 'Mostrando barreiras de acessibilidade ou adaptações.' },
+        { t: 'Contas de água, luz, gás', n: 'Comprovam o endereço informado.' },
+      ],
+      dicasTitle: 'Perguntas que costumam fazer',
+      dicas: [
+        { n: '?', t: 'Quem mora na casa?', d: 'Liste TODOS — inclusive agregados e parentes.' },
+        { n: '?', t: 'Quanto cada um ganha?', d: 'Inclua bicos, pensões e benefícios. Exceto Bolsa Família.' },
+        { n: '?', t: 'Quem cuida do requerente?', d: 'Pessoa, parentesco, horas por dia.' },
+        { n: '?', t: 'Faz tratamento? Onde?', d: 'SUS, particular, frequência, deslocamento.' },
+        { n: '?', t: 'Recebe ajuda de alguém?', d: 'Familiar, igreja, ONG — declare tudo.' },
+        { n: '?', t: 'Trabalha mesmo informal?', d: 'Bico, marmita, costura em casa — informe a renda real.' },
+      ],
+    },
+  };
+
+  const data = TAB_DATA[tab];
+
+  return (
+    <>
+      <section className="pericia-hero">
+        <div className="container">
+          <div className="breadcrumb">
+            <a href="#/" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>Início</a>
+            <span className="sep">/</span>
+            <span>Perícias</span>
+          </div>
+          <div className="pericia-hero-grid">
+            <div>
+              <div className="eyebrow">Guia oficial · perícia BPC</div>
+              <h1>O dia da perícia <em>não</em> pode ser improviso.</h1>
+              <p className="lead">
+                Você esperou meses por essa data. Em 15 minutos um perito decide se sua família vai receber o BPC ou começar tudo de novo. <strong>A maioria das negativas não é falta de direito — é falta de preparação</strong>. Reunimos aqui o que levar, como se comportar e o que evitar dizer.
+              </p>
+              <div className="pericia-stats">
+                <div className="pericia-stat">
+                  <div className="num">70%</div>
+                  <div className="lbl">das negativas vêm da perícia</div>
+                </div>
+                <div className="pericia-stat">
+                  <div className="num">15min</div>
+                  <div className="lbl">é a duração média da avaliação</div>
+                </div>
+                <div className="pericia-stat">
+                  <div className="num">2x</div>
+                  <div className="lbl">perícias para deficiente (médica + social)</div>
+                </div>
+              </div>
+            </div>
+            <div className="pericia-hero-cta">
+              <div className="card-checklist">
+                <div className="eyebrow">Material de apoio</div>
+                <h3>Checklist completo da perícia</h3>
+                <p>Lista impressa com todos os documentos, dicas de comportamento e erros a evitar. Leve no dia da perícia.</p>
+                <ul className="card-features">
+                  <li>✓ 24 itens de documentação</li>
+                  <li>✓ 10 dicas de comportamento</li>
+                  <li>✓ 5 erros que derrubam o pedido</li>
+                  <li>✓ Pronto para imprimir em A4</li>
+                </ul>
+                <button className="btn btn--primary btn--lg" style={{ width: '100%' }} onClick={() => setForm({ ...form, open: true })}>
+                  📥 Baixar checklist grátis
+                </button>
+                <p className="card-note">Em troca, deixe seu nome e WhatsApp — sem spam, só esse contato.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pericia-body">
+        <div className="container">
+          <div className="pericia-tabs" role="tablist">
+            {Object.entries(TAB_DATA).map(([k, v]) => (
+              <button
+                key={k}
+                role="tab"
+                aria-selected={tab === k}
+                className={`pericia-tab ${tab === k ? 'is-active' : ''}`}
+                onClick={() => setTab(k)}
+              >
+                {v.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="eyebrow" style={{ marginTop: 40 }}>{data.kicker}</div>
+          <h2 className="pericia-h2">Como <em>funciona</em> a {data.label.toLowerCase()}</h2>
+
+          <div className="pericia-steps">
+            {data.passos.map(p => (
+              <div className="step-card" key={p.n}>
+                <div className="step-n">{p.n}</div>
+                <h4>{p.t}</h4>
+                <p>{p.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="pericia-h2" style={{ marginTop: 80 }}>{data.docsTitle}</h2>
+          <div className="pericia-docs">
+            {data.docs.map((d, i) => (
+              <div className="doc-row" key={i}>
+                <div className="doc-check">✓</div>
+                <div>
+                  <strong>{d.t}</strong>
+                  <div className="doc-note">{d.n}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="pericia-h2" style={{ marginTop: 80 }}>{data.dicasTitle}</h2>
+          <div className="pericia-tips">
+            {data.dicas.map(d => (
+              <div className="tip-card" key={d.n}>
+                <div className="tip-num">{d.n}</div>
+                <h5>{d.t}</h5>
+                <p>{d.d}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="pericia-cta">
+            <div>
+              <div className="eyebrow">Pronto pra perícia?</div>
+              <h3>Baixe o checklist e leve impresso no dia.</h3>
+              <p>O documento reúne tudo que vimos aqui em uma folha A4 que cabe na pasta.</p>
+            </div>
+            <button className="btn btn--primary btn--lg" onClick={() => setForm({ ...form, open: true })}>
+              📥 Baixar checklist em PDF
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ============== Lead-gate modal ============== */}
+      {form.open && (
+        <div className="lead-modal-backdrop" onClick={() => setForm({ ...form, open: false })}>
+          <div className="lead-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="lead-modal-close" onClick={() => setForm({ ...form, open: false })} aria-label="Fechar">×</button>
+            <div className="eyebrow">Quase lá</div>
+            <h3>Receba o checklist no <em>WhatsApp</em></h3>
+            <p style={{ color: 'var(--ink-500)', marginBottom: 24 }}>
+              Deixe seu nome e número que abrimos o checklist pra imprimir <strong>e</strong> mandamos no seu WhatsApp pra você ter sempre à mão.
+            </p>
+            <form onSubmit={submitGate} className="lead-form">
+              <label>
+                <span>Nome completo</span>
+                <input
+                  type="text"
+                  autoComplete="name"
+                  required
+                  value={form.nome}
+                  onChange={(e) => setForm({ ...form, nome: e.target.value })}
+                  placeholder="João da Silva"
+                  autoFocus
+                />
+              </label>
+              <label>
+                <span>WhatsApp</span>
+                <input
+                  type="tel"
+                  autoComplete="tel"
+                  required
+                  inputMode="numeric"
+                  value={form.whatsapp}
+                  onChange={(e) => setForm({ ...form, whatsapp: formatPhone(e.target.value) })}
+                  placeholder="(21) 96423-8080"
+                />
+              </label>
+              <p className="lgpd-note">
+                🔒 Seus dados são tratados em conformidade com a LGPD (Lei 13.709/2018). Usados apenas para enviar o checklist.
+              </p>
+              <button type="submit" className="btn btn--primary btn--lg" disabled={!isValid} style={{ width: '100%' }}>
+                Baixar checklist agora →
+              </button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+/* ========================================================
+   ScreenEstrangeiro — BPC para estrangeiros (idoso + PCD)
+   SEO/GEO targeted: imigrantes, refugiados, naturalizados
+   ======================================================== */
+function ScreenEstrangeiro({ onNavigate }) {
+  const [tab, setTab] = useStateS('quem');
+
+  const TABS = [
+    { v: 'quem', l: 'Quem tem direito' },
+    { v: 'docs', l: 'Documentos' },
+    { v: 'como', l: 'Como pedir' },
+    { v: 'comum', l: 'Erros comuns' },
+  ];
+
+  const CONTENT = {
+    quem: {
+      kicker: 'Lei 8.742/93 + Decreto 6.214/2007 + STF RE 587.970',
+      h: 'Estrangeiro <em>tem</em> direito ao BPC.',
+      lead: 'Desde a decisão do STF em 2017 (RE 587.970), estrangeiros residentes no Brasil têm acesso ao BPC nas mesmas condições que brasileiros. Não importa a nacionalidade — importa a residência regular no país.',
+      cards: [
+        {
+          n: '01',
+          t: 'Estrangeiro naturalizado',
+          d: 'Quem adquiriu cidadania brasileira por naturalização. Direito automático — mesmo regime do brasileiro nato.',
+        },
+        {
+          n: '02',
+          t: 'Residente permanente',
+          d: 'Estrangeiro com CRNM (Carteira de Registro Nacional Migratório) válida ou antigo RNE permanente. Idoso 65+ ou deficiente.',
+        },
+        {
+          n: '03',
+          t: 'Refugiado reconhecido',
+          d: 'Quem tem reconhecimento de refúgio pelo CONARE. Equiparado ao residente para fins de BPC.',
+        },
+        {
+          n: '04',
+          t: 'Solicitante de refúgio',
+          d: 'Tem protocolo do CONARE. Acesso por equiparação após decisão STF — mas exige análise técnica.',
+        },
+        {
+          n: '05',
+          t: 'Apátrida',
+          d: 'Pessoa sem nacionalidade reconhecida. Lei 13.445/2017 garante mesmos direitos do residente.',
+        },
+        {
+          n: '06',
+          t: 'Visto humanitário',
+          d: 'Venezuelanos, haitianos, afegãos sob acolhida humanitária. Acesso após residência regular comprovada.',
+        },
+      ],
+    },
+    docs: {
+      kicker: 'O que levar — documentação específica',
+      h: 'Os <em>documentos</em> que mudam tudo.',
+      lead: 'A documentação do estrangeiro tem itens próprios. Faltar um único item pode atrasar o pedido em meses.',
+      docs: [
+        { t: 'CRNM (Carteira de Registro Nacional Migratório)', n: 'Substitui o antigo RNE. Deve estar VÁLIDA — vencida bloqueia o pedido. Renovação na Polícia Federal.' },
+        { t: 'CPF brasileiro', n: 'Obrigatório. Emitido na Receita Federal mediante apresentação da CRNM.' },
+        { t: 'Comprovante de residência no Brasil', n: 'Conta de luz, água ou contrato de aluguel em endereço brasileiro.' },
+        { t: 'CadÚnico atualizado nos últimos 24 meses', n: 'Fundamental. Faça no CRAS do bairro — gratuito e obrigatório.' },
+        { t: 'Termo de Refúgio (refugiado)', n: 'Documento emitido pelo CONARE — substitui passaporte para fins de identificação.' },
+        { t: 'Protocolo de Refúgio (solicitante)', n: 'Documento provisório enquanto aguarda decisão do CONARE.' },
+        { t: 'Certidão de nascimento ou casamento', n: 'Original ou traduzida por tradutor juramentado no Brasil.' },
+        { t: 'Comprovante de tempo de residência', n: 'Não há mais exigência de tempo mínimo após STF 2017 — mas comprovar ajuda na perícia social.' },
+        { t: 'Laudo médico (se deficiente)', n: 'Em português ou traduzido. Médico brasileiro de preferência.' },
+        { t: 'Comprovante de renda familiar', n: 'De todos os moradores brasileiros e estrangeiros da casa.' },
+      ],
+    },
+    como: {
+      kicker: 'Passo a passo do requerimento',
+      h: 'Como <em>pedir</em> o BPC sendo estrangeiro.',
+      lead: 'O processo é o MESMO do brasileiro, com requisitos documentais específicos. Não precisa de advogado pra pedido inicial.',
+      steps: [
+        { n: '01', t: 'Regularizar a CRNM', d: 'Antes de tudo: a Carteira de Registro Nacional Migratório precisa estar VÁLIDA. Vencida = pedido bloqueado. Renove na Polícia Federal.' },
+        { n: '02', t: 'Obter CPF brasileiro', d: 'Apresentar CRNM na Receita Federal. CPF é GRATUITO. Pode ser emitido em qualquer Receita ou Correios.' },
+        { n: '03', t: 'Inscrever no CadÚnico', d: 'Vá ao CRAS do seu bairro com documentos de todos os moradores. Cadastro é gratuito e válido por 2 anos.' },
+        { n: '04', t: 'Requerer no Meu INSS', d: 'Site ou app gov.br Meu INSS. Faça login com CPF + senha gov.br. Clique em "Novo pedido" → "Benefício Assistencial".' },
+        { n: '05', t: 'Perícias (médica + social)', d: 'Idoso 65+: só perícia social. Deficiente: as duas. Leve TODOS os documentos no dia (CRNM, CPF, CadÚnico, laudos).' },
+        { n: '06', t: 'Acompanhar e responder', d: 'Resultado em 30-90 dias no Meu INSS. INSS pode pedir documentos extras — responda no prazo (30 dias) ou pedido cai.' },
+      ],
+    },
+    comum: {
+      kicker: 'Onde 9 em cada 10 pedidos falham',
+      h: 'Erros que <em>derrubam</em> pedidos de estrangeiros.',
+      lead: 'A maioria das negativas vem de falhas evitáveis. Conhecer os erros = conseguir o BPC mais rápido.',
+      errors: [
+        { t: 'CRNM vencida ou em processo de renovação', d: 'Sem CRNM válida na data do pedido, o INSS recusa automaticamente. Renove ANTES de iniciar o processo.' },
+        { t: 'Não ter CadÚnico ou estar desatualizado', d: 'Maior causa de negativa entre estrangeiros. CRAS sequer registra sem documentos completos — chegue com TUDO.' },
+        { t: 'Documentos sem tradução juramentada', d: 'Certidões em espanhol, inglês ou francês precisam de tradução juramentada brasileira. Não é qualquer tradutor.' },
+        { t: 'Cargo de "Solicitante de refúgio" sem CRNM provisória', d: 'Precisa do protocolo do CONARE + CRNM provisória emitida pela PF. Sem os dois, INSS questiona.' },
+        { t: 'Pedido feito antes da decisão do CONARE', d: 'Solicitantes de refúgio com pedido pendente: aguardar decisão evita questionamento. Em alguns casos cabe judicialização.' },
+        { t: 'Endereço informal não comprovado', d: 'Abrigo, casa de parente, ocupação — declarações de testemunha (próprio ou terceiros) ajudam, mas trazem fragilidade.' },
+        { t: 'Renda recebida no exterior', d: 'Pensão estrangeira, ajuda de família de fora — DECLARE. INSS cruza dados e o que está oculto vira fraude.' },
+        { t: 'Idoso sem 65 anos completos', d: 'Mesmo critério do brasileiro: 65 anos cravados. Ano só não basta — precisa da data de nascimento confirmada.' },
+      ],
+    },
+  };
+
+  const data = CONTENT[tab];
+
+  return (
+    <>
+      <section className="pericia-hero">
+        <div className="container">
+          <div className="breadcrumb">
+            <a href="#/" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>Início</a>
+            <span className="sep">/</span>
+            <span>BPC para estrangeiros</span>
+          </div>
+          <div className="pericia-hero-grid">
+            <div>
+              <div className="eyebrow">Guia oficial · BPC estrangeiro</div>
+              <h1>BPC para <em>estrangeiros</em>.<br/>Você tem o mesmo direito.</h1>
+              <p className="lead">
+                Imigrante, refugiado, naturalizado, apátrida — quem reconstruiu a vida no Brasil tem direito ao BPC <strong>nas mesmas condições do brasileiro nato</strong>. O Supremo já decidiu isso em 2017. As regras de documentação são específicas (CRNM, CONARE, tradução juramentada) e um detalhe esquecido significa meses a mais de espera — a gente caminha junto.
+              </p>
+              <div className="pericia-stats">
+                <div className="pericia-stat">
+                  <div className="num">2017</div>
+                  <div className="lbl">decisão histórica do STF que abriu o direito</div>
+                </div>
+                <div className="pericia-stat">
+                  <div className="num">R$ 1.621</div>
+                  <div className="lbl">mesmo valor do brasileiro nato em 2026</div>
+                </div>
+                <div className="pericia-stat">
+                  <div className="num">65+</div>
+                  <div className="lbl">idoso · ou deficiente (qualquer idade)</div>
+                </div>
+              </div>
+            </div>
+            <div className="pericia-hero-cta">
+              <div className="card-checklist">
+                <div className="eyebrow">Atendimento humano</div>
+                <h3>Documentação complexa? A gente organiza.</h3>
+                <p>BPC para estrangeiro tem regras específicas: CRNM, tradução juramentada, CONARE. Um erro atrasa meses. Conversamos no WhatsApp e organizamos juntos.</p>
+                <ul className="card-features">
+                  <li>✓ Análise gratuita do caso</li>
+                  <li>✓ Orientação sobre CRNM e CONARE</li>
+                  <li>✓ Atendimento em português · espanhol</li>
+                  <li>✓ Acompanhamento até o deferimento</li>
+                </ul>
+                <a className="btn btn--primary btn--lg" style={{ width: '100%' }} href="https://wa.me/5521964238080?text=Ol%C3%A1!%20Sou%20estrangeiro%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20o%20BPC.">
+                  💬 Falar com especialista
+                </a>
+                <p className="card-note">(21) 96423-8080 · resposta em até 1 dia útil</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pericia-body">
+        <div className="container">
+          <div className="pericia-tabs" role="tablist">
+            {TABS.map(t => (
+              <button
+                key={t.v}
+                role="tab"
+                aria-selected={tab === t.v}
+                className={`pericia-tab ${tab === t.v ? 'is-active' : ''}`}
+                onClick={() => setTab(t.v)}
+              >
+                {t.l}
+              </button>
+            ))}
+          </div>
+
+          <div className="eyebrow" style={{ marginTop: 40 }}>{data.kicker}</div>
+          <h2 className="pericia-h2" dangerouslySetInnerHTML={{ __html: data.h }} />
+          <p style={{ color: 'var(--ink-500)', fontSize: 17, maxWidth: 720, marginBottom: 40 }}>{data.lead}</p>
+
+          {data.cards && (
+            <div className="pericia-steps">
+              {data.cards.map(c => (
+                <div className="step-card" key={c.n}>
+                  <div className="step-n">{c.n}</div>
+                  <h4>{c.t}</h4>
+                  <p>{c.d}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {data.docs && (
+            <div className="pericia-docs">
+              {data.docs.map((d, i) => (
+                <div className="doc-row" key={i}>
+                  <div className="doc-check">✓</div>
+                  <div>
+                    <strong>{d.t}</strong>
+                    <div className="doc-note">{d.n}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {data.steps && (
+            <div className="pericia-steps">
+              {data.steps.map(s => (
+                <div className="step-card" key={s.n}>
+                  <div className="step-n">{s.n}</div>
+                  <h4>{s.t}</h4>
+                  <p>{s.d}</p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {data.errors && (
+            <div className="pericia-docs">
+              {data.errors.map((e, i) => (
+                <div className="doc-row" key={i} style={{ borderColor: '#d4a3a3', background: '#fcf3f0' }}>
+                  <div className="doc-check" style={{ background: '#d04437' }}>×</div>
+                  <div>
+                    <strong>{e.t}</strong>
+                    <div className="doc-note">{e.d}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="pericia-cta">
+            <div>
+              <div className="eyebrow">Tem dúvida sobre seu caso?</div>
+              <h3>Atendemos imigrantes, refugiados e naturalizados.</h3>
+              <p>BPC para estrangeiros exige documentação específica. Um erro atrasa o pedido em meses. Vamos organizar juntos pelo WhatsApp.</p>
+            </div>
+            <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080?text=Ol%C3%A1!%20Sou%20estrangeiro%20e%20gostaria%20de%20orienta%C3%A7%C3%A3o%20sobre%20o%20BPC.">
+              💬 Falar no WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+Object.assign(window, { ScreenLanding, ScreenPatologia, ScreenSimulador, ScreenBlog, ScreenPericias, ScreenEstrangeiro });
+

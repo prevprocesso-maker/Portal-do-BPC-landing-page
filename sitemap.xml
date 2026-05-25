@@ -9,6 +9,8 @@
   </url>
 
   <url><loc>https://www.portaldobpc.com.br/simulador</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.portaldobpc.com.br/pericias</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://www.portaldobpc.com.br/bpc-estrangeiro</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
   <url><loc>https://www.portaldobpc.com.br/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.portaldobpc.com.br/bpc-idoso</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://www.portaldobpc.com.br/bpc-deficiente</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
