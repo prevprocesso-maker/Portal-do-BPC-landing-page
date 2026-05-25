@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 80" role="img" aria-label="Portal do BPC">
+  <g transform="translate(8, 12)" stroke="currentColor" fill="none">
+    <path d="M4 56 L4 28 A24 24 0 0 1 52 28 L52 56 Z" stroke-width="3.5" stroke-linejoin="round"></path>
+    <circle cx="28" cy="34" r="3.5" fill="currentColor" stroke="none"></circle>
+    <line x1="4" y1="56" x2="52" y2="56" stroke-width="3.5" stroke-linecap="round"></line>
+  </g>
+  <g transform="translate(76, 0)" fill="currentColor">
+    <text x="0" y="38" font-family="&#39;Fraunces&#39;, &#39;Playfair Display&#39;, Georgia, serif" font-size="26" font-weight="600" letter-spacing="-0.01em">
+      Portal do <tspan font-style="italic" font-weight="500">BPC</tspan>
+    </text>
+    <text x="0" y="60" font-family="&#39;Inter&#39;, system-ui, sans-serif" font-size="10" font-weight="500" letter-spacing="0.22em" opacity="0.7">
+      DIREITO · ACOLHIMENTO · CLAREZA
+    </text>
+  </g>
+</svg>

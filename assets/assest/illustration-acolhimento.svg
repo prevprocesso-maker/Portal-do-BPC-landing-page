@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <circle cx="300" cy="220" r="160" fill="#1f1812" opacity="0.6"></circle>
+  
+  <path d="M180 280 Q190 220 230 200 Q260 188 280 200 Q288 204 290 215 L295 250 Q298 270 295 285 L185 290 Z" fill="#c4673a"></path>
+  <path d="M225 195 Q235 178 250 175 Q262 174 268 184 L270 210" stroke="#813f22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  <path d="M245 178 Q255 162 270 162 Q282 162 286 174 L288 205" stroke="#813f22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  <path d="M265 174 Q278 160 290 162 Q298 165 298 175 L296 205" stroke="#813f22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  
+  <path d="M420 280 Q410 220 370 200 Q340 188 320 200 Q312 204 310 215 L305 250 Q302 270 305 285 L415 290 Z" fill="#a8542d"></path>
+  <path d="M375 195 Q365 178 350 175 Q338 174 332 184 L330 210" stroke="#5d2d18" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  <path d="M355 178 Q345 162 330 162 Q318 162 314 174 L312 205" stroke="#5d2d18" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  <path d="M335 174 Q322 160 310 162 Q302 165 302 175 L304 205" stroke="#5d2d18" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  
+  <g transform="translate(300 100)">
+    <path d="M0 -28 L5 -5 L28 0 L5 5 L0 28 L-5 5 L-28 0 L-5 -5 Z" fill="#c4673a"></path>
+  </g>
+</svg>
