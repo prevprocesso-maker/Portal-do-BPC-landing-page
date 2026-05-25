@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  
+  <rect width="1200" height="630" fill="#14100c"></rect>
+
+  
+  <defs>
+    <pattern id="grid" width="56" height="56" patternUnits="userSpaceOnUse">
+      <path d="M 56 0 L 0 0 0 56" fill="none" stroke="#c4673a" stroke-opacity="0.08" stroke-width="1"></path>
+    </pattern>
+    <radialGradient id="glow" cx="80%" cy="20%" r="70%">
+      <stop offset="0" stop-color="#c4673a" stop-opacity="0.35"></stop>
+      <stop offset="1" stop-color="#c4673a" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"></rect>
+  <rect width="1200" height="630" fill="url(#glow)"></rect>
+
+  
+  <g transform="translate(80 90)">
+    <path d="M0 -16 L3 -3 L16 0 L3 3 L0 16 L-3 3 L-16 0 L-3 -3 Z" fill="#c4673a"></path>
+  </g>
+  <text x="110" y="98" font-family="Inter, sans-serif" font-size="18" font-weight="600" letter-spacing="0.18em" fill="#c4673a">PORTAL DO BPC · IRAJÁ/RJ</text>
+
+  
+  <text x="80" y="240" font-family="Fraunces, Georgia, serif" font-size="92" font-weight="700" letter-spacing="-0.02em" fill="#f5ede0">BPC/LOAS para</text>
+  <text x="80" y="340" font-family="Fraunces, Georgia, serif" font-size="92" font-weight="700" letter-spacing="-0.02em" font-style="italic" fill="#c4673a">idoso e deficiente.</text>
+
+  
+  <text x="80" y="430" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#b9a995">20+ doenças que dão direito.</text>
+  <text x="80" y="475" font-family="Inter, sans-serif" font-size="32" font-weight="400" fill="#b9a995">Simulador gratuito · WhatsApp direto.</text>
+
+  
+  <rect x="0" y="570" width="1200" height="60" fill="#0a0805"></rect>
+  <text x="80" y="608" font-family="Inter, sans-serif" font-size="22" font-weight="600" fill="#f5ede0">www.portaldobpc.com.br</text>
+  <text x="1120" y="608" text-anchor="end" font-family="Inter, sans-serif" font-size="20" font-weight="500" fill="#c4673a">Análise gratuita →</text>
+</svg>
