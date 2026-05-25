@@ -351,6 +351,181 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
   .escritorio-grid { grid-template-columns: 1fr; }
 }
 
+/* ---- Footer TOP strip — Map + Review ---- */
+.footer-top {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 24px;
+  margin-bottom: 56px;
+  align-items: stretch;
+}
+.footer-map {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  min-height: 320px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+}
+.footer-map iframe { width: 100%; height: 100%; min-height: 320px; }
+.footer-top .review-card { margin: 0; }
+
+@media (max-width: 900px) {
+  .footer-top { grid-template-columns: 1fr; gap: 20px; }
+  .footer-map { min-height: 260px; }
+  .footer-map iframe { min-height: 260px; }
+}
+
+/* ---- Footer Google Review CTA — redesigned ---- */
+.review-card {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 32px;
+  align-items: center;
+  margin: 0 0 36px;
+  padding: 28px 32px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(196, 103, 58, 0.18) 0%, transparent 55%),
+    linear-gradient(135deg, rgba(196, 103, 58, 0.06) 0%, rgba(20, 16, 12, 0.4) 100%);
+  border: 1px solid rgba(196, 103, 58, 0.18);
+  border-radius: 20px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 380ms ease,
+              box-shadow 380ms ease;
+}
+.review-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 90% 0%, rgba(245, 200, 69, 0.12) 0%, transparent 50%);
+  opacity: 0;
+  transition: opacity 380ms ease;
+  pointer-events: none;
+  z-index: -1;
+}
+.review-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(245, 200, 69, 0.5);
+  box-shadow: 0 24px 60px rgba(196, 103, 58, 0.20), 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+.review-card:hover::before { opacity: 1; }
+
+.review-card-stars {
+  display: inline-flex;
+  gap: 4px;
+  font-size: 18px;
+  color: #f5c845;
+  text-shadow: 0 0 12px rgba(245, 200, 69, 0.4);
+  margin-bottom: 14px;
+  line-height: 1;
+}
+.review-card-kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.65);
+  margin-bottom: 8px;
+}
+.review-card-title {
+  font-family: var(--font-serif);
+  font-size: clamp(22px, 2.6vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  color: #f5ede0;
+  margin: 0 0 8px;
+}
+.review-card-title em {
+  font-style: italic;
+  color: #e89564;
+}
+.review-card-sub {
+  font-size: 14px;
+  color: rgba(245, 237, 224, 0.65);
+  line-height: 1.5;
+  margin: 0 0 20px;
+  max-width: 480px;
+}
+.review-card-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: var(--terra-500);
+  color: #fff;
+  border-radius: 999px;
+  font-family: var(--font-sans);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: -0.005em;
+  transition: gap 220ms ease, background 220ms ease;
+  box-shadow: 0 6px 18px rgba(196, 103, 58, 0.32);
+}
+.review-card:hover .review-card-btn {
+  gap: 14px;
+  background: #d97f4f;
+}
+
+/* QR side */
+.review-card-qr {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.review-card-qr-frame {
+  padding: 12px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(245, 200, 69, 0.2);
+  transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.review-card:hover .review-card-qr-frame {
+  transform: scale(1.04) rotate(-1deg);
+}
+.review-card-qr-frame img {
+  display: block;
+  width: 120px;
+  height: 120px;
+}
+.review-card-qr-cap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 237, 224, 0.7);
+}
+.review-card-qr-cap-icon {
+  display: inline-flex;
+  color: #e89564;
+}
+
+@media (max-width: 720px) {
+  .review-card {
+    grid-template-columns: 1fr;
+    padding: 24px 22px;
+    gap: 24px;
+    text-align: left;
+  }
+  .review-card-qr {
+    align-self: center;
+  }
+  .review-card-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* ============================================================
    DESTAQUE — Recursos especiais (perícias + estrangeiro)
    ============================================================ */

@@ -653,6 +653,51 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
+        {/* TOP STRIP — Map + Google review CTA (visualmente destacado) */}
+        <div className="footer-top">
+          {/* Map */}
+          <div className="footer-map">
+            <iframe
+              src="https://www.google.com/maps?q=Pra%C3%A7a+Nossa+Senhora+da+Apresenta%C3%A7%C3%A3o,+223,+Iraj%C3%A1,+Rio+de+Janeiro,+RJ,+21231-230&output=embed"
+              width="100%" height="100%" style={{ border: 0, display: 'block', filter: 'grayscale(0.3) brightness(0.9)' }}
+              loading="lazy" referrerPolicy="no-referrer-when-downgrade"
+              title="Mapa — Portal do BPC, Irajá/RJ">
+            </iframe>
+          </div>
+
+          {/* Google Review CTA */}
+          <a
+            href="https://g.page/r/CcJNe240Go7AEBM/review"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="review-card"
+          >
+            <div className="review-card-text">
+              <div className="review-card-stars" aria-hidden="true">
+                <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+              </div>
+              <div className="review-card-kicker">Sua história ajuda outra família</div>
+              <h3 className="review-card-title">A gente ajudou você? <em>Conta no Google.</em></h3>
+              <p className="review-card-sub">Uma avaliação em 30 segundos ajuda quem ainda está perdido no INSS a nos encontrar.</p>
+              <span className="review-card-btn">
+                Avaliar no Google
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </span>
+            </div>
+            <div className="review-card-qr">
+              <div className="review-card-qr-frame">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&margin=0&format=svg&data=https%3A%2F%2Fg.page%2Fr%2FCcJNe240Go7AEBM%2Freview&color=1A140E&bgcolor=FFFFFF" alt="QR Code para avaliar o Portal do BPC no Google" width="120" height="120" loading="lazy" />
+              </div>
+              <div className="review-card-qr-cap">
+                <span className="review-card-qr-cap-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </span>
+                <span>Aponte a câmera</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
@@ -721,41 +766,13 @@ function Footer() {
           </div>
         </div>
 
-        {/* Map */}
-        <div style={{ marginTop: 8, marginBottom: 24, borderRadius: 16, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)' }}>
-          <iframe
-            src="https://www.google.com/maps?q=Pra%C3%A7a+Nossa+Senhora+da+Apresenta%C3%A7%C3%A3o,+223,+Iraj%C3%A1,+Rio+de+Janeiro,+RJ,+21231-230&output=embed"
-            width="100%" height="260" style={{ border: 0, display: 'block', filter: 'grayscale(0.3) brightness(0.9)' }}
-            loading="lazy" referrerPolicy="no-referrer-when-downgrade"
-            title="Mapa — Portal do BPC, Irajá/RJ">
-          </iframe>
-        </div>
-
-        {/* Google Review CTA */}
-        <a
-          href="https://g.page/r/CcJNe240Go7AEBM/review"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="footer-review"
-        >
-          <div className="footer-review-left">
-            <div className="footer-review-stars" aria-hidden="true">★★★★★</div>
-            <div>
-              <div className="footer-review-title">A gente ajudou você? Conta pra próxima família.</div>
-              <div className="footer-review-sub">Deixe uma avaliação no Google em 30 segundos. Sua história ajuda quem ainda está perdido no INSS a encontrar o caminho.</div>
-            </div>
-          </div>
-          <div className="footer-review-right">
-            <div className="footer-review-qr" aria-hidden="true">
-              <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&margin=8&format=svg&data=https%3A%2F%2Fg.page%2Fr%2FCcJNe240Go7AEBM%2Freview" alt="QR Code para avaliação no Google" width="92" height="92" loading="lazy" />
-              <span className="footer-review-qr-label">Aponte a câmera</span>
-            </div>
-            <span className="footer-review-cta">Avaliar no Google <span aria-hidden="true">↗</span></span>
-          </div>
-        </a>
+        {/* (Map + Review CTA agora no topo do footer — ver .footer-top) */}
 
         <div className="footer-bottom">
-          <span>© 2026 Portal do BPC. Todos os direitos reservados.</span>
+          <div>
+            <div>© 2026 Portal do BPC. Todos os direitos reservados.</div>
+            <div style={{ fontSize: 12, opacity: 0.7, marginTop: 4 }}>Portal do BPC é uma marca operada por <strong>CarlosCostaPrev — Escritório de Advocacia Previdenciária</strong> · Irajá, Rio de Janeiro/RJ.</div>
+          </div>
           <span><a href="privacidade.html" style={{ color: 'inherit' }}>Privacidade</a> · <a href="termos.html" style={{ color: 'inherit' }}>Termos</a></span>
         </div>
       </div>
