@@ -929,7 +929,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           <div style={{ marginTop: 16, padding: '24px 22px', background: 'var(--terra-500)', borderRadius: 16, color: '#fff' }}>
             <div style={{ fontFamily: 'var(--font-serif)', fontSize: 22, lineHeight: 1.2, fontWeight: 600, marginBottom: 10 }}>Conversar é grátis.</div>
             <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.9)', lineHeight: 1.5, margin: '0 0 16px 0' }}>Nossa equipe analisa seu caso e tira dúvidas pelo WhatsApp.</p>
-            <a className="btn" style={{ background: '#fff', color: 'var(--terra-700)', width: '100%', justifyContent: 'center' }} href="https://wa.me/5521964238080">Falar agora →</a>
+            <a className="btn btn--lg" style={{ background: '#25D366', color: '#fff', width: '100%', justifyContent: 'center', boxShadow: '0 6px 20px rgba(37, 211, 102, 0.28)' }} href="https://wa.me/5521964238080">Falar agora →</a>
           </div>
         </aside>
       </div>
