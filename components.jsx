@@ -79,13 +79,31 @@ function Header({ active, onNavigate }) {
             <a
               key={n.id}
               href={n.hash || `#/${n.id}`}
-              className={active === n.id ? 'active' : ''}
+              className={active === n.id ? 'nav-link active' : 'nav-link'}
               onClick={(e) => {
-                if (n.hash) return;
+                if (n.hash) {
+                  // Hash-only link (e.g. #faq) — if NOT on home, go home first then scroll
+                  if (active !== 'home') {
+                    e.preventDefault();
+                    onNavigate('home');
+                    setTimeout(() => {
+                      const el = document.querySelector(n.hash);
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                  } else {
+                    // Already on home — let default scroll-to-anchor happen, but smooth
+                    e.preventDefault();
+                    const el = document.querySelector(n.hash);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                  return;
+                }
                 e.preventDefault();
                 onNavigate(n.id);
               }}
-            >{n.label}</a>
+            >
+              <span>{n.label}</span>
+            </a>
           ))}
         </nav>
         <a className="btn btn--primary btn--sm" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
@@ -505,8 +523,8 @@ function FAQ() {
         <div className="section-head">
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Perguntas frequentes</div>
           <h2>Tire suas <em>dúvidas</em>.</h2>
-          <p style={{ color: 'var(--ink-500)', maxWidth: 620, margin: '12px auto 0', textAlign: 'center' }}>
-            {FAQ_ITEMS.length} das perguntas que mais aparecem no nosso WhatsApp. <strong>Clique em qualquer pergunta para abrir a resposta</strong> — explicação direta com as referências legais (LOAS, Lei 13.146/2015, Decreto 6.214/2007, súmulas da TNU). Sua dúvida não está aqui? A gente responde no WhatsApp.
+          <p style={{ color: 'var(--ink-500)', maxWidth: 640, margin: '12px auto 0', textAlign: 'center' }}>
+            {FAQ_ITEMS.length} perguntas reais que mais aparecem no nosso WhatsApp — <strong>filtrado por tema</strong> ou <strong>pesquise por palavra-chave</strong> (autismo, perícia, CadÚnico, refugiado, biometria). Cada resposta abre ao clicar, com as referências legais (LOAS, Lei 13.146/2015, Lei 15.077/2024, Portarias 33 e 34/2025, súmulas da TNU). Atendemos online em todo o Brasil pelo WhatsApp.
           </p>
         </div>
         <div className="faq-search" role="search">
@@ -515,7 +533,7 @@ function FAQ() {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Pesquise por palavra-chave: autismo, pensão, recurso, CadÚnico…"
+            placeholder="Pesquise: autismo, perícia, biometria, refugiado, CadÚnico, recurso, 2026..."
             aria-label="Pesquisar nas perguntas frequentes"
           />
           {query && (
@@ -608,7 +626,7 @@ function ContactForm() {
                   <textarea placeholder="Diagnóstico, idade, renda da família, se já tentou pedir antes..."></textarea>
                 </div>
               </div>
-              <button type="submit" className="btn btn--primary btn--lg" style={{ width: '100%', justifyContent: 'center' }}>
+              <button type="submit" className="btn btn--lg btn--whatsapp" style={{ width: '100%', justifyContent: 'center' }}>
                 Enviar pelo WhatsApp →
               </button>
               <label style={{ display: 'flex', gap: 10, marginTop: 16, fontSize: 14, color: 'var(--ink-500)', lineHeight: 1.5, cursor: 'pointer' }}>
