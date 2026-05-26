@@ -746,15 +746,18 @@ function Footer() {
                 </a>
               </li>
             </ul>
-            <div style={{ display: 'flex', gap: 10, marginTop: 14 }}>
-              <a href="https://www.instagram.com/portaldobpc" target="_blank" rel="noreferrer" aria-label="Instagram" style={socialBtn}>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            <div className="footer-social">
+              <a href="https://www.instagram.com/portaldobpc" target="_blank" rel="noreferrer" aria-label="Instagram" className="social-btn social-btn--ig">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                <span className="social-btn-label">Instagram</span>
               </a>
-              <a href="https://www.facebook.com/portaldobpc" target="_blank" rel="noreferrer" aria-label="Facebook" style={socialBtn}>
+              <a href="https://www.facebook.com/portaldobpc" target="_blank" rel="noreferrer" aria-label="Facebook" className="social-btn social-btn--fb">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+                <span className="social-btn-label">Facebook</span>
               </a>
-              <a href="https://g.page/portaldobpc/review" target="_blank" rel="noreferrer" aria-label="Avaliar no Google" style={socialBtn}>
+              <a href="https://g.page/portaldobpc/review" target="_blank" rel="noreferrer" aria-label="Avaliar no Google" className="social-btn social-btn--gg">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.6 7.6H22l-6.2 4.6 2.3 7.5L12 17.3 5.9 21.7l2.3-7.5L2 9.6h7.4z"/></svg>
+                <span className="social-btn-label">Avaliar</span>
               </a>
             </div>
             <h5 style={{ marginTop: 28 }}>Endereço</h5>
