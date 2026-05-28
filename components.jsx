@@ -60,6 +60,7 @@ function Header({ active, onNavigate }) {
     { id: 'pericias', label: 'Perícias' },
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
+    { id: 'blog', label: 'Blog' },
     { id: 'faq', label: 'Perguntas', hash: '#faq' },
   ];
 
@@ -142,7 +143,7 @@ function Hero({ onNavigate }) {
           </div>
         </div>
         <div className="hero-photo">
-          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa e equipe do Portal do BPC" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
         </div>
       </div>
     </section>
@@ -339,7 +340,7 @@ function SobrePortal() {
     <section>
       <div className="container sobre-grid">
         <div className="sobre-photo" style={{ background: 'var(--bone)', border: '1px solid var(--line)', position: 'relative', overflow: 'hidden' }}>
-          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa, especialista em BPC" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, especialista em BPC" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         </div>
         <div>
           <div className="eyebrow">Sobre o portal</div>
@@ -820,6 +821,8 @@ function Footer() {
             <ul>
               <li><a href="#/">Início</a></li>
               <li><a href="#patologias">Patologias</a></li>
+              <li><a href="#/pericias">Perícias</a></li>
+              <li><a href="#/estrangeiro">Estrangeiro</a></li>
               <li><a href="#/simulador">Simulador</a></li>
               <li><a href="#/blog">Blog</a></li>
               <li><a href="#faq">Perguntas frequentes</a></li>
