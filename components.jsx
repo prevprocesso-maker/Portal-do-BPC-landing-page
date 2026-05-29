@@ -68,7 +68,7 @@ function Header({ active, onNavigate }) {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-inner">
         <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
-          <img src="assets/logo-marca.png" alt="Portal do BPC" className="header-logo-mark" />
+          <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" className="header-logo-mark" style={{ objectFit: 'contain' }} />
           <span className="header-logo-text">
             <span className="header-logo-text-1">Portal do</span>
             <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
@@ -801,20 +801,23 @@ function Footer() {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="assets/logo-marca.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
+              <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 500, lineHeight: 1, color: 'var(--ink-900)' }}>Portal do</div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 36, fontWeight: 700, fontStyle: 'italic', lineHeight: 1, color: 'var(--terra-500)', marginTop: 4 }}>BPC<span style={{color:'var(--terra-300)'}}>.</span></div>
               </div>
             </div>
             <p className="footer-desc">Informação clara e atendimento humano sobre o Benefício de Prestação Continuada (BPC/LOAS).</p>
-            <p className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 6 }}>Faz parte do escritório</span>
-              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, textDecoration: 'none' }}>
-                CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span>
+            <div className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 10 }}>Faz parte do escritório</span>
+              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <img src="assets/logo-monograma-cc.png" alt="CarlosCostaPrev" style={{ height: 52, width: 52, objectFit: 'contain', display: 'block', flex: 'none' }} />
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, lineHeight: 1.2 }}>CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span></span>
+                </span>
+                <span style={{ display: 'block', marginTop: 6, fontSize: 13, opacity: 0.7, paddingLeft: 64 }}>Aposentadorias, pensões, auxílios e BPC</span>
               </a>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 13, opacity: 0.7 }}>Aposentadorias, pensões, auxílios e BPC</span>
-            </p>
+            </div>
           </div>
           <div>
             <h5>Navegação</h5>
@@ -831,11 +834,11 @@ function Footer() {
           <div>
             <h5>Conteúdo</h5>
             <ul>
-              <li><a href="#">BPC para idoso</a></li>
-              <li><a href="#">BPC para deficiente</a></li>
-              <li><a href="#">Como dar entrada</a></li>
-              <li><a href="#">Recurso de negativa</a></li>
-              <li><a href="#">Documentos necessários</a></li>
+              <li><a href="/bpc-idoso">BPC para idoso</a></li>
+              <li><a href="/bpc-deficiente">BPC para deficiente</a></li>
+              <li><a href="/pericias">Perícia médica e social</a></li>
+              <li><a href="/bpc-estrangeiro">BPC para estrangeiro</a></li>
+              <li><a href="/blog/bpc-idoso-2026">Como dar entrada no BPC</a></li>
             </ul>
           </div>
           <div>
