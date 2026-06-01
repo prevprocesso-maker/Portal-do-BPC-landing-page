@@ -556,6 +556,99 @@ a.btn--secondary[href*="wa.me"]:hover,
 .cta-banner .btn--primary { background: var(--cream); color: var(--terra-700); }
 .cta-banner .btn--primary:hover { background: var(--ink-900); color: var(--terra-800); }
 
+/* ============================================================
+   Simulador v2 — experiência "um atendimento, não um formulário"
+   ============================================================ */
+.sim2{min-height:100vh;padding:calc(var(--header-h) + 24px) clamp(12px,3vw,40px) 64px;display:flex;align-items:flex-start;justify-content:center;background:radial-gradient(130% 100% at 15% 0%,#2a2018 0%,#1b1410 42%,var(--cream) 78%),var(--cream);}
+.sim2 .card{width:100%;max-width:1000px;background:rgba(31,24,18,.55);border:1px solid var(--line);border-radius:28px;box-shadow:0 40px 120px -30px rgba(0,0,0,.7);backdrop-filter:blur(6px);display:grid;grid-template-columns:340px 1fr;overflow:hidden;min-height:600px;}
+.sim2 .support{position:relative;background:linear-gradient(180deg,rgba(20,16,12,.2),rgba(20,16,12,.85)),url('assets/dr-carlos-costa.jpg') center 12%/cover no-repeat,var(--bone-2);padding:32px 30px;display:flex;flex-direction:column;}
+.sim2 .support::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(20,16,12,.55) 70%,rgba(20,16,12,.92));pointer-events:none;}
+.sim2 .support>*{position:relative;z-index:1;}
+.sim2 .who{display:flex;align-items:center;gap:12px;}
+.sim2 .who .av{width:46px;height:46px;border-radius:50%;border:2px solid var(--terra-400);background:rgba(0,0,0,.3) url('assets/dr-carlos-costa.jpg') center 18%/200% no-repeat;flex:0 0 auto;}
+.sim2 .who .nm{display:block;font-family:var(--font-serif);font-weight:700;font-size:17px;line-height:1.05;color:var(--ink-900);}
+.sim2 .who .rl{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--terra-300);text-transform:uppercase;margin-top:3px;}
+.sim2 .reassure{margin-top:auto;font-family:var(--font-serif);font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.25;font-weight:600;color:#fff;text-wrap:balance;min-height:3.2em;}
+.sim2 .reassure .em{color:var(--terra-300);font-style:italic;}
+.sim2 .pbar-wrap{margin-top:22px;}
+.sim2 .pbar-label{font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--ink-500);margin-bottom:8px;}
+.sim2 .pbar{display:flex;gap:5px;}
+.sim2 .pbar span{height:5px;flex:1;border-radius:99px;background:rgba(245,237,224,.16);transition:background .35s;}
+.sim2 .pbar span.on{background:linear-gradient(90deg,var(--terra-500),var(--terra-300));}
+.sim2 .trust{margin-top:18px;font-size:12px;color:var(--ink-500);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.sim2 .trust b{color:var(--ink-700);font-weight:600;}
+.sim2 .trust .sep{opacity:.5;}
+.sim2 .panel{padding:clamp(26px,3.5vw,48px);display:flex;flex-direction:column;background:rgba(20,16,12,.35);}
+.sim2 .back{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:none;border:none;border-radius:999px;padding:8px 6px;cursor:pointer;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--ink-500);transition:color .15s;margin-bottom:20px;}
+.sim2 .back:hover{color:var(--terra-300);}
+.sim2 .view{flex:1;display:flex;flex-direction:column;justify-content:center;animation:sim2in .4s cubic-bezier(.22,1,.36,1) both;}
+@keyframes sim2in{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
+.sim2 .eyebrow{font-size:13px;font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--terra-400);margin-bottom:12px;display:block;}
+.sim2 .q{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:var(--tracking-tight);color:var(--ink-900);margin-bottom:10px;text-wrap:balance;}
+.sim2 .q-sub{font-size:16px;color:var(--ink-500);margin-bottom:26px;max-width:46ch;line-height:1.5;}
+.sim2 .opts{display:flex;flex-direction:column;gap:11px;}
+.sim2 .opt{display:flex;align-items:center;gap:15px;width:100%;text-align:left;cursor:pointer;background:var(--bone);border:1.5px solid var(--line);border-radius:15px;padding:16px 18px;min-height:64px;font-family:var(--font-sans);color:var(--ink-900);transition:border-color .15s,background .15s,transform .08s;}
+.sim2 .opt:hover{border-color:var(--terra-700);background:var(--bone-2);}
+.sim2 .opt:active{transform:scale(.99);}
+.sim2 .opt .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--olive-100);color:var(--terra-300);display:flex;align-items:center;justify-content:center;}
+.sim2 .opt .ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;}
+.sim2 .opt .tx b{display:block;font-size:17px;font-weight:600;line-height:1.25;}
+.sim2 .opt .tx small{display:block;font-size:13.5px;color:var(--ink-500);margin-top:3px;line-height:1.4;}
+.sim2 .opt .arrow{margin-left:auto;color:var(--ink-300);font-size:20px;transition:color .15s,transform .15s;}
+.sim2 .opt:hover .arrow{color:var(--terra-400);transform:translateX(3px);}
+.sim2 .opt-group{font-size:12px;font-weight:700;color:var(--terra-400);text-transform:uppercase;letter-spacing:.12em;margin:8px 2px 6px;}
+.sim2 .stepper{display:flex;align-items:center;justify-content:center;gap:22px;background:var(--bone);border:1px solid var(--line);border-radius:18px;padding:28px 0;margin-bottom:26px;}
+.sim2 .stepper button{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--line);background:var(--bone-2);font-size:28px;color:var(--ink-900);cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.sim2 .stepper button:disabled{opacity:.35;cursor:not-allowed;}
+.sim2 .stepper .val{min-width:120px;text-align:center;}
+.sim2 .stepper .val .n{font-family:var(--font-serif);font-size:60px;font-weight:600;line-height:1;color:var(--ink-900);}
+.sim2 .stepper .val .u{font-size:14px;color:var(--ink-500);margin-top:6px;}
+.sim2 .field label{display:block;font-size:14px;font-weight:600;color:var(--ink-700);margin-bottom:10px;}
+.sim2 .money{display:flex;align-items:center;background:var(--bone);border:1.5px solid var(--line);border-radius:15px;padding:0 18px;}
+.sim2 .money:focus-within{border-color:var(--terra-500);}
+.sim2 .money .cur{font-size:22px;font-weight:600;color:var(--ink-500);}
+.sim2 .money input{flex:1;border:none;background:none;outline:none;font-family:var(--font-serif);font-size:34px;font-weight:600;color:var(--ink-900);padding:18px 10px;width:100%;}
+.sim2 .feedback{margin-top:14px;font-size:15px;border-radius:12px;padding:13px 16px;display:flex;gap:10px;align-items:flex-start;line-height:1.45;}
+.sim2 .feedback svg{flex:0 0 auto;width:20px;height:20px;stroke-width:1.8;fill:none;margin-top:1px;}
+.sim2 .feedback.ok{background:var(--ok-bg);color:#bfe0bf;}
+.sim2 .feedback.ok svg{stroke:var(--ok);}
+.sim2 .feedback.warn{background:var(--warn-bg);color:#e9c879;}
+.sim2 .feedback.warn svg{stroke:var(--warn);}
+.sim2 .feedback.neutral{background:var(--bone);color:var(--ink-500);}
+.sim2 .feedback.neutral svg{stroke:var(--ink-500);}
+.sim2 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.sim2 .inp{width:100%;background:var(--bone);border:1.5px solid var(--line);border-radius:13px;padding:15px 16px;font-family:var(--font-sans);font-size:16px;color:var(--ink-900);outline:none;}
+.sim2 .inp:focus{border-color:var(--terra-500);}
+.sim2 .note-wrap{margin-top:16px;}
+.sim2 .note-label{display:block;font-size:14.5px;font-weight:600;color:var(--ink-700);margin-bottom:8px;}
+.sim2 .note-label span{font-weight:400;color:var(--ink-500);}
+.sim2 .note{width:100%;background:var(--bone);border:1.5px solid var(--line);border-radius:13px;padding:14px 16px;font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--ink-900);outline:none;resize:vertical;min-height:92px;}
+.sim2 .note:focus{border-color:var(--terra-500);}
+.sim2 .note::placeholder{color:#d9cbb6;opacity:1;}
+.sim2 .card .btn{font-family:var(--font-sans);font-size:17px;font-weight:600;border-radius:999px;padding:16px 26px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;min-height:56px;width:100%;}
+.sim2 .card .btn--primary{background:var(--terra-500);color:#fff;}
+.sim2 .card .btn--primary:hover{background:var(--terra-700);}
+.sim2 .card .btn--primary:disabled{opacity:.45;cursor:not-allowed;}
+.sim2 .card .btn--wa{background:#117a52;color:#fff;box-shadow:0 8px 24px rgba(17,122,82,.3);}
+.sim2 .card .btn--wa:hover{background:#0d6543;}
+.sim2 .card .btn--wa svg{width:24px;height:24px;fill:#fff;}
+.sim2 .mt{margin-top:22px;}
+.sim2 .res-recap{background:var(--bone);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:22px 0;}
+.sim2 .res-recap .rl{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;}
+.sim2 .res-recap .rl:first-child{border-top:none;}
+.sim2 .res-recap .rl span{color:var(--ink-500);}
+.sim2 .res-recap .rl b{color:var(--ink-900);font-weight:600;text-align:right;}
+@media (max-width:820px){
+.sim2{padding-top:calc(var(--header-h) + 12px);}
+.sim2 .card{grid-template-columns:1fr;min-height:0;border-radius:22px;}
+.sim2 .support{flex-direction:row;align-items:center;gap:14px;padding:16px 18px;flex-wrap:wrap;}
+.sim2 .support::after{display:none;}
+.sim2 .reassure{display:none;}
+.sim2 .pbar-wrap{margin-top:0;flex:1;min-width:160px;}
+.sim2 .trust{display:none;}
+.sim2 .panel{padding:24px 20px 30px;}
+}
+
 /* ---- Breadcrumb (patologia detail) ---- */
 .breadcrumb { font-size: 14px; color: var(--ink-500); margin-bottom: 24px; }
 

@@ -988,139 +988,126 @@ function fmtBR(v) {
   return v.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+const SIM_ICONS = {
+  idoso: '<path d="M11 7a3 3 0 100-6 3 3 0 000 6z"/><path d="M8 22v-6l-2-2 1-5a3 3 0 013-2 3 3 0 013 2"/><path d="M14 9v13M14 13h3"/>',
+  pcd: '<circle cx="12" cy="4" r="2"/><path d="M12 6v8h5l3 5"/><path d="M12 14a6 6 0 11-5 9"/>',
+  estr: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+  pente: '<path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 4v4h-4"/>',
+  doc: '<path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M8 13h8M8 17h6"/>',
+  alert: '<path d="M10.3 3.3 1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L14.3 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+  refresh: '<path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 4v4h-4"/>',
+  no: '<circle cx="12" cy="12" r="9"/><path d="M9 12h6"/>',
+  gov: '<path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6M9 21v-6h6v6"/>',
+  bolsa: '<path d="M6 8h12l1 12H5z"/><path d="M9 8a3 3 0 016 0"/>',
+  ok: '<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+  clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  info: '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+  heart: '<path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0012 6 4.5 4.5 0 002 8.5C2 12 5.5 15 12 21c2-1.8 3.7-3.3 5-4.7"/>'
+};
+function SimIc({ d }) { return <svg viewBox="0 0 24 24" dangerouslySetInnerHTML={{ __html: d }} />; }
+const SIM_CHOICE = {
+  quem: { q: 'Para quem é o benefício?', sub: 'O BPC/LOAS atende estes casos. Qual é o seu?', opts: [
+    { v: 'idoso', ic: 'idoso', l: 'Idoso (65 anos ou mais)', d: 'Baixa renda, sem aposentadoria' },
+    { v: 'pcd', ic: 'pcd', l: 'Pessoa com deficiência', d: 'De qualquer idade, inclusive crianças' },
+    { v: 'estrangeiro', ic: 'estr', l: 'Estrangeiro residente no Brasil', d: 'Naturalizado, refugiado ou com residência permanente' },
+    { v: 'pente_fino_user', ic: 'pente', l: 'Já recebia e foi suspenso ou cessado', d: 'Pente fino, revisão, aumento de renda ou CadÚnico desatualizado' }
+  ]},
+  situacao: { q: 'Qual a situação hoje?', sub: 'Isso muda completamente o caminho a seguir.', opts: [
+    { v: 'nunca', ic: 'doc', l: 'Nunca dei entrada no BPC', d: 'Quero pedir pela primeira vez' },
+    { v: 'negado', ic: 'alert', l: 'Dei entrada e foi negado', d: 'Cabe recurso administrativo ou judicial' },
+    { v: 'pente_fino', ic: 'refresh', l: 'Já recebia e caiu no pente fino', d: 'Benefício suspenso/cessado em revisão' }
+  ]},
+  ja_recebe: { q: 'A pessoa já recebe algum benefício?', sub: 'O BPC não acumula com aposentadoria, pensão ou auxílio do INSS. Bolsa Família pode somar.', opts: [
+    { v: 'nao', ic: 'no', l: 'Não recebe nada', d: 'Pode pedir o BPC' },
+    { v: 'bolsa', ic: 'bolsa', l: 'Apenas Bolsa Família', d: 'Não impede o BPC' },
+    { v: 'sim_inss', ic: 'gov', l: 'Aposentadoria, pensão ou auxílio do INSS', d: 'Em regra não cabe — mas vale conversar' },
+    { v: 'sim_outro', ic: 'info', l: 'Outro benefício do governo', d: 'Vamos analisar caso a caso' }
+  ]},
+  cad: { q: 'O CadÚnico da família está atualizado?', sub: 'Sem CadÚnico em dia, o BPC não sai (ou pode ser bloqueado).', opts: [
+    { v: 'sim', ic: 'ok', l: 'Sim, atualizado nos últimos 2 anos' },
+    { v: 'desatualizado', ic: 'clock', l: 'Está desatualizado (mais de 2 anos)' },
+    { v: 'nao', ic: 'info', l: 'Não tenho CadÚnico / não sei' }
+  ]}
+};
+const SIM_EYEBROW = { quem: 'Quem vai receber', situacao: 'A sua situação', ja_recebe: 'Benefícios atuais', patologia: 'A condição', pessoas_casa: 'A sua família', renda_total: 'A renda da casa', cad: 'CadÚnico' };
+
 function ScreenSimulador({ onNavigate }) {
   const [step, setStep] = useStateS(0);
-  const [answers, setAnswers] = useStateS({
-    quem: null,
-    situacao: null,
-    ja_recebe: null,
-    patologia: null,
-    pessoas_casa: 1,
-    renda_total: '',
-    cad: null,
-    nome: '',
-    sobrenome: '',
-  });
+  const [answers, setAnswers] = useStateS({ quem: null, situacao: null, ja_recebe: null, patologia: null, pessoas_casa: 1, renda_total: '', cad: null, nome: '', sobrenome: '', relato: '' });
 
-  // Build dynamic step list
-  const steps = [
-    { kind: 'choice', key: 'quem' },
-  ];
-  if (answers.quem !== 'pente_fino_user') {
-    steps.push({ kind: 'choice', key: 'situacao' });
-    steps.push({ kind: 'choice', key: 'ja_recebe' });
-  }
-  const pulaPatologia = answers.quem === 'idoso' || answers.quem === 'pente_fino_user' || answers.situacao === 'pente_fino';
-  if (answers.quem === 'pcd' && !pulaPatologia) {
-    steps.push({ kind: 'patologia', key: 'patologia' });
-  }
+  const steps = [{ kind: 'choice', key: 'quem' }];
+  if (answers.quem !== 'pente_fino_user') { steps.push({ kind: 'choice', key: 'situacao' }); steps.push({ kind: 'choice', key: 'ja_recebe' }); }
+  const pulaPat = answers.quem === 'idoso' || answers.quem === 'estrangeiro' || answers.quem === 'pente_fino_user' || answers.situacao === 'pente_fino';
+  if (answers.quem === 'pcd' && !pulaPat) steps.push({ kind: 'patologia', key: 'patologia' });
   steps.push({ kind: 'pessoas', key: 'pessoas_casa' });
   steps.push({ kind: 'renda', key: 'renda_total' });
   steps.push({ kind: 'choice', key: 'cad' });
   steps.push({ kind: 'contato', key: 'contato' });
+  const idx = Math.min(step, steps.length - 1);
+  const cur = steps[idx];
 
-  const cur = steps[step] || steps[steps.length - 1];
+  const set = (k, v) => setAnswers(a => ({ ...a, [k]: v }));
+  const next = () => setStep(s => Math.min(s + 1, steps.length - 1));
+  const back = () => { if (step > 0) setStep(s => s - 1); else onNavigate('home'); };
+  const pick = (key, val) => {
+    if (key === 'quem' && val === 'pente_fino_user') setAnswers(a => ({ ...a, quem: val, situacao: 'pente_fino' }));
+    else set(key, val);
+    next();
+  };
 
-  const set = (k, v) => setAnswers({ ...answers, [k]: v });
-  const next = () => setStep(Math.min(step + 1, steps.length - 1));
-  const back = () => { if (step > 0) setStep(step - 1); else onNavigate('home'); };
-
-  // Eligibilidade — heurística
   const rendaCents = parseInt(String(answers.renda_total).replace(/\D/g, ''), 10) || 0;
   const renda = rendaCents / 100;
   const pessoas = Math.max(1, Number(answers.pessoas_casa) || 1);
   const perCapita = renda / pessoas;
-  const dentroFamiliar = renda > 0 && renda <= TETO_FAMILIAR;
-  const dentroPerCapita = renda > 0 && perCapita <= TETO_PER_CAPITA;
-  const rendaOk = dentroFamiliar; // critério amplo: renda familiar até 1 salário mínimo
   const recebeOutro = answers.ja_recebe === 'sim_inss' || answers.ja_recebe === 'sim_outro';
-  const elegivel = answers.quem && answers.situacao && rendaOk && !recebeOutro;
+  const soft = renda > 0 && renda <= TETO_FAMILIAR && !recebeOutro;
 
-  // Monta mensagem do WhatsApp
+  const reassure = (() => {
+    const k = cur.key;
+    if (k === 'quem') return 'Vamos descobrir <span class="em">juntos</span> se você tem direito. É rápido e gratuito.';
+    if (k === 'situacao') return 'Cada situação tem um caminho. Vou te mostrar <span class="em">o seu</span>.';
+    if (k === 'ja_recebe') return 'Sem pressa. Responda com <span class="em">calma</span>.';
+    if (k === 'patologia') return 'Não precisa de termo técnico — escolha o que <span class="em">mais se parece</span>.';
+    if (k === 'pessoas_casa') return 'Estamos <span class="em">quase lá</span>.';
+    if (k === 'renda_total') return 'Esse é o ponto que mais gera dúvida. <span class="em">Eu te ajudo</span>.';
+    if (k === 'cad') return 'Última informação importante.';
+    if (k === 'contato') {
+      if (answers.situacao === 'negado') return 'Uma negativa <span class="em">não é o fim</span>. Vamos olhar o seu caso.';
+      if (answers.quem === 'pente_fino_user' || answers.situacao === 'pente_fino') return 'Vamos <span class="em">recuperar</span> o que é seu.';
+      return 'Pronto. Vou <span class="em">preparar seu atendimento</span>.';
+    }
+    return '';
+  })();
+
   const buildWhatsAppUrl = () => {
     const nomeCompleto = `${answers.nome || ''} ${answers.sobrenome || ''}`.trim();
-    const linhas = [
-      `Olá! Sou ${nomeCompleto || '[nome]'}, vim pelo Portal do BPC.`,
-      '',
-      '📋 *Resumo do meu caso:*',
-      `• Beneficiário: ${SIM_QUEM_LABEL[answers.quem] || '—'}`,
-      `• Situação: ${SIM_SITUACAO_LABEL[answers.situacao] || '—'}`,
-    ];
-    if (answers.ja_recebe) linhas.push(`• Benefício atual: ${SIM_BENEFICIO_LABEL[answers.ja_recebe] || '—'}`);
-    if (answers.patologia) linhas.push(`• Patologia: ${answers.patologia}`);
-    linhas.push(`• Pessoas em casa: ${pessoas}`);
-    if (renda > 0) {
-      linhas.push(`• Renda familiar: R$ ${fmtBR(renda)}/mês (R$ ${fmtBR(perCapita)} por pessoa)`);
-    }
-    linhas.push(`• CadÚnico: ${SIM_CAD_LABEL[answers.cad] || '—'}`);
-    linhas.push('');
-    linhas.push('Gostaria de conversar sobre o meu caso.');
-    return `https://wa.me/5521964238080?text=${encodeURIComponent(linhas.join('\n'))}`;
+    const L = [`Olá! Sou ${nomeCompleto || '[nome]'}, vim pelo Portal do BPC.`, '', '📋 *Resumo do meu caso:*',
+      `• Beneficiário: ${SIM_QUEM_LABEL[answers.quem] || '—'}`, `• Situação: ${SIM_SITUACAO_LABEL[answers.situacao] || '—'}`];
+    if (answers.ja_recebe) L.push(`• Benefício atual: ${SIM_BENEFICIO_LABEL[answers.ja_recebe] || '—'}`);
+    if (answers.patologia) L.push(`• Condição: ${answers.patologia}`);
+    L.push(`• Pessoas em casa: ${pessoas}`);
+    if (renda > 0) L.push(`• Renda familiar: R$ ${fmtBR(renda)}/mês (R$ ${fmtBR(perCapita)} por pessoa)`);
+    L.push(`• CadÚnico: ${SIM_CAD_LABEL[answers.cad] || '—'}`);
+    if ((answers.relato || '').trim()) { L.push('', '🗒️ *Nas minhas palavras:*', answers.relato.trim()); }
+    L.push('', 'Gostaria de conversar sobre o meu caso.');
+    return `https://wa.me/5521964238080?text=${encodeURIComponent(L.join('\n'))}`;
   };
 
-  /* ---------- Render por tipo de passo ---------- */
+  const eyebrow = SIM_EYEBROW[cur.key] || 'Simulação';
+
   const renderChoice = () => {
-    const map = {
-      quem: {
-        q: 'Para quem é o benefício?',
-        opts: [
-          { v: 'idoso', l: 'Idoso (65 anos ou mais)' },
-          { v: 'pcd', l: 'Pessoa com deficiência' },
-          { v: 'estrangeiro', l: 'Estrangeiro residente no Brasil', d: 'Naturalizado, refugiado ou com residência permanente — idoso ou deficiente' },
-          { v: 'pente_fino_user', l: 'Já recebia e caiu no pente fino', d: 'Benefício suspenso/cessado por aumento de renda, CadÚnico desatualizado ou auditoria do INSS' },
-        ],
-      },
-      situacao: {
-        q: 'Qual a situação hoje?',
-        sub: 'Isso muda completamente o caminho a seguir.',
-        opts: [
-          { v: 'nunca', l: 'Nunca dei entrada no BPC', d: 'Quero pedir pela primeira vez' },
-          { v: 'negado', l: 'Dei entrada e foi negado', d: 'Cabe recurso administrativo ou judicial' },
-          { v: 'pente_fino', l: 'Já recebia e caiu no pente fino', d: 'Benefício suspenso/cessado por aumento de renda, CadÚnico desatualizado ou auditoria do INSS' },
-        ],
-      },
-      ja_recebe: {
-        q: 'A pessoa já recebe algum benefício?',
-        sub: 'O BPC não pode ser acumulado com aposentadoria, pensão ou outro benefício do INSS. Bolsa Família pode somar normalmente.',
-        opts: [
-          { v: 'nao', l: 'Não recebe nada', d: 'Pode pedir o BPC' },
-          { v: 'bolsa', l: 'Recebe apenas Bolsa Família', d: 'Bolsa Família não impede o BPC' },
-          { v: 'sim_inss', l: 'Recebe aposentadoria, pensão ou auxílio do INSS', d: 'Em regra, não cabe BPC — mas vale conversar' },
-          { v: 'sim_outro', l: 'Recebe outro benefício do governo', d: 'Vamos analisar caso a caso' },
-        ],
-      },
-      cad: {
-        q: 'O CadÚnico da família está atualizado?',
-        sub: 'Sem CadÚnico em dia, o BPC não sai (ou pode ser bloqueado).',
-        opts: [
-          { v: 'sim', l: 'Sim, atualizado nos últimos 2 anos' },
-          { v: 'desatualizado', l: 'Está desatualizado (mais de 2 anos)' },
-          { v: 'nao', l: 'Não tenho CadÚnico / não sei' },
-        ],
-      },
-    };
-    const cfg = map[cur.key];
+    const cfg = SIM_CHOICE[cur.key];
     return (
       <>
-        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: cfg.sub ? 12 : 32 }}>{cfg.q}</h1>
-        {cfg.sub && <p style={{ color: 'var(--ink-500)', marginBottom: 32, fontSize: 17 }}>{cfg.sub}</p>}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 24 }}>
+        <div className="eyebrow">{eyebrow}</div>
+        <h1 className="q">{cfg.q}</h1>
+        {cfg.sub && <p className="q-sub">{cfg.sub}</p>}
+        <div className="opts">
           {cfg.opts.map(o => (
-            <button
-              key={o.v}
-              className="btn btn--secondary"
-              style={{ justifyContent: 'flex-start', padding: '18px 22px', fontSize: 17, textAlign: 'left', flexDirection: 'column', alignItems: 'flex-start', gap: 4 }}
-              onClick={() => {
-                if (cur.key === 'quem' && o.v === 'pente_fino_user') {
-                  setAnswers({ ...answers, quem: 'pente_fino_user', situacao: 'pente_fino' });
-                } else {
-                  set(cur.key, o.v);
-                }
-                next();
-              }}
-            >
-              <span style={{ fontWeight: 600 }}>{o.l}</span>
-              {o.d && <span style={{ fontSize: 14, color: 'var(--ink-500)', fontWeight: 400 }}>{o.d}</span>}
+            <button key={o.v} className="opt" onClick={() => pick(cur.key, o.v)}>
+              <span className="ic"><SimIc d={SIM_ICONS[o.ic]} /></span>
+              <span className="tx"><b>{o.l}</b>{o.d && <small>{o.d}</small>}</span>
+              <span className="arrow">→</span>
             </button>
           ))}
         </div>
@@ -1132,43 +1119,29 @@ function ScreenSimulador({ onNavigate }) {
     const cats = ['desenv', 'neuro', 'mental', 'sensorial', 'onco', 'cronica'];
     return (
       <>
-        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Qual é a patologia?</h1>
-        <p style={{ color: 'var(--ink-500)', marginBottom: 28, fontSize: 17 }}>
-          Selecione a condição principal. Se houver mais de uma, escolha a mais grave — a gente detalha depois.
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, marginBottom: 24 }}>
+        <div className="eyebrow">{eyebrow}</div>
+        <h1 className="q">Qual é a condição principal?</h1>
+        <p className="q-sub">Se houver mais de uma, escolha a mais grave — a gente detalha depois.</p>
+        <div className="opts">
           {cats.map(c => {
             const lista = PATOLOGIAS.filter(p => p.cat === c);
             if (lista.length === 0) return null;
             const cat = CATEGORIAS[c];
             return (
               <div key={c}>
-                <div style={{ fontSize: 12, fontWeight: 700, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>{cat.label}</div>
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 8 }}>
-                  {lista.map(p => (
-                    <button
-                      key={p.sigla}
-                      className="btn btn--secondary"
-                      style={{ justifyContent: 'flex-start', padding: '14px 16px', fontSize: 15, textAlign: 'left' }}
-                      onClick={() => { set('patologia', p.nome); next(); }}
-                    >
-                      {p.nome}
-                    </button>
-                  ))}
-                </div>
+                <div className="opt-group" style={{ color: cat.fg }}>{cat.label}</div>
+                {lista.map(p => (
+                  <button key={p.sigla} className="opt" onClick={() => { set('patologia', p.nome); next(); }}>
+                    <span className="tx"><b>{p.nome}</b></span><span className="arrow">→</span>
+                  </button>
+                ))}
               </div>
             );
           })}
-          <div>
-            <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: 10 }}>Outra</div>
-            <button
-              className="btn btn--secondary"
-              style={{ width: '100%', justifyContent: 'flex-start', padding: '14px 16px', fontSize: 15, textAlign: 'left' }}
-              onClick={() => { set('patologia', 'Outra (a detalhar)'); next(); }}
-            >
-              Não está na lista — vou detalhar pelo WhatsApp
-            </button>
-          </div>
+          <div className="opt-group">Outra</div>
+          <button className="opt" onClick={() => { set('patologia', 'Outra (a detalhar)'); next(); }}>
+            <span className="tx"><b>Outra condição</b><small>Vou detalhar pelo WhatsApp</small></span><span className="arrow">→</span>
+          </button>
         </div>
       </>
     );
@@ -1176,35 +1149,17 @@ function ScreenSimulador({ onNavigate }) {
 
   const renderPessoas = () => {
     const v = Math.max(1, Number(answers.pessoas_casa) || 1);
-    const dec = () => set('pessoas_casa', Math.max(1, v - 1));
-    const inc = () => set('pessoas_casa', Math.min(15, v + 1));
     return (
       <>
-        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Quantas pessoas moram na casa?</h1>
-        <p style={{ color: 'var(--ink-500)', marginBottom: 32, fontSize: 17 }}>
-          Conte todo mundo que mora junto: cônjuge, filhos, pais, irmãos. <strong>Inclua a própria pessoa que vai receber o BPC.</strong>
-        </p>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 20, padding: '32px 0', background: 'var(--bone)', borderRadius: 16, marginBottom: 32 }}>
-          <button
-            type="button"
-            onClick={dec}
-            disabled={v <= 1}
-            style={{ width: 56, height: 56, borderRadius: 999, border: '1px solid var(--line)', background: 'var(--paper)', fontSize: 28, cursor: v <= 1 ? 'not-allowed' : 'pointer', opacity: v <= 1 ? 0.4 : 1, color: 'var(--ink-900)' }}
-            aria-label="Diminuir"
-          >−</button>
-          <div style={{ minWidth: 120, textAlign: 'center' }}>
-            <div style={{ fontFamily: 'var(--font-serif)', fontSize: 64, fontWeight: 600, lineHeight: 1, color: 'var(--ink-900)' }}>{v}</div>
-            <div style={{ fontSize: 14, color: 'var(--ink-500)', marginTop: 6 }}>{v === 1 ? 'pessoa' : 'pessoas'}</div>
-          </div>
-          <button
-            type="button"
-            onClick={inc}
-            disabled={v >= 15}
-            style={{ width: 56, height: 56, borderRadius: 999, border: '1px solid var(--line)', background: 'var(--paper)', fontSize: 28, cursor: v >= 15 ? 'not-allowed' : 'pointer', opacity: v >= 15 ? 0.4 : 1, color: 'var(--ink-900)' }}
-            aria-label="Aumentar"
-          >+</button>
+        <div className="eyebrow">{eyebrow}</div>
+        <h1 className="q">Quantas pessoas moram na casa?</h1>
+        <p className="q-sub">Conte todo mundo que mora junto — cônjuge, filhos, pais, irmãos. <strong>Inclua a própria pessoa que vai receber.</strong></p>
+        <div className="stepper">
+          <button onClick={() => set('pessoas_casa', Math.max(1, v - 1))} disabled={v <= 1} aria-label="Diminuir">−</button>
+          <div className="val"><div className="n">{v}</div><div className="u">{v === 1 ? 'pessoa' : 'pessoas'}</div></div>
+          <button onClick={() => set('pessoas_casa', Math.min(15, v + 1))} disabled={v >= 15} aria-label="Aumentar">+</button>
         </div>
-        <button className="btn btn--primary btn--lg" style={{ width: '100%' }} onClick={next}>Continuar →</button>
+        <button className="btn btn--primary" onClick={next}>Continuar →</button>
       </>
     );
   };
@@ -1212,137 +1167,94 @@ function ScreenSimulador({ onNavigate }) {
   const renderRenda = () => {
     const digits = String(answers.renda_total ?? '').replace(/\D/g, '');
     const cents = digits === '' ? 0 : parseInt(digits, 10);
-    const num = cents / 100;
-    const display = digits === '' ? '' : num.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const pc = num / pessoas;
-    const dentroFam = num > 0 && num <= TETO_FAMILIAR;
-    const dentroPc = num > 0 && pc <= TETO_PER_CAPITA;
-    const dentro = num > 0 && pc <= TETO_PER_CAPITA;
+    const numv = cents / 100;
+    const display = digits === '' ? '' : numv.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const pc = numv / pessoas;
+    let fb = null;
+    if (numv <= 0) fb = <div className="feedback neutral"><SimIc d={SIM_ICONS.info} /><span>Some tudo que entra na casa por mês. Bolsa Família não conta.</span></div>;
+    else if (pc <= TETO_PER_CAPITA) fb = <div className="feedback ok"><SimIc d={SIM_ICONS.ok} /><span>R$ {fmtBR(pc)} por pessoa — <b>dentro do critério legal</b> (¼ do salário). Ótimo sinal.</span></div>;
+    else if (numv <= TETO_FAMILIAR) fb = <div className="feedback warn"><SimIc d={SIM_ICONS.alert} /><span>R$ {fmtBR(pc)} por pessoa fica acima do critério estrito, <b>mas há jurisprudência</b> que amplia o limite. Vale analisar.</span></div>;
+    else fb = <div className="feedback warn"><SimIc d={SIM_ICONS.alert} /><span>Renda acima de 1 salário mínimo — mas gastos com <b>saúde e deficiência</b> podem ser descontados. Não desista sem conversar.</span></div>;
     return (
       <>
-        <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>Qual a renda total da família?</h1>
-        <p style={{ color: 'var(--ink-500)', marginBottom: 24, fontSize: 17 }}>
-          <strong>Some tudo que entra na casa por mês</strong>: salários, aposentadorias, pensões, bicos, BPC de outro morador. <strong>Não</strong> some Bolsa Família (não conta pra LOAS). Em 2026, a renda familiar total precisa ficar até <strong>R$ {fmtBR(TETO_FAMILIAR)}</strong> (1 salário mínimo) — mas o critério legal estrito é <strong>R$ {fmtBR(TETO_PER_CAPITA)} por pessoa</strong> (¼ do salário).
-        </p>
-        <div style={{ padding: '24px 24px 8px', background: 'var(--bone)', borderRadius: 16, marginBottom: 24 }}>
-          <label style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 10 }}>Renda familiar mensal</label>
-          <div style={{ display: 'flex', alignItems: 'baseline', gap: 8 }}>
-            <span style={{ fontFamily: 'var(--font-serif)', fontSize: 40, color: 'var(--ink-500)' }}>R$</span>
-            <input
-              type="text"
-              inputMode="numeric"
-              placeholder="0,00"
-              value={display}
-              onChange={e => set('renda_total', e.target.value.replace(/\D/g, ''))}
-              style={{ flex: 1, fontFamily: 'var(--font-serif)', fontSize: 40, fontWeight: 600, color: 'var(--ink-900)', border: 'none', background: 'transparent', outline: 'none', padding: '4px 0', width: '100%' }}
-              autoFocus
-            />
+        <div className="eyebrow">{eyebrow}</div>
+        <h1 className="q">Qual a renda total da família?</h1>
+        <p className="q-sub">Salários, aposentadorias, pensões, bicos. <strong>Não</strong> some Bolsa Família.</p>
+        <div className="field">
+          <label>Renda somada por mês</label>
+          <div className="money"><span className="cur">R$</span>
+            <input inputMode="numeric" placeholder="0,00" value={display} onChange={e => set('renda_total', e.target.value.replace(/\D/g, '').slice(0, 9))} autoFocus />
           </div>
-          <div style={{ borderTop: '1px solid var(--line)', marginTop: 16, paddingTop: 16, paddingBottom: 12 }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 8 }}>
-              <span style={{ fontSize: 14, color: 'var(--ink-500)' }}>÷ {pessoas} {pessoas === 1 ? 'pessoa' : 'pessoas'} = </span>
-              <span style={{ fontFamily: 'var(--font-serif)', fontSize: 22, fontWeight: 600, color: num > 0 ? (dentroPc ? '#1f6b3a' : '#8a4214') : 'var(--ink-500)' }}>
-                R$ {fmtBR(pc)} por pessoa
-              </span>
-            </div>
-            {num > 0 && (
-              <div style={{ marginTop: 12, padding: '10px 14px', borderRadius: 10, background: dentroFam ? 'var(--ok-bg, #e6f0ea)' : 'var(--warn-bg, #f6e8d8)', fontSize: 14, color: dentroFam ? '#1f5e36' : '#7a3a10' }}>
-                {dentroFam && dentroPc && <>✓ <strong>Dentro do critério estrito</strong> — renda por pessoa até R$ {fmtBR(TETO_PER_CAPITA)} (¼ do salário mínimo). Caso forte.</>}
-                {dentroFam && !dentroPc && <>✓ <strong>Renda familiar dentro do limite</strong> (até R$ {fmtBR(TETO_FAMILIAR)}). Acima do ¼ per-capita, mas há exceções legais que podem se aplicar — vale conversar.</>}
-                {!dentroFam && <>⚠ Renda familiar acima de R$ {fmtBR(TETO_FAMILIAR)}/mês. O caso exige análise específica — ainda assim, vale conversar.</>}
-              </div>
-            )}
-          </div>
+          {fb}
         </div>
-        <button
-          className="btn btn--primary btn--lg"
-          style={{ width: '100%' }}
-          onClick={next}
-          disabled={num <= 0}
-        >Continuar →</button>
+        <button className="btn btn--primary mt" onClick={next} disabled={numv <= 0}>Continuar →</button>
       </>
     );
   };
+
+  const recapLine = (k, val) => (<div className="rl"><span>{k}</span><b>{val || '—'}</b></div>);
 
   const renderContato = () => {
-    const ok = answers.nome.trim().length >= 2 && answers.sobrenome.trim().length >= 2;
+    const ready = (answers.nome || '').trim().length >= 2;
+    const first = (answers.nome || '').trim().split(' ')[0];
     return (
       <>
-        <div style={{ textAlign: 'center', marginBottom: 32 }}>
-          <div style={{ width: 80, height: 80, borderRadius: 999, background: elegivel ? '#e6f0ea' : '#f6e8d8', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginBottom: 20, fontSize: 36 }}>
-            {elegivel ? '✓' : '?'}
-          </div>
-          <div className="eyebrow" style={{ justifyContent: 'center' }}>Última etapa</div>
-          <h1 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', marginBottom: 12 }}>
-            {elegivel ? <>Seu caso parece <em>elegível</em>.</> : <>Seu caso exige <em>análise</em>.</>}
-          </h1>
-          <p style={{ color: 'var(--ink-500)', fontSize: 17, maxWidth: 520, margin: '0 auto' }}>
-            {elegivel
-              ? 'Os requisitos básicos parecem preenchidos. Deixe seu nome pra eu te chamar no WhatsApp e organizar a documentação.'
-              : 'Há pontos que precisam ser olhados de perto. Deixe seu nome que eu te chamo no WhatsApp pra entender o caso.'}
-          </p>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 14, marginBottom: 24 }}>
-          <label style={{ display: 'block' }}>
-            <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Nome</span>
-            <input
-              type="text"
-              autoComplete="given-name"
-              placeholder="Seu primeiro nome"
-              value={answers.nome}
-              onChange={e => set('nome', e.target.value)}
-              style={{ width: '100%', padding: '16px 18px', fontSize: 17, border: '1px solid var(--line)', borderRadius: 12, background: 'var(--paper)', color: 'var(--ink-900)', fontFamily: 'inherit' }}
-            />
-          </label>
-          <label style={{ display: 'block' }}>
-            <span style={{ display: 'block', fontSize: 13, fontWeight: 600, color: 'var(--ink-500)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: 8 }}>Sobrenome</span>
-            <input
-              type="text"
-              autoComplete="family-name"
-              placeholder="Seu sobrenome"
-              value={answers.sobrenome}
-              onChange={e => set('sobrenome', e.target.value)}
-              style={{ width: '100%', padding: '16px 18px', fontSize: 17, border: '1px solid var(--line)', borderRadius: 12, background: 'var(--paper)', color: 'var(--ink-900)', fontFamily: 'inherit' }}
-            />
-          </label>
-        </div>
-        <a
-          className="btn btn--primary btn--lg"
-          href={ok ? buildWhatsAppUrl() : '#'}
-          target="_blank"
-          rel="noopener noreferrer"
-          onClick={e => { if (!ok) e.preventDefault(); }}
-          style={{ width: '100%', justifyContent: 'center', opacity: ok ? 1 : 0.5, cursor: ok ? 'pointer' : 'not-allowed', pointerEvents: ok ? 'auto' : 'none' }}
-        >
-          📱 Falar com especialista no WhatsApp
-        </a>
-        <p style={{ fontSize: 13, color: 'var(--ink-500)', textAlign: 'center', marginTop: 14 }}>
-          Você será direcionado pro WhatsApp <strong>(21) 96423-8080</strong> com um resumo do seu caso já preenchido.
+        <div className="eyebrow">Quase lá — só falta você</div>
+        <h1 className="q">{ready ? `Prazer, ${first}!` : 'Como podemos te chamar?'}</h1>
+        <p className="q-sub">
+          {soft ? <>Pelo que você me contou, <span style={{ color: 'var(--terra-300)' }}>vale muito a pena dar entrada</span>.</>
+                : <>Mesmo com pontos de atenção, <span style={{ color: 'var(--terra-300)' }}>o seu caso merece ser analisado</span>.</>} Deixe seu nome e eu preparo seu atendimento já com o resumo.
         </p>
+        <div className="row2">
+          <input className="inp" placeholder="Nome" value={answers.nome} onChange={e => set('nome', e.target.value)} />
+          <input className="inp" placeholder="Sobrenome" value={answers.sobrenome} onChange={e => set('sobrenome', e.target.value)} />
+        </div>
+        <div className="note-wrap">
+          <label className="note-label" htmlFor="sim-relato">✍️ Escreva aqui, com suas palavras, o que você está vivendo <span>(opcional — mas ajuda muito)</span></label>
+          <textarea className="note" id="sim-relato" placeholder="Escreva aqui... Ex.: Cuido sozinha do meu filho com autismo e não consigo trabalhar. Já tentei dar entrada e não sei o que fazer." value={answers.relato} onChange={e => set('relato', e.target.value)} />
+        </div>
+        <div className="res-recap">
+          {recapLine('Beneficiário', SIM_QUEM_LABEL[answers.quem])}
+          {recapLine('Situação', SIM_SITUACAO_LABEL[answers.situacao])}
+          {answers.patologia && recapLine('Condição', answers.patologia)}
+          {recapLine('Pessoas em casa', String(pessoas))}
+          {renda > 0 && recapLine('Renda por pessoa', `R$ ${fmtBR(perCapita)}`)}
+          {recapLine('CadÚnico', SIM_CAD_LABEL[answers.cad])}
+        </div>
+        <a className="btn btn--wa" href={ready ? buildWhatsAppUrl() : '#'} target="_blank" rel="noopener noreferrer"
+           onClick={e => { if (!ready) e.preventDefault(); }} style={{ opacity: ready ? 1 : 0.5, pointerEvents: ready ? 'auto' : 'none' }}>
+          <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.087zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+          Falar com a equipe no WhatsApp
+        </a>
       </>
     );
   };
 
-  /* ---------- Wrapper ---------- */
   return (
-    <section className="hero" style={{ paddingBottom: 96 }}>
-      <div className="container-narrow">
-        <div className="wizard">
-          <div className="wizard-steps">
-            {steps.map((_, i) => (
-              <div key={i} className={`wizard-step ${i < step ? 'done' : i === step ? 'active' : ''}`}></div>
-            ))}
+    <section className="sim2">
+      <div className="card">
+        <aside className="support">
+          <div className="who">
+            <span className="av" aria-hidden="true"></span>
+            <span><span className="nm">Carlos Costa</span><span className="rl">Especialista previdenciário</span></span>
           </div>
-          <div className="eyebrow">Simulador · passo {step + 1} de {steps.length}</div>
-          {cur.kind === 'choice' && renderChoice()}
-          {cur.kind === 'patologia' && renderPatologia()}
-          {cur.kind === 'pessoas' && renderPessoas()}
-          {cur.kind === 'renda' && renderRenda()}
-          {cur.kind === 'contato' && renderContato()}
-          <button className="btn btn--ghost" style={{ marginTop: 8 }} onClick={back}>
-            ← {step === 0 ? 'Voltar ao início' : 'Pergunta anterior'}
-          </button>
-        </div>
+          <p className="reassure" dangerouslySetInnerHTML={{ __html: reassure }}></p>
+          <div className="pbar-wrap">
+            <div className="pbar-label">Passo {idx + 1} de {steps.length}</div>
+            <div className="pbar">{steps.map((_, i) => <span key={i} className={i <= step ? 'on' : ''}></span>)}</div>
+          </div>
+          <div className="trust"><b>Gratuito</b> <span className="sep">·</span> <b>Sigiloso</b> <span className="sep">·</span> <b>Sem compromisso</b></div>
+        </aside>
+        <main className="panel">
+          <button className="back" onClick={back}>{step === 0 ? '← Voltar ao site' : '← Voltar'}</button>
+          <div className="view" key={step}>
+            {cur.kind === 'choice' && renderChoice()}
+            {cur.kind === 'patologia' && renderPatologia()}
+            {cur.kind === 'pessoas' && renderPessoas()}
+            {cur.kind === 'renda' && renderRenda()}
+            {cur.kind === 'contato' && renderContato()}
+          </div>
+        </main>
       </div>
     </section>
   );
