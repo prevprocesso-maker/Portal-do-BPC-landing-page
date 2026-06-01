@@ -558,6 +558,11 @@ a.btn--secondary[href*="wa.me"]:hover,
 
 /* ---- Breadcrumb (patologia detail) ---- */
 .breadcrumb { font-size: 14px; color: var(--ink-500); margin-bottom: 24px; }
+
+/* Seções de conteúdo dentro da página de patologia NÃO devem herdar o
+   padding gigante da regra global `section { padding: clamp(64px,8vw,128px) }`.
+   O espaçamento entre blocos é controlado pelo margin-bottom inline (64px). */
+.patologia-detail-grid section { padding-top: 0 !important; padding-bottom: 0 !important; }
 .breadcrumb a { color: var(--ink-500); text-decoration: none; }
 .breadcrumb a:hover { color: var(--terra-700); }
 .breadcrumb .sep { margin: 0 8px; opacity: 0.5; }
