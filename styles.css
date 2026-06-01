@@ -16,7 +16,7 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
 .header-logo {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 9px;
   text-decoration: none;
   color: inherit;
   position: relative;
@@ -48,6 +48,7 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
   display: flex;
   flex-direction: column;
   line-height: 1;
+  position: relative;
 }
 .header-logo-text-1 {
   font-family: var(--font-serif);
@@ -74,8 +75,12 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
   font-weight: 600;
   letter-spacing: 0.22em;
   color: var(--ink-300, #a89678);
-  margin-top: 6px;
+  margin-top: 0;
   opacity: 0.7;
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  white-space: nowrap;
 }
 @media (max-width: 768px) {
   .header-logo-mark { height: 52px; width: 52px; }
@@ -510,25 +515,27 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
 .footer-bottom { padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.08); font-size: 14px; opacity: 0.55; display: flex; justify-content: space-between; gap: 20px; }
 .footer-desc { color: var(--ink-900); opacity: 0.7; font-size: 15px; line-height: 1.6; margin-top: 14px; max-width: 320px; }
 
-/* ---- WhatsApp brand color (any .btn linking to wa.me becomes green) ---- */
+/* ---- WhatsApp brand color (any .btn linking to wa.me becomes green) ----
+   Verde escurecido o suficiente para o texto branco passar no contraste AA
+   (o botão flutuante redondo, que só tem ícone, mantém o verde vibrante). */
 a.btn[href*="wa.me"],
 a.btn--primary[href*="wa.me"],
 a.btn--secondary[href*="wa.me"],
 .btn--whatsapp {
-  background: #25D366 !important;
-  border-color: #25D366 !important;
+  background: #117a52 !important;
+  border-color: #117a52 !important;
   color: #fff !important;
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.28) !important;
+  box-shadow: 0 6px 20px rgba(17, 122, 82, 0.30) !important;
 }
 a.btn[href*="wa.me"]:hover,
 a.btn--primary[href*="wa.me"]:hover,
 a.btn--secondary[href*="wa.me"]:hover,
 .btn--whatsapp:hover {
-  background: #1ebe5b !important;
-  border-color: #1ebe5b !important;
+  background: #0d6543 !important;
+  border-color: #0d6543 !important;
   color: #fff !important;
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(37, 211, 102, 0.36) !important;
+  box-shadow: 0 10px 28px rgba(17, 122, 82, 0.40) !important;
 }
 
 /* ---- WhatsApp Float ---- */
