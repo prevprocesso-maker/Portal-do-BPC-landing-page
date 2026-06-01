@@ -6,7 +6,10 @@
    <link rel="stylesheet" href="/colors_and_type.css">
    ============================================================ */
 
-/* --------- Fonts (Google Fonts substitutions — see README) --- */
+/* --------- Fonts (Google Fonts) ---------------------------------
+   A home (index.html) também faz <link rel="preload"> desta mesma URL
+   para descobrir a fonte mais cedo; o @import abaixo mantém a
+   tipografia nas subpáginas estáticas (mesma URL = sem download duplo). */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap');
 
 :root {
