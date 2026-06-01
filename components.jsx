@@ -143,7 +143,7 @@ function Hero({ onNavigate }) {
           </div>
         </div>
         <div className="hero-photo">
-          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" width={820} height={1020} fetchpriority="high" decoding="async" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
         </div>
       </div>
     </section>
@@ -340,7 +340,7 @@ function SobrePortal() {
     <section>
       <div className="container sobre-grid">
         <div className="sobre-photo" style={{ background: 'var(--bone)', border: '1px solid var(--line)', position: 'relative', overflow: 'hidden' }}>
-          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, especialista em BPC" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, especialista em BPC" width={820} height={1020} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         </div>
         <div>
           <div className="eyebrow">Sobre o portal</div>
@@ -691,8 +691,8 @@ function ContactForm() {
               </div>
               <div className="form-row">
                 <div className="field">
-                  <label>Para quem é o benefício?</label>
-                  <select required>
+                  <label htmlFor="lead-para-quem">Para quem é o benefício?</label>
+                  <select id="lead-para-quem" name="para-quem" aria-label="Para quem é o benefício?" required>
                     <option value="">Selecione...</option>
                     <option>Para mim — BPC idoso (65+)</option>
                     <option>Para mim — BPC deficiente</option>
