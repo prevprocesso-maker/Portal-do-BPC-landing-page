@@ -781,6 +781,153 @@ const PATOLOGIA_DEFAULT = {
   relacionadas: [],
 };
 
+/* ---------- CID + CIF lookup ---------- */
+const CID_FULL = {
+  TEA: { code: 'F84.0',     nome: 'Transtorno do espectro autista' },
+  SD:  { code: 'Q90',       nome: 'Síndrome de Down (trissomia 21)' },
+  PCx: { code: 'G80',       nome: 'Paralisia cerebral' },
+  EM:  { code: 'G35',       nome: 'Esclerose múltipla' },
+  PK:  { code: 'G20',       nome: 'Doença de Parkinson' },
+  AZ:  { code: 'G30',       nome: 'Doença de Alzheimer' },
+  AVC: { code: 'I60–I69',   nome: 'Sequelas de AVC' },
+  EL:  { code: 'G12.2',     nome: 'ELA — Esclerose lateral amiotrófica' },
+  EP:  { code: 'G40',       nome: 'Epilepsia' },
+  EQ:  { code: 'F20',       nome: 'Esquizofrenia' },
+  TB:  { code: 'F31',       nome: 'Transtorno afetivo bipolar' },
+  DV:  { code: 'H54',       nome: 'Deficiência visual' },
+  DA:  { code: 'H90',       nome: 'Deficiência auditiva' },
+  CA:  { code: 'C00–C97',   nome: 'Neoplasias malignas (câncer)' },
+  IR:  { code: 'N18',       nome: 'Doença renal crônica' },
+  CG:  { code: 'I50',       nome: 'Insuficiência cardíaca' },
+  HV:  { code: 'B20–B24',   nome: 'Doença pelo HIV/AIDS' },
+  HP:  { code: 'K74',       nome: 'Cirrose hepática' },
+  LE:  { code: 'M32',       nome: 'Lúpus eritematoso sistêmico' },
+  DM:  { code: 'G71',       nome: 'Distrofias musculares' },
+};
+
+const CIF_DOMINIOS = {
+  TEA: [
+    { area: 'Funções mentais e comunicação',  desc: 'Processamento da linguagem, comunicação verbal e não-verbal' },
+    { area: 'Interações e relacionamentos',   desc: 'Contato social, vínculos e regras de convivência' },
+    { area: 'Autocuidado',                    desc: 'Higiene, alimentação e vestuário — graus variados de dependência' },
+    { area: 'Educação e rotina',              desc: 'Frequência escolar, adaptações necessárias, tolerância a mudanças' },
+  ],
+  SD: [
+    { area: 'Funções intelectuais',           desc: 'Aprendizagem, resolução de problemas, atenção e memória' },
+    { area: 'Linguagem e fala',               desc: 'Expressão oral, compreensão e desenvolvimento da comunicação' },
+    { area: 'Autocuidado',                    desc: 'Higiene, alimentação, vestir-se com supervisão ou apoio' },
+    { area: 'Atividades educacionais',        desc: 'Suporte escolar, sala de recursos, AEE' },
+  ],
+  PCx: [
+    { area: 'Funções neuromusculoesqueléticas', desc: 'Tônus muscular, coordenação motora, controle de movimentos' },
+    { area: 'Mobilidade e locomoção',           desc: 'Caminhar, transferir-se, usar cadeira de rodas ou órteses' },
+    { area: 'Comunicação',                      desc: 'Fala, uso de comunicação alternativa e aumentativa (CAA)' },
+    { area: 'Autocuidado',                      desc: 'Higiene, alimentação e vestuário com dependência variável' },
+  ],
+  EM: [
+    { area: 'Funções neuromusculares',        desc: 'Força, coordenação e espasticidade — variáveis conforme surto' },
+    { area: 'Mobilidade e equilíbrio',        desc: 'Marcha, quedas, uso de bengala ou cadeira de rodas' },
+    { area: 'Fadiga',                         desc: 'Esgotamento físico e cognitivo desproporcional ao esforço' },
+    { area: 'Funções visuais',                desc: 'Neurite óptica — visão dupla ou embaçada durante surtos' },
+  ],
+  PK: [
+    { area: 'Funções motoras',                desc: 'Tremor de repouso, rigidez muscular, bradicinesia' },
+    { area: 'Marcha e equilíbrio',            desc: 'Festinação, congelamento da marcha, risco de quedas' },
+    { area: 'Fala e deglutição',              desc: 'Hipofonia (voz baixa), disfagia em estágios avançados' },
+    { area: 'Atividades da vida diária',      desc: 'Dificuldade progressiva em vestir-se, cozinhar, escrever' },
+  ],
+  AZ: [
+    { area: 'Funções da memória',             desc: 'Memória episódica recente e, progressivamente, de longo prazo' },
+    { area: 'Orientação',                     desc: 'Desorientação temporal, espacial e em relação a pessoas' },
+    { area: 'Autocuidado e segurança',        desc: 'Incapacidade crescente de realizar higiene e se proteger de riscos' },
+    { area: 'Interações sociais',             desc: 'Perda progressiva da capacidade de reconhecer e interagir com pessoas' },
+  ],
+  AVC: [
+    { area: 'Funções motoras',                desc: 'Hemiplegia ou hemiparesia — paralisia parcial ou total de um lado' },
+    { area: 'Fala e comunicação',             desc: 'Afasia, disartria, dificuldade de compreensão' },
+    { area: 'Funções cognitivas',             desc: 'Atenção, memória e planejamento afetados pela lesão cerebral' },
+    { area: 'Mobilidade e autocuidado',       desc: 'Locomoção, transferência, higiene com dependência variável' },
+  ],
+  EL: [
+    { area: 'Funções neuromusculares',        desc: 'Fraqueza progressiva e irrecuperável de todos os músculos voluntários' },
+    { area: 'Mobilidade e uso das mãos',      desc: 'Perda progressiva de força — membros, depois tronco' },
+    { area: 'Fala e deglutição',              desc: 'Disartria progressiva, disfagia e risco de aspiração' },
+    { area: 'Respiração',                     desc: 'Insuficiência respiratória exige suporte ventilatório avançado' },
+  ],
+  EP: [
+    { area: 'Funções do sistema nervoso',     desc: 'Crises epilépticas recorrentes, resistentes a medicação' },
+    { area: 'Autocuidado e segurança',        desc: 'Risco de quedas e lesões durante as crises' },
+    { area: 'Mobilidade independente',        desc: 'Impossibilidade de dirigir, trabalhar em altura ou com máquinas' },
+    { area: 'Participação social',            desc: 'Restrição de rotina pela imprevisibilidade das crises' },
+  ],
+  EQ: [
+    { area: 'Funções do pensamento',          desc: 'Desorganização, alucinações e delírios' },
+    { area: 'Percepção e orientação',         desc: 'Dificuldade de distinguir realidade e tomar decisões' },
+    { area: 'Autocuidado',                    desc: 'Negligência com higiene e medicação durante episódios agudos' },
+    { area: 'Trabalho e vida social',         desc: 'Prejuízo severo na capacidade produtiva e nas relações interpessoais' },
+  ],
+  TB: [
+    { area: 'Funções afetivas',               desc: 'Oscilações extremas — depressão profunda e mania/hipomania' },
+    { area: 'Energia e motivação',            desc: 'Anergia na depressão, impulso excessivo na mania' },
+    { area: 'Trabalho e atividades',          desc: 'Incapacidade de manter emprego pela instabilidade dos episódios' },
+    { area: 'Relacionamentos',                desc: 'Prejuízo nas relações interpessoais e familiares' },
+  ],
+  DV: [
+    { area: 'Funções visuais',                desc: 'Acuidade e campo visual — critérios do Decreto 5.296/2004' },
+    { area: 'Mobilidade e orientação espacial', desc: 'Locomoção independente prejudicada, risco de quedas' },
+    { area: 'Leitura e informação',           desc: 'Acesso a textos, sinalizações e comunicação visual comprometido' },
+    { area: 'Atividades da vida diária',      desc: 'Preparo de alimentos, medicamentos, higiene' },
+  ],
+  DA: [
+    { area: 'Funções auditivas',              desc: 'Limiar auditivo bilateral — critério: ≥ 41dB = deficiência' },
+    { area: 'Comunicação oral',               desc: 'Dificuldade em conversas sem leitura labial ou intérprete' },
+    { area: 'Desenvolvimento da linguagem',   desc: 'Em crianças, impacto no desenvolvimento da fala e escrita' },
+    { area: 'Participação social',            desc: 'Restrições em contextos que exigem comunicação verbal constante' },
+  ],
+  CA: [
+    { area: 'Energia e fadiga oncológica',    desc: 'Esgotamento causado pela doença e pelo tratamento (quimio/radio)' },
+    { area: 'Sistema imunológico',            desc: 'Imunossupressão — maior vulnerabilidade a infecções' },
+    { area: 'Mobilidade e tolerância',        desc: 'Limitação de esforços físicos durante e após tratamento' },
+    { area: 'Dor crônica',                    desc: 'Controle álgico como necessidade permanente' },
+  ],
+  IR: [
+    { area: 'Funções renais',                 desc: 'Filtração glomerular < 15 ml/min — dependência de hemodiálise' },
+    { area: 'Fadiga e energia',               desc: 'Anemia renal — cansaço persistente mesmo em repouso' },
+    { area: 'Restrições de rotina',           desc: '3 sessões/semana, 4h cada — vida organizada em torno da diálise' },
+    { area: 'Mobilidade',                     desc: 'Limitação de esforços — instabilidade hemodinâmica pós-diálise' },
+  ],
+  CG: [
+    { area: 'Funções cardiovasculares',       desc: 'Débito cardíaco reduzido — coração não supre a demanda do corpo' },
+    { area: 'Tolerância ao esforço',          desc: 'NYHA III: sintomas em pequenos esforços; NYHA IV: em repouso' },
+    { area: 'Mobilidade e locomoção',         desc: 'Dispneia e edema limitam caminhada e deslocamentos' },
+    { area: 'Autocuidado',                    desc: 'Banho e vestuário desencadeiam sintomas nos casos graves' },
+  ],
+  HV: [
+    { area: 'Funções imunológicas',           desc: 'CD4 < 200/mm³ — suscetível a infecções oportunistas' },
+    { area: 'Energia e fadiga',               desc: 'Síndrome consumptiva, diarreias e anemia causam esgotamento' },
+    { area: 'Atividades da vida diária',      desc: 'Em fase AIDS instalada, prejuízo severo no cotidiano' },
+    { area: 'Participação social',            desc: 'Estigma e limitações clínicas afetam trabalho e convivência' },
+  ],
+  HP: [
+    { area: 'Funções hepáticas',              desc: 'Cirrose descompensada — síntese de proteínas gravemente comprometida' },
+    { area: 'Fadiga e tolerância',            desc: 'Encefalopatia hepática e fraqueza muscular' },
+    { area: 'Mobilidade',                     desc: 'Ascite volumosa dificulta locomoção e causa dispneia' },
+    { area: 'Alimentação',                    desc: 'Restrições dietéticas rigorosas e risco de hemorragia por varizes' },
+  ],
+  LE: [
+    { area: 'Funções articulares e musculares', desc: 'Artrite, dor e limitação de movimentos — piora nos surtos' },
+    { area: 'Funções renais',                   desc: 'Nefrite lúpica (classes III–VI) — comprometimento da filtração' },
+    { area: 'Fadiga e dor crônica',             desc: 'Fadiga desproporcional ao esforço compromete toda a rotina' },
+    { area: 'Atividades cotidianas',            desc: 'Fotossensibilidade e surtos imprevisíveis limitam trabalho e vida diária' },
+  ],
+  DM: [
+    { area: 'Funções neuromusculares',        desc: 'Degeneração muscular progressiva — fraqueza que avança gradualmente' },
+    { area: 'Mobilidade e uso dos membros',   desc: 'Dificuldade progressiva de caminhar e usar as mãos' },
+    { area: 'Autocuidado',                    desc: 'Dependência crescente para higiene, vestuário e alimentação' },
+    { area: 'Respiração',                     desc: 'Músculos respiratórios afetados — suporte ventilatório avançado' },
+  ],
+};
+
 /* ---------- Patologia detail ---------- */
 function ScreenPatologia({ patologia, onNavigate }) {
   const p = patologia || PATOLOGIAS.find(x => x.sigla === 'TEA') || PATOLOGIAS[0];
@@ -826,6 +973,46 @@ function ScreenPatologia({ patologia, onNavigate }) {
             <h2>O que é</h2>
             {d.o_que_e.map((t, i) => <p key={i} style={{ fontSize: 18, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: t }} />)}
           </section>
+
+          {/* CID + CIF */}
+          {(CID_FULL[p.sigla] || CIF_DOMINIOS[p.sigla]) && (
+            <section style={{ marginBottom: 64 }} id="cid-cif">
+              <div className="eyebrow">Classificações internacionais</div>
+              <h2>CID e CIF — {p.nome}</h2>
+              <p style={{ fontSize: 17, color: 'var(--ink-500)', marginBottom: 28 }}>
+                <strong>CID</strong> confirma o diagnóstico na perícia médica. <strong>CIF</strong> mede o impacto funcional na avaliação social — a combinação dos dois que garante o benefício.
+              </p>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+                {CID_FULL[p.sigla] && (
+                  <div style={{ padding: '24px 26px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 16 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-500)', marginBottom: 8 }}>CID — o diagnóstico</div>
+                    <div style={{ fontFamily: 'var(--font-serif)', fontSize: 42, fontWeight: 700, color: 'var(--ink-900)', lineHeight: 1, marginBottom: 8, letterSpacing: '-0.02em' }}>{CID_FULL[p.sigla].code}</div>
+                    <div style={{ fontSize: 16, color: 'var(--ink-700)', lineHeight: 1.4, marginBottom: 16 }}>{CID_FULL[p.sigla].nome}</div>
+                    <p style={{ fontSize: 14.5, color: 'var(--ink-500)', margin: 0, lineHeight: 1.55 }}>
+                      O código que deve aparecer no laudo médico. Confirmado na <strong style={{ color: 'var(--ink-900)' }}>perícia médica</strong> do INSS.
+                    </p>
+                  </div>
+                )}
+                {CIF_DOMINIOS[p.sigla] && (
+                  <div style={{ padding: '24px 26px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 16 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-500)', marginBottom: 8 }}>CIF — a funcionalidade</div>
+                    <div style={{ fontSize: 13, color: 'var(--ink-500)', marginBottom: 14 }}>O que a <strong style={{ color: 'var(--ink-900)' }}>avaliação social</strong> do INSS examina:</div>
+                    <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
+                      {CIF_DOMINIOS[p.sigla].map((dom, i) => (
+                        <li key={i} style={{ display: 'flex', gap: 10, alignItems: 'flex-start' }}>
+                          <span style={{ flex: 'none', width: 6, height: 6, borderRadius: 999, background: 'var(--terra-500)', marginTop: 7 }} />
+                          <div>
+                            <strong style={{ fontSize: 15, color: 'var(--ink-900)' }}>{dom.area}</strong>
+                            <div style={{ fontSize: 13.5, color: 'var(--ink-500)', lineHeight: 1.4, marginTop: 2 }}>{dom.desc}</div>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </section>
+          )}
 
           {/* Legislação */}
           <section style={{ marginBottom: 64 }} id="legislacao">
@@ -916,6 +1103,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 8 }}>
               {[
                 ['o-que-e', 'O que é'],
+                ['cid-cif', 'CID + CIF'],
                 ['legislacao', 'Base legal'],
                 ['documentos', 'Documentos'],
                 ['pericia', 'Perícia INSS'],

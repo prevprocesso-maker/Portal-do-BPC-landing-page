@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,follow" />
+<title>Prompts NotebookLM — Infográficos e Slides · Portal do BPC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,600&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#14100c; --ink-soft:#3a332c; --muted:#6a5d50;
+    --terra:#c4673a; --terra-700:#a8531f; --terra-100:#f3e0d1;
+    --cream:#fbf7f1; --paper:#ffffff; --line:#e9ddcd;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  body{ font-family:'Geist',system-ui,sans-serif; color:var(--ink-soft); background:var(--cream); line-height:1.6; }
+  .wrap{ max-width:860px; margin:0 auto; padding:64px 40px 96px; }
+
+  /* header */
+  .eyebrow{ font:600 12px/1 'Geist',sans-serif; letter-spacing:.24em; text-transform:uppercase; color:var(--terra); }
+  h1{ font:700 42px/1.08 'Lora',Georgia,serif; color:var(--ink); letter-spacing:-.02em; margin:14px 0 16px; }
+  h1 em{ font-style:italic; color:var(--terra); }
+  .lead{ font-size:17px; color:var(--muted); max-width:62ch; }
+  .rule{ width:84px; height:4px; background:linear-gradient(90deg,var(--terra),#e0a878); border-radius:2px; margin:22px 0; }
+
+  .callout{ background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--terra); border-radius:12px; padding:20px 24px; margin:28px 0; }
+  .callout .l{ font:700 11px/1 'Geist',sans-serif; letter-spacing:.2em; text-transform:uppercase; color:var(--terra-700); }
+  .callout p{ margin-top:8px; font-size:15px; color:var(--ink-soft); }
+  .callout strong{ color:var(--ink); }
+
+  /* section heads */
+  .sec{ margin-top:56px; }
+  .sec-head{ display:flex; align-items:baseline; gap:14px; border-bottom:2px solid var(--line); padding-bottom:14px; margin-bottom:8px; }
+  .sec-head .n{ font:700 14px/1 'Geist Mono',monospace; color:var(--terra); }
+  .sec-head h2{ font:700 27px/1.15 'Lora',Georgia,serif; color:var(--ink); letter-spacing:-.01em; }
+  .sec > .sub{ font-size:15px; color:var(--muted); margin:10px 0 24px; }
+
+  /* prompt card */
+  .prompt{ background:var(--paper); border:1px solid var(--line); border-radius:14px; margin:20px 0; overflow:hidden; break-inside:avoid; }
+  .prompt-head{ display:flex; align-items:center; justify-content:space-between; gap:16px; padding:16px 20px; background:var(--cream); border-bottom:1px solid var(--line); }
+  .prompt-head .tt{ font:700 16px/1.25 'Lora',Georgia,serif; color:var(--ink); }
+  .prompt-head .tt span{ display:block; font:600 11px/1.4 'Geist',sans-serif; letter-spacing:.1em; text-transform:uppercase; color:var(--terra-700); margin-bottom:3px; }
+  .copy-btn{ flex:none; font:600 13px/1 'Geist',sans-serif; color:#fff; background:var(--terra); border:none; padding:10px 16px; border-radius:100px; cursor:pointer; transition:background .15s; white-space:nowrap; }
+  .copy-btn:hover{ background:var(--terra-700); }
+  .copy-btn.done{ background:#1f8a5b; }
+  .prompt-body{ padding:20px 22px; font:400 14.5px/1.62 'Geist Mono',ui-monospace,monospace; color:#33291f; white-space:pre-wrap; }
+  .prompt-body .fill{ color:var(--terra-700); font-weight:500; }
+
+  .tips{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:24px 28px; margin-top:24px; }
+  .tips h3{ font:700 18px/1.2 'Lora',Georgia,serif; color:var(--ink); margin-bottom:12px; }
+  .tips ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+  .tips li{ display:flex; gap:12px; font-size:14.5px; color:var(--ink-soft); }
+  .tips li::before{ content:"→"; color:var(--terra); font-weight:700; flex:none; }
+  .tips b{ color:var(--ink); }
+
+  .foot{ margin-top:60px; padding-top:22px; border-top:1px solid var(--line); font-size:13px; color:var(--muted); }
+
+  @media print{
+    @page{ size:A4; margin:14mm; }
+    body{ background:#fff; }
+    .wrap{ padding:0; max-width:none; }
+    .copy-btn{ display:none; }
+    .prompt, .tips, .callout{ box-shadow:none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Guia de produção · NotebookLM</p>
+  <h1>Prompts para gerar <em>infográficos</em> e <em>apresentações</em></h1>
+  <p class="lead">Copie e cole estes comandos no seu NotebookLM (aquele com toda a legislação previdenciária). Ele devolve o roteiro, os dados e a estrutura — você monta o visual no Canva, Gamma ou PowerPoint. Tudo com base nas suas fontes, sem inventar.</p>
+  <div class="rule"></div>
+
+  <div class="callout">
+    <span class="l">Antes de tudo — leia isto</span>
+    <p>O NotebookLM <strong>não desenha</strong> imagens nem slides prontos. Ele escreve o <strong>conteúdo estruturado</strong> (títulos, números, blocos, ordem) já citando a base legal. Você leva esse texto para o <strong>Canva</strong> (infográfico/carrossel) ou <strong>Gamma / Apresentações Google</strong> (slides) e aplica o visual da marca. Onde aparecer <span style="color:var(--terra-700);font-weight:600;">[entre colchetes]</span>, troque pelo seu tema antes de enviar.</p>
+  </div>
+
+  <!-- ============ PROMPT MESTRE ============ -->
+  <div class="sec">
+    <div class="sec-head"><span class="n">00</span><h2>Prompt mestre (mande este primeiro)</h2></div>
+    <p class="sub">Define a voz e as regras. Envie uma vez no início da conversa; depois é só pedir cada peça.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Contexto da marca</span>Configurar o assistente</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Você é meu assistente de conteúdo do Portal do BPC / CarlosCostaPrev, escritório de advocacia previdenciária especializado em BPC/LOAS. Nosso público são pessoas idosas (65+), pessoas com deficiência e suas famílias — gente simples, muitas vezes 55+, que precisa de informação clara e acolhedora.
+
+Regras para tudo que você gerar a partir de agora:
+1. Use SOMENTE as informações das minhas fontes. Nunca invente leis, números ou prazos.
+2. Sempre cite a base legal (lei, artigo, súmula) que sustenta cada afirmação.
+3. Linguagem simples, sem juridiquês. Explique como se fosse para a avó do cliente.
+4. Tom acolhedor e confiável, nunca alarmista nem "vendedor".
+5. Quando eu pedir infográfico ou slides, entregue a ESTRUTURA pronta para eu montar no Canva (texto, números e ordem), não o desenho.
+
+Confirme que entendeu e aguarde meu próximo pedido.</div>
+    </div>
+  </div>
+
+  <!-- ============ INFOGRÁFICOS ============ -->
+  <div class="sec">
+    <div class="sec-head"><span class="n">A</span><h2>Infográficos</h2></div>
+    <p class="sub">Cada prompt devolve o roteiro de um infográfico: título, blocos, números e base legal. Cole no Canva e aplique a marca (terracota + Lora/Geist).</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Infográfico vertical</span>Roteiro completo de um infográfico</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Monte o roteiro de um infográfico vertical sobre <span class="fill">[tema, ex: "quem tem direito ao BPC do idoso em 2026"]</span>.
+
+Entregue exatamente nesta estrutura:
+• TÍTULO PRINCIPAL (máx. 6 palavras, forte)
+• Subtítulo de abertura (1 frase, máx. 15 palavras)
+• 4 a 6 BLOCOS, cada um com: ícone sugerido + um número/dado em destaque + um texto curto (máx. 12 palavras)
+• RODAPÉ com a base legal citada (lei/artigo) e a chamada "Portal do BPC · (21) 96423-8080"
+
+Use só as fontes. Não invente dados.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Comparativo</span>Infográfico de comparação (lado a lado)</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Crie a estrutura de um infográfico comparando <span class="fill">[opção A]</span> e <span class="fill">[opção B]</span> — por exemplo "BPC do idoso" x "BPC da pessoa com deficiência".
+
+Formato: duas colunas. Para cada coluna entregue de 4 a 6 linhas com o mesmo critério dos dois lados (ex: idade, perícia, prazo, documentos, valor). Use frases curtíssimas. Ao final, 1 linha de "ponto em comum" e a base legal de cada regra.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Passo a passo</span>Fluxograma / linha do tempo</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Transforme o processo de <span class="fill">[ex: "dar entrada no BPC pelo Meu INSS"]</span> em um fluxograma de etapas para infográfico.
+
+Entregue de 4 a 7 PASSOS numerados, cada um com: um verbo no início, uma frase curta (máx. 12 palavras) e, quando houver, o prazo legal envolvido. No fim, um aviso de atenção ("não caia em golpe / é gratuito") e a base legal.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Mitos x verdades</span>Infográfico de desmistificação</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Liste de 5 a 6 pares de "MITO" e "VERDADE" sobre <span class="fill">[ex: "o BPC e o Bolsa Família"]</span>, no formato de infográfico.
+
+Para cada par: a frase do mito (o que as pessoas acham) e a verdade corrigida em 1 frase simples, com a base legal entre parênteses. Os mitos devem ser dúvidas reais do nosso público.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Números</span>Infográfico de dados/estatísticas</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Reúna os números mais importantes sobre <span class="fill">[tema]</span> para um infográfico de dados.
+
+Entregue de 4 a 6 "cartões de número": cada um com o NÚMERO em destaque (valor, prazo, idade, percentual) + um rótulo curto explicando. Use apenas valores que estejam nas minhas fontes e diga de qual fonte/lei veio cada um. Se um número não estiver nas fontes, não inclua.</div>
+    </div>
+  </div>
+
+  <!-- ============ SLIDES ============ -->
+  <div class="sec">
+    <div class="sec-head"><span class="n">B</span><h2>Apresentações de slides</h2></div>
+    <p class="sub">Roteiros prontos para colar no Gamma, Apresentações Google ou PowerPoint. Pensados para aula, palestra ou vídeo.</p>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Aplicar sempre</span>Assinatura de marca em todo deck</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Em TODA apresentação que você montar, aplique o padrão de marca CarlosCostaPrev + Portal do BPC:
+
+1. RODAPÉ DISCRETO em cada slide (canto inferior, fonte bem pequena): "carloscostaprev · portaldobpc".
+2. ÚLTIMO SLIDE = slide de contato/marketing, com espaço reservado para a MINHA FOTO e o bloco de contato abaixo.
+
+Use exatamente estes dados, nesta ordem:
+CarlosCostaPrev — Especialista BPC/LOAS
+www.carloscostaprev.com.br
+www.portaldobpc.com.br
+@carloscostaprev · @portaldobpc
+WhatsApp / Tel: (21) 96423-8080
+#carloscostaprev #portaldobpc #RiodeJaneiro
+Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206, Irajá, Rio de Janeiro — RJ, 21231-230</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Aula / palestra</span>Deck educativo de 10 slides</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Monte o roteiro de uma apresentação de 10 slides sobre <span class="fill">[tema, ex: "como conseguir o BPC para autista (TEA)"]</span>, para o público leigo.
+
+Para CADA slide entregue:
+• Título do slide (curto)
+• De 2 a 4 tópicos (bullets) em linguagem simples
+• Uma nota do apresentador (1 a 2 frases para falar em voz alta)
+
+Estrutura sugerida: 1 capa, 1 "por que isso importa", 6 a 7 de conteúdo, 1 de "próximo passo / como pedir ajuda" e 1 de contato (Portal do BPC · WhatsApp (21) 96423-8080). Cite a base legal onde for relevante.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Slide final</span>Slide de contato com a sua foto (marketing)</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Crie o SLIDE FINAL (de marketing/contato) da apresentação sobre <span class="fill">[tema]</span>. Estrutura:
+
+• Frase de fechamento acolhedora (1 linha), ex: "Ficou com dúvida? Fale comigo, a primeira análise é gratuita."
+• [ESPAÇO PARA FOTO] — reserve uma área à direita para o meu retrato.
+• Bloco de contato à esquerda, exatamente assim:
+CarlosCostaPrev — Especialista BPC/LOAS
+www.carloscostaprev.com.br
+www.portaldobpc.com.br
+@carloscostaprev · @portaldobpc
+WhatsApp / Tel: (21) 96423-8080
+#carloscostaprev #portaldobpc #RiodeJaneiro
+Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206, Irajá, Rio de Janeiro — RJ, 21231-230
+
+Mantenha o rodapé "carloscostaprev · portaldobpc" também neste slide.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Carrossel → slides</span>Mini-deck de 6 telas para redes</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Crie um carrossel de 6 telas (formato slides quadrados para Instagram) sobre <span class="fill">[tema]</span>.
+
+Tela 1: gancho que faz parar de rolar (uma pergunta ou dado forte).
+Telas 2 a 5: uma ideia por tela, frase curta + 1 linha de apoio.
+Tela 6: chamada para ação ("comente QUERO que eu te explico" / WhatsApp).
+Entregue o texto exato de cada tela e uma sugestão de imagem para cada uma.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Pronto · Dia 08</span>Carrossel "7 coisas para levar na perícia"</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Quero o texto de um carrossel de 9 telas para o @carloscostaprev sobre os documentos da perícia médica do INSS, com base nas minhas fontes.
+
+Gancho da capa: "Perícia médica do INSS: 7 coisas que você não pode esquecer de levar (a nº 4 derruba a maioria)."
+
+Estrutura:
+• Tela 1 (capa): título forte + 1 linha dizendo que a nº 4 derruba a maioria dos pedidos.
+• Telas 2 a 8: UM documento por tela, nesta ordem — (1) laudos médicos recentes, (2) exames, (3) receitas dos remédios, (4) relatório médico detalhado [DESTAQUE: marcar como "a que mais derruba"], (5) histórico do tratamento, (6) documentos pessoais (RG, CPF e comprovante do agendamento), (7) lista de medicamentos. Para cada tela: nome curto do item + 1 frase de por que importa (máx. 14 palavras) + o critério/base legal da perícia quando houver nas fontes.
+• Tela 9 (contato): frase "Tem perícia marcada? Manda mensagem que a gente te prepara." + espaço para a MINHA FOTO + o bloco de contato abaixo, com os itens alinhados:
+CarlosCostaPrev — Especialista BPC/LOAS
+WhatsApp: (21) 96423-8080
+@carloscostaprev · @portaldobpc
+www.carloscostaprev.com.br · www.portaldobpc.com.br
+Praça Nossa Sra. da Apresentação, 223 — Sala 206 · Irajá, Rio de Janeiro — RJ · 21231-230
+#carloscostaprev #portaldobpc #RiodeJaneiro
+
+Regras: linguagem simples para leigo, tom acolhedor, use só as fontes e cite a base legal de cada exigência. Mantenha o rodapé "carloscostaprev · portaldobpc" em todas as telas.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>Roteiro de vídeo</span>Slides + narração (reels/YouTube)</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Escreva o roteiro de um vídeo curto (60 a 90 segundos) sobre <span class="fill">[tema]</span>, em formato de slides com narração.
+
+Entregue uma tabela com 3 colunas: TEMPO (ex: 0–8s) · O QUE APARECE NA TELA (texto do slide) · O QUE EU FALO (narração natural, frases curtas). Abra com um gancho de 3 segundos e feche com chamada para o WhatsApp. Tom acolhedor, base legal só quando essencial.</div>
+    </div>
+
+    <div class="prompt">
+      <div class="prompt-head">
+        <div class="tt"><span>1 slide</span>Resumo de um tema em uma tela</div>
+        <button class="copy-btn" data-copy>Copiar</button>
+      </div>
+      <div class="prompt-body">Resuma <span class="fill">[tema]</span> em UM único slide-resumo, do tipo "tudo que você precisa saber".
+
+Entregue: um título, de 3 a 5 pontos essenciais (frases curtas) e uma linha final de base legal. Deve caber confortavelmente em uma tela e servir tanto para aula quanto para post "salva esse aqui".</div>
+    </div>
+  </div>
+
+  <!-- ============ DICAS ============ -->
+  <div class="sec">
+    <div class="sec-head"><span class="n">C</span><h2>Para o resultado ficar bom</h2></div>
+    <div class="tips">
+      <h3>5 hábitos que melhoram o que o NotebookLM entrega</h3>
+      <ul>
+        <li><span><b>Mande o prompt mestre primeiro.</b> Sem o contexto da marca, ele responde genérico e juridiquês.</span></li>
+        <li><span><b>Um tema por pedido.</b> Não peça "infográfico e slides do BPC inteiro" — peça um tema específico de cada vez.</span></li>
+        <li><span><b>Sempre exija a fonte.</b> Se ele não citar a lei, peça: "de qual fonte saiu isso?". Assim você nunca publica algo errado.</span></li>
+        <li><span><b>Peça para encurtar.</b> Se vier longo: "reescreva com no máximo 10 palavras por bloco". Infográfico bom é enxuto.</span></li>
+        <li><span><b>Leve pronto para o Canva.</b> Cole o texto, aplique terracota + fontes Lora/Geist, e use as fotos quando você as trouxer.</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="foot">Portal do BPC · CarlosCostaPrev — uso interno de produção de conteúdo. Os prompts orientam o NotebookLM a usar exclusivamente as fontes legais que você subiu.</p>
+
+</div>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var body = btn.closest('.prompt').querySelector('.prompt-body');
+      var text = body.innerText;
+      navigator.clipboard.writeText(text).then(function(){
+        var old = btn.textContent;
+        btn.textContent = 'Copiado!';
+        btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = old; btn.classList.remove('done'); }, 1600);
+      });
+    });
+  });
+</script>
+</body>
+</html>

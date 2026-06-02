@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Catálogo de imagens do mês — Blog Portal do BPC</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding-block: clamp(40px, 5vw, 64px); }
+  .wrap { max-width: 880px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+
+  .header { margin-bottom: 32px; }
+  .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra-400); margin-bottom: 12px; }
+  h1 { font-size: clamp(2rem, 3vw + 1rem, 3rem); margin: 0 0 14px; line-height: 1.1; }
+  h1 em { color: var(--terra-400); font-style: italic; }
+  p.lead { color: var(--ink-500); max-width: 640px; font-size: 1.0625rem; }
+
+  /* Progress */
+  .progress-bar {
+    position: sticky; top: 0;
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 14px 20px;
+    margin: 24px 0 32px;
+    display: flex; align-items: center; gap: 16px;
+    z-index: 10;
+  }
+  .progress-bar .track {
+    flex: 1;
+    height: 8px;
+    background: var(--bone-2);
+    border-radius: 999px;
+    overflow: hidden;
+  }
+  .progress-bar .fill {
+    height: 100%;
+    width: 0%;
+    background: var(--terra-500);
+    border-radius: 999px;
+    transition: width 0.3s;
+  }
+  .progress-bar .count {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--terra-400);
+    white-space: nowrap;
+  }
+
+  /* How-to bar */
+  .howto {
+    background: var(--bone-2);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin-bottom: 32px;
+    font-size: 14px;
+  }
+  .howto strong { color: var(--ink-900); }
+  .howto ol { margin: 8px 0 0; padding-left: 22px; }
+  .howto li { margin-bottom: 4px; line-height: 1.5; }
+  .howto code { font-family: var(--font-mono); font-size: 12.5px; background: var(--bone); padding: 1px 6px; border-radius: 4px; color: var(--terra-400); }
+
+  /* Week section */
+  .week {
+    margin-bottom: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .week-head {
+    background: var(--bone-2);
+    padding: 16px 22px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .week-head .wk {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    background: var(--terra-500);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+  }
+  .week-head h2 { margin: 0; font-family: var(--font-serif); font-size: 1.25rem; }
+  .week-head .days { margin-left: auto; font-size: 12px; color: var(--ink-500); font-style: italic; }
+
+  /* Article block */
+  .article {
+    padding: 20px 22px;
+    border-top: 1px solid var(--line);
+  }
+  .article:first-child { border-top: none; }
+  .article .a-top {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 4px;
+  }
+  .article .day-tag {
+    font-family: var(--font-sans);
+    font-size: 10px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 2px 8px; border-radius: var(--radius-sm);
+  }
+  .article .day-tag.qua { background: rgba(217,101,101,0.12); color: var(--err, #c44545); }
+  .article .day-tag.sex { background: rgba(109,179,94,0.12); color: var(--ok, #4a7a3a); }
+  .article h3 { margin: 0; font-family: var(--font-serif); font-size: 1.125rem; flex: 1; }
+  .article .site { font-size: 11px; color: var(--ink-500); font-family: var(--font-mono); }
+
+  /* Image rows */
+  .imgs { margin-top: 12px; }
+  .img-row {
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .img-row:last-child { border-bottom: none; }
+  .img-row input { width: 18px; height: 18px; accent-color: var(--terra-500); }
+  .img-row .desc { font-size: 13.5px; line-height: 1.4; }
+  .img-row .desc .role { font-family: var(--font-sans); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--terra-400); margin-right: 6px; }
+  .img-row .desc .term { font-family: var(--font-mono); font-size: 12px; color: var(--ink-500); }
+  .img-row .desc .file { font-family: var(--font-mono); font-size: 11px; color: var(--ink-400, #999); }
+  .img-row .go {
+    font-family: var(--font-sans); font-size: 11px; font-weight: 700;
+    color: white; background: var(--terra-500);
+    text-decoration: none; padding: 7px 13px;
+    border-radius: var(--radius-pill); white-space: nowrap;
+    text-transform: uppercase; letter-spacing: 0.04em;
+    transition: background 0.15s;
+  }
+  .img-row .go:hover { background: var(--terra-700); }
+  .img-row input:checked ~ .desc { opacity: 0.45; text-decoration: line-through; }
+
+  /* Summary footer */
+  .summary {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--terra-500);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin-top: 28px;
+    font-size: 14px;
+  }
+  .summary h3 { margin: 0 0 10px; font-size: 1.0625rem; }
+  .summary ul { margin: 0; padding-left: 20px; line-height: 1.6; }
+
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { background: white !important; padding: 0 !important; color: #000 !important; }
+    .wrap { max-width: none; }
+    .progress-bar { position: static; }
+    .week, .article, .summary, .howto { page-break-inside: avoid; }
+    .week, .summary { background: white !important; border: 1px solid #999 !important; }
+    .week-head { background: #f4e3d4 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .week-head .wk, .img-row .go, .day-tag { background: #c4673a !important; color: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    h1 em, .eyebrow, .img-row .desc .role { color: #a8542d !important; }
+    .img-row .go { padding: 4px 8px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Catálogo de imagens · Mês completo</p>
+    <h1>Baixe as imagens do <em>mês inteiro</em> de uma vez.</h1>
+    <p class="lead">
+      8 matérias (2 por semana) · 3 imagens cada · 24 buscas no Pexels já filtradas.
+      Faça tudo numa sentada: clica, baixa, otimiza, salva. O mês inteiro de blog ilustrado.
+    </p>
+  </header>
+
+  <div class="progress-bar">
+    <div class="count" id="count">0 / 24</div>
+    <div class="track"><div class="fill" id="fill"></div></div>
+    <div class="count">baixadas</div>
+  </div>
+
+  <div class="howto">
+    <strong>Como usar este catálogo:</strong>
+    <ol>
+      <li>Para cada linha, clica em <strong>"Pexels →"</strong> → escolhe foto horizontal → <code>Free Download</code> → Medium</li>
+      <li>Otimiza em <code>squoosh.app</code> (WebP 75%, largura 1200px hero / 800px inline)</li>
+      <li>Renomeia pro nome indicado e salva na pasta da matéria</li>
+      <li>Marca o checkbox quando terminar — a barra de progresso atualiza</li>
+    </ol>
+  </div>
+
+  <!-- ============ SEMANA 1 ============ -->
+  <div class="week">
+    <div class="week-head"><span class="wk">Semana 1</span><h2>Carros-chefes: BPC</h2><span class="days">qua + sex</span></div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag qua">Quarta · quente</span><h3>BPC Idoso 2026: como pedir, 7 documentos e armadilhas</h3></div>
+      <div class="site">portaldobpc.com.br/blog/bpc-idoso-2026</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Idosa sorrindo, parede terracota · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/happy%20elderly%20woman/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Documentos na mesa <span class="term">documents on desk</span> · <span class="file">documentos.png</span></span><a class="go" href="https://www.pexels.com/search/documents%20on%20desk/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Filha ajudando mãe idosa <span class="term">adult helping elderly parent</span> · <span class="file">familia-apoio.webp</span></span><a class="go" href="https://www.pexels.com/search/adult%20helping%20elderly%20parent/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag sex">Sexta · evergreen</span><h3>BPC para PCD 2026: guia completo</h3></div>
+      <div class="site">carloscostaprev.com.br/blog/bpc-pcd-2026</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Pessoa em cadeira de rodas sorrindo <span class="term">wheelchair smiling</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/wheelchair%20smiling/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Mãos de apoio, cuidado <span class="term">supporting hands</span> · <span class="file">apoio.webp</span></span><a class="go" href="https://www.pexels.com/search/supporting%20hands/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Criança com deficiência, inclusão <span class="term">disabled child</span> · <span class="file">inclusao.webp</span></span><a class="go" href="https://www.pexels.com/search/disabled%20child/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEMANA 2 ============ -->
+  <div class="week">
+    <div class="week-head"><span class="wk">Semana 2</span><h2>Recurso e perícia</h2><span class="days">qua + sex</span></div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag qua">Quarta · quente</span><h3>INSS negou meu BPC: como recorrer em 2026</h3></div>
+      <div class="site">portaldobpc.com.br/blog/recurso-negativa-bpc</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Idoso(a) pensativo, decidido <span class="term">determined senior</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/determined%20senior/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Carta/envelope, correspondência <span class="term">letter envelope</span> · <span class="file">carta.webp</span></span><a class="go" href="https://www.pexels.com/search/letter%20envelope/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Pessoa no computador, recurso online <span class="term">person laptop home</span> · <span class="file">recurso-online.webp</span></span><a class="go" href="https://www.pexels.com/search/person%20laptop%20home/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag sex">Sexta · evergreen</span><h3>Perícia médica do INSS: o que dizer e o que NÃO dizer</h3></div>
+      <div class="site">carloscostaprev.com.br/blog/pericia-medica-inss</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Médico atendendo paciente <span class="term">doctor patient</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/doctor%20patient/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Consulta/exame médico <span class="term">medical consultation</span> · <span class="file">consulta.webp</span></span><a class="go" href="https://www.pexels.com/search/medical%20consultation/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Estetoscópio, ambiente clínico <span class="term">stethoscope</span> · <span class="file">clinica.webp</span></span><a class="go" href="https://www.pexels.com/search/stethoscope/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEMANA 3 ============ -->
+  <div class="week">
+    <div class="week-head"><span class="wk">Semana 3</span><h2>Incapacidade e CadÚnico</h2><span class="days">qua + sex</span></div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag qua">Quarta · quente</span><h3>Aposentadoria por incapacidade: como pedir em 2026</h3></div>
+      <div class="site">carloscostaprev.com.br/blog/aposentadoria-incapacidade-2026</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Trabalhador maduro descansando <span class="term">tired worker resting</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/tired%20worker%20resting/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Pessoa com dor nas costas <span class="term">back pain</span> · <span class="file">dor.webp</span></span><a class="go" href="https://www.pexels.com/search/back%20pain/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Mão segurando documento médico <span class="term">medical report</span> · <span class="file">laudo.webp</span></span><a class="go" href="https://www.pexels.com/search/medical%20report/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag sex">Sexta · evergreen</span><h3>CadÚnico passo a passo: como inscrever a família</h3></div>
+      <div class="site">portaldobpc.com.br/blog/cadunico-passo-a-passo</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Família brasileira em casa <span class="term">brazilian family home</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/brazilian%20family%20home/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Pessoa preenchendo formulário <span class="term">filling form</span> · <span class="file">formulario.webp</span></span><a class="go" href="https://www.pexels.com/search/filling%20form/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Atendimento balcão/recepção <span class="term">reception desk help</span> · <span class="file">atendimento.webp</span></span><a class="go" href="https://www.pexels.com/search/reception%20desk%20help/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ SEMANA 4 ============ -->
+  <div class="week">
+    <div class="week-head"><span class="wk">Semana 4</span><h2>Auxílio e pensão</h2><span class="days">qua + sex</span></div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag qua">Quarta · quente</span><h3>Auxílio-doença 2026: tudo sobre o auxílio por incapacidade temporária</h3></div>
+      <div class="site">carloscostaprev.com.br/blog/auxilio-doenca-2026</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Pessoa convalescente em casa <span class="term">person recovering home</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/person%20recovering%20home/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Calendário/tempo de espera <span class="term">calendar waiting</span> · <span class="file">prazo.webp</span></span><a class="go" href="https://www.pexels.com/search/calendar%20waiting/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Carteira de trabalho/CLT <span class="term">work documents brazil</span> · <span class="file">carteira.webp</span></span><a class="go" href="https://www.pexels.com/search/work%20documents/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+
+    <div class="article">
+      <div class="a-top"><span class="day-tag sex">Sexta · evergreen</span><h3>Pensão por morte: quem tem direito e como pedir</h3></div>
+      <div class="site">carloscostaprev.com.br/blog/pensao-por-morte-2026</div>
+      <div class="imgs">
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Hero</span> Pessoa serena, luz suave <span class="term">serene woman window</span> · <span class="file">og.png</span></span><a class="go" href="https://www.pexels.com/search/serene%20woman%20window/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Mãos dadas, conforto, apoio <span class="term">holding hands comfort</span> · <span class="file">conforto.webp</span></span><a class="go" href="https://www.pexels.com/search/holding%20hands%20comfort/" target="_blank" rel="noopener">Pexels →</a></label>
+        <label class="img-row"><input type="checkbox"><span class="desc"><span class="role">Inline</span> Documentos e certidões <span class="term">legal documents</span> · <span class="file">certidoes.webp</span></span><a class="go" href="https://www.pexels.com/search/legal%20documents/" target="_blank" rel="noopener">Pexels →</a></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RESUMO ============ -->
+  <div class="summary">
+    <h3>Resumo do mês</h3>
+    <ul>
+      <li><strong>8 matérias</strong> · 2 por semana (quarta quente + sexta evergreen)</li>
+      <li><strong>24 imagens</strong> · 3 por matéria (1 hero + 2 inline)</li>
+      <li><strong>Tempo estimado:</strong> ~90 min pra baixar e otimizar tudo de uma vez</li>
+      <li><strong>Dica:</strong> baixa todas, otimiza em lote no squoosh, e organiza por pasta de matéria. Aí cada semana você só escreve o texto — as imagens já estão prontas.</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  const boxes = document.querySelectorAll('.img-row input[type=checkbox]');
+  const fill = document.getElementById('fill');
+  const count = document.getElementById('count');
+  const KEY = 'pbpc-catalogo-mes';
+  const saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+
+  function update() {
+    const done = [...boxes].filter(b => b.checked).length;
+    const total = boxes.length;
+    fill.style.width = (done / total * 100) + '%';
+    count.textContent = done + ' / ' + total;
+  }
+
+  boxes.forEach((b, i) => {
+    if (saved[i]) b.checked = true;
+    b.addEventListener('change', () => {
+      const state = JSON.parse(localStorage.getItem(KEY) || '{}');
+      state[i] = b.checked;
+      localStorage.setItem(KEY, JSON.stringify(state));
+      update();
+    });
+  });
+  update();
+</script>
+</body>
+</html>

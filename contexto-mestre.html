@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Contexto Mestre — CarlosCostaPrev + Portal do BPC</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+  :root{
+    --terra-500:#c4673a; --terra-700:#a8542d; --terra-50:#fbf2e9; --terra-100:#f4e3d4;
+    --ink:#221913; --ink-2:#4a3a2c; --ink-3:#7a6552;
+    --line:#e3d4c2; --line-2:#d0bca5; --bg:#fffdfa; --bg-soft:#f7efe4;
+    --info:#4a6a8a; --info-bg:#eaf0f5; --olive:#5e7245; --olive-bg:#eef1e6; --err:#b3503f; --err-bg:#f6e7e2;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;font-size:10.5pt;line-height:1.55;color:var(--ink);background:var(--bg);padding-block:clamp(28px,5vw,56px);}
+  .wrap{max-width:840px;margin-inline:auto;padding-inline:clamp(18px,5vw,32px);}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+  em{font-style:italic;color:var(--terra-700);}
+  p{margin:0 0 12px;}
+  .eyebrow{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra-700);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+  .eyebrow::before{content:"✦";}
+  .doc-head{margin-bottom:36px;}
+  .doc-head h1{font-size:28pt;line-height:1.05;font-weight:600;margin-bottom:14px;}
+  .doc-head .lead{font-size:12pt;line-height:1.5;color:var(--ink-2);max-width:62ch;}
+  .doc-head .meta-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+  .chip{font-size:8.5pt;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--terra-50);color:var(--terra-700);border:1px solid var(--line-2);}
+
+  section.block{margin-bottom:40px;}
+  .sec-head{border-top:2px solid var(--ink);padding-top:14px;margin-bottom:18px;}
+  .sec-head .id{font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;background:var(--ink);color:var(--bg);padding:3px 9px;border-radius:4px;margin-right:10px;}
+  .sec-head h2{display:inline;font-size:18pt;font-weight:600;}
+  h3.minor{font-family:'Inter',sans-serif;font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--terra-700);margin:22px 0 10px;}
+
+  .box{border:1px solid var(--line-2);border-radius:10px;padding:14px 18px;margin:14px 0;background:var(--bg-soft);}
+  .box.accent{border-left:4px solid var(--terra-500);}
+  .box.err{background:var(--err-bg);border-color:#e6c3ba;border-left:4px solid var(--err);}
+  .box.olive{background:var(--olive-bg);border-color:#cdd6bd;border-left:4px solid var(--olive);}
+  .box .label{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;display:block;margin-bottom:7px;color:var(--terra-700);}
+  .box.err .label{color:var(--err);} .box.olive .label{color:var(--olive);}
+  .box p:last-child{margin-bottom:0;}
+
+  ul.clean{margin:8px 0;padding-left:20px;} ul.clean li{margin-bottom:6px;line-height:1.5;}
+  dl.kv{margin:10px 0;display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:10pt;}
+  @media(max-width:560px){dl.kv{grid-template-columns:1fr;gap:2px 0;}dl.kv dd{margin-bottom:8px;}}
+  dl.kv dt{font-weight:600;color:var(--ink-3);}
+  dl.kv dd{margin:0;}
+
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:9.5pt;}
+  th,td{padding:8px 11px;border:1px solid var(--line-2);text-align:left;vertical-align:top;}
+  th{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--ink);color:var(--bg);}
+  tr:nth-child(even) td{background:var(--bg-soft);}
+  td .doc{font-weight:600;color:var(--ink);}
+  code.inl{font-family:'JetBrains Mono',monospace;font-size:9pt;background:var(--terra-50);color:var(--terra-700);padding:1px 6px;border-radius:4px;}
+
+  .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+  @media(max-width:600px){.grid-2{grid-template-columns:1fr;}}
+  .card{border:1px solid var(--line);border-radius:10px;padding:13px 16px;background:#fff;}
+  .card h4{font-family:'Fraunces',serif;font-size:12pt;font-weight:600;margin-bottom:4px;}
+  .card .tag{font-family:'Inter',sans-serif;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--terra-700);display:block;margin-bottom:4px;}
+  .card p{font-size:9.3pt;color:var(--ink-2);margin:0;}
+
+  .swatches{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+  .sw{width:62px;text-align:center;font-size:7.5pt;color:var(--ink-3);}
+  .sw .chipc{height:40px;border-radius:8px;border:1px solid var(--line-2);margin-bottom:4px;}
+
+  .closing{margin-top:36px;padding-top:20px;border-top:2px solid var(--ink);font-size:10pt;color:var(--ink-2);font-style:italic;}
+
+  @media print{ @page{size:A4;margin:13mm;} body{padding:0;background:#fff;} .wrap{max-width:none;padding:0;} .no-print{display:none!important;} section.block,.box,.card,table,.grid-2{page-break-inside:avoid;} .sec-head .id,.box,th,tr:nth-child(even) td,.swatches .chipc{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+  .print-btn{position:fixed;bottom:22px;right:22px;z-index:50;background:var(--terra-500);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+  .print-btn:hover{background:var(--terra-700);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="eyebrow">Documento mestre · fonte da verdade · Junho 2026</p>
+    <h1>Contexto do projeto: <em>CarlosCostaPrev + Portal do BPC</em>.</h1>
+    <p class="lead">Tudo num lugar só: quem é quem, os limites legais, a marca, os canais, o sistema de marketing e os documentos já produzidos. Leve este arquivo pra qualquer sessão nova ou pro Claude Code — ele põe qualquer um a par do projeto em 5 minutos.</p>
+    <div class="meta-row">
+      <span class="chip">Ecossistema digital</span>
+      <span class="chip">Posicionamento legal</span>
+      <span class="chip">Marca & tokens</span>
+      <span class="chip">Sistema de conteúdo</span>
+      <span class="chip">Entregáveis</span>
+    </div>
+  </header>
+
+  <!-- 01 · QUEM É QUEM -->
+  <section class="block">
+    <div class="sec-head"><span class="id">01</span><h2>Quem é quem & estrutura</h2></div>
+    <div class="grid-2">
+      <div class="card"><span class="tag">Front administrativo</span><h4>Carlos Rogério Costa</h4><p>Sócio-fundador. <strong>Bacharel em Direito, sem OAB.</strong> Atua no administrativo (INSS, requerimentos, recursos, procurações). É o rosto da comunicação.</p></div>
+      <div class="card"><span class="tag">Front judicial</span><h4>Alexandre Del Rio</h4><p>Sócio com <strong>OAB ativa</strong>. Cuida do contencioso (casos que viram ação judicial). Por enquanto, não mencionar nominalmente nos materiais.</p></div>
+    </div>
+    <div class="box accent">
+      <span class="label">Por que o escritório pode dizer "Advocacia"</span>
+      <p>O Estatuto da OAB exige ao menos 1 sócio com OAB pra operar como advocacia. Como o Alexandre tem, o <strong>"CarlosCostaPrev — Escritório de Advocacia Previdenciária"</strong> é legítimo. A pessoa jurídica comunica advocacia; a pessoa física Carlos, não.</p>
+    </div>
+  </section>
+
+  <!-- 02 · LIMITES LEGAIS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">02</span><h2>Limites legais (regra inquebrável)</h2></div>
+    <div class="box err">
+      <span class="label">⚖️ O que NUNCA fazer</span>
+      <ul class="clean" style="margin-top:4px;">
+        <li>Chamar Carlos de <strong>"advogado", "Dr." ou associar OAB a ele</strong> (exercício ilegal da profissão — crime).</li>
+        <li>Usar categoria "Advogado/Advogada" em perfis pessoais (use "Serviços de Consultoria").</li>
+        <li><strong>Prometer resultado</strong> ("garantimos que você ganha"). Diga "analisamos e conduzimos seu caso".</li>
+        <li>Verbos privativos atribuídos ao Carlos: "assinar petição", "impetrar", "defender em juízo".</li>
+      </ul>
+    </div>
+    <div class="box olive">
+      <span class="label">✓ O que PODE</span>
+      <p>Carlos = <strong>"especialista em previdência administrativa"</strong>, "consultor previdenciário", "sócio-fundador", "bacharel em Direito". O <strong>escritório</strong> = advocacia previdenciária (sustentada pelo sócio com OAB), inclusive "ação judicial previdenciária" como serviço. Procuração para representação administrativa é serviço legítimo do Carlos (Lei 8.213/91, art. 109).</p>
+    </div>
+  </section>
+
+  <!-- 03 · MARCA -->
+  <section class="block">
+    <div class="sec-head"><span class="id">03</span><h2>Marca & tokens visuais</h2></div>
+    <dl class="kv">
+      <dt>Cor primária</dt><dd>Terracota <code class="inl">#c4673a</code> (terra-500)</dd>
+      <dt>Tipografia</dt><dd>Fraunces (serif, títulos) + Inter (sans, corpo)</dd>
+      <dt>Tema</dt><dd>Warm dark no site; warm light/print nos documentos</dd>
+      <dt>Assinatura</dt><dd>Itálico em terracota dentro de títulos; eyebrow com ✦; grid sutil de fundo</dd>
+      <dt>Logo</dt><dd>Monograma CC (dourado / navy / creme) — arquivos em <code class="inl">deploy/assets/</code></dd>
+    </dl>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#c4673a;"></div>terra-500</div>
+      <div class="sw"><div class="chipc" style="background:#a8542d;"></div>terra-700</div>
+      <div class="sw"><div class="chipc" style="background:#14100c;"></div>cream(dark)</div>
+      <div class="sw"><div class="chipc" style="background:#5e7245;"></div>olive</div>
+      <div class="sw"><div class="chipc" style="background:#f4e3d4;"></div>terra-100</div>
+    </div>
+    <div class="box">
+      <span class="label">Tom de voz (4 pilares)</span>
+      <p><strong>Acolhedor</strong> ("você não está sozinho") · <strong>Provocador</strong> ("o INSS te negou injustamente?") · <strong>Esperançoso</strong> ("você tem direito sim") · <strong>Direto</strong> ("leva esses 5 documentos"). Sempre "você", nunca "o segurado". Sem juridiquês.</p>
+    </div>
+  </section>
+
+  <!-- 04 · CANAIS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">04</span><h2>Canais & públicos</h2></div>
+    <table>
+      <thead><tr><th>Canal</th><th>Papel</th><th>Público</th></tr></thead>
+      <tbody>
+        <tr><td class="doc">@portaldobpc</td><td>Autoridade em BPC/LOAS, idoso 65+, PCD. Tom popular.</td><td>P1, P2, P3, P6</td></tr>
+        <tr><td class="doc">@carloscostaprev</td><td>Previdência geral, incapacidade, perícia, negativa. Tom técnico-humano.</td><td>P4, P5, P6</td></tr>
+        <tr><td class="doc">Facebook (1 página)</td><td>Público 55+ e grupos de bairro. Texto mais longo.</td><td>P1, P2</td></tr>
+        <tr><td class="doc">2 sites (SEO/GEO)</td><td>portaldobpc.com.br + carloscostaprev.com.br. Blog + páginas-pilar.</td><td>Busca</td></tr>
+        <tr><td class="doc">Google Meu Negócio</td><td>Busca local Irajá/RJ. 5,0★. 1 post/semana + reviews.</td><td>Local</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:9.3pt;color:var(--ink-3);"><strong>Personas:</strong> P1 idoso 65+ · P2 família do idoso · P3 PCD/família · P4 auxílio &gt;1 ano · P5 multiplicador (saúde) · P6 indeferido. <strong>Carros-chefe:</strong> BPC, aposentadoria por incapacidade, auxílio por incapacidade.</p>
+  </section>
+
+  <!-- 05 · SISTEMA DE CONTEÚDO -->
+  <section class="block">
+    <div class="sec-head"><span class="id">05</span><h2>O sistema de conteúdo</h2></div>
+    <h3 class="minor">Ritmo diário (2 posts/dia)</h3>
+    <p><strong>Manhã (8h–9h) = Autoridade & Educação</strong> (carrossel, checklist, mito vs verdade). <strong>Tarde (18h–19h) = Conexão & Emoção</strong> (história real, dor/sentimento, pergunta). Quarta = dia do blog. Domingo = produção em lote. Stories diários.</p>
+    <h3 class="minor">6 colunas editoriais</h3>
+    <p style="font-size:9.8pt;">01 Você tem direito · 02 Checklist prático · 03 Mito vs Verdade · 04 História real · 05 Alerta/bastidor · 06 Pergunta da semana.</p>
+    <h3 class="minor">4 alavancas de persuasão</h3>
+    <p style="font-size:9.8pt;"><strong>Dor</strong> (espelha a ferida) · <strong>Urgência</strong> (cada mês conta) · <strong>Necessidade</strong> (é seu, você precisa) · <strong>Curiosidade</strong> (o que o sistema não conta). Arco de todo post: <strong>dor → verdade/direito → esperança + 1 CTA</strong>. Inimigo comum = o sistema que não explica os direitos (nunca a pessoa). Diferencial = <strong>especialista, não generalista</strong>.</p>
+  </section>
+
+  <!-- 06 · COLABORAÇÃO ENTRE AGENTES -->
+  <section class="block">
+    <div class="sec-head"><span class="id">06</span><h2>Colaboração Claude Design × Claude Code</h2></div>
+    <p><strong>Claude Design</strong> (conteúdo, copy, visual) entrega; <strong>Claude Code</strong> (automação, deploy, integração) consome e publica; <strong>Nike</strong> faz a ponte. Definições fechadas:</p>
+    <ul class="clean">
+      <li><strong>Entrega:</strong> JSON estruturado por post (id, data, turno, conta, formato, gancho, legenda, slides, cta, hashtags, grupo_fb, versao_grupo) + HTML pra humano aprovar.</li>
+      <li><strong>Blog→Social:</strong> roteamento por site; carro-chefe vai pras duas contas.</li>
+      <li><strong>Cross-mention:</strong> 1×/semana, sempre na quinta.</li>
+      <li><strong>Grupos:</strong> campo <code class="inl">versao_grupo</code> sem hashtag, informal; distribuição manual assistida (sem disparo automático).</li>
+      <li><strong>Visual:</strong> Claude Design gera; Claude Code agenda no Meta Business Suite.</li>
+      <li><strong>Calendário:</strong> template fixo, conteúdo dinâmico; JSON do mês entregue todo dia 25.</li>
+      <li><strong>Em aberto:</strong> lista real de grupos (Nike/Carlos levantam).</li>
+    </ul>
+  </section>
+
+  <!-- 07 · DOCUMENTOS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">07</span><h2>Documentos já produzidos</h2></div>
+    <table>
+      <thead><tr><th>Arquivo</th><th>O que é</th></tr></thead>
+      <tbody>
+        <tr><td class="doc">plano-editorial-30-dias.html</td><td>Calendário de junho — 60 posts (2/dia) com gancho, copy, CTA, hashtags + playbook de grupos + pipeline de blog/guias + fluxo de batch.</td></tr>
+        <tr><td class="doc">playbook-persuasao.html</td><td>As 4 alavancas (dor/urgência/necessidade/curiosidade), inimigo comum, especialista × generalista, com bancos de ganchos.</td></tr>
+        <tr><td class="doc">plano-marketing-carloscostaprev-pb.html</td><td>Plano estratégico mestre (posicionamento, canais, 20 patologias, KPIs, roadmap 90 dias).</td></tr>
+        <tr><td class="doc">resumo-posicionamento-legal.html</td><td>Documento de posicionamento legal (o que pode / não pode comunicar).</td></tr>
+        <tr><td class="doc">respostas-claude-code.html</td><td>As 7 respostas técnicas pro Claude Code (schema JSON + regras de integração).</td></tr>
+        <tr><td class="doc">deploy/ (site)</td><td>Portal do BPC: home, BPC idoso/deficiente/estrangeiro, perícias, blog.</td></tr>
+      </tbody>
+    </table>
+    <div class="box accent">
+      <span class="label">Próximos passos sugeridos</span>
+      <p>1) Reescrever os 60 posts aplicando as alavancas (cada um marcado). 2) Transformar a Semana 1 em carrosséis prontos no estilo da marca. 3) Levantar a lista de grupos. 4) Gerar o JSON dos 60 posts pro Claude Code. 5) Produzir o lead magnet #1 (Checklist BPC Idoso 2026).</p>
+    </div>
+  </section>
+
+  <p class="closing">
+    Fonte da verdade v1 — atualize quando algo mudar (entrada do Alexandre nos materiais, nova lista de grupos, virada de mês).
+    Tudo o que foi conversado e construído está condensado aqui. <strong>Pode levar.</strong>
+  </p>
+
+</div>
+<button class="print-btn no-print" onclick="window.print()">⬇ Salvar como PDF</button>
+</body>
+</html>

@@ -19,7 +19,11 @@ function App() {
   }, []);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Força scroll instantâneo (sem animação suave) ao trocar de tela
+    document.documentElement.style.scrollBehavior = 'auto';
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    requestAnimationFrame(() => { document.documentElement.style.scrollBehavior = ''; });
     // Dynamic <title> for SEO (also helps shareable links until SSR is in place)
     const base = 'Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência';
     if (screen === 'patologia' && patologia) {

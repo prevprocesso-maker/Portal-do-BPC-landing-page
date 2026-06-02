@@ -1,0 +1,1400 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Plano Editorial 30 Dias — CarlosCostaPrev + Portal do BPC</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+
+  :root {
+    --terra-500: #c4673a;
+    --terra-700: #a8542d;
+    --terra-100: #f4e3d4;
+    --terra-50:  #fbf2e9;
+    --ink:    #221913;
+    --ink-2:  #4a3a2c;
+    --ink-3:  #7a6552;
+    --line:   #e3d4c2;
+    --line-2: #d0bca5;
+    --bg:     #fffdfa;
+    --bg-soft:#f7efe4;
+    --olive:  #5e7245;
+    --olive-bg:#eef1e6;
+    --info:   #4a6a8a;
+    --info-bg:#eaf0f5;
+    --wa:     #1a8c5a;
+    --wa-bg:  #e7f4ec;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.55;
+    color: var(--ink);
+    background: var(--bg);
+    padding-block: clamp(28px, 5vw, 56px);
+  }
+  .wrap { max-width: 860px; margin-inline: auto; padding-inline: clamp(18px, 5vw, 32px); }
+
+  h1, h2, h3, h4 { font-family: 'Fraunces', Georgia, serif; letter-spacing: -0.015em; margin: 0; color: var(--ink); }
+  em { font-style: italic; color: var(--terra-700); }
+
+  /* HEADER */
+  .doc-head { margin-bottom: 40px; }
+  .eyebrow {
+    font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra-700);
+    display: inline-flex; align-items: center; gap: 8px; margin-bottom: 16px;
+  }
+  .eyebrow::before { content: "✦"; }
+  .doc-head h1 { font-size: 30pt; line-height: 1.04; font-weight: 600; margin-bottom: 14px; }
+  .doc-head .lead { font-size: 12.5pt; line-height: 1.5; color: var(--ink-2); max-width: 60ch; }
+  .doc-head .meta-row {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px;
+  }
+  .chip {
+    font-size: 8.5pt; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+    background: var(--terra-50); color: var(--terra-700); border: 1px solid var(--line-2);
+  }
+
+  /* SECTION HEADERS */
+  section.block { margin-bottom: 44px; }
+  .sec-head { border-top: 2px solid var(--ink); padding-top: 16px; margin-bottom: 20px; }
+  .sec-head .id {
+    font-family: 'Inter', sans-serif; font-size: 9pt; font-weight: 700;
+    background: var(--ink); color: var(--bg); padding: 3px 9px; border-radius: 4px; margin-right: 10px;
+  }
+  .sec-head h2 { display: inline; font-size: 19pt; font-weight: 600; }
+  .sec-head .sub { font-family: 'Inter', sans-serif; font-size: 10.5pt; color: var(--ink-3); margin-top: 10px; }
+
+  h3.minor {
+    font-family: 'Inter', sans-serif; font-size: 10pt; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.07em; color: var(--terra-700);
+    margin: 26px 0 12px;
+  }
+
+  p { margin: 0 0 12px; }
+  .intro-p { font-size: 11pt; color: var(--ink-2); font-style: italic; margin-bottom: 18px; }
+
+  /* CALLOUT BOX */
+  .box {
+    border: 1px solid var(--line-2); border-radius: 10px; padding: 16px 20px; margin: 16px 0;
+    background: var(--bg-soft);
+  }
+  .box.accent { border-left: 4px solid var(--terra-500); }
+  .box.olive { background: var(--olive-bg); border-color: #cdd6bd; border-left: 4px solid var(--olive); }
+  .box.info { background: var(--info-bg); border-color: #cdd9e4; border-left: 4px solid var(--info); }
+  .box .label {
+    font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.09em; display: block; margin-bottom: 7px; color: var(--terra-700);
+  }
+  .box.olive .label { color: var(--olive); }
+  .box.info .label { color: var(--info); }
+  .box p:last-child { margin-bottom: 0; }
+
+  /* GRIDS */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 14px 0; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 14px 0; }
+  @media (max-width: 640px) { .grid-2, .grid-3 { grid-template-columns: 1fr; } }
+
+  .card {
+    border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: #fff;
+    page-break-inside: avoid;
+  }
+  .card .tag {
+    font-family: 'Inter', sans-serif; font-size: 8pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--terra-700); display: block; margin-bottom: 5px;
+  }
+  .card h4 { font-family: 'Fraunces', serif; font-size: 12pt; font-weight: 600; margin-bottom: 5px; }
+  .card p { font-size: 9.5pt; line-height: 1.45; color: var(--ink-2); margin: 0; }
+
+  /* RHYTHM TWO-COL */
+  .rhythm { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; }
+  @media (max-width: 640px) { .rhythm { grid-template-columns: 1fr; } }
+  .rhythm > div { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+  .rhythm .rh-top { padding: 12px 16px; color: #fff; }
+  .rhythm .manha .rh-top { background: var(--terra-700); }
+  .rhythm .tarde .rh-top { background: var(--ink); }
+  .rhythm .rh-top .t { font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+  .rhythm .rh-top .h { font-family: 'Fraunces', serif; font-size: 14pt; font-weight: 600; margin-top: 2px; }
+  .rhythm .rh-body { padding: 14px 16px; font-size: 9.8pt; }
+  .rhythm .rh-body ul { margin: 8px 0 0; padding-left: 18px; }
+  .rhythm .rh-body li { margin-bottom: 4px; }
+
+  /* WEEK HEADER */
+  .week-head {
+    background: var(--ink); color: var(--bg); border-radius: 12px; padding: 18px 22px;
+    margin: 34px 0 18px; page-break-inside: avoid; page-break-after: avoid;
+  }
+  .week-head .wk { font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--terra-300, #e0b388); }
+  .week-head h3 { color: #fff; font-size: 17pt; font-weight: 600; margin: 4px 0 6px; }
+  .week-head p { color: #d9cbbd; font-size: 10pt; margin: 0; opacity: 0.9; }
+
+  /* DAY BLOCK */
+  .day { margin-bottom: 16px; page-break-inside: avoid; }
+  .day-label {
+    display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px;
+    border-bottom: 1px solid var(--line); padding-bottom: 6px;
+  }
+  .day-label .dnum { font-family: 'Fraunces', serif; font-size: 15pt; font-weight: 700; color: var(--terra-700); }
+  .day-label .dwk { font-family: 'Inter', sans-serif; font-size: 9pt; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--ink-3); }
+  .day-label .dnote { font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 600; color: var(--terra-700); background: var(--terra-50); padding: 2px 9px; border-radius: 999px; margin-left: auto; }
+
+  /* POST CARD */
+  .posts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 680px) { .posts { grid-template-columns: 1fr; } }
+  .post {
+    border: 1px solid var(--line); border-radius: 10px; padding: 0; overflow: hidden;
+    background: #fff; page-break-inside: avoid; display: flex; flex-direction: column;
+  }
+  .post .p-head {
+    display: flex; align-items: center; gap: 6px; padding: 8px 12px;
+    border-bottom: 1px solid var(--line); flex-wrap: wrap;
+  }
+  .post.am .p-head { background: var(--terra-50); }
+  .post.pm .p-head { background: var(--bg-soft); }
+  .p-time { font-family: 'Inter', sans-serif; font-size: 7.5pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; padding: 2px 7px; border-radius: 4px; }
+  .post.am .p-time { background: var(--terra-700); }
+  .post.pm .p-time { background: var(--ink); }
+  .p-meta { font-family: 'Inter', sans-serif; font-size: 8pt; font-weight: 600; color: var(--ink-3); }
+  .p-fmt { font-family: 'Inter', sans-serif; font-size: 7.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--terra-700); margin-left: auto; }
+  .p-body { padding: 11px 13px; flex: 1; }
+  .p-hook { font-family: 'Fraunces', serif; font-size: 11.5pt; font-weight: 600; line-height: 1.25; color: var(--ink); margin-bottom: 7px; }
+  .p-copy { font-size: 9pt; line-height: 1.5; color: var(--ink-2); margin-bottom: 8px; }
+  .p-copy strong { color: var(--ink); }
+  .p-slides { font-size: 8.7pt; line-height: 1.5; color: var(--ink-2); margin: 0 0 8px; padding-left: 16px; }
+  .p-slides li { margin-bottom: 2px; }
+  .p-cta {
+    font-size: 8.5pt; font-weight: 600; color: var(--wa); background: var(--wa-bg);
+    border-radius: 6px; padding: 6px 10px; margin-bottom: 7px; display: flex; gap: 6px; align-items: baseline;
+  }
+  .p-cta .ico { font-weight: 700; }
+  .p-tags { font-family: 'Inter', sans-serif; font-size: 7.8pt; color: var(--ink-3); line-height: 1.4; }
+  .p-persona { font-family: 'Inter', sans-serif; font-size: 7.5pt; font-weight: 600; color: var(--olive); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 6px; }
+
+  /* TABLE */
+  table { width: 100%; border-collapse: collapse; margin: 14px 0; font-size: 9.5pt; }
+  th, td { padding: 8px 11px; border: 1px solid var(--line-2); text-align: left; vertical-align: top; }
+  th { font-family: 'Inter', sans-serif; font-size: 8.5pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; background: var(--ink); color: var(--bg); }
+  tr:nth-child(even) td { background: var(--bg-soft); }
+
+  ul.clean { margin: 10px 0; padding-left: 20px; }
+  ul.clean li { margin-bottom: 6px; line-height: 1.5; }
+
+  .step-list { counter-reset: step; list-style: none; padding: 0; margin: 14px 0; }
+  .step-list li {
+    position: relative; padding: 10px 0 10px 44px; border-bottom: 1px dashed var(--line-2);
+    counter-increment: step; line-height: 1.5; font-size: 10pt;
+  }
+  .step-list li:last-child { border-bottom: none; }
+  .step-list li::before {
+    content: counter(step); position: absolute; left: 0; top: 9px;
+    width: 28px; height: 28px; border-radius: 50%; background: var(--terra-500); color: #fff;
+    font-family: 'Inter', sans-serif; font-weight: 700; font-size: 11pt;
+    display: grid; place-items: center;
+  }
+  .step-list li strong { color: var(--ink); }
+
+  .hashbank { background: var(--bg-soft); border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; margin: 10px 0; page-break-inside: avoid; }
+  .hashbank h4 { font-family: 'Inter', sans-serif; font-size: 9pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--terra-700); margin-bottom: 6px; }
+  .hashbank code { font-family: 'Inter', sans-serif; font-size: 9pt; color: var(--ink-2); line-height: 1.7; display: block; }
+
+  .closing { margin-top: 40px; padding-top: 22px; border-top: 2px solid var(--ink); font-size: 10pt; color: var(--ink-2); font-style: italic; }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 12mm; }
+    body { padding: 0; font-size: 9.5pt; background: #fff; }
+    .wrap { max-width: none; padding: 0; }
+    .no-print { display: none !important; }
+    section.block, .day, .post, .card, .week-head, .box, .hashbank, .rhythm > div { page-break-inside: avoid; }
+    .week-head { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .p-time, .week-head, th, .step-list li::before, .sec-head .id { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .post.am .p-head, .post.pm .p-head, .box, .hashbank, tr:nth-child(even) td { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+
+  .print-btn {
+    position: fixed; bottom: 22px; right: 22px; z-index: 50;
+    background: var(--terra-500); color: #fff; border: none; border-radius: 999px;
+    padding: 13px 22px; font-family: 'Inter', sans-serif; font-size: 11pt; font-weight: 600;
+    cursor: pointer; box-shadow: 0 6px 20px rgba(196,103,58,0.4);
+  }
+  .print-btn:hover { background: var(--terra-700); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ====================== HEADER ====================== -->
+  <header class="doc-head">
+    <p class="eyebrow">Plano editorial · Junho 2026 · v1</p>
+    <h1>30 dias de conteúdo que <em>cria autoridade e traz clientes</em>.</h1>
+    <p class="lead">
+      Calendário completo de <strong>2 posts por dia</strong> (manhã e tarde) para os dois Instagrams,
+      Facebook e grupos de bairro — com gancho, legenda, CTA e hashtags prontos. Mais o playbook de
+      grupos do Facebook, o pipeline de blog/guias e o fluxo de produção em lote. Pare de ter mil ideias
+      soltas: a partir daqui, é só executar.
+    </p>
+    <div class="meta-row">
+      <span class="chip">60 posts escritos</span>
+      <span class="chip">2 Instagrams + Facebook</span>
+      <span class="chip">Grupos de bairro</span>
+      <span class="chip">Blog + guias</span>
+      <span class="chip">Pronto pra PDF</span>
+    </div>
+  </header>
+
+  <!-- ====================== 01 · COMO USAR ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">01</span><h2>Como usar este plano</h2>
+      <p class="sub">Leia uma vez. Depois é rotina — você nunca mais olha pra uma tela em branco sem saber o que postar.</p>
+    </div>
+
+    <ol class="step-list">
+      <li><strong>Produza em lote no domingo.</strong> Não crie post no dia. Separe 3–4h no domingo, grave os reels e monte os carrosséis da semana inteira de uma vez. O plano já diz o que é cada um.</li>
+      <li><strong>Agende tudo no Meta Business Suite.</strong> Os dois Instagrams + Facebook saem do mesmo painel, de graça. Programe manhã (8h–9h) e tarde (18h–19h).</li>
+      <li><strong>Replique nos grupos de bairro.</strong> Os posts marcados com <span style="color:var(--terra-700);font-weight:600;">▶ GRUPO FB</span> são feitos pra colar (adaptados) nos grupos de Facebook do seu raio de atendimento. Veja a seção 06.</li>
+      <li><strong>Responda toda DM e comentário.</strong> O conteúdo abre a porta; a conversa fecha o cliente. Sempre 1 CTA por post — quase sempre o WhatsApp.</li>
+      <li><strong>No fim do mês, recalibre.</strong> Veja o que teve mais salvamento e compartilhamento (não curtida) e repita o formato vencedor.</li>
+    </ol>
+
+    <div class="box accent">
+      <span class="label">Regra de ouro do tom</span>
+      <p>Toda peça toca numa <strong>dor real</strong> (medo, cansaço, negativa, solidão do idoso) — mas <strong>sempre termina em esperança e num próximo passo concreto</strong>. A gente acolhe, não assusta. E lembre: Carlos é <strong>especialista em previdência administrativa</strong> — nunca "advogado", "Dr." ou OAB. Nunca prometa resultado ("garantimos que você ganha"); diga "vamos analisar o seu caso".</p>
+    </div>
+  </section>
+
+  <!-- ====================== 02 · O RITMO DIÁRIO ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">02</span><h2>O ritmo de 2 posts por dia</h2>
+      <p class="sub">Manhã e tarde têm papéis diferentes. Juntas, formam um dia que educa E emociona.</p>
+    </div>
+
+    <div class="rhythm">
+      <div class="manha">
+        <div class="rh-top"><div class="t">Manhã · 8h–9h</div><div class="h">Autoridade & Educação</div></div>
+        <div class="rh-body">
+          A pessoa acorda, pega o INSS na cabeça. Você entrega <strong>clareza</strong>: o que é o direito, qual documento levar, o mito que derruba.
+          <ul>
+            <li>Carrossel "Você tem direito"</li>
+            <li>Checklist salvável</li>
+            <li>Mito vs Verdade</li>
+            <li>Reel didático curto</li>
+          </ul>
+          <em style="color:var(--ink-3);font-size:8.5pt;">Objetivo: ser salvo e compartilhado. Vira autoridade e SEO.</em>
+        </div>
+      </div>
+      <div class="tarde">
+        <div class="rh-top"><div class="t">Tarde · 18h–19h</div><div class="h">Conexão & Emoção</div></div>
+        <div class="rh-body">
+          No fim do dia a pessoa relaxa e sente. Você entrega <strong>identificação</strong>: a história, a dor que ela vive, a pergunta que ela quer responder.
+          <ul>
+            <li>História real (com permissão)</li>
+            <li>Post de dor / sentimento</li>
+            <li>Pergunta da semana</li>
+            <li>Bastidor / alerta de golpe</li>
+          </ul>
+          <em style="color:var(--ink-3);font-size:8.5pt;">Objetivo: gerar comentário e DM. Vira conversa e cliente.</em>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="minor">As duas contas — quem fala o quê</h3>
+    <div class="grid-2">
+      <div class="card">
+        <span class="tag">@portaldobpc</span>
+        <h4>BPC, idoso 65+ e PCD</h4>
+        <p>Tom popular e quente. Foco em quem nunca contribuiu, família do idoso, pessoa com deficiência. É a casa do BPC/LOAS.</p>
+      </div>
+      <div class="card">
+        <span class="tag">@carloscostaprev</span>
+        <h4>Previdência geral & incapacidade</h4>
+        <p>Tom profissional e humano. Auxílio-doença, aposentadoria por incapacidade, revisão, negativa do INSS, perícia.</p>
+      </div>
+    </div>
+    <div class="box info">
+      <span class="label">Facebook + grupos de bairro</span>
+      <p>O Facebook recebe os <strong>mesmos posts</strong> (texto um pouco mais longo). Os marcados <strong>▶ GRUPO FB</strong> você adapta e cola em grupos de aposentados, idosos e bairros do seu raio (Irajá e região). É onde mora seu público mais maduro — e é de graça.</p>
+    </div>
+  </section>
+
+  <!-- ====================== 03 · CALENDÁRIO ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">03</span><h2>Calendário de 30 dias</h2>
+      <p class="sub">Junho/2026. Cada dia: 1 post de manhã (educa) + 1 de tarde (emociona). Gancho, copy, CTA e hashtags prontos.</p>
+    </div>
+
+    <!-- ============ SEMANA 1 ============ -->
+    <div class="week-head">
+      <div class="wk">Semana 1 · 1 a 7 de junho</div>
+      <h3>"Você tem direito" — abrindo os olhos</h3>
+      <p>Tema da semana: consciência. Muita gente tem direito e não sabe. Foco em BPC idoso e PCD.</p>
+    </div>
+
+    <!-- DIA 1 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">01</span><span class="dwk">Segunda-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Sua mãe tem mais de 65 anos e nunca contribuiu pro INSS? Ela ainda pode receber 1 salário por mês."</div>
+            <ul class="p-slides">
+              <li>1 · O gancho (capa)</li>
+              <li>2 · Isso se chama BPC/LOAS</li>
+              <li>3 · Não precisa nunca ter trabalhado registrado</li>
+              <li>4 · Quem tem direito (65+ e renda baixa)</li>
+              <li>5 · Quanto é (1 salário mínimo/mês)</li>
+              <li>6 · Por onde começa</li>
+              <li>7 · CTA: fale com a gente</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Manda no WhatsApp que a gente analisa o caso da sua mãe."</div>
+            <div class="p-tags">#BPC #BPCLOAS #INSS #DireitosDoIdoso #Irajá</div>
+            <div class="p-persona">Persona: família do idoso (P2)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Ela trabalhou a vida inteira dentro de casa. Por que ninguém nunca disse que ela tinha direito?"</div>
+            <p class="p-copy">Texto que valida a dona de casa, a avó, a mãe que cuidou de todos. <strong>O BPC existe pra quem o sistema esqueceu.</strong> Termina dizendo: você não precisa entender de lei pra começar — a gente explica do seu jeito.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca alguém que merece saber disso."</div>
+            <div class="p-tags">#PessoaIdosa #BPC #Cuidado #Família</div>
+            <div class="p-persona">Persona: idoso 65+ (P1)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 2 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">02</span><span class="dwk">Terça-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Reel didático</span></div>
+          <div class="p-body">
+            <div class="p-hook">"MITO: 'Se eu nunca paguei INSS, não tenho direito a nada.' Errado — e eu te explico em 40 segundos."</div>
+            <p class="p-copy">Reel voz off mostrando a diferença entre <strong>benefício que exige contribuição</strong> (aposentadoria) e <strong>benefício assistencial</strong> (BPC, não exige). Encerra com "compartilha com quem acha que não tem direito".</p>
+            <div class="p-cta"><span class="ico">→</span> "Salva esse vídeo e manda pra quem precisa ouvir isso."</div>
+            <div class="p-tags">#MitoVsVerdade #INSS #Previdência #BPC #AuxílioDoença</div>
+            <div class="p-persona">Persona: indeferido / em dúvida (P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Pergunta (caixinha)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"O INSS já te negou alguma vez? Conta aqui embaixo por qual motivo eles disseram não."</div>
+            <p class="p-copy">Post de engajamento puro + caixinha de perguntas nos stories. Cada resposta vira insumo pra próximo conteúdo <strong>e</strong> uma possível conversa no direct.</p>
+            <div class="p-cta"><span class="ico">→</span> "Comenta o motivo — eu respondo um por um."</div>
+            <div class="p-tags">#INSS #NegativaINSS #Recurso #Previdência</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 3 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">03</span><span class="dwk">Quarta-feira</span><span class="dnote">Dia do blog</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel (checklist)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"5 documentos pra dar entrada no BPC do Idoso (e 1 erro que faz o INSS negar na hora)."</div>
+            <ul class="p-slides">
+              <li>1 · Capa com a promessa</li>
+              <li>2–6 · Os 5 documentos, um por slide</li>
+              <li>7 · O erro: CadÚnico desatualizado</li>
+              <li>8 · CTA + link do artigo no blog</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Salva pra não esquecer + leia o guia completo no link da bio."</div>
+            <div class="p-tags">#Checklist #BPC #DocumentosINSS #CadÚnico #BPCIdoso</div>
+            <div class="p-persona">Persona: família (P2) · puxa pro blog</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"'Achei que era golpe.' É o que mais ouço de quem nunca pediu o BPC. Não é. É um direito previsto em lei."</div>
+            <p class="p-copy">Quebra a desconfiança do idoso (que tem medo de golpe). Explica que o BPC está na <strong>LOAS, Lei 8.742/93</strong>. Tom de quem acalma. Ideal pra colar em grupo de bairro.</p>
+            <div class="p-cta"><span class="ico">→</span> "Tá na dúvida se é real? Manda mensagem que a gente te mostra a lei."</div>
+            <div class="p-tags">#BPC #LOAS #DireitoDoIdoso #SemGolpe</div>
+            <div class="p-persona">Persona: idoso desconfiado (P1)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 4 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">04</span><span class="dwk">Quinta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Auxílio-doença há mais de 1 ano? Você talvez já tenha direito à aposentadoria por incapacidade — e ninguém te avisou."</div>
+            <ul class="p-slides">
+              <li>1 · O gancho</li>
+              <li>2 · A diferença: temporário vs permanente</li>
+              <li>3 · Quando o auxílio "vira" aposentadoria</li>
+              <li>4 · O que a perícia avalia</li>
+              <li>5 · Por que vale revisar agora</li>
+              <li>6 · CTA</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Recebe auxílio há mais de 1 ano? Manda mensagem pra revisar seu caso."</div>
+            <div class="p-tags">#AuxílioDoença #AposentadoriaPorIncapacidade #INSS #Perícia</div>
+            <div class="p-persona">Persona: auxílio longo (P4)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">História real</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Seu Antônio recebia auxílio há 2 anos, com medo de perder. Hoje tem a aposentadoria que era dele por direito."</div>
+            <p class="p-copy">Case real (com permissão, sem prometer resultado a terceiros). Antes: insegurança, perícia atrás de perícia. Depois: estabilidade. <strong>Foco no sentimento de alívio</strong>, não no valor.</p>
+            <div class="p-cta"><span class="ico">→</span> "Sua história pode ser a próxima. Chama no WhatsApp."</div>
+            <div class="p-tags">#HistóriaReal #AposentadoriaPorIncapacidade #INSS</div>
+            <div class="p-persona">Persona: auxílio longo (P4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 5 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">05</span><span class="dwk">Sexta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"BPC para pessoa com deficiência: não importa a idade. Importa a barreira que a deficiência cria no dia a dia."</div>
+            <p class="p-copy">Reel didático explicando o conceito de <strong>impedimento de longo prazo</strong> (2+ anos) e que criança também tem direito. Desfaz o mito de "só idoso recebe BPC".</p>
+            <div class="p-cta"><span class="ico">→</span> "Tem alguém com deficiência na família? Manda mensagem."</div>
+            <div class="p-tags">#BPCDeficiente #PCD #BPC #Inclusão #LOAS</div>
+            <div class="p-persona">Persona: PCD / família (P3)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Mãe de criança autista: você não está pedindo favor. Você está buscando um direito do seu filho."</div>
+            <p class="p-copy">Post emocional dirigido às mães atípicas — o público que mais sente culpa e cansaço. Valida a luta, tira o peso de "estou pedindo demais". Altíssimo compartilhamento em grupos.</p>
+            <div class="p-cta"><span class="ico">→</span> "Compartilha com uma mãe que precisa ler isso hoje."</div>
+            <div class="p-tags">#Autismo #TEA #BPC #MãeAtípica #PCD</div>
+            <div class="p-persona">Persona: PCD / família (P3)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 6 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">06</span><span class="dwk">Sábado</span><span class="dnote">Leve</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Os 2 IGs (stories)</span><span class="p-fmt">Enquete</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Você sabia que o BPC não desconta nada do seu salário, porque não é aposentadoria?" — Sim / Não fazia ideia</div>
+            <p class="p-copy">Story de enquete simples pra engajar no fim de semana e medir conhecimento do público. Resultado vira gancho de post na semana seguinte.</p>
+            <div class="p-cta"><span class="ico">→</span> "Responde a enquete aí em cima 👆"</div>
+            <div class="p-tags">Stories · sem hashtag</div>
+            <div class="p-persona">Todos os públicos</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Frase / card</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Direito que você não conhece é direito que você não usa. Sábado é dia de descansar — segunda a gente continua te informando."</div>
+            <p class="p-copy">Card de marca, leve, reforça posicionamento ("a gente te informa"). Humaniza e mantém presença sem exigir produção pesada no sábado.</p>
+            <div class="p-cta"><span class="ico">→</span> "Segue pra não perder os próximos."</div>
+            <div class="p-tags">#Previdência #DireitosSociais #INSS</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 7 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">07</span><span class="dwk">Domingo</span><span class="dnote">Produção em lote</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Interno (sem post)</span><span class="p-fmt">Bastidor opcional</span></div>
+          <div class="p-body">
+            <div class="p-hook">Dia de gravar e montar a Semana 2 inteira. (Opcional: 1 story de bastidor "montando o conteúdo da semana pra vocês".)</div>
+            <p class="p-copy">Grave os 3–4 reels da semana, monte os carrosséis, agende tudo no Meta Business Suite. 80% da semana sai daqui.</p>
+            <div class="p-cta"><span class="ico">→</span> Sem CTA — dia de bastidor.</div>
+            <div class="p-tags">—</div>
+            <div class="p-persona">Rotina interna</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">Facebook</span><span class="p-fmt">Recap da semana</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Resumo da semana: tudo o que você precisa saber pra começar a pedir o BPC. Salva esse post."</div>
+            <p class="p-copy">Post longo de Facebook (formato que o público 55+ lê) reunindo os 3 melhores conteúdos da semana num só lugar. Ótimo pra grupos.</p>
+            <div class="p-cta"><span class="ico">→</span> "Ficou com dúvida em algo? Comenta que eu respondo."</div>
+            <div class="p-tags">#BPC #INSS #Resumo</div>
+            <div class="p-persona">Público Facebook 55+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SEMANA 2 ============ -->
+    <div class="week-head">
+      <div class="wk">Semana 2 · 8 a 14 de junho</div>
+      <h3>"A perícia sem medo" — o que mais trava a pessoa</h3>
+      <p>Tema da semana: desmistificar a perícia médica e social. É o maior medo de quem pede benefício. Puxa os guias.</p>
+    </div>
+
+    <!-- DIA 8 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">08</span><span class="dwk">Segunda-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Perícia médica do INSS: 7 coisas que você NÃO pode esquecer de levar (a nº 4 derruba a maioria)."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2–8 · Os 7 itens: laudos recentes, exames, receitas, relatório do médico, histórico, RG/CPF, lista de remédios</li>
+              <li>9 · CTA + guia completo</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Tem perícia marcada? Manda mensagem que a gente te prepara."</div>
+            <div class="p-tags">#PeríciaINSS #PeríciaMédica #INSS #AuxílioDoença</div>
+            <div class="p-persona">Persona: auxílio / PCD (P3, P4)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"O medo de errar na perícia é tão grande que muita gente desiste antes de tentar. Você não precisa enfrentar isso sozinho(a)."</div>
+            <p class="p-copy">Valida o medo (frio na barriga, sensação de estar sendo julgado) e oferece preparo. <strong>Dor → acolhimento → próximo passo.</strong></p>
+            <div class="p-cta"><span class="ico">→</span> "Conta nos comentários: já fez perícia? Como foi?"</div>
+            <div class="p-tags">#PeríciaINSS #Ansiedade #INSS #Direitos</div>
+            <div class="p-persona">Persona: auxílio longo (P4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 9 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">09</span><span class="dwk">Terça-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Existe a perícia MÉDICA e a avaliação SOCIAL. No BPC do deficiente, as duas contam. Você sabia da segunda?"</div>
+            <p class="p-copy">Reel explicando a <strong>avaliação social</strong> do BPC PCD (assistente social avalia barreiras no dia a dia). Quase ninguém fala disso — autoridade instantânea.</p>
+            <div class="p-cta"><span class="ico">→</span> "Salva — você vai precisar disso na hora da avaliação."</div>
+            <div class="p-tags">#AvaliaçãoSocial #BPCDeficiente #PCD #INSS #Perícia</div>
+            <div class="p-persona">Persona: PCD / família (P3)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Mito vs Verdade</span></div>
+          <div class="p-body">
+            <div class="p-hook">"MITO: 'Se eu me arrumar bem pra perícia, mostro que tô bem.' VERDADE: a perícia avalia a sua realidade — seja honesto sobre suas limitações."</div>
+            <p class="p-copy">Corrige um erro comum e perigoso. Ensina a relatar o dia difícil, não o melhor dia. Conteúdo prático que vira salvamento.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca alguém que tem perícia chegando."</div>
+            <div class="p-tags">#PeríciaINSS #MitoVsVerdade #Dicas #INSS</div>
+            <div class="p-persona">Persona: PCD / auxílio (P3, P4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 10 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">10</span><span class="dwk">Quarta-feira</span><span class="dnote">Dia do blog</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel (checklist)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Como se preparar pra avaliação social do BPC: o roteiro que o assistente social vai querer ouvir."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2 · O que é avaliada (moradia, renda, rotina, apoio)</li>
+              <li>3–6 · Como descrever cada barreira do dia a dia</li>
+              <li>7 · O que ter em mãos</li>
+              <li>8 · CTA + guia no blog</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Guia completo no link da bio. Dúvida? Chama no WhatsApp."</div>
+            <div class="p-tags">#AvaliaçãoSocial #BPC #Checklist #PCD</div>
+            <div class="p-persona">Persona: PCD / família (P3) · puxa pro blog</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">História real</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Dona Cláudia chegou tremendo na perícia. Saiu sabendo que tinha feito tudo certo — porque foi preparada antes."</div>
+            <p class="p-copy">Case sobre o valor do preparo. O herói é o preparo, não a sorte. Mostra que a diferença entre travar e passar muitas vezes é orientação.</p>
+            <div class="p-cta"><span class="ico">→</span> "Quer chegar preparado(a) também? Manda mensagem."</div>
+            <div class="p-tags">#HistóriaReal #PeríciaINSS #INSS</div>
+            <div class="p-persona">Persona: auxílio / PCD (P3, P4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 11 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">11</span><span class="dwk">Quinta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Sua perícia foi remarcada de novo? Veja o que fazer pra não perder o benefício na espera."</div>
+            <ul class="p-slides">
+              <li>1 · Capa (a dor da espera)</li>
+              <li>2 · Por que remarca tanto</li>
+              <li>3 · Seus direitos durante a espera</li>
+              <li>4 · Quando dá pra cobrar/recorrer</li>
+              <li>5 · CTA</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Tá há meses esperando? Manda mensagem pra entender suas opções."</div>
+            <div class="p-tags">#PeríciaINSS #FilaINSS #AuxílioDoença #Direitos</div>
+            <div class="p-persona">Persona: auxílio longo (P4)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Esperar pelo INSS dói no bolso e na alma. Cada mês de espera é uma conta que não para de chegar."</div>
+            <p class="p-copy">Toca na dor financeira e emocional da fila. Empatia real com quem está sem renda. Termina mostrando que existe caminho pra acelerar/recorrer.</p>
+            <div class="p-cta"><span class="ico">→</span> "Compartilha com quem tá nessa espera."</div>
+            <div class="p-tags">#FilaINSS #INSS #AuxílioDoença #Justiça</div>
+            <div class="p-persona">Persona: auxílio longo (P4)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 12 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">12</span><span class="dwk">Sexta-feira</span><span class="dnote">Dia dos Namorados</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Post sazonal</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Dia dos Namorados. Cuidar de quem a gente ama também é garantir o direito dele. Sua mãe, seu pai, seu companheiro têm direito ao BPC?"</div>
+            <p class="p-copy">Conecta a data ao tema de cuidado. Amor = cuidado prático. Suave, sem forçar venda, mas planta a semente.</p>
+            <div class="p-cta"><span class="ico">→</span> "Hoje, cuide de quem você ama: descubra se ele(a) tem direito. Chama no WhatsApp."</div>
+            <div class="p-tags">#DiaDosNamorados #Cuidado #BPC #Família</div>
+            <div class="p-persona">Persona: família (P2)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Pergunta (caixinha)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Pensão por morte: quem perdeu o companheiro(a) tem direito. Você sabe quem na sua família poderia receber?"</div>
+            <p class="p-copy">Aproveita a data pra introduzir pensão por morte com delicadeza. Caixinha pra dúvidas. Tema sensível, tom respeitoso.</p>
+            <div class="p-cta"><span class="ico">→</span> "Dúvida sobre pensão? Pergunta na caixinha dos stories."</div>
+            <div class="p-tags">#PensãoPorMorte #INSS #Previdência #Direitos</div>
+            <div class="p-persona">Persona: família (P2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 13 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">13</span><span class="dwk">Sábado</span><span class="dnote">Leve · Santo Antônio</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Os 2 IGs (stories)</span><span class="p-fmt">Bastidor / festa junina</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Arraiá chegando! 🌽 Enquanto a quentão esquenta, bora tirar uma dúvida rápida sobre o INSS?"</div>
+            <p class="p-copy">Story leve e regional aproveitando o clima junino. Humaniza a marca. Caixinha de dúvida rápida no fim.</p>
+            <div class="p-cta"><span class="ico">→</span> "Manda sua dúvida na caixinha 👆"</div>
+            <div class="p-tags">Stories · sem hashtag</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Frase / card</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Nas festas de junho, a família se reúne. Aproveita pra perguntar: 'Vó, a senhora já ouviu falar do BPC?'"</div>
+            <p class="p-copy">Card que transforma o encontro familiar junino em gatilho de conversa sobre direito do idoso. Inteligente e afetivo.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca quem vai ver a vó esse mês."</div>
+            <div class="p-tags">#FestaJunina #BPC #Família #Idoso</div>
+            <div class="p-persona">Persona: família (P2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 14 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">14</span><span class="dwk">Domingo</span><span class="dnote">Produção em lote</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Interno (sem post)</span><span class="p-fmt">Batch Semana 3</span></div>
+          <div class="p-body">
+            <div class="p-hook">Gravar e montar a Semana 3 (tema: "Quando o INSS nega"). Atenção: 15/06 é o Dia de Conscientização da Violência contra a Pessoa Idosa — prepare o post âncora.</div>
+            <p class="p-copy">Grave reels, monte carrosséis, agende. Separe o post especial do dia 15.</p>
+            <div class="p-cta"><span class="ico">→</span> Sem CTA — bastidor.</div>
+            <div class="p-tags">—</div>
+            <div class="p-persona">Rotina interna</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">Facebook</span><span class="p-fmt">Recap da semana</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Tudo sobre a perícia do INSS num só lugar: médica, social, espera e preparo. Salva e compartilha."</div>
+            <p class="p-copy">Post-resumo longo da semana da perícia. Reúne os melhores conteúdos. Excelente material pra grupos de bairro.</p>
+            <div class="p-cta"><span class="ico">→</span> "Tem perícia marcada? Comenta a data que eu te dou uma dica."</div>
+            <div class="p-tags">#PeríciaINSS #INSS #Resumo</div>
+            <div class="p-persona">Público Facebook 55+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SEMANA 3 ============ -->
+    <div class="week-head">
+      <div class="wk">Semana 3 · 15 a 21 de junho</div>
+      <h3>"Quando o INSS nega" — não desista</h3>
+      <p>Tema da semana: a negativa não é o fim. Recurso, revisão, próximos passos. Dia 15: conscientização sobre a pessoa idosa.</p>
+    </div>
+
+    <!-- DIA 15 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">15</span><span class="dwk">Segunda-feira</span><span class="dnote">Dia da Pessoa Idosa</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Carrossel (data)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Hoje é o Dia Mundial de Conscientização da Violência contra a Pessoa Idosa. Negar um direito também é uma forma de violência."</div>
+            <ul class="p-slides">
+              <li>1 · A data e seu peso</li>
+              <li>2 · Tipos de violência (inclui negligência de direitos)</li>
+              <li>3 · O direito ao BPC como proteção</li>
+              <li>4 · Sinais de que um idoso precisa de ajuda</li>
+              <li>5 · Como agir / a quem recorrer</li>
+              <li>6 · CTA acolhedor</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Conhece um idoso que precisa de ajuda com o INSS? A gente orienta. Chama no WhatsApp."</div>
+            <div class="p-tags">#DiaDaPessoaIdosa #BPC #DireitosDoIdoso #15Junho</div>
+            <div class="p-persona">Persona: idoso + família (P1, P2)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Post emocional</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Tem idoso que aceita o 'não' do INSS calado, achando que não merece insistir. Merece sim. Sempre mereceu."</div>
+            <p class="p-copy">Post forte sobre a resignação do idoso. Devolve dignidade e o direito de lutar. Ligado ao tema do dia. Alto compartilhamento.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca alguém que precisa parar de aceitar 'não' calado."</div>
+            <div class="p-tags">#PessoaIdosa #BPC #Dignidade #INSS</div>
+            <div class="p-persona">Persona: idoso (P1)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 16 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">16</span><span class="dwk">Terça-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"O INSS te negou? Calma — a negativa tem prazo de recurso. E na maioria dos casos, ainda dá pra reverter."</div>
+            <p class="p-copy">Reel explicando que <strong>indeferimento não é fim</strong>: existe recurso administrativo e via judicial (pelo escritório). Acende a esperança de quem desistiu.</p>
+            <div class="p-cta"><span class="ico">→</span> "Recebeu negativa? Manda print no WhatsApp que a gente analisa."</div>
+            <div class="p-tags">#NegativaINSS #RecursoINSS #INSS #Direitos</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">História real</span></div>
+          <div class="p-body">
+            <div class="p-hook">"'Já tinha desistido.' Foi o que a Dona Rosa disse quando o INSS negou. Hoje ela recebe o benefício que era dela."</div>
+            <p class="p-copy">Case de reversão de negativa. O sentimento central: voltar a ter esperança depois de desistir. Sem prometer resultado — narra um caso real concluído.</p>
+            <div class="p-cta"><span class="ico">→</span> "Foi negado? Não desista antes de conversar com a gente."</div>
+            <div class="p-tags">#HistóriaReal #NegativaINSS #INSS #Recurso</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 17 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">17</span><span class="dwk">Quarta-feira</span><span class="dnote">Dia do blog</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Carrossel (checklist)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"10 motivos pelos quais o INSS nega o auxílio-doença (e como evitar cada um)."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2–11 · Um motivo por slide (falta de documento, perícia mal feita, falta de qualidade de segurado, etc.)</li>
+              <li>12 · CTA + guia no blog</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Guia completo no link da bio. Foi negado por um desses? Chama no WhatsApp."</div>
+            <div class="p-tags">#NegativaINSS #AuxílioDoença #Checklist #INSS</div>
+            <div class="p-persona">Persona: indeferido (P6) · puxa pro blog</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Mito vs Verdade</span></div>
+          <div class="p-body">
+            <div class="p-hook">"MITO: 'Se o INSS negou, é porque eu não tenho direito.' VERDADE: muita negativa é por erro de documento — não por falta de direito."</div>
+            <p class="p-copy">Quebra a crença que faz a pessoa desistir. Reposiciona a negativa como obstáculo técnico, não sentença. Forte em grupos.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca alguém que recebeu 'não' e acha que acabou."</div>
+            <div class="p-tags">#MitoVsVerdade #NegativaINSS #BPC #INSS</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 18 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">18</span><span class="dwk">Quinta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"BPC negado por causa da renda da família? Entenda a regra do 1/4 do salário mínimo — e as exceções que mudam tudo."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2 · A regra do 1/4 por pessoa</li>
+              <li>3 · O que entra (e o que NÃO entra) no cálculo</li>
+              <li>4 · Exceções: gastos com saúde, deficiência</li>
+              <li>5 · CTA</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Acha que sua renda passou? Manda mensagem — pode ter exceção no seu caso."</div>
+            <div class="p-tags">#BPC #RendaPerCapita #LOAS #INSS</div>
+            <div class="p-persona">Persona: indeferido por renda (P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Receber um 'não' do INSS depois de meses esperando parece um soco. Respira. Esse não pode ser o começo do recurso, não o fim."</div>
+            <p class="p-copy">Acolhe a frustração emocional da negativa e reposiciona como início de uma nova etapa. Empático e mobilizador.</p>
+            <div class="p-cta"><span class="ico">→</span> "Comenta 'EU' se você já levou um não do INSS."</div>
+            <div class="p-tags">#NegativaINSS #Recurso #INSS #NãoDesista</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 19 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">19</span><span class="dwk">Sexta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Recurso administrativo x ação judicial: quando cada um resolve o seu caso. Em 50 segundos."</div>
+            <p class="p-copy">Reel didático sobre os dois caminhos após a negativa. Posiciona o escritório (ação judicial pelo sócio com OAB) e o trabalho administrativo. Autoridade técnica acessível.</p>
+            <div class="p-cta"><span class="ico">→</span> "Não sabe qual é o seu caso? Manda mensagem que a gente avalia."</div>
+            <div class="p-tags">#RecursoINSS #AçãoJudicial #INSS #Previdência</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Você não precisa entender de lei. Esse é o nosso trabalho. O seu é não desistir do que é seu por direito."</div>
+            <p class="p-copy">Frase de posicionamento que tira o peso técnico do ombro da pessoa. Divide o fardo: você confia, a gente cuida. Ótima pra grupos.</p>
+            <div class="p-cta"><span class="ico">→</span> "Salva e manda pra quem tá perdido no INSS."</div>
+            <div class="p-tags">#INSS #BPC #Previdência #Confiança</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 20 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">20</span><span class="dwk">Sábado</span><span class="dnote">Leve</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Os 2 IGs (stories)</span><span class="p-fmt">Enquete</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Você ou alguém da sua família já teve um benefício negado pelo INSS?" — Sim / Não / Tô tentando agora</div>
+            <p class="p-copy">Enquete que segmenta a audiência e abre conversas no direct com quem responde "tô tentando agora".</p>
+            <div class="p-cta"><span class="ico">→</span> "Respondeu 'tentando agora'? Me chama no direct."</div>
+            <div class="p-tags">Stories · sem hashtag</div>
+            <div class="p-persona">Persona: indeferido (P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Frase / card</span></div>
+          <div class="p-body">
+            <div class="p-hook">"'Não' do INSS não é ponto final. É vírgula. A frase continua — e a gente escreve o resto com você."</div>
+            <p class="p-copy">Card de marca que fecha a semana do "não desista" com uma metáfora forte e memorável.</p>
+            <div class="p-cta"><span class="ico">→</span> "Segue pra não perder o conteúdo de segunda."</div>
+            <div class="p-tags">#NãoDesista #INSS #Previdência</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 21 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">21</span><span class="dwk">Domingo</span><span class="dnote">Produção em lote</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Interno (sem post)</span><span class="p-fmt">Batch Semana 4</span></div>
+          <div class="p-body">
+            <div class="p-hook">Gravar e montar a Semana 4 (tema: "Histórias que viram esperança" + fechamento do mês com lead magnet).</div>
+            <p class="p-copy">Separe os depoimentos de clientes (com permissão por escrito) e finalize o lead magnet "Checklist BPC Idoso 2026" pra lançar na semana.</p>
+            <div class="p-cta"><span class="ico">→</span> Sem CTA — bastidor.</div>
+            <div class="p-tags">—</div>
+            <div class="p-persona">Rotina interna</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">Facebook</span><span class="p-fmt">Recap da semana</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Foi negado pelo INSS? Esse resumo reúne tudo o que você precisa saber pra recorrer. Salva agora."</div>
+            <p class="p-copy">Post-resumo da semana da negativa/recurso. Conteúdo de altíssimo valor pra grupos de pessoas que receberam indeferimento.</p>
+            <div class="p-cta"><span class="ico">→</span> "Recebeu negativa? Comenta que eu te oriento o primeiro passo."</div>
+            <div class="p-tags">#NegativaINSS #Recurso #Resumo</div>
+            <div class="p-persona">Público Facebook 55+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ SEMANA 4 ============ -->
+    <div class="week-head">
+      <div class="wk">Semana 4 · 22 a 28 de junho</div>
+      <h3>"Histórias que viram esperança" — prova e fechamento</h3>
+      <p>Tema da semana: prova social e conversão. Casos reais, lançamento do checklist gratuito (lead magnet) e CTAs mais diretos.</p>
+    </div>
+
+    <!-- DIA 22 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">22</span><span class="dwk">Segunda-feira</span><span class="dnote">Lança o checklist grátis</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel (lead magnet)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Fiz um guia gratuito: 'Checklist BPC Idoso 2026 — 5 documentos e 3 armadilhas'. É só pedir no direct."</div>
+            <ul class="p-slides">
+              <li>1 · Capa do guia</li>
+              <li>2 · O que tem dentro</li>
+              <li>3 · Pra quem é</li>
+              <li>4 · Prévia de 1 dica valiosa</li>
+              <li>5 · Como receber (comenta "QUERO")</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Comenta 'QUERO' que eu te mando o guia no direct, de graça."</div>
+            <div class="p-tags">#BPC #GuiaGratuito #Checklist #BPCIdoso</div>
+            <div class="p-persona">Persona: família (P2) · captura de lead</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc + ▶ GRUPO FB</span><span class="p-fmt">História real</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Dona Maria, 67 anos, recebeu o BPC depois de 4 meses. A primeira coisa que fez foi comprar os remédios que faltavam."</div>
+            <p class="p-copy">Case humano e concreto. O benefício como dignidade no dia a dia — não número. O detalhe dos remédios emociona e é real.</p>
+            <div class="p-cta"><span class="ico">→</span> "Quer começar o seu pedido? Manda mensagem."</div>
+            <div class="p-tags">#HistóriaReal #BPC #BPCIdoso #Dignidade</div>
+            <div class="p-persona">Persona: idoso + família (P1, P2)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 23 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">23</span><span class="dwk">Terça-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"3 sinais de que está na hora de buscar ajuda especializada pro seu caso no INSS (e parar de tentar sozinho)."</div>
+            <p class="p-copy">Reel que ajuda a pessoa a perceber quando o "faça você mesmo" virou prejuízo. Posiciona o valor da orientação especializada sem desmerecer quem tenta sozinho.</p>
+            <div class="p-cta"><span class="ico">→</span> "Se identificou com algum sinal? Manda mensagem."</div>
+            <div class="p-tags">#INSS #AjudaEspecializada #Previdência #BPC</div>
+            <div class="p-persona">Persona: indeferido / auxílio (P4, P6)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Pergunta (caixinha)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Qual a sua maior dúvida sobre o INSS hoje? Pergunta sem vergonha — não existe pergunta boba aqui."</div>
+            <p class="p-copy">Caixinha de dúvidas aberta. Gera insumo + abre conversas. Tom acolhedor que derruba a barreira do "vão achar que sou burro(a)".</p>
+            <div class="p-cta"><span class="ico">→</span> "Manda sua dúvida na caixinha 👆 eu respondo todas."</div>
+            <div class="p-tags">#INSS #DúvidasINSS #Previdência</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 24 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">24</span><span class="dwk">Quarta-feira</span><span class="dnote">São João · Dia do blog</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Carrossel (checklist)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Como pedir o BPC do zero, em 6 passos — o roteiro completo pra quem nunca mexeu com o INSS."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2 · Atualizar o CadÚnico</li>
+              <li>3 · Reunir documentos</li>
+              <li>4 · Fazer o requerimento (Meu INSS)</li>
+              <li>5 · A perícia/avaliação</li>
+              <li>6 · Acompanhar o resultado</li>
+              <li>7 · CTA + guia no blog</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Passo a passo completo no link da bio. Travou em algum passo? Chama no WhatsApp."</div>
+            <div class="p-tags">#BPC #PassoAPasso #MeuINSS #Checklist</div>
+            <div class="p-persona">Persona: família (P2) · puxa pro blog</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Post sazonal</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Que São João aqueça também o coração de quem cuida. Pra todo mundo que segura a barra de um idoso ou de uma pessoa com deficiência: a gente vê você."</div>
+            <p class="p-copy">Post afetivo de São João dedicado aos cuidadores. Reconhecimento puro, sem venda. Constrói marca e conexão.</p>
+            <div class="p-cta"><span class="ico">→</span> "Marca um cuidador que merece esse reconhecimento."</div>
+            <div class="p-tags">#SãoJoão #Cuidadores #BPC #PCD</div>
+            <div class="p-persona">Persona: família / cuidador (P2, P5)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 25 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">25</span><span class="dwk">Quinta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Carrossel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Profissionais da saúde: vocês são, muitas vezes, os primeiros a perceber que um paciente tem direito a um benefício."</div>
+            <ul class="p-slides">
+              <li>1 · Capa (fala com médico/fisio/assistente social)</li>
+              <li>2 · O papel do laudo bem feito</li>
+              <li>3 · Como orientar o paciente sem se comprometer</li>
+              <li>4 · Quando encaminhar pra um especialista</li>
+              <li>5 · CTA de parceria</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "É da saúde e quer ser parceiro de indicação? Manda mensagem."</div>
+            <div class="p-tags">#ProfissionaisDaSaúde #INSS #Laudo #Parceria</div>
+            <div class="p-persona">Persona: multiplicador (P5)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev + ▶ GRUPO FB</span><span class="p-fmt">História real</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Foi a fisioterapeuta da Dona Lúcia que disse: 'você devia ver seus direitos'. Hoje a Dona Lúcia tem o auxílio dela."</div>
+            <p class="p-copy">Case que mostra o poder da indicação de um profissional da saúde. Reforça o público multiplicador e dá prova social.</p>
+            <div class="p-cta"><span class="ico">→</span> "Alguém te indicou esse perfil? Conta nos comentários quem foi."</div>
+            <div class="p-tags">#HistóriaReal #Indicação #INSS #AuxílioDoença</div>
+            <div class="p-persona">Persona: multiplicador (P5)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 26 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">26</span><span class="dwk">Sexta-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Reel</span></div>
+          <div class="p-body">
+            <div class="p-hook">"⚠️ Golpe: ninguém precisa pagar 'taxa adiantada' pra liberar BPC. O pedido no Meu INSS é gratuito. Não caia nessa."</div>
+            <p class="p-copy">Reel de alerta de golpe — conteúdo de altíssima utilidade e compartilhamento, protege o público vulnerável e posiciona como fonte confiável.</p>
+            <div class="p-cta"><span class="ico">→</span> "Compartilha com os idosos da sua família pra protegê-los."</div>
+            <div class="p-tags">#AlertaGolpe #BPC #INSS #ProteçãoAoIdoso</div>
+            <div class="p-persona">Persona: idoso + família (P1, P2)</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev + ▶ GRUPO FB</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"A gente já viu de perto a alegria de quem recebe a primeira parcela. É por isso que a gente faz o que faz."</div>
+            <p class="p-copy">Post de propósito/bastidor emocional. Mostra o "porquê" do escritório. Conecta valores e humaniza antes do fim de semana.</p>
+            <div class="p-cta"><span class="ico">→</span> "Quer que a sua vez chegue? Manda mensagem hoje."</div>
+            <div class="p-tags">#Propósito #INSS #BPC #Previdência</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 27 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">27</span><span class="dwk">Sábado</span><span class="dnote">Leve</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Os 2 IGs (stories)</span><span class="p-fmt">Enquete / quiz</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Mini quiz: o BPC é uma aposentadoria?" — Sim / Não. (Resposta: não! É benefício assistencial.)</div>
+            <p class="p-copy">Quiz rápido que educa brincando e mede conhecimento. Sequência de stories com a resposta explicada.</p>
+            <div class="p-cta"><span class="ico">→</span> "Acertou? Manda 🎉 na caixinha."</div>
+            <div class="p-tags">Stories · sem hashtag</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Frase / card</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Todo mundo merece envelhecer com dignidade. E dignidade, às vezes, começa com 1 salário no fim do mês."</div>
+            <p class="p-copy">Card de marca que sintetiza a missão. Fecha a semana com emoção e propósito.</p>
+            <div class="p-cta"><span class="ico">→</span> "Concorda? Compartilha."</div>
+            <div class="p-tags">#Dignidade #BPC #PessoaIdosa</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 28 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">28</span><span class="dwk">Domingo</span><span class="dnote">Produção em lote</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">Interno (sem post)</span><span class="p-fmt">Batch + análise</span></div>
+          <div class="p-body">
+            <div class="p-hook">Última batelada do mês + primeira análise de métricas. Veja qual post teve mais salvamento e compartilhamento — esse formato repete em julho.</div>
+            <p class="p-copy">Grave os 2 posts de fechamento (dias 29–30) e abra o Instagram Insights / Meta para anotar os 3 vencedores.</p>
+            <div class="p-cta"><span class="ico">→</span> Sem CTA — bastidor + análise.</div>
+            <div class="p-tags">—</div>
+            <div class="p-persona">Rotina interna</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">Facebook</span><span class="p-fmt">Recap da semana</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Histórias reais de quem conquistou seu benefício neste mês. Se eles conseguiram, você também pode começar."</div>
+            <p class="p-copy">Post-resumo com os cases da semana. Prova social concentrada. Excelente pra recircular em grupos.</p>
+            <div class="p-cta"><span class="ico">→</span> "Quer começar o seu? Comenta 'COMEÇAR'."</div>
+            <div class="p-tags">#HistóriasReais #BPC #INSS #Resumo</div>
+            <div class="p-persona">Público Facebook 55+</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ DIAS 29-30 ============ -->
+    <div class="week-head">
+      <div class="wk">Fechamento · 29 e 30 de junho</div>
+      <h3>Consolidação do mês</h3>
+      <p>Recapitular, agradecer e preparar a virada pra julho. Transforma seguidor em comunidade.</p>
+    </div>
+
+    <!-- DIA 29 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">29</span><span class="dwk">Segunda-feira</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc + @carloscostaprev</span><span class="p-fmt">Carrossel (recap)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Os 5 conteúdos mais salvos de junho — caso você tenha perdido algum. Salva tudo de novo."</div>
+            <ul class="p-slides">
+              <li>1 · Capa</li>
+              <li>2–6 · Os 5 temas campeões do mês (com o print de cada)</li>
+              <li>7 · CTA: o que você quer ver em julho?</li>
+            </ul>
+            <div class="p-cta"><span class="ico">→</span> "Comenta qual tema você quer que eu aprofunde em julho."</div>
+            <div class="p-tags">#Recap #BPC #INSS #Junho</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev</span><span class="p-fmt">Post imagem</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Obrigado por cada dúvida, cada comentário, cada 'me ajuda'. Esse perfil existe pra isso: pra você não enfrentar o INSS sozinho(a)."</div>
+            <p class="p-copy">Post de gratidão e comunidade. Fortalece o vínculo, convida quem ainda não falou a mandar a primeira mensagem.</p>
+            <div class="p-cta"><span class="ico">→</span> "Ainda não falou com a gente? Esse é o convite. Chama no WhatsApp."</div>
+            <div class="p-tags">#Comunidade #INSS #Previdência #Obrigado</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DIA 30 -->
+    <div class="day">
+      <div class="day-label"><span class="dnum">30</span><span class="dwk">Terça-feira</span><span class="dnote">Vira o mês</span></div>
+      <div class="posts">
+        <div class="post am">
+          <div class="p-head"><span class="p-time">Manhã</span><span class="p-meta">@portaldobpc</span><span class="p-fmt">Pergunta (caixinha)</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Última pergunta de junho: qual benefício você quer entender de uma vez por todas em julho?"</div>
+            <p class="p-copy">Caixinha de planejamento que entrega ao público o poder de escolher a pauta — e te dá um mês inteiro de temas validados pela própria audiência.</p>
+            <div class="p-cta"><span class="ico">→</span> "Manda o tema na caixinha 👆 julho é por sua conta."</div>
+            <div class="p-tags">Stories + post · #INSS #BPC</div>
+            <div class="p-persona">Todos</div>
+          </div>
+        </div>
+        <div class="post pm">
+          <div class="p-head"><span class="p-time">Tarde</span><span class="p-meta">@carloscostaprev + ▶ GRUPO FB</span><span class="p-fmt">Frase / card</span></div>
+          <div class="p-body">
+            <div class="p-hook">"Junho acabou, mas seu direito não tem prazo de validade. Quando estiver pronto(a), a gente está aqui."</div>
+            <p class="p-copy">Card de fechamento do mês: sem pressa, sem pressão, porta sempre aberta. Reforça confiança e prepara julho.</p>
+            <div class="p-cta"><span class="ico">→</span> "Salva esse perfil e volta quando precisar."</div>
+            <div class="p-tags">#INSS #BPC #Previdência #Direitos</div>
+            <div class="p-persona">Branding / todos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================== 04 · GRUPOS DE FACEBOOK ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">04</span><h2>Playbook de grupos de Facebook por bairro</h2>
+      <p class="sub">É onde mora seu público mais maduro (55+) e mais carente de informação. É de graça. E quase nenhum concorrente faz direito.</p>
+    </div>
+
+    <p class="intro-p">A lógica é simples: você não entra pra vender. Entra pra <strong>ajudar de graça</strong> e virar "a pessoa que entende de INSS" do grupo. A venda vem sozinha, no direct.</p>
+
+    <h3 class="minor">Onde entrar (faça uma busca por cada termo)</h3>
+    <div class="grid-2">
+      <div class="card"><span class="tag">Geografia</span><h4>Grupos de bairro</h4><p>"Irajá", "Vicente de Carvalho", "Pavuna", "Madureira", "Penha" + "classificados/notícias/moradores". O público local que pode virar cliente presencial.</p></div>
+      <div class="card"><span class="tag">Tema</span><h4>Aposentados e idosos</h4><p>"Aposentados do RJ", "Melhor idade Rio", "Idosos e seus direitos", "Terceira idade". Público P1 concentrado.</p></div>
+      <div class="card"><span class="tag">Tema</span><h4>BPC / INSS / benefícios</h4><p>"BPC LOAS tira-dúvidas", "Benefícios INSS", "Auxílio-doença Brasil". Gente buscando exatamente o que você sabe.</p></div>
+      <div class="card"><span class="tag">Tema</span><h4>PCD e mães atípicas</h4><p>"Mães de autistas RJ", "Pessoas com deficiência direitos", "Cuidadores". Público P3, altíssimo engajamento.</p></div>
+    </div>
+
+    <div class="box accent">
+      <span class="label">A regra dos 80/20 nos grupos</span>
+      <p><strong>80% ajuda pura, 20% sua marca.</strong> Para cada vez que mencionar o escritório, ajude 4 pessoas sem citar nada. Responda dúvidas, compartilhe um post ▶ GRUPO FB, comente com empatia. O algoritmo e os moderadores premiam quem agrega — e expulsam quem só vende.</p>
+    </div>
+
+    <h3 class="minor">Rotina semanal nos grupos (20 min/dia)</h3>
+    <ol class="step-list">
+      <li><strong>Segunda:</strong> postar 1 conteúdo ▶ GRUPO FB nos 3 melhores grupos (adaptado ao tom de cada um).</li>
+      <li><strong>Diário:</strong> responder 3–5 dúvidas reais nos comentários — sem link, só ajuda. Assine "qualquer coisa, chama no direct".</li>
+      <li><strong>Quinta:</strong> compartilhar o artigo do blog da semana onde fizer sentido (com 1 linha explicando, nunca só o link cru).</li>
+      <li><strong>Sempre:</strong> quando alguém relata um caso difícil, ofereça ajuda no <strong>privado</strong> — é lá que a conversa vira cliente.</li>
+    </ol>
+
+    <div class="box info">
+      <span class="label">Cuidado legal nos grupos</span>
+      <p>Nos grupos você fala como <strong>"especialista em previdência administrativa"</strong> e como página do escritório — nunca "Dr." ou "advogado Carlos". Não prometa resultado. Não dê consultoria jurídica individual em público (oriente o caminho geral e leve pro privado). Respeite as regras de cada grupo sobre divulgação.</p>
+    </div>
+  </section>
+
+  <!-- ====================== 05 · BLOG + GUIAS ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">05</span><h2>Pipeline de blog e guias</h2>
+      <p class="sub">Seu NotebookLM com toda a legislação previdenciária é uma máquina de conteúdo. Aqui está como transformá-lo em artigos que ranqueiam e guias que capturam clientes.</p>
+    </div>
+
+    <p class="intro-p">O blog é o motor de longo prazo: cada artigo trabalha por você 24h por dia no Google e alimenta os posts. 1 artigo por semana (quarta = dia do blog no calendário).</p>
+
+    <h3 class="minor">Como usar o NotebookLM (ecossistema das leis)</h3>
+    <ol class="step-list">
+      <li><strong>Pergunte em linguagem de cliente.</strong> "Quais documentos a lei exige pro BPC do idoso?" O NotebookLM responde com base nas leis que você subiu — e cita a fonte.</li>
+      <li><strong>Peça o rascunho estruturado.</strong> "Monte um artigo de blog sobre [tema] com introdução, subtítulos, FAQ e linguagem simples pra leigo." Use como esqueleto.</li>
+      <li><strong>Sempre revise e humanize.</strong> A IA dá a estrutura e a base legal correta; você dá a voz acolhedora da marca e o CTA. Nunca publique cru.</li>
+      <li><strong>Extraia o FAQ.</strong> Cada artigo termina com 4–5 perguntas/respostas — é o formato que mais aparece no Google e nas respostas de IA (GEO).</li>
+      <li><strong>Recorte os posts.</strong> De cada artigo saem 1 carrossel + 1 reel + 3 stories. O blog vira a fonte, as redes viram a distribuição.</li>
+    </ol>
+
+    <h3 class="minor">Os primeiros 8 artigos (2 meses de blog)</h3>
+    <table>
+      <thead><tr><th>Artigo</th><th>Site</th><th>Palavra-chave alvo</th></tr></thead>
+      <tbody>
+        <tr><td>BPC Idoso 2026: quem tem direito e como pedir</td><td>portaldobpc</td><td>"bpc idoso 2026"</td></tr>
+        <tr><td>BPC para deficiente: o guia da avaliação médica e social</td><td>portaldobpc</td><td>"bpc deficiente documentos"</td></tr>
+        <tr><td>10 motivos pelos quais o INSS nega o auxílio-doença</td><td>carloscostaprev</td><td>"inss negou auxílio doença"</td></tr>
+        <tr><td>Perícia médica do INSS: como se preparar passo a passo</td><td>carloscostaprev</td><td>"como passar na perícia inss"</td></tr>
+        <tr><td>BPC negado? Como recorrer da negativa</td><td>portaldobpc</td><td>"bpc negado o que fazer"</td></tr>
+        <tr><td>Auxílio-doença x aposentadoria por incapacidade</td><td>carloscostaprev</td><td>"diferença auxílio aposentadoria incapacidade"</td></tr>
+        <tr><td>Avaliação social do BPC: o que o assistente social avalia</td><td>portaldobpc</td><td>"avaliação social bpc"</td></tr>
+        <tr><td>Renda familiar e BPC: a regra do 1/4 e as exceções</td><td>portaldobpc</td><td>"renda per capita bpc"</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="minor">Os guias-isca (lead magnets — capturam contato)</h3>
+    <div class="grid-2">
+      <div class="card"><span class="tag">Guia 01 · prioridade</span><h4>Checklist BPC Idoso 2026</h4><p>5 documentos + 3 armadilhas. PDF de 8 páginas. Lança no dia 22. Público: família do idoso.</p></div>
+      <div class="card"><span class="tag">Guia 02</span><h4>Como comprovar deficiência no INSS</h4><p>O guia da perícia e da avaliação social. O que levar, como falar, o que não dizer. Público: PCD/família.</p></div>
+      <div class="card"><span class="tag">Guia 03</span><h4>Perícia médica sem medo</h4><p>O roteiro de preparo completo. Conecta com a Semana 2 do calendário. Público: auxílio/incapacidade.</p></div>
+      <div class="card"><span class="tag">Guia 04</span><h4>Quando o INSS nega: seu mapa de recurso</h4><p>Os caminhos depois da negativa. Público: indeferidos (P6).</p></div>
+    </div>
+
+    <div class="box olive">
+      <span class="label">Como o guia vira cliente</span>
+      <p>A pessoa comenta "QUERO" → você manda o PDF no direct → no fim do PDF, um CTA pra conversar no WhatsApp → você tem o contato e a permissão pra acompanhar. <strong>Assim você constrói uma base própria, independente do Instagram.</strong></p>
+    </div>
+  </section>
+
+  <!-- ====================== 06 · HASHTAGS ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">06</span><h2>Bancos de hashtags</h2>
+      <p class="sub">Monte combinações de 8–12 por post: 3 amplas + 4 de tema + 2 locais. Não repita o mesmo bloco todo dia.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="hashbank"><h4>BPC / LOAS / Idoso</h4><code>#BPC #BPCLOAS #LOAS #BPCIdoso #DireitosDoIdoso #PessoaIdosa #TerceiraIdade #BenefícioAssistencial #INSS #AssistênciaSocial</code></div>
+      <div class="hashbank"><h4>PCD / Deficiência</h4><code>#BPCDeficiente #PCD #PessoaComDeficiência #Autismo #TEA #Inclusão #MãeAtípica #DireitosPCD #LaudoMédico #AvaliaçãoSocial</code></div>
+      <div class="hashbank"><h4>Previdência / INSS geral</h4><code>#INSS #Previdência #AuxílioDoença #AposentadoriaPorIncapacidade #PeríciaINSS #RevisãoINSS #PensãoPorMorte #DireitoPrevidenciário #MeuINSS #SegurançaSocial</code></div>
+      <div class="hashbank"><h4>Negativa / recurso</h4><code>#NegativaINSS #INSSNegou #RecursoINSS #AçãoJudicial #NãoDesista #SeusDireitos #JustiçaPrevidenciária #RevisãoDeBenefício</code></div>
+      <div class="hashbank"><h4>Local (Rio / Irajá)</h4><code>#Irajá #RioDeJaneiro #ZonaNorteRJ #Madureira #Pavuna #Penha #VicenteDeCarvalho #AdvocaciaRJ #PreviênciaRJ #INSSrj</code></div>
+      <div class="hashbank"><h4>Emoção / conexão</h4><code>#Dignidade #Cuidado #Família #Esperança #VocêTemDireito #Acolhimento #HistóriaReal #CuidarDeQuemAmamos</code></div>
+    </div>
+  </section>
+
+  <!-- ====================== 07 · FLUXO DE PRODUÇÃO ====================== -->
+  <section class="block">
+    <div class="sec-head">
+      <span class="id">07</span><h2>Fluxo de produção em lote</h2>
+      <p class="sub">O segredo pra manter 2 posts/dia sem enlouquecer: nunca produzir no dia. Tudo sai do domingo.</p>
+    </div>
+
+    <table>
+      <thead><tr><th>Quando</th><th>O quê</th><th>Tempo</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Domingo (manhã)</strong></td><td>Gravar 3–4 reels da semana de uma vez (mesma roupa, mesma luz, roteiros do plano)</td><td>~90 min</td></tr>
+        <tr><td><strong>Domingo (tarde)</strong></td><td>Montar carrosséis no Canva + escrever legendas (já estão no plano) + finalizar artigo do blog</td><td>~150 min</td></tr>
+        <tr><td><strong>Domingo (fim)</strong></td><td>Agendar tudo no Meta Business Suite — 2 IGs + Facebook, manhã e tarde, semana inteira</td><td>~40 min</td></tr>
+        <tr><td><strong>Seg–Sex (diário)</strong></td><td>Responder DMs e comentários + 3–5 stories + rotina de grupos de Facebook</td><td>~30 min/dia</td></tr>
+        <tr><td><strong>1ª segunda do mês</strong></td><td>Análise: quais posts tiveram mais salvamento/compartilhamento? Repetir os vencedores</td><td>~45 min</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="minor">Ferramentas (todas com plano grátis)</h3>
+    <ul class="clean">
+      <li><strong>Meta Business Suite</strong> — agenda os 2 IGs + Facebook num painel só.</li>
+      <li><strong>Canva</strong> — carrosséis e cards (crie 1 template de marca e reuse sempre).</li>
+      <li><strong>CapCut</strong> — reels com legenda automática e voz off.</li>
+      <li><strong>NotebookLM</strong> — sua base legal vira rascunho de artigo e FAQ.</li>
+      <li><strong>Google Meu Negócio</strong> — 1 publicação/semana + pedir review a cada caso concluído.</li>
+    </ul>
+
+    <div class="box accent">
+      <span class="label">A meta dos 90 dias (não desanime no começo)</span>
+      <p>Conteúdo orgânico é exponencial: <strong>lento nas primeiras semanas, depois acelera</strong>. Não meça sucesso por curtida. Meça por: salvamentos, compartilhamentos, conversas iniciadas no WhatsApp e downloads de guia. Em 6–12 semanas a bola de neve começa a rolar sozinha.</p>
+    </div>
+  </section>
+
+  <p class="closing">
+    Este é um documento vivo (v1). Você não precisa fazer tudo perfeito — precisa começar e manter constância.
+    Comece pela Semana 1, produza no domingo, responda toda mensagem. No fim de junho, volte aqui, veja o que funcionou e
+    repita. Você já tem a visão e o conhecimento; agora tem o sistema. <strong>Bora colocar em prática.</strong>
+  </p>
+
+</div>
+
+<button class="print-btn no-print" onclick="window.print()">⬇ Salvar como PDF</button>
+</body>
+</html>

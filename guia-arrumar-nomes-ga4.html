@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Arrumar nomes do GA4 · Portal do BPC + CarlosCostaPrev</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding-block: clamp(40px, 6vw, 80px); }
+  .wrap { max-width: 880px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+
+  .header { margin-bottom: 40px; }
+  .header .eyebrow { margin-bottom: 14px; }
+  .header h1 { font-size: clamp(2rem, 3.5vw + 1rem, 3rem); margin: 0 0 14px; }
+  .header p.lead { max-width: 640px; }
+
+  /* Tree diagram */
+  pre.tree {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    margin: 14px 0;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+    line-height: 1.7;
+    color: var(--ink-900);
+    overflow-x: auto;
+  }
+  pre.tree .err { color: var(--err); font-weight: 600; }
+  pre.tree .ok { color: var(--ok); font-weight: 600; }
+  pre.tree .terra { color: var(--terra-400); }
+  pre.tree .muted { color: var(--ink-500); }
+
+  /* Two-column compare */
+  .compare {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin: 16px 0 24px;
+  }
+  @media (max-width: 640px) { .compare { grid-template-columns: 1fr; } }
+  .compare > div {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+  }
+  .compare .head {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+  .compare .errcol .head { background: var(--err-bg); color: var(--err); }
+  .compare .okcol .head { background: var(--ok-bg); color: var(--ok); }
+  .compare h4 { margin: 0 0 8px; font-size: 1rem; }
+  .compare p { margin: 0; font-size: 13.5px; color: var(--ink-500); line-height: 1.55; }
+
+  /* Step */
+  section.step { margin-bottom: 40px; }
+  section.step > .step-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+  section.step > .step-head .num {
+    flex: 0 0 auto;
+    width: 38px; height: 38px; border-radius: var(--radius-pill);
+    background: var(--terra-500); color: white;
+    display: grid; place-items: center;
+    font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600;
+  }
+  section.step h2 { margin: 0; font-size: clamp(1.25rem, 1.5vw + 1rem, 1.625rem); }
+  section.step h2 small {
+    display: block; font-family: var(--font-sans); font-size: 13px;
+    font-weight: 500; color: var(--ink-500);
+    margin-top: 6px; text-transform: none;
+  }
+
+  /* Substep */
+  .substep { display: grid; grid-template-columns: 32px 1fr; gap: 10px; padding: 8px 0; }
+  .substep .bullet {
+    width: 26px; height: 26px; border-radius: 50%;
+    background: var(--bone-2); color: var(--ink-500);
+    display: grid; place-items: center;
+    font-size: 12px; font-weight: 600;
+  }
+  .substep p { margin: 0 0 4px; line-height: 1.55; }
+  .substep p:last-child { margin: 0; }
+  .substep code {
+    font-family: var(--font-mono); font-size: 13px;
+    background: var(--bone-2); padding: 2px 8px;
+    border-radius: var(--radius-sm); color: var(--terra-300);
+    font-weight: 500;
+  }
+
+  /* Notes */
+  .tip, .note, .ok, .err {
+    border-radius: var(--radius-sm);
+    padding: 13px 18px;
+    margin: 14px 0;
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .tip { background: var(--warn-bg); border-left: 3px solid var(--warn); }
+  .tip strong { color: var(--warn); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+  .note { background: var(--info-bg); border-left: 3px solid var(--info); }
+  .note strong { color: var(--info); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+  .ok { background: var(--ok-bg); border-left: 3px solid var(--ok); }
+  .ok strong { color: var(--ok); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+  .err { background: var(--err-bg); border-left: 3px solid var(--err); }
+  .err strong { color: var(--err); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+
+  /* Checklist */
+  .checklist {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 20px 24px;
+    margin-top: 14px;
+  }
+  .checklist-row {
+    display: grid; grid-template-columns: 26px 1fr; gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--line);
+    cursor: pointer;
+  }
+  .checklist-row:last-child { border-bottom: none; }
+  .checklist-row input { width: 17px; height: 17px; accent-color: var(--terra-500); margin-top: 3px; }
+  .checklist-row span { font-size: 14.5px; line-height: 1.5; }
+  .checklist-row input:checked + span { color: var(--ink-300); text-decoration: line-through; }
+
+  .closing {
+    margin-top: 40px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-500);
+    font-size: 13.5px;
+  }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: white !important; color: #1a140e !important; padding: 0 !important; font-size: 10.5pt; }
+    .wrap { max-width: none; padding: 0; }
+    h1, h2, h3, h4, p, span, div, li, label, code { color: #1a140e !important; }
+    .header h1 em { color: #c4673a !important; }
+    .eyebrow { color: #a8542d !important; }
+    pre.tree, .compare > div, .checklist, .tip, .note, .ok, .err {
+      background: white !important;
+      border: 1px solid #d4c0a8 !important;
+      color: #1a140e !important;
+      box-shadow: none !important;
+    }
+    pre.tree .err { color: #c44545 !important; }
+    pre.tree .ok { color: #4a7a3a !important; }
+    pre.tree .terra { color: #a8542d !important; }
+    .compare .errcol .head { background: #f8e0dd !important; color: #c44545 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .compare .okcol .head { background: #e8f4d8 !important; color: #4a7a3a !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .tip { border-left: 3px solid #c89020 !important; }
+    .note { border-left: 3px solid #5a7a9a !important; }
+    .ok { border-left: 3px solid #5a8a4a !important; }
+    .err { border-left: 3px solid #c44545 !important; }
+    section.step > .step-head .num, .substep .bullet {
+      background: #c4673a !important; color: white !important;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+    .substep .bullet { background: #f4e3d4 !important; color: #1a140e !important; }
+    .substep code { background: #f4e3d4 !important; color: #a8542d !important; border: 1px solid #d4c0a8; }
+    section.step { page-break-inside: avoid; margin-bottom: 24px !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Correção rápida · 3 min</p>
+    <h1>Arrumar os <em>nomes</em> das contas/propriedades no GA4.</h1>
+    <p class="lead">
+      Os nomes ficaram trocados (a conta foi renomeada em vez da propriedade, e as duas propriedades ficaram com o mesmo nome). A coleta de dados está perfeita — isso é só organização visual. Mas vale arrumar pra não confundir nos próximos meses olhando relatórios.
+    </p>
+  </header>
+
+  <!-- =========== Diagnóstico =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">⚠</div>
+      <div><h2>O que está errado<small>Comparação atual × correta.</small></h2></div>
+    </div>
+
+    <div class="compare">
+      <div class="errcol">
+        <span class="head">❌ Atual (errado)</span>
+        <h4>Estrutura confusa</h4>
+        <p>A conta foi renomeada pra "Portal do BPC" e as duas propriedades ficaram chamadas "CarlosCostaPrev". Fica impossível distinguir qual é qual no seletor.</p>
+      </div>
+      <div class="okcol">
+        <span class="head">✅ Correto</span>
+        <h4>Estrutura clara</h4>
+        <p>Conta = guarda-chuva ("CarlosCostaPrev"). Cada propriedade tem o nome do seu site ("Portal do BPC" e "CarlosCostaPrev"). Fica óbvio qual escolher.</p>
+      </div>
+    </div>
+
+    <pre class="tree"><span class="err">ATUAL (errado):</span>
+🏢 Conta: <span class="err">"Portal do BPC"</span> (396019426)        ← devia ser "CarlosCostaPrev"
+   ├── 📍 <span class="err">"CarlosCo..."</span> (539311803)         ← devia ser "CarlosCostaPrev" completo
+   └── 📍 <span class="err">"CarlosCostaPrev"</span> (539213028)     ← devia ser "Portal do BPC"
+
+<span class="ok">COMO DEVE FICAR:</span>
+🏢 Conta: <span class="ok">"CarlosCostaPrev"</span> (396019426)
+   ├── 📍 <span class="ok">"Portal do BPC"</span> (539213028)        → G-6RVLVTFRGT
+   └── 📍 <span class="ok">"CarlosCostaPrev"</span> (539311803)      → G-T7ZNB2FXZY</pre>
+
+    <div class="note">
+      <strong>Importante</strong>
+      Os <strong>IDs de medição</strong> (G-6RVLVTFRGT e G-T7ZNB2FXZY) <strong>já estão certos</strong> e os 2 sites estão coletando dados normalmente. O que vamos arrumar aqui é só o nome (rótulo) — não toca em nada técnico.
+    </div>
+  </section>
+
+  <!-- =========== STEP 1 =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">1</div>
+      <div><h2>Renomear a CONTA (não a propriedade)<small>É o primeiro nível — fica acima das propriedades.</small></h2></div>
+    </div>
+
+    <div class="substep">
+      <div class="bullet">a</div>
+      <div><p>Menu lateral esquerdo → ⚙️ <strong>Administrador</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">b</div>
+      <div><p>Olha o painel — agora tem <strong>3 colunas</strong>: "Conta", "Propriedade" e "Fluxo de dados".</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">c</div>
+      <div><p>Na coluna <strong>"Conta"</strong> (a primeira, à esquerda), clica em <strong>"Detalhes da conta"</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">d</div>
+      <div><p>No campo <strong>"Nome da conta"</strong>, apaga <code>Portal do BPC</code> e digita <code>CarlosCostaPrev</code>. Clica em <strong>"Salvar"</strong> (canto superior direito).</p></div>
+    </div>
+  </section>
+
+  <!-- =========== STEP 2 =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">2</div>
+      <div><h2>Renomear a propriedade <code>539213028</code><small>Hoje está com "CarlosCostaPrev" — deve virar "Portal do BPC".</small></h2></div>
+    </div>
+
+    <div class="substep">
+      <div class="bullet">a</div>
+      <div><p>Topo da tela → clica no seletor de propriedade (ao lado do nome da conta) → escolhe <strong>"CarlosCostaPrev" (539213028)</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">b</div>
+      <div><p>⚙️ <strong>Administrador</strong> → coluna <strong>"Propriedade"</strong> (a do meio) → <strong>"Detalhes da propriedade"</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">c</div>
+      <div><p>No campo <strong>"Nome da propriedade"</strong>, apaga <code>CarlosCostaPrev</code> e digita <code>Portal do BPC</code>. Salva.</p></div>
+    </div>
+
+    <div class="tip">
+      <strong>Como saber se acertou</strong>
+      Essa propriedade (539213028) tem o ID de medição <code>G-6RVLVTFRGT</code> — é o do <strong>portaldobpc.com.br</strong>. Por isso o nome dela vira "Portal do BPC".
+    </div>
+  </section>
+
+  <!-- =========== STEP 3 =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">3</div>
+      <div><h2>Renomear a propriedade <code>539311803</code><small>Hoje está com "CarlosCo..." (truncado) — deve virar "CarlosCostaPrev" completo.</small></h2></div>
+    </div>
+
+    <div class="substep">
+      <div class="bullet">a</div>
+      <div><p>Topo → seletor de propriedade → escolhe <strong>"CarlosCo..." (539311803)</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">b</div>
+      <div><p>⚙️ <strong>Administrador</strong> → coluna <strong>"Propriedade"</strong> → <strong>"Detalhes da propriedade"</strong>.</p></div>
+    </div>
+    <div class="substep">
+      <div class="bullet">c</div>
+      <div><p>No campo <strong>"Nome da propriedade"</strong>, apaga o nome truncado e digita <code>CarlosCostaPrev</code> (completo). Salva.</p></div>
+    </div>
+
+    <div class="tip">
+      <strong>Como saber se acertou</strong>
+      Essa propriedade (539311803) tem o ID de medição <code>G-T7ZNB2FXZY</code> — é o do <strong>carloscostaprev.com.br</strong>.
+    </div>
+  </section>
+
+  <!-- =========== STEP 4 — Confirmar =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">✓</div>
+      <div><h2>Confirmar que ficou certo<small>Abre o seletor de contas — deve mostrar a árvore correta.</small></h2></div>
+    </div>
+
+    <p>Clica em <strong>"Todas as contas"</strong> no topo. Deve aparecer:</p>
+
+    <pre class="tree">🏢 <span class="ok">CarlosCostaPrev</span> (396019426)
+   ├── 📍 <span class="ok">Portal do BPC</span> (539213028)
+   └── 📍 <span class="ok">CarlosCostaPrev</span> (539311803)</pre>
+
+    <div class="ok">
+      <strong>Pronto</strong>
+      Da próxima vez que você abrir o seletor, vai distinguir as 2 propriedades sem confusão. E os relatórios continuam coletando dados normalmente — nada técnico foi alterado.
+    </div>
+  </section>
+
+  <!-- =========== Checklist =========== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">📋</div>
+      <div><h2>Checklist<small>Marca conforme for fazendo — fica salvo no navegador.</small></h2></div>
+    </div>
+
+    <div class="checklist" id="checklist">
+      <label class="checklist-row"><input type="checkbox" data-key="c1"><span>Conta renomeada: <code>Portal do BPC</code> → <code>CarlosCostaPrev</code></span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="c2"><span>Propriedade 539213028 renomeada: <code>CarlosCostaPrev</code> → <code>Portal do BPC</code></span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="c3"><span>Propriedade 539311803 renomeada: <code>CarlosCo...</code> → <code>CarlosCostaPrev</code></span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="c4"><span>Seletor "Todas as contas" mostra a estrutura correta (1 conta + 2 propriedades distintas)</span></label>
+    </div>
+  </section>
+
+  <p class="closing">
+    Depois desse cleanup, tudo organizado. Próximo passo lógico:
+    <strong>configurar o DNS</strong> do <code>carloscostaprev.com.br</code> pro site público funcionar
+    (Cloudflare Pages → Registro.br).
+  </p>
+
+</div>
+</body>
+</html>

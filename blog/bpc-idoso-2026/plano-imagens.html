@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Plano de imagens — BPC Idoso 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../../colors_and_type.css" />
+<style>
+  body { padding-block: clamp(40px, 5vw, 64px); }
+  .wrap { max-width: 820px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+  .header { margin-bottom: 36px; }
+  .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--terra-400); margin-bottom: 12px; }
+  h1 { font-size: clamp(1.875rem, 3vw + 1rem, 2.75rem); margin: 0 0 12px; line-height: 1.1; }
+  h1 em { color: var(--terra-400); font-style: italic; }
+  p.lead { color: var(--ink-500); max-width: 600px; font-size: 1.0625rem; }
+
+  /* Image slot card */
+  .slot {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 20px;
+  }
+  .slot .top {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .slot .badge {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    background: var(--terra-500);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .slot h3 { margin: 0; font-family: var(--font-serif); font-size: 1.25rem; }
+  .slot .where { margin-left: auto; font-size: 12px; color: var(--ink-500); font-style: italic; }
+
+  .field { margin-bottom: 14px; }
+  .field .lbl {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-500);
+    margin-bottom: 5px;
+  }
+  .field .val { font-size: 14.5px; line-height: 1.5; }
+  .field .val.mono { font-family: var(--font-mono); font-size: 13px; color: var(--terra-300); background: var(--bone-2); padding: 6px 10px; border-radius: var(--radius-sm); display: inline-block; }
+
+  .field .search-link {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--font-sans); font-size: 12.5px; font-weight: 700;
+    color: white; background: var(--terra-500);
+    text-decoration: none; padding: 8px 14px;
+    border-radius: var(--radius-pill); text-transform: uppercase; letter-spacing: 0.05em;
+    transition: background 0.15s;
+  }
+  .field .search-link:hover { background: var(--terra-700); }
+
+  pre.code {
+    background: #1f1812; color: #f5ede0;
+    border-radius: var(--radius-md);
+    padding: 14px 18px; margin: 6px 0 0;
+    font-family: var(--font-mono); font-size: 12.5px; line-height: 1.55;
+    overflow-x: auto; position: relative;
+  }
+  pre.code .tag { color: #d68559; }
+  pre.code .attr { color: #c4a05a; }
+  pre.code .str { color: #a8c98a; }
+  .copy {
+    position: absolute; top: 8px; right: 8px;
+    font-family: var(--font-sans); font-size: 11px; font-weight: 600;
+    background: rgba(245,237,224,0.12); color: #f5ede0;
+    border: none; border-radius: 5px; padding: 4px 10px; cursor: pointer;
+  }
+  .copy:hover { background: var(--terra-500); }
+  .copy.done { background: #4a7a3a; }
+
+  .steps-mini {
+    background: var(--bone-2);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    margin: 20px 0 32px;
+    font-size: 14px;
+  }
+  .steps-mini ol { margin: 8px 0 0; padding-left: 22px; }
+  .steps-mini li { margin-bottom: 5px; line-height: 1.5; }
+  .steps-mini code { font-family: var(--font-mono); font-size: 12.5px; background: var(--bone); padding: 1px 6px; border-radius: 4px; color: var(--terra-400); }
+
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: white !important; padding: 0 !important; color: #000 !important; }
+    .slot, pre.code, .steps-mini { page-break-inside: avoid; }
+    .slot, .steps-mini { background: white !important; border: 1px solid #999 !important; }
+    .slot .badge, .field .search-link { background: #c4673a !important; color: white !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    pre.code { background: #f4f4f4 !important; color: #000 !important; border: 1px solid #ccc; }
+    pre.code .tag, pre.code .attr, pre.code .str { color: #555 !important; }
+    .copy { display: none !important; }
+    h1 em, .eyebrow { color: #a8542d !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Plano de imagens · BPC Idoso 2026</p>
+    <h1>As <em>3 imagens</em> dessa matéria — prontas pra baixar.</h1>
+    <p class="lead">
+      Pra cada foto: a busca exata no Pexels, o nome do arquivo, e o bloco HTML pronto (com alt e legenda juridicamente seguros). Baixa, otimiza, salva na pasta, cola o bloco.
+    </p>
+  </header>
+
+  <div class="steps-mini">
+    <strong>Fluxo rápido pra cada imagem:</strong>
+    <ol>
+      <li>Clica em <strong>"Buscar no Pexels"</strong> → escolhe uma foto horizontal → Free Download → Medium</li>
+      <li>Otimiza em <code>squoosh.app</code> → WebP 75% → resize pra largura indicada</li>
+      <li>Renomeia pro nome sugerido e salva em <code>deploy/blog/bpc-idoso-2026/</code></li>
+      <li>O bloco HTML já está no artigo — só garante que o <code>src</code> bate com o nome do arquivo</li>
+    </ol>
+  </div>
+
+
+  <!-- ============ IMAGEM 1 — HERO/OG ============ -->
+  <div class="slot">
+    <div class="top">
+      <span class="badge">Imagem 1</span>
+      <h3>Hero / OG</h3>
+      <span class="where">topo + compartilhamento social</span>
+    </div>
+
+    <div class="field">
+      <div class="lbl">Conceito</div>
+      <div class="val">Idoso(a) sorrindo, em casa, transmitindo alívio e dignidade. Acolhedor, luz quente. Horizontal.</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Busca no Pexels</div>
+      <a class="search-link" href="https://www.pexels.com/search/happy%20elderly%20woman/" target="_blank" rel="noopener">🔍 Buscar "happy elderly woman" →</a>
+    </div>
+    <div class="field">
+      <div class="lbl">Nome do arquivo · largura 1200px</div>
+      <div class="val mono">og.png  (ou og.webp)</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Bloco HTML (já está no artigo — confira o src)</div>
+      <pre class="code"><button class="copy" onclick="cp(this)"><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"og.png"</span> <span class="attr">alt</span>=<span class="str">"Idosa sorrindo segurando documentos do INSS em casa"</span> <span class="tag">/&gt;</span></button><span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"og.png"</span>
+     <span class="attr">alt</span>=<span class="str">"Idosa sorrindo segurando documentos do INSS em casa"</span> <span class="tag">/&gt;</span></pre>
+    </div>
+  </div>
+
+
+  <!-- ============ IMAGEM 2 — DOCUMENTOS ============ -->
+  <div class="slot">
+    <div class="top">
+      <span class="badge">Imagem 2</span>
+      <h3>Documentos</h3>
+      <span class="where">seção "Os 7 documentos"</span>
+    </div>
+
+    <div class="field">
+      <div class="lbl">Conceito</div>
+      <div class="val">Papéis, RG, formulários organizados numa mesa. Sem rosto. Transmite organização e burocracia. Horizontal.</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Busca no Pexels</div>
+      <a class="search-link" href="https://www.pexels.com/search/documents%20on%20desk/" target="_blank" rel="noopener">🔍 Buscar "documents on desk" →</a>
+    </div>
+    <div class="field">
+      <div class="lbl">Nome do arquivo · largura 800px</div>
+      <div class="val mono">documentos.png  (ou documentos.webp)</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Bloco HTML (já está no artigo)</div>
+      <pre class="code"><button class="copy" onclick="cp(this)"><span class="tag">&lt;figure</span> <span class="attr">class</span>=<span class="str">"article-figure"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"documentos.png"</span> <span class="attr">alt</span>=<span class="str">"Documentos para pedir BPC organizados na mesa"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;figcaption&gt;</span>Os 7 documentos essenciais. Falta de qualquer um gera exigência ou indeferimento.<span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span></button><span class="tag">&lt;figure</span> <span class="attr">class</span>=<span class="str">"article-figure"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"documentos.png"</span>
+       <span class="attr">alt</span>=<span class="str">"Documentos para pedir BPC organizados na mesa"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;figcaption&gt;</span>Os 7 documentos essenciais. Falta de qualquer
+  um gera exigência ou indeferimento.<span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span></pre>
+    </div>
+  </div>
+
+
+  <!-- ============ IMAGEM 3 — FAMÍLIA/APOIO ============ -->
+  <div class="slot">
+    <div class="top">
+      <span class="badge">Imagem 3</span>
+      <h3>Família / apoio</h3>
+      <span class="where">opcional — seção "renda familiar" ou "se negar"</span>
+    </div>
+
+    <div class="field">
+      <div class="lbl">Conceito</div>
+      <div class="val">Filho(a) adulto(a) ajudando pai/mãe idoso com papéis ou no celular. Carinho, apoio entre gerações. Horizontal.</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Busca no Pexels</div>
+      <a class="search-link" href="https://www.pexels.com/search/adult%20helping%20elderly%20parent/" target="_blank" rel="noopener">🔍 Buscar "adult helping elderly parent" →</a>
+    </div>
+    <div class="field">
+      <div class="lbl">Nome do arquivo · largura 800px</div>
+      <div class="val mono">familia-apoio.webp</div>
+    </div>
+    <div class="field">
+      <div class="lbl">Bloco HTML (cole onde quiser inserir)</div>
+      <pre class="code"><button class="copy" onclick="cp(this)"><span class="tag">&lt;figure</span> <span class="attr">class</span>=<span class="str">"article-figure"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"familia-apoio.webp"</span> <span class="attr">alt</span>=<span class="str">"Filha ajudando a mãe idosa a organizar documentos do INSS"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;figcaption&gt;</span>A família costuma ser quem ajuda o idoso a dar entrada no benefício.<span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span></button><span class="tag">&lt;figure</span> <span class="attr">class</span>=<span class="str">"article-figure"</span><span class="tag">&gt;</span>
+  <span class="tag">&lt;img</span> <span class="attr">src</span>=<span class="str">"familia-apoio.webp"</span>
+       <span class="attr">alt</span>=<span class="str">"Filha ajudando a mãe idosa a organizar documentos do INSS"</span> <span class="tag">/&gt;</span>
+  <span class="tag">&lt;figcaption&gt;</span>A família costuma ser quem ajuda o idoso a dar
+  entrada no benefício.<span class="tag">&lt;/figcaption&gt;</span>
+<span class="tag">&lt;/figure&gt;</span></pre>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function cp(btn) {
+    // pega o texto do nó de texto após o botão
+    const pre = btn.parentElement;
+    const text = pre.textContent.replace(/^Copiar|Copiado!$/,'').trim();
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Copiado!'; btn.classList.add('done');
+      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('done'); }, 1800);
+    });
+  }
+  document.querySelectorAll('.copy').forEach(b => b.textContent = 'Copiar');
+</script>
+</body>
+</html>

@@ -6,7 +6,9 @@
 /* ---- Layout ---- */
 .container { max-width: var(--container); margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
 .container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+html { scroll-behavior: smooth; }
 section { padding: clamp(64px, 8vw, 128px) 0; }
+section[id], [id="patologias"], [id="faq"] { scroll-margin-top: calc(var(--header-h) + 24px); }
 section.tight { padding: clamp(48px, 6vw, 96px) 0; }
 
 /* ---- Header ---- */
