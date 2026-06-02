@@ -212,7 +212,7 @@ function Especialidades() {
               <li>Renda familiar per capita até ¼ do salário mínimo</li>
               <li>Avaliação médica e social do INSS</li>
             </ul>
-            <a className="btn btn--secondary" href="patologias.html">Ver as 20 patologias →</a>
+            <a className="btn btn--secondary" href="patologias.html">Ver as 25 patologias →</a>
           </div>
         </div>
       </div>
@@ -235,7 +235,7 @@ function PatologiasGrid({ onNavigate }) {
     <section className="bg-bone" id="patologias">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 20 patologias</div>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 25 patologias</div>
           <h2>O que pode dar direito ao <em>BPC</em>.</h2>
           <p>Cada doença tem uma história diferente dentro do INSS. Encontre a sua aqui — o que prova, o que costuma ser negado, o que o perito vai olhar. Análise sempre individual.</p>
         </div>
