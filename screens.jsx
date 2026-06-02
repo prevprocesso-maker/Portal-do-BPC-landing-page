@@ -24,6 +24,9 @@ function ScreenLanding({ onNavigate }) {
   );
 }
 
+/* slug de patologia → arquivo estático (ex.: "Autismo (TEA)" → autismo-tea.html) */
+function patSlugS(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+
 /* ---------- Patologia detail: per-patologia content ---------- */
 const PATOLOGIA_DETAIL = {
   TEA: {
@@ -894,7 +897,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
                 {relacionadas.map(r => {
                   const rcat = CATEGORIAS[r.cat];
                   return (
-                    <a key={r.sigla} className="pat-card" href={`#/patologia/${r.sigla}`} onClick={(e) => { e.preventDefault(); onNavigate('patologia', r); }}>
+                    <a key={r.sigla} className="pat-card" href={`/${patSlugS(r.nome)}.html`}>
                       <div className="ic" style={{ background: rcat.bg, color: rcat.fg }}>{r.sigla}</div>
                       <h4>{r.nome}</h4>
                       <p>{r.resumo}</p>

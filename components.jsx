@@ -45,6 +45,9 @@ const CATEGORIAS = {
   cronica:   { label: 'Crônica',          bg: '#f1eadf', fg: '#3d3128', dot: '#6b5a4d' },
 };
 
+/* slug de patologia → nome do arquivo estático (ex.: "Autismo (TEA)" → autismo-tea.html) */
+function patSlug(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
+
 /* ---------- Header ---------- */
 function Header({ active, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
@@ -214,10 +217,16 @@ function Especialidades() {
 }
 
 /* ---------- Patologias grid ---------- */
+const CID_MAP = { TEA:'F84.0', SD:'Q90', PCx:'G80', EM:'G35', PK:'G20', AZ:'G30', AVC:'I69', EL:'G12.2', EP:'G40', EQ:'F20', TB:'F31', DV:'H54', DA:'H90.3', CA:'C00–C97', IR:'N18', CG:'I50', HV:'B20–B24', HP:'K74', LE:'M32', DM:'G71.0' };
+const CIF_KW = { TEA:'linguagem interacao social comunicacao', SD:'intelectual fala aprendizagem autocuidado', PCx:'movimento mobilidade comunicacao', EM:'mobilidade fadiga visao', PK:'movimento marcha tremor fala', AZ:'memoria orientacao autocuidado', AVC:'motora fala cognitiva mobilidade', EL:'movimento fala degluticao respiracao', EP:'consciencia seguranca crises', EQ:'pensamento percepcao autocuidado', TB:'humor energia trabalho', DV:'visao mobilidade leitura', DA:'audicao comunicacao', CA:'dor fadiga imunidade mobilidade', IR:'fadiga hemodialise', CG:'cardiovascular esforco mobilidade', HV:'imunologica estigma', HP:'fadiga ascite', LE:'articular renal fadiga dor', DM:'neuromuscular mobilidade' };
+function patNorm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
+
 function PatologiasGrid({ onNavigate }) {
   const [filter, setFilter] = useState('all');
+  const [q, setQ] = useState('');
   const cats = ['all', ...Object.keys(CATEGORIAS)];
-  const filtered = filter === 'all' ? PATOLOGIAS : PATOLOGIAS.filter(p => p.cat === filter);
+  const qn = patNorm(q);
+  const filtered = PATOLOGIAS.filter(p => (filter === 'all' || p.cat === filter) && (qn === '' || patNorm(p.nome + p.sigla + p.resumo + (CID_MAP[p.sigla]||'') + (CIF_KW[p.sigla]||'') + 'cid cif funcionalidade').includes(qn)));
   return (
     <section className="bg-bone" id="patologias">
       <div className="container">
@@ -225,6 +234,23 @@ function PatologiasGrid({ onNavigate }) {
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 20 patologias</div>
           <h2>O que pode dar direito ao <em>BPC</em>.</h2>
           <p>Cada doença tem uma história diferente dentro do INSS. Encontre a sua aqui — o que prova, o que costuma ser negado, o que o perito vai olhar. Análise sempre individual.</p>
+        </div>
+        <div style={{ maxWidth: 820, margin: '0 auto 30px', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CID — o diagnóstico</div>
+            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O código da doença (ex.: F84, Q90). É o que a <strong style={{ color: 'var(--ink-900)' }}>perícia médica</strong> do INSS confirma.</span>
+          </div>
+          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CIF — a funcionalidade</div>
+            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O quanto a condição impede a vida diária. É o que a <strong style={{ color: 'var(--ink-900)' }}>avaliação social</strong> mede.</span>
+          </div>
+        </div>
+        <p style={{ maxWidth: 760, margin: '0 auto 40px', textAlign: 'center', fontSize: 15.5, color: 'var(--ink-700)', lineHeight: 1.65 }}>
+          Ter o diagnóstico não basta sozinho: o BPC por deficiência exige <strong>impedimento de longo prazo somado a barreiras na participação</strong>. É a união do <strong>CID</strong> (o que você tem) com a <strong>CIF</strong> (o quanto isso te limita) que garante o direito — e cada patologia abaixo traz as duas classificações.
+        </p>
+        <div style={{ maxWidth: 520, margin: '0 auto 18px', position: 'relative' }}>
+          <svg viewBox="0 0 24 24" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', width: 18, height: 18, stroke: 'var(--ink-500)', fill: 'none', strokeWidth: 2 }}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>
+          <input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar por nome ou CID (ex.: autismo, F84, Q90)…" aria-label="Buscar patologia por nome ou CID" style={{ width: '100%', padding: '14px 18px 14px 44px', borderRadius: 999, border: '1px solid var(--line)', background: 'var(--bone)', color: 'var(--ink-900)', fontSize: 15, fontFamily: 'var(--font-sans)', outline: 'none' }} />
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 32 }}>
           {cats.map(c => {
@@ -251,17 +277,18 @@ function PatologiasGrid({ onNavigate }) {
             );
           })}
         </div>
+        {filtered.length === 0 && <p style={{ textAlign: 'center', color: 'var(--ink-500)', margin: '8px 0 32px' }}>Nenhuma patologia encontrada. Tente o nome ou o CID (ex.: <strong>F84</strong>, <strong>Q90</strong>).</p>}
         <div className="patologias-grid">
           {filtered.map(p => {
             const cat = CATEGORIAS[p.cat];
             return (
-              <a key={p.sigla} className="pat-card" href={`#/patologia/${p.sigla}`} onClick={(e) => { e.preventDefault(); onNavigate('patologia', p); }}>
+              <a key={p.sigla} className="pat-card" href={`/${patSlug(p.nome)}.html`}>
                 <div className="ic" style={{ background: cat.bg, color: cat.fg }}>{p.sigla}</div>
                 <h4>{p.nome}</h4>
                 <p>{p.resumo}</p>
-                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  <span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />
-                  {cat.label}
+                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />{cat.label}</span>
+                  <span style={{ color: 'var(--ink-500)', letterSpacing: '0.04em' }}>CID {CID_MAP[p.sigla] || '—'}</span>
                 </div>
               </a>
             );
