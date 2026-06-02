@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link rel="stylesheet" href="colors_and_type.css"/><link rel="stylesheet" href="styles.css"/>
 <style>
-.pp{padding:calc(var(--header-h) + 40px) 0 70px;}
+.pp-topbar{position:fixed;top:var(--header-h);left:0;right:0;z-index:40;background:var(--terra-500);height:36px;display:flex;align-items:center;}.pp-topbar-inner{display:flex;align-items:center;gap:12px;height:100%;}.pp-topbar a{color:rgba(255,255,255,0.85);font-size:13px;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:color 150ms;}.pp-topbar a:hover{color:#fff;}.pp-topbar-sep{color:rgba(255,255,255,0.4);font-size:13px;}.pp-topbar-cur{color:#fff;font-size:13px;font-weight:600;}.pp{padding:calc(var(--header-h) + 36px + 40px) 0 70px;}
 .pp .breadcrumb{font-size:14px;color:var(--ink-500);margin-bottom:18px;}
 .pp .breadcrumb a{color:var(--terra-400);text-decoration:none;}
 .pp-cat{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--terra-400);margin-bottom:12px;}
@@ -23,7 +23,7 @@
 .pp-chip{background:var(--bone);border:1px solid var(--line);border-radius:12px;padding:10px 16px;}
 .pp-chip b{display:block;color:var(--ink-900);font-weight:600;font-size:15px;}
 .pp-chip span{color:var(--ink-500);font-size:12px;}
-.pp section{margin-bottom:42px;max-width:760px;}
+.pp section{margin-bottom:42px;max-width:760px;padding:0;}
 .pp h2{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.4rem,2.4vw,1.9rem);margin-bottom:16px;color:var(--ink-900);}
 .pp p{font-size:17px;line-height:1.7;color:var(--ink-700);margin-bottom:14px;}
 .pp-destaque{background:rgba(196,103,58,.12);border-left:3px solid var(--terra-500);border-radius:0 12px 12px 0;padding:14px 20px;font-weight:600;color:var(--ink-900);margin-top:12px;}
@@ -59,6 +59,7 @@
 <nav class="header-nav"><a href="index.html" class="nav-link"><span>Início</span></a><a href="index.html#patologias" class="nav-link active"><span>Patologias</span></a><a href="index.html#/pericias" class="nav-link"><span>Perícias</span></a><a href="index.html#/simulador" class="nav-link"><span>Simulador</span></a><a href="index.html#/blog" class="nav-link"><span>Blog</span></a></nav>
 <a class="btn btn--primary btn--sm" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">Falar agora →</a>
 </div></header>
+<div class="pp-topbar"><div class="container pp-topbar-inner"><a href="index.html">← Início</a><span class="pp-topbar-sep">/</span><a href="index.html#patologias">Patologias</a><span class="pp-topbar-sep">/</span><span class="pp-topbar-cur">Esclerose múltipla</span></div></div>
 <main class="pp"><div class="container">
 <div class="breadcrumb"><a href="index.html">Início</a> / <a href="index.html#patologias">Patologias</a> / Esclerose múltipla</div>
 <div class="pp-cat">Neurológica</div>
