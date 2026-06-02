@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!--
     Apenas URLs que retornam 200 de verdade (HTML real).
     As páginas internas do app (/bpc-idoso, /pericias, /patologia/*) hoje são
@@ -185,6 +185,49 @@
   <url>
     <loc>https://www.portaldobpc.com.br/distrofia-muscular.html</loc>
     <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/patologias.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hanseniase-sequelas.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/lesao-medular.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/amputacao.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/fibromialgia.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/artrite-reumatoide.html</loc>
+    <lastmod>2026-06-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+    <!-- Blog -->
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/portaria-inss-1962-2026</loc>
+    <lastmod>2026-06-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
