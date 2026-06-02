@@ -1153,12 +1153,12 @@ a.btn--secondary[href*="wa.me"]:hover,
 }
 
 .card-checklist {
-  background: var(--ink-900);
+  background: linear-gradient(135deg, #1a0e08 0%, #2a1a0e 60%, #0c1c34 100%);
   color: #f5ede0;
   padding: 32px;
   border-radius: 20px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 24px 60px rgba(60,30,10,0.25);
+  border: 1px solid rgba(212,168,92,0.2);
+  box-shadow: 0 24px 60px rgba(10,6,2,0.5);
   position: relative;
   overflow: hidden;
 }
