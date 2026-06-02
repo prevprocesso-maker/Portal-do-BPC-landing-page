@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>20 doenças que dão direito ao BPC/LOAS — Patologias | Portal do BPC</title>
+<meta name="description" content="Lista completa das 20 doenças e condições que podem dar direito ao BPC/LOAS. Autismo, câncer, Parkinson, Alzheimer, deficiência visual, auditiva e muito mais. CID e CIF de cada patologia."/>
+<meta name="robots" content="index, follow, max-image-preview:large"/>
+<link rel="canonical" href="https://www.portaldobpc.com.br/patologias.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:title" content="20 doenças que dão direito ao BPC — Portal do BPC"/>
+<meta property="og:description" content="Lista completa com CID e CIF de cada condição. Clique na sua doença e saiba o que provar no INSS."/>
+<meta property="og:url" content="https://www.portaldobpc.com.br/patologias.html"/>
+<meta property="og:image" content="https://www.portaldobpc.com.br/assets/og-cover.png"/>
+<link rel="icon" type="image/png" href="assets/favicon-256.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg"/>
+<meta name="theme-color" content="#c4673a"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'"/>
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Inter:wght@400;500;600;700&display=swap"/></noscript>
+<link rel="stylesheet" href="colors_and_type.css"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── Barra de contexto ── */
+.pat-topbar{position:fixed;top:var(--header-h);left:0;right:0;z-index:40;background:var(--terra-500);height:36px;display:flex;align-items:center;}
+.pat-topbar-inner{display:flex;align-items:center;gap:12px;height:100%;}
+.pat-topbar a{color:rgba(255,255,255,.85);font-size:13px;font-weight:500;text-decoration:none;transition:color 150ms;}
+.pat-topbar a:hover{color:#fff;}
+.pat-topbar-sep{color:rgba(255,255,255,.35);font-size:13px;}
+.pat-topbar-cur{color:#fff;font-size:13px;font-weight:600;}
+
+/* ── Hero ── */
+.pat-hero{padding:calc(var(--header-h) + 36px + clamp(56px,8vw,96px)) 0 clamp(48px,6vw,72px);background:var(--cream);position:relative;overflow:hidden;}
+.pat-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(196,103,58,.08),transparent);pointer-events:none;}
+.pat-hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra-400);margin-bottom:20px;}
+.pat-hero-eyebrow span{display:inline-block;width:28px;height:1px;background:var(--terra-400);}
+.pat-hero h1{font-family:var(--font-serif);font-size:clamp(2.6rem,5vw,4.5rem);font-weight:700;line-height:1.06;letter-spacing:-.02em;color:var(--ink-900);margin-bottom:22px;max-width:780px;}
+.pat-hero h1 em{font-style:italic;color:var(--terra-500);}
+.pat-hero p{font-size:clamp(17px,2vw,20px);color:var(--ink-500);line-height:1.65;max-width:620px;margin-bottom:40px;}
+.pat-hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:0;}
+.pat-hero-chip{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:500;color:var(--ink-700);background:var(--bone);}
+.pat-hero-chip svg{width:15px;height:15px;stroke:var(--terra-400);fill:none;stroke-width:2;flex:none;}
+
+/* ── Ajuste de padding para a grade ── */
+#patologias section, .bg-bone section{padding:0;}
+</style>
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CollectionPage","name":"Patologias que dão direito ao BPC/LOAS","url":"https://www.portaldobpc.com.br/patologias.html","description":"Lista das 20 doenças e condições que podem dar direito ao BPC/LOAS, com CID e CIF de cada uma.","isPartOf":{"@id":"https://www.portaldobpc.com.br/#website"}}
+</script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="components.js"></script>
+<script>
+(function(){
+  const h = React.createElement;
+
+  function PatologiasPage() {
+    const navigate = (screen, payload) => {
+      const map = {
+        home: 'index.html',
+        simulador: 'index.html#/simulador',
+        pericias: 'index.html#/pericias',
+        estrangeiro: 'index.html#/estrangeiro',
+        blog: 'index.html#/blog',
+        faq: 'index.html#faq',
+        patologias: 'patologias.html',
+      };
+      if (map[screen]) { window.location.href = map[screen]; return; }
+      if (screen === 'patologia' && payload) {
+        const slug = String(payload.nome).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+        window.location.href = slug + '.html';
+      }
+    };
+
+    return h(React.Fragment, null,
+      // Header
+      h(Header, { active: 'patologias', onNavigate: navigate }),
+
+      // Barra de contexto
+      h('div', { className: 'pat-topbar' },
+        h('div', { className: 'container pat-topbar-inner' },
+          h('a', { href: 'index.html' }, '← Início'),
+          h('span', { className: 'pat-topbar-sep' }, '/'),
+          h('span', { className: 'pat-topbar-cur' }, 'Patologias')
+        )
+      ),
+
+      // Hero
+      h('section', { className: 'pat-hero' },
+        h('div', { className: 'container' },
+          h('div', { className: 'pat-hero-eyebrow' },
+            h('span', null),
+            'Doenças e condições · 20 patologias',
+            h('span', null)
+          ),
+          h('h1', null,
+            'O que pode dar ',
+            h('br', null),
+            'direito ao ',
+            h('em', null, 'BPC'),
+            '.'
+          ),
+          h('p', null,
+            'Cada doença tem uma história diferente dentro do INSS. Encontre a sua — veja o que provar, o que costuma ser negado e o que o perito vai olhar na perícia.'
+          ),
+          h('div', { className: 'pat-hero-chips' },
+            h('span', { className: 'pat-hero-chip' },
+              h('svg', { viewBox: '0 0 24 24' }, h('circle', { cx: 12, cy: 12, r: 9 }), h('path', { d: 'M12 7v5l3 2' })),
+              '20 patologias documentadas'
+            ),
+            h('span', { className: 'pat-hero-chip' },
+              h('svg', { viewBox: '0 0 24 24' }, h('path', { d: 'M9 12l2 2 4-4' }), h('circle', { cx: 12, cy: 12, r: 9 })),
+              'CID e CIF de cada condição'
+            ),
+            h('span', { className: 'pat-hero-chip' },
+              h('svg', { viewBox: '0 0 24 24' }, h('path', { d: 'M12 2l2.6 7.6H22l-6.2 4.6 2.3 7.5L12 17.3 5.9 21.7l2.3-7.5L2 9.6h7.4z' })),
+              'Análise sempre individual'
+            )
+          )
+        )
+      ),
+
+      // Grade de patologias
+      h(PatologiasGrid, { onNavigate: navigate }),
+
+      // Footer completo
+      h(Footer, null),
+      h(WhatsAppFloat, null)
+    );
+  }
+
+  ReactDOM.createRoot(document.getElementById('root')).render(h(PatologiasPage));
+})();
+</script>
+</body>
+</html>

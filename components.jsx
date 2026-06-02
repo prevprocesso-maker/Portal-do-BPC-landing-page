@@ -59,7 +59,7 @@ function Header({ active, onNavigate }) {
 
   const nav = [
     { id: 'home', label: 'Início' },
-    { id: 'patologias', label: 'Patologias', hash: '#patologias' },
+    { id: 'patologias', label: 'Patologias', page: 'patologias.html' },
     { id: 'pericias', label: 'Perícias' },
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
@@ -82,9 +82,13 @@ function Header({ active, onNavigate }) {
           {nav.map(n => (
             <a
               key={n.id}
-              href={n.hash || `#/${n.id}`}
+              href={n.page || n.hash || `#/${n.id}`}
               className={active === n.id ? 'nav-link active' : 'nav-link'}
               onClick={(e) => {
+                if (n.page) {
+                  window.location.href = n.page;
+                  return;
+                }
                 if (n.hash) {
                   // Hash-only link (e.g. #faq) — if NOT on home, go home first then scroll
                   if (active !== 'home') {
@@ -196,7 +200,7 @@ function Especialidades() {
               <li>Não receber outro benefício do INSS</li>
               <li>Cadastro no CadÚnico atualizado</li>
             </ul>
-            <a className="btn btn--secondary" href="#/patologia/idoso">Saber mais →</a>
+            <a className="btn btn--secondary" href="bpc-idoso/">Saber mais →</a>
           </div>
           <div className="esp-card">
             <div className="kicker">BPC para Pessoa com Deficiência</div>
@@ -208,7 +212,7 @@ function Especialidades() {
               <li>Renda familiar per capita até ¼ do salário mínimo</li>
               <li>Avaliação médica e social do INSS</li>
             </ul>
-            <a className="btn btn--secondary" href="#/patologia/pcd">Ver as 20 patologias →</a>
+            <a className="btn btn--secondary" href="patologias.html">Ver as 20 patologias →</a>
           </div>
         </div>
       </div>

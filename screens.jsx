@@ -11,7 +11,6 @@ function ScreenLanding({ onNavigate }) {
       <Hero onNavigate={onNavigate} />
       <StatsStrip />
       <Especialidades />
-      <PatologiasGrid onNavigate={onNavigate} />
       <RecursosDestaque onNavigate={onNavigate} />
       <SobrePortal />
       <NossoEscritorio />
