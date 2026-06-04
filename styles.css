@@ -1325,7 +1325,7 @@ a.btn--secondary[href*="wa.me"]:hover,
 .pericia-cta {
   margin-top: 80px;
   padding: 36px 40px;
-  background: linear-gradient(135deg, var(--ink-900) 0%, var(--ink-700) 100%);
+  background: linear-gradient(135deg, var(--terra-900) 0%, var(--terra-800) 100%);
   border-radius: 20px;
   color: #f5ede0;
   display: flex;
