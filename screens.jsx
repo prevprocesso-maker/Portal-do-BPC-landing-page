@@ -1511,7 +1511,7 @@ function ScreenPericias({ onNavigate }) {
     const msg = encodeURIComponent(
       `Olá! Sou ${form.nome.trim()}, baixei o checklist da perícia BPC no site. Gostaria de orientação sobre o meu caso.`
     );
-    window.open('checklist-pericia.html', '_blank', 'noopener');
+    window.open('checklist-pericia.html?print=1', '_blank', 'noopener');
     setTimeout(() => {
       window.open(`https://wa.me/5521964238080?text=${msg}`, '_blank', 'noopener');
     }, 400);
@@ -1697,9 +1697,9 @@ function ScreenPericias({ onNavigate }) {
               <h3>Baixe o checklist e leve impresso no dia.</h3>
               <p>O documento reúne tudo que vimos aqui em uma folha A4 que cabe na pasta.</p>
             </div>
-            <button className="btn btn--primary btn--lg" onClick={() => setForm({ ...form, open: true })}>
+            <a className="btn btn--primary btn--lg" href="checklist-pericia.html?print=1" target="_blank" rel="noreferrer">
               📥 Baixar checklist em PDF
-            </button>
+            </a>
           </div>
         </div>
       </section>
