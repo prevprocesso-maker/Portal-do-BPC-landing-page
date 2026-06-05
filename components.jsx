@@ -183,7 +183,7 @@ function Hero({ onNavigate }) {
             Você não precisa enfrentar o INSS <em>sozinho</em>.
           </h1>
           <p className="lead" style={{ marginBottom: 32, maxWidth: 540 }}>
-            Documentação que confunde, prazo que aperta, perita que apressa, negativa sem explicação. O <strong>BPC</strong> existe para quem mais precisa — <strong>idoso de 65+ ou pessoa com deficiência</strong> em situação de vulnerabilidade. A gente te ajuda a chegar lá com a documentação certa, sem promessas e sem pressa.
+            Documentação que confunde, prazo que aperta, perito que apressa, negativa sem explicação. O <strong>BPC</strong> existe para quem mais precisa — <strong>idoso de 65+ ou pessoa com deficiência</strong> em situação de vulnerabilidade. A gente te ajuda a chegar lá com a documentação certa, sem promessas e sem pressa.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
