@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Checklist — Portal do BPC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0c09; color: #f5ede0; min-height: 100vh; padding: 32px 16px 80px; }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; color: #f5ede0; margin-bottom: 6px; }
+  .subtitle { font-size: 15px; color: #b9a995; margin-bottom: 40px; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #c4673a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #382a20; }
+  .item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 12px; margin-bottom: 8px; transition: background 150ms; cursor: pointer; }
+  .item:hover { background: #1f1812; }
+  .badge { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .done .badge { background: #1f2e1f; color: #8fc48f; }
+  .pending .badge { background: #2e2412; color: #e0b240; }
+  .todo .badge { background: #1c2630; color: #8da8c4; }
+  .item-text { flex: 1; }
+  .item-title { font-size: 15px; font-weight: 600; color: #f5ede0; margin-bottom: 3px; line-height: 1.3; }
+  .item-desc { font-size: 13px; color: #b9a995; line-height: 1.5; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+  .tag-server { background: #2e1815; color: #d97970; }
+  .tag-ok { background: #1f2e1f; color: #8fc48f; }
+  .tag-new { background: #1c2630; color: #8da8c4; }
+  .progress { background: #1f1812; border-radius: 16px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: center; gap: 20px; }
+  .progress-bar { flex: 1; height: 8px; background: #382a20; border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #c4673a, #d68559); border-radius: 999px; transition: width 1s ease; }
+  .progress-text { font-size: 22px; font-weight: 700; color: #c4673a; white-space: nowrap; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #b9a995; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <h1>Checklist — Portal do BPC</h1>
+  <p class="subtitle">Sessão de trabalho — 04 de junho de 2026</p>
+
+  <div class="progress">
+    <div class="progress-bar"><div class="progress-fill" style="width:62%"></div></div>
+    <div class="progress-text">62% concluído</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#8fc48f"></div>Concluído</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e0b240"></div>Aguardando deploy</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8da8c4"></div>Próximo passo</div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="section">
+    <div class="section-title">📱 Mobile — UX e Responsivo</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Menu hambúrguer <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Gaveta lateral com todos os links. Funciona em todas as 61 páginas via mobile-nav.js</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Tab bar mobile <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Início | Patologias | Simulador | WhatsApp — fixo na parte de baixo</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Foto retrato no mobile <span class="tag tag-server">aguarda fixes.css</span></div>
+        <div class="item-desc">Correção no fixes.css — precisa ser subido ao servidor</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Simulador funcionando na tab bar <span class="tag tag-server">aguarda app-main.js</span></div>
+        <div class="item-desc">Hashchange listener adicionado — precisa ser subido</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Botões com área de toque ≥44px <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Touch targets grandes para idosos e tablets</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Fonte 18px nas patologias <span class="tag tag-server">aguarda fixes.css</span></div>
+        <div class="item-desc">Leitura fácil para idosos no mobile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="section">
+    <div class="section-title">🧭 Navegação</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Setas ← → entre patologias <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Barra de posição no topo + setas grandes no rodapé em todas as 61 páginas</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Setas ← → no header desktop <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Navega entre seções (Início, Patologias, Perícias, Simulador...)</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Botão "← Todas as patologias" <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Voltar para lista de patologias em cada página individual</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXTOS -->
+  <div class="section">
+    <div class="section-title">✍️ Textos</div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Texto hero corrigido <span class="tag tag-server">aguarda fixes.js</span></div>
+        <div class="item-desc">"O BPC é um salário mínimo por mês..." — novo texto explicativo</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">"Perita → Perito" corrigido <span class="tag tag-server">aguarda fixes.js</span></div>
+        <div class="item-desc">fixes.js corrige via DOM após carregamento</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Texto da perícia melhorado <span class="tag tag-server">aguarda fixes.js</span></div>
+        <div class="item-desc">"A perícia médica e social é onde a maioria dos pedidos é negado..."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PWA -->
+  <div class="section">
+    <div class="section-title">📲 PWA — Instalar como App</div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">manifest.json <span class="tag tag-server">aguarda deploy</span></div>
+        <div class="item-desc">Arquivo novo — define nome, ícone e cor do app</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Service Worker (sw.js) <span class="tag tag-server">aguarda deploy</span></div>
+        <div class="item-desc">Cache offline, carregamento rápido em 3G/4G</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOTOS -->
+  <div class="section">
+    <div class="section-title">📸 Rotação de Fotos</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Script criado (photo-rotation.js)</div>
+        <div class="item-desc">Troca a foto a cada 3 dias — ciclo de 10 fotos</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Enviar as 10 fotos <span class="tag tag-new">próximo passo</span></div>
+        <div class="item-desc">Nomear: hero-1.jpg até hero-10.jpg → salvar em assets/</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Adicionar photo-rotation.js ao site <span class="tag tag-new">próximo passo</span></div>
+        <div class="item-desc">Após enviar as fotos, faço o deploy do script</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO -->
+  <div class="section">
+    <div class="section-title">🔍 SEO e Conteúdo</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">74 páginas indexadas no Google <span class="tag tag-ok">concluído</span></div>
+        <div class="item-desc">Sitemap aceito em 04/06/2026. Rastreamento em 1-7 dias.</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Artigos do blog — patologias <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Conteúdo sobre autismo, paralisia cerebral, fibromialgia + BPC acelera ranking</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Google Meu Negócio atualizado <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Foto, horário, posts semanais → mais visibilidade local</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Instagram — posts regulares <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Posts sobre patologias geram tráfego para o site</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARQUIVOS CRÍTICOS -->
+  <div class="section">
+    <div class="section-title">📁 Arquivos para subir AGORA</div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">fixes.css <span class="tag tag-server">CRÍTICO</span></div>
+        <div class="item-desc">Arquivo NOVO — foto retrato, layout mobile, tab bar</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">fixes.js <span class="tag tag-server">CRÍTICO</span></div>
+        <div class="item-desc">Arquivo NOVO — corrige textos (perita, perícia, hero)</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">manifest.json + sw.js <span class="tag tag-server">NOVO</span></div>
+        <div class="item-desc">Arquivos NOVOS — PWA / instalar como app</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">Todos os 62 .html <span class="tag tag-server">atualizado</span></div>
+        <div class="item-desc">Incluem fixes.css, fixes.js e manifest</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

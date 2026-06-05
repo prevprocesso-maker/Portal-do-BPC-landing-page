@@ -1,0 +1,131 @@
+/* ============================================================
+   Portal do BPC — fixes.css
+   Correções aplicadas via arquivo novo (garante bypass de cache)
+   ============================================================ */
+
+/* ---- FOTO: retrato no mobile (não landscape) ---- */
+@media (max-width: 900px) {
+  .hero-photo {
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    max-width: 420px !important;
+    max-height: none !important;
+    margin: 0 auto !important;
+  }
+  .hero-photo::before { display: none !important; }
+  .sobre-photo {
+    aspect-ratio: 3 / 4 !important;
+    height: auto !important;
+    max-width: 400px !important;
+    margin: 0 auto !important;
+  }
+  /* Hero grid: texto acima, foto abaixo */
+  .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+  .sobre-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+}
+
+@media (max-width: 560px) {
+  .hero-photo {
+    aspect-ratio: 3 / 4 !important;
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+  .sobre-photo {
+    aspect-ratio: 3 / 4 !important;
+    max-width: 100% !important;
+    border-radius: 16px !important;
+  }
+  /* Botões hero largura total */
+  .hero .btn--lg { width: 100% !important; justify-content: center !important; }
+  /* Patologias 1 coluna */
+  .patologias-grid { grid-template-columns: 1fr !important; }
+  /* Fonte maior idosos */
+  .pp p { font-size: 18px !important; line-height: 1.75 !important; }
+  .pp .lead { font-size: 18px !important; }
+  .pp h1 { font-size: 1.65rem !important; }
+}
+
+/* ---- TAB BAR mobile ---- */
+@media (max-width: 900px) {
+  .wa-float { display: none !important; }
+  .wa-sticky-bar { display: none !important; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)) !important; }
+}
+
+/* ---- Botão hambúrguer ---- */
+@media (max-width: 900px) {
+  .header-hamburger { display: flex !important; }
+  .header-cta-desktop { display: none !important; }
+  .header-nav { display: none !important; }
+}
+
+/* ---- Nav arrows prev/next ---- */
+.pp-position-bar {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  background: var(--bone);
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 28px;
+}
+.pp-nav-arrows {
+  display: flex !important;
+  align-items: stretch;
+  gap: 12px;
+  padding: 28px 0 40px;
+  border-top: 2px solid var(--terra-700);
+  margin-top: 24px;
+}
+.pp-nav-arrow {
+  display: flex !important;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 22px;
+  background: var(--bone);
+  border: 2px solid var(--terra-700);
+  border-radius: 18px;
+  color: var(--ink-900);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  min-height: 72px;
+  flex: 1;
+}
+
+/* ---- Mobile tab bar ---- */
+.mobile-tab-bar {
+  display: none;
+}
+@media (max-width: 900px) {
+  .mobile-tab-bar {
+    display: flex !important;
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 60;
+    background: var(--bone);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.35);
+  }
+  .mobile-tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 8px 4px;
+    min-height: 56px;
+    color: var(--ink-500);
+    font-family: var(--font-sans);
+    font-size: 10.5px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .mobile-tab svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 2; }
+  .mobile-tab.active { color: var(--terra-500); }
+  .mobile-tab--wa { background: var(--wa); color: #fff !important; font-weight: 700; }
+}
