@@ -1,0 +1,478 @@
+[
+  {
+    "tipo": "Core",
+    "file": "index.html",
+    "title": "Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência | Irajá/RJ",
+    "desc": "Portal do BPC: informação clara sobre o Benefício de Prestação Continuada (BPC/LOAS) para idosos a partir de 65 anos e pessoas com deficiência. 20+ doenças que dão direito ao benefício, simulador gratuito e atendimento por WhatsApp.",
+    "url": "https://www.portaldobpc.com.br/"
+  },
+  {
+    "tipo": "Core",
+    "file": "patologias.html",
+    "title": "60 patologias e condições — BPC/LOAS | Portal do BPC",
+    "desc": "Lista completa com 60 patologias — elegíveis, condicionais e raramente elegíveis para o BPC/LOAS. Autismo, câncer, Parkinson, Alzheimer, deficiência visual, auditiva e muito mais. CID e CIF de cada patologia.",
+    "url": "https://www.portaldobpc.com.br/patologias.html"
+  },
+  {
+    "tipo": "Core",
+    "file": "checklist-pericia.html",
+    "title": "Checklist · Perícia médica e social do BPC | Portal do BPC",
+    "desc": "Lista completa de documentos e orientações para a perícia médica e social do BPC. Imprima e leve no dia.",
+    "url": "https://www.portaldobpc.com.br/checklist-pericia.html"
+  },
+  {
+    "tipo": "Guia",
+    "file": "guia-elegibilidade-bpc.html",
+    "title": "O que NÃO dá direito ao BPC — condições frequentemente negadas pelo INSS | Portal do BPC",
+    "desc": "Saiba quais doenças frequentemente têm o BPC negado pelo INSS, por que são rejeitadas e o que muda com a Portaria 37/2026. Guia completo com 55 condições e os critérios de elegibilidade.",
+    "url": "https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html"
+  },
+  {
+    "tipo": "Guia",
+    "file": "como-conseguir-bpc.html",
+    "title": "Como conseguir o BPC/LOAS — 6 estratégias para aprovação | Portal do BPC",
+    "desc": "Guia completo com 6 estratégias para conseguir o BPC/LOAS. Documentação, perícia, recurso administrativo e judicial. Baseado em estudo de padrões de negativa e aprovação do INSS.",
+    "url": "https://www.portaldobpc.com.br/como-conseguir-bpc.html"
+  },
+  {
+    "tipo": "Core",
+    "file": "simulador-v2.html",
+    "title": "Será que tenho direito ao BPC? — Portal do BPC",
+    "desc": "—",
+    "url": "https://www.portaldobpc.com.br/simulador-v2.html"
+  },
+  {
+    "tipo": "Legal",
+    "file": "privacidade.html",
+    "title": "Política de Privacidade — Portal do BPC",
+    "desc": "Política de Privacidade do Portal do BPC. Como tratamos seus dados pessoais nos termos da LGPD (Lei 13.709/2018).",
+    "url": "https://www.portaldobpc.com.br/privacidade"
+  },
+  {
+    "tipo": "Legal",
+    "file": "termos.html",
+    "title": "Termos de Uso — Portal do BPC",
+    "desc": "Termos de Uso do Portal do BPC. Regras para utilização do site e dos serviços de informação sobre BPC/LOAS.",
+    "url": "https://www.portaldobpc.com.br/termos"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "autismo-tea.html",
+    "title": "Autismo (TEA) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Lei Berenice Piana equipara o autismo à pessoa com deficiência para todos os efeitos legais. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/autismo-tea.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-de-down.html",
+    "title": "Síndrome de Down e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Trissomia do cromossomo 21 — direito reconhecido por lei desde o nascimento. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/sindrome-de-down.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "paralisia-cerebral.html",
+    "title": "Paralisia cerebral e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Disfunção motora e cognitiva de origem cerebral, manifestada na infância. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/paralisia-cerebral.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "ela.html",
+    "title": "ELA e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Esclerose lateral amiotrófica — doença neuromotora progressiva. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/ela.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "lesao-medular.html",
+    "title": "Lesão medular (paraplegia e tetraplegia) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Lesão medular com paraplegia ou tetraplegia dá direito ao BPC/LOAS. Veja documentos, como funciona a perícia do INSS, CID G82 e CIF, e o que fazer se o benefício for negado.",
+    "url": "https://www.portaldobpc.com.br/lesao-medular.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "distrofia-muscular.html",
+    "title": "Distrofia muscular e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doenças degenerativas musculares (Duchenne, etc). Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/distrofia-muscular.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "deficiencia-visual.html",
+    "title": "Deficiência visual e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Cegueira total ou baixa visão grave em ambos os olhos. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/deficiencia-visual.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "deficiencia-auditiva.html",
+    "title": "Deficiência auditiva e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Surdez bilateral profunda comprovada. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/deficiencia-auditiva.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "epilepsia-refrataria.html",
+    "title": "Epilepsia refratária e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Crises não controladas com impacto funcional significativo. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/epilepsia-refrataria.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "esquizofrenia.html",
+    "title": "Esquizofrenia e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Transtorno mental grave de longa duração. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/esquizofrenia.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hanseniase-sequelas.html",
+    "title": "Hanseníase com sequelas e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Hanseníase com sequelas pode dar direito ao BPC/LOAS quando há impedimento de longa duração. Saiba os documentos, como é a perícia do INSS e o que fazer se o benefício for negado.",
+    "url": "https://www.portaldobpc.com.br/hanseniase-sequelas.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "deficit-intelectual.html",
+    "title": "Déficit intelectual e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Déficit intelectual de qualquer grau pode dar direito ao BPC/LOAS. Saiba o que o INSS analisa, documentos necessários, CID F70-F79, CIF e como recorrer se negado.",
+    "url": "https://www.portaldobpc.com.br/deficit-intelectual.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "miastenia-grave.html",
+    "title": "Miastenia grave e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Miastenia grave com comprometimento funcional significativo pode dar direito ao BPC/LOAS. Veja CID G70.0, CIF, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/miastenia-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "doenca-de-huntington.html",
+    "title": "Doença de Huntington e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença de Huntington com diagnóstico genético confirmado dá direito ao BPC/LOAS. Veja CID G10, CIF, documentos necessários e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/doenca-de-huntington.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "espinha-bifida.html",
+    "title": "Espinha bífida e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Espinha bífida com mielomeningocele e sequelas permanentes dá direito ao BPC/LOAS desde o nascimento. Veja CID Q05, CIF, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/espinha-bifida.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "atrofia-muscular-espinhal.html",
+    "title": "Atrofia muscular espinhal (AME) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Atrofia muscular espinhal (AME) com diagnóstico genético confirmado dá direito ao BPC/LOAS. Veja CID G12.1, tipos I-IV, documentos necessários e como funciona a perícia.",
+    "url": "https://www.portaldobpc.com.br/atrofia-muscular-espinhal.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-de-rett.html",
+    "title": "Síndrome de Rett e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Síndrome de Rett com diagnóstico confirmado dá direito ao BPC/LOAS. Veja CID F84.2, gene MECP2, documentos necessários e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/sindrome-de-rett.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "esclerose-tuberosa.html",
+    "title": "Esclerose tuberosa e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Esclerose tuberosa com epilepsia refratária e déficit intelectual dá direito ao BPC/LOAS. Veja CID Q85.1, genes TSC1/TSC2, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/esclerose-tuberosa.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-de-williams.html",
+    "title": "Síndrome de Williams e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Síndrome de Williams com diagnóstico genético confirmado dá direito ao BPC/LOAS. Veja CID Q93.7, deleção 7q11.23, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/sindrome-de-williams.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-x-fragil.html",
+    "title": "Síndrome do X Frágil e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Síndrome do X Frágil com diagnóstico genético confirmado dá direito ao BPC/LOAS. Veja CID Q99.2, gene FMR1, repetições CGG, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/sindrome-x-fragil.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "insuficiencia-cardiaca-avancada.html",
+    "title": "Insuficiência cardíaca avançada e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Insuficiência cardíaca avançada (classe III-IV NYHA) pode dar direito ao BPC/LOAS. Veja CID I50, fração de ejeção, classes NYHA, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/insuficiencia-cardiaca-avancada.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "esclerose-multipla.html",
+    "title": "Esclerose múltipla e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença autoimune que afeta o sistema nervoso central. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/esclerose-multipla.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "doenca-de-parkinson.html",
+    "title": "Doença de Parkinson e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença neurodegenerativa do movimento. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/doenca-de-parkinson.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "doenca-de-alzheimer.html",
+    "title": "Doença de Alzheimer e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Demência com perda progressiva de função cognitiva. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/doenca-de-alzheimer.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sequelas-de-avc.html",
+    "title": "Sequelas de AVC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Limitações duradouras após acidente vascular cerebral. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/sequelas-de-avc.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "cancer.html",
+    "title": "Câncer e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Neoplasias malignas com impedimento de longa duração. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/cancer.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "insuficiencia-renal.html",
+    "title": "Insuficiência renal e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença renal crônica em hemodiálise. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/insuficiencia-renal.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "cardiopatia-grave.html",
+    "title": "Cardiopatia grave e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doenças do coração que limitam a vida diária. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/cardiopatia-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hiv-aids.html",
+    "title": "HIV / AIDS e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Quadro avançado com impedimentos importantes. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/hiv-aids.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hepatopatia-grave.html",
+    "title": "Hepatopatia grave e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Cirrose, hepatite crônica avançada. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/hepatopatia-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "lupus-les.html",
+    "title": "Lúpus (LES) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença autoimune sistêmica grave. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/lupus-les.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "transtorno-bipolar.html",
+    "title": "Transtorno bipolar e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Em quadros com prejuízo funcional importante. Saiba se dá direito ao BPC/LOAS, documentos necessários, como é a perícia do INSS e o que fazer se for negado.",
+    "url": "https://www.portaldobpc.com.br/transtorno-bipolar.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "amputacao.html",
+    "title": "Amputação e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Amputação de membro com redução da capacidade laboral pode dar direito ao BPC/LOAS e à aposentadoria da pessoa com deficiência. Veja CID Z89, CIF, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/amputacao.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "artrite-reumatoide.html",
+    "title": "Artrite reumatoide e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Artrite reumatoide incapacitante pode dar direito ao BPC/LOAS e à aposentadoria da pessoa com deficiência. Veja CID M05/M06, CIF, documentos necessários e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/artrite-reumatoide.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "dpoc-grave.html",
+    "title": "DPOC grave e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "DPOC grave (GOLD III-IV) com limitação respiratória severa pode dar direito ao BPC/LOAS. Veja CID J44, espirometria, classificação GOLD e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/dpoc-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "fibrose-pulmonar.html",
+    "title": "Fibrose pulmonar e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Fibrose pulmonar (FPI) progressiva pode dar direito ao BPC/LOAS. Veja CID J84.1, TCAR, espirometria, CVF, DLCO e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/fibrose-pulmonar.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "esclerodermia.html",
+    "title": "Esclerodermia (Esclerose sistêmica) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Esclerodermia (esclerose sistêmica) com comprometimento pulmonar ou articular grave pode dar direito ao BPC/LOAS. Veja CID M34, CIF, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/esclerodermia.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "artrite-psoriasica.html",
+    "title": "Artrite psoriásica e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Artrite psoriásica grave com deformidades articulares pode dar direito ao BPC/LOAS. Veja CID L40.5, CIF, documentos necessários e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/artrite-psoriasica.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "doenca-de-charcot.html",
+    "title": "Doença de Charcot-Marie-Tooth e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença de Charcot-Marie-Tooth (CMT) pode dar direito ao BPC/LOAS quando causa limitação motora significativa. Veja CID G60.0, ENMG, documentos e como funciona a perícia.",
+    "url": "https://www.portaldobpc.com.br/doenca-de-charcot.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "neurofibromatose.html",
+    "title": "Neurofibromatose e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Neurofibromatose pode dar direito ao BPC/LOAS quando causa complicações com impacto funcional significativo. Veja CID Q85.0, tipos NF1 e NF2, documentos e como funciona a perícia.",
+    "url": "https://www.portaldobpc.com.br/neurofibromatose.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "osteoporose-grave.html",
+    "title": "Osteoporose grave com fraturas e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Osteoporose grave com fraturas por fragilidade e sequelas permanentes pode dar direito ao BPC/LOAS. Saiba quando é elegível, CID M80, documentos e como funciona a perícia.",
+    "url": "https://www.portaldobpc.com.br/osteoporose-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "artrose-avancada.html",
+    "title": "Artrose avançada e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Artrose grave (grau III-IV) com deformidades e limitação funcional severa pode dar direito ao BPC/LOAS. Saiba quando é elegível, por que artrose leve é negada e o que documentar.",
+    "url": "https://www.portaldobpc.com.br/artrose-avancada.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "retinose-pigmentar.html",
+    "title": "Retinose pigmentar e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Retinose pigmentar com campo visual < 20° pode dar direito ao BPC/LOAS. Veja CID H35.5, campimetria, ERG, quando é elegível e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/retinose-pigmentar.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hidrocefalia.html",
+    "title": "Hidrocefalia e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Hidrocefalia com sequelas cognitivas ou motoras pode dar direito ao BPC/LOAS. Veja CID G91, quando é elegível, documentos e como funciona a perícia do INSS.",
+    "url": "https://www.portaldobpc.com.br/hidrocefalia.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "doenca-de-wilson.html",
+    "title": "Doença de Wilson e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Doença de Wilson com cirrose ou comprometimento neurológico grave pode dar direito ao BPC/LOAS. Veja CID E83.0, ceruloplasmina, documentos e como funciona a perícia.",
+    "url": "https://www.portaldobpc.com.br/doenca-de-wilson.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "fenilcetonuria.html",
+    "title": "Fenilcetonúria (PKU) e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Fenilcetonúria com déficit intelectual por diagnóstico tardio pode dar direito ao BPC/LOAS. Veja CID E70.0, quando é elegível e como documentar o caso para o INSS.",
+    "url": "https://www.portaldobpc.com.br/fenilcetonuria.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "fibromialgia.html",
+    "title": "Fibromialgia e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Fibromialgia incapacitante pode dar direito ao BPC/LOAS e à aposentadoria por invalidez. Entenda o que o INSS analisa, quais documentos levar, como é a perícia e como recorrer se negado.",
+    "url": "https://www.portaldobpc.com.br/fibromialgia.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "ansiedade-e-bpc.html",
+    "title": "Ansiedade e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Ansiedade raramente dá direito ao BPC/LOAS. Saiba quando pode ser elegível, o que o INSS exige, e por que a maioria dos casos é negada. Portaria 37/2026 e como recorrer.",
+    "url": "https://www.portaldobpc.com.br/ansiedade-e-bpc.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "depressao-grave.html",
+    "title": "Depressão grave e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Depressão raramente dá direito ao BPC/LOAS. Saiba quando a depressão grave pode ser elegível, o que o INSS exige, e como a Portaria 37/2026 mudou a avaliação.",
+    "url": "https://www.portaldobpc.com.br/depressao-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "tdah.html",
+    "title": "TDAH e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "TDAH raramente dá direito ao BPC/LOAS. Saiba quando TDAH grave com comorbidades pode ser elegível, o impacto da Portaria 37/2026 e como a maioria dos casos é avaliada pelo INSS.",
+    "url": "https://www.portaldobpc.com.br/tdah.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-pos-covid.html",
+    "title": "Síndrome pós-COVID e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Síndrome pós-COVID (Long COVID) pode dar direito ao BPC/LOAS em casos graves com sequelas permanentes. Veja CID U09.9, quando é elegível e como documentar o caso.",
+    "url": "https://www.portaldobpc.com.br/sindrome-pos-covid.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "transtorno-de-personalidade-grave.html",
+    "title": "Transtorno de personalidade grave e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Transtorno de personalidade raramente dá direito ao BPC/LOAS. Saiba quando casos graves podem ser elegíveis, por que o INSS frequentemente nega e como a Portaria 37/2026 mudou a avaliação.",
+    "url": "https://www.portaldobpc.com.br/transtorno-de-personalidade-grave.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hernia-de-disco.html",
+    "title": "Hérnia de disco e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Hérnia de disco raramente dá direito ao BPC/LOAS. Saiba quando pode ser elegível (síndrome da cauda equina, falha cirúrgica), por que a maioria é negada e o que fazer.",
+    "url": "https://www.portaldobpc.com.br/hernia-de-disco.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "diabetes-complicacoes.html",
+    "title": "Diabetes com complicações e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Diabetes não dá direito ao BPC/LOAS sozinho. São as complicações — cegueira, amputação, insuficiência renal — que geram o direito. Entenda o que o INSS analisa.",
+    "url": "https://www.portaldobpc.com.br/diabetes-complicacoes.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "hipertensao-e-bpc.html",
+    "title": "Hipertensão e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Hipertensão controlada não dá direito ao BPC/LOAS. São as complicações — AVC com sequelas, insuficiência cardíaca, IRC — que geram o direito. Saiba o que o INSS analisa.",
+    "url": "https://www.portaldobpc.com.br/hipertensao-e-bpc.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "lombalgia-cronica.html",
+    "title": "Lombalgia crônica e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Lombalgia crônica raramente dá direito ao BPC/LOAS. Saiba quando pode ser elegível, por que o INSS nega, e o que fazer com a Portaria 37/2026.",
+    "url": "https://www.portaldobpc.com.br/lombalgia-cronica.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "sindrome-tunel-carpo.html",
+    "title": "Síndrome do túnel do carpo e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Síndrome do túnel do carpo raramente dá BPC/LOAS. Saiba quando falha cirúrgica e atrofia muscular grave podem dar direito ao benefício.",
+    "url": "https://www.portaldobpc.com.br/sindrome-tunel-carpo.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "vertigo-e-bpc.html",
+    "title": "Vertigem e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Vertigem raramente dá direito ao BPC/LOAS. Saiba quando vertigem crônica refratária pode ser elegível e por que VPPB quase sempre é negada.",
+    "url": "https://www.portaldobpc.com.br/vertigo-e-bpc.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "varizes-e-bpc.html",
+    "title": "Varizes e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Varizes raramente dão direito ao BPC/LOAS. Saiba quando úlcera venosa crônica grave pode ser elegível e por que varizes simples são negadas.",
+    "url": "https://www.portaldobpc.com.br/varizes-e-bpc.html"
+  },
+  {
+    "tipo": "Patologia",
+    "file": "dores-cronicas.html",
+    "title": "Dores crônicas sem lesão e o BPC e o BPC/LOAS — direito, documentos e perícia | Portal do BPC",
+    "desc": "Dores crônicas sem lesão orgânica raramente dão BPC/LOAS. Saiba como identificar o diagnóstico certo, quais exames objetivos o INSS aceita e como a Portaria 37/2026 mudou a avaliação.",
+    "url": "https://www.portaldobpc.com.br/dores-cronicas.html"
+  }
+]

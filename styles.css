@@ -1506,3 +1506,373 @@ a.btn--secondary[href*="wa.me"]:hover,
   object-fit: cover;
   display: block;
 }
+
+/* ============================================================
+   MELHORIAS MOBILE — Hambúrguer + WhatsApp Bar + Touch Targets
+   ============================================================ */
+
+/* ---- Hambúrguer ---- */
+.header-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: background 200ms ease;
+}
+.header-hamburger:hover { background: var(--bone-2); }
+.header-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink-900);
+  border-radius: 2px;
+  transition: transform 300ms cubic-bezier(0.22,1,0.36,1), opacity 200ms ease;
+  transform-origin: center;
+}
+.header-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.header-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.header-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 900px) {
+  .header-hamburger { display: flex; }
+  .header-cta-desktop { display: none !important; }
+}
+
+/* ---- Overlay do drawer ---- */
+.mobile-drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0,0,0,0.65);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.mobile-drawer-overlay.open { display: block; }
+
+/* ---- Drawer lateral ---- */
+.mobile-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 85vw);
+  z-index: 200;
+  background: var(--bone);
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 350ms cubic-bezier(0.22,1,0.36,1);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.mobile-drawer.open { transform: translateX(0); }
+
+.mobile-drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--line);
+  flex-shrink: 0;
+}
+.mobile-drawer-close {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bone-2);
+  border: none;
+  border-radius: 999px;
+  color: var(--ink-900);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 180ms ease;
+  flex-shrink: 0;
+}
+.mobile-drawer-close:hover { background: var(--line); }
+
+.mobile-drawer-nav {
+  flex: 1;
+  padding: 8px 0;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-drawer-nav a {
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  height: 56px;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--ink-900);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+.mobile-drawer-nav a:hover { background: var(--bone-2); color: var(--terra-300); border-left-color: var(--terra-700); }
+.mobile-drawer-nav a.active { font-weight: 700; color: var(--terra-400); border-left-color: var(--terra-500); background: var(--bone-2); }
+.mobile-drawer-nav a:hover { text-decoration: none; }
+
+.mobile-drawer-cta {
+  padding: 16px 20px calc(16px + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+  border-top: 1px solid var(--line);
+}
+.mobile-drawer-cta a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  height: 56px;
+  background: var(--wa);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 14px;
+  text-decoration: none;
+  transition: background 200ms ease;
+}
+.mobile-drawer-cta a:hover { background: var(--wa-dark); color: #fff; text-decoration: none; }
+
+/* ---- WhatsApp barra fixa (mobile) ---- */
+.wa-sticky-bar { display: none; }
+
+@media (max-width: 900px) {
+  /* Float some de tela no mobile — substituído pela barra */
+  .wa-float { display: none; }
+
+  .wa-sticky-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background: var(--wa);
+    padding: 10px 20px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  }
+  .wa-sticky-bar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 17px;
+    font-weight: 700;
+    text-decoration: none;
+    min-height: 44px;
+  }
+  .wa-sticky-bar a:hover { color: #fff; text-decoration: none; }
+  .wa-sticky-bar img { width: 26px; height: 26px; }
+
+  /* Espaço para a barra não cobrir conteúdo */
+  body { padding-bottom: calc(68px + env(safe-area-inset-bottom, 0px)); }
+}
+
+/* ---- Touch targets e tipografia mobile ---- */
+@media (max-width: 900px) {
+  /* Patologias: cards mais compactos no tablet */
+  .pat-card { padding: 16px 14px; }
+  .pat-card h4 { font-size: 16px; }
+  .pat-card p { font-size: 13px; }
+
+  /* FAQ: tap area generoso */
+  .faq-item > summary,
+  .faq-item > button { min-height: 52px; padding: 14px 20px; }
+}
+
+@media (max-width: 560px) {
+  /* Patologias: 1 coluna em celular pequeno */
+  .patologias-grid { grid-template-columns: 1fr !important; }
+
+  /* Hero: botões empilhados e largos */
+  .hero { padding-top: calc(var(--header-h) + 20px); }
+  .hero .btn--lg { width: 100%; justify-content: center; font-size: 16px; padding: 15px 20px; }
+
+  /* Esp cards */
+  .esp-card { padding: 22px 18px; }
+  .esp-card h3 { font-size: 26px; }
+
+  /* Container mais apertado */
+  .container { padding-left: 16px; padding-right: 16px; }
+
+  /* Stat numbers menores */
+  .stat .n { font-size: 36px; }
+
+  /* Section head menos espaço */
+  .section-head { margin-bottom: 32px; }
+}
+
+/* ============================================================
+   FOTOS MOBILE — proporções corretas
+   ============================================================ */
+
+/* Hero photo: tablet */
+@media (max-width: 900px) {
+  .hero-photo {
+    aspect-ratio: unset;
+    height: 340px;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+  .hero-photo::before { display: none; }
+
+  /* Sobre photo: tablet */
+  .sobre-photo {
+    aspect-ratio: unset;
+    height: 300px;
+    max-width: 500px;
+    margin: 0 auto;
+    border-radius: 20px;
+  }
+
+  /* Hero stats trust strip */
+  .hero > .container > div[style*="marginTop: 36"] { display: none; }
+
+  /* Seção padding reduzido */
+  section { padding-top: 56px; padding-bottom: 56px; }
+  .hero { padding-top: calc(var(--header-h) + 24px) !important; }
+}
+
+/* Hero photo: celular */
+@media (max-width: 560px) {
+  .hero-photo {
+    height: 260px;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  /* Sobre foto menor em celular */
+  .sobre-photo {
+    height: 220px;
+    max-width: 100%;
+    border-radius: 16px;
+  }
+
+  /* Escritório: 1 foto por vez com scroll horizontal */
+  .escritorio-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .esc-photo { aspect-ratio: 1 / 1; border-radius: 12px; }
+  .esc-label { font-size: 15px; }
+
+  /* Depoimentos: texto menor */
+  .dep-card blockquote { font-size: 17px; }
+  .dep-card { padding: 22px 20px; }
+
+  /* Blog: padding menor */
+  .blog-card .body { padding: 16px 18px 20px; }
+  .blog-card h4 { font-size: 19px; }
+
+  /* Valores grid: 1 coluna */
+  .valores-grid { grid-template-columns: 1fr; gap: 10px; }
+
+  /* CTA Banner: empilha */
+  .cta-banner-inner { gap: 20px !important; }
+
+  /* Seção padding menor */
+  section { padding-top: 40px; padding-bottom: 40px; }
+
+  /* Destaque cards: padding menor */
+  .destaque-card { padding: 24px 20px; }
+}
+
+/* Fotos escritório — fallback visual quando arquivo não existe */
+.esc-photo {
+  background: linear-gradient(145deg, var(--bone-2) 0%, var(--line) 100%);
+}
+.esc-photo img {
+  transition: opacity 300ms ease;
+}
+.esc-photo img[src=""] { opacity: 0; }
+
+/* Hero-grid mobile: foto ACIMA do texto */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-photo { order: -1; }
+}
+@media (max-width: 560px) {
+  .hero-grid { gap: 20px; }
+}
+
+/* Sobre-grid mobile: foto abaixo */
+@media (max-width: 900px) {
+  .sobre-grid { grid-template-columns: 1fr; gap: 32px; }
+  .sobre-photo { order: 2; }
+}
+
+/* ============================================================
+   PÁGINAS DE PATOLOGIA (.pp) — mobile
+   ============================================================ */
+@media (max-width: 900px) {
+  .pp { padding-top: calc(var(--header-h) + 36px + 28px); }
+  .pp-topbar-inner { gap: 8px; overflow: hidden; }
+  .pp-topbar-cur { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 180px; }
+}
+
+@media (max-width: 560px) {
+  /* Topbar breadcrumb */
+  .pp-topbar { height: auto; min-height: 36px; padding: 6px 0; }
+  .pp-topbar-inner { flex-wrap: wrap; gap: 4px 8px; }
+
+  /* Cabeçalho da página */
+  .pp { padding-top: calc(var(--header-h) + 36px + 20px); padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
+  .pp h1 { font-size: 1.65rem !important; line-height: 1.15; }
+  .pp .lead { font-size: 16.5px !important; }
+  .pp p { font-size: 16px !important; line-height: 1.65; }
+
+  /* Chips de dados rápidos */
+  .pp-chips { gap: 8px; }
+  .pp-chip { padding: 10px 14px; }
+  .pp-chip b { font-size: 14px; }
+  .pp-chip span { font-size: 11.5px; }
+
+  /* CID/CIF grid: 1 coluna */
+  .pp-class-grid { grid-template-columns: 1fr !important; }
+  .pp-class-code { font-size: 34px !important; }
+
+  /* CTA box */
+  .pp-cta { padding: 24px 18px !important; border-radius: 16px !important; }
+  .pp-cta h2 { font-size: 1.35rem; }
+  .pp-cta .acts { flex-direction: column; align-items: stretch; }
+  .pp-cta .acts .btn { width: 100%; justify-content: center; }
+
+  /* Documentos lista */
+  .pp-docs li { padding: 14px 16px; border-radius: 12px; }
+  .pp-docs b { font-size: 15px; }
+  .pp-docs span { font-size: 13.5px; }
+
+  /* Patologias relacionadas */
+  .pp-rel { gap: 8px; }
+  .pp-rel a { font-size: 13px; padding: 8px 14px; }
+
+  /* Rodapé da página */
+  .pp-foot { padding: 20px 0; font-size: 13px; }
+
+  /* Destaque lateral */
+  .pp-destaque { padding: 12px 16px; font-size: 15px; }
+
+  /* Erros comuns */
+  .pp-erros li { font-size: 15px; padding-left: 24px; }
+}

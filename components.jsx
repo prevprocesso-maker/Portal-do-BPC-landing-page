@@ -51,11 +51,18 @@ function patSlug(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u
 /* ---------- Header ---------- */
 function Header({ active, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
 
   const nav = [
     { id: 'home', label: 'Início' },
@@ -67,58 +74,101 @@ function Header({ active, onNavigate }) {
     { id: 'faq', label: 'Perguntas', hash: '#faq' },
   ];
 
+  function handleNavClick(e, n) {
+    setMenuOpen(false);
+    if (n.page) { window.location.href = n.page; return; }
+    e.preventDefault();
+    if (n.hash) {
+      if (active !== 'home') {
+        onNavigate('home');
+        setTimeout(() => {
+          const el = document.querySelector(n.hash);
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }, 150);
+      } else {
+        const el = document.querySelector(n.hash);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      }
+      return;
+    }
+    onNavigate(n.id);
+  }
+
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container header-inner">
-        <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
-          <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" className="header-logo-mark" style={{ objectFit: 'contain' }} />
-          <span className="header-logo-text">
-            <span className="header-logo-text-1">Portal do</span>
-            <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
-            <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
-          </span>
-        </a>
-        <nav className="header-nav">
+    <>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container header-inner">
+          <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
+            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" className="header-logo-mark" style={{ objectFit: 'contain' }} />
+            <span className="header-logo-text">
+              <span className="header-logo-text-1">Portal do</span>
+              <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
+              <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
+            </span>
+          </a>
+          <nav className="header-nav">
+            {nav.map(n => (
+              <a
+                key={n.id}
+                href={n.page || n.hash || `#/${n.id}`}
+                className={active === n.id ? 'nav-link active' : 'nav-link'}
+                onClick={(e) => handleNavClick(e, n)}
+              >
+                <span>{n.label}</span>
+              </a>
+            ))}
+          </nav>
+          <a className="btn btn--primary btn--sm header-cta-desktop" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+            Falar agora →
+          </a>
+          <button
+            className={`header-hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+      <div
+        className={`mobile-drawer-overlay${menuOpen ? ' open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+      <nav className={`mobile-drawer${menuOpen ? ' open' : ''}`} aria-label="Menu principal" aria-hidden={!menuOpen}>
+        <div className="mobile-drawer-header">
+          <a href="#/" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate('home'); }} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 40, width: 40, objectFit: 'contain' }} />
+            <span className="header-logo-text">
+              <span className="header-logo-text-1" style={{ fontSize: 13 }}>Portal do</span>
+              <span className="header-logo-text-2" style={{ fontSize: 20 }}>BPC<span className="header-logo-dot">.</span></span>
+            </span>
+          </a>
+          <button className="mobile-drawer-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu">✕</button>
+        </div>
+        <div className="mobile-drawer-nav">
           {nav.map(n => (
             <a
               key={n.id}
               href={n.page || n.hash || `#/${n.id}`}
-              className={active === n.id ? 'nav-link active' : 'nav-link'}
-              onClick={(e) => {
-                if (n.page) {
-                  window.location.href = n.page;
-                  return;
-                }
-                if (n.hash) {
-                  // Hash-only link (e.g. #faq) — if NOT on home, go home first then scroll
-                  if (active !== 'home') {
-                    e.preventDefault();
-                    onNavigate('home');
-                    setTimeout(() => {
-                      const el = document.querySelector(n.hash);
-                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                  } else {
-                    // Already on home — let default scroll-to-anchor happen, but smooth
-                    e.preventDefault();
-                    const el = document.querySelector(n.hash);
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                  return;
-                }
-                e.preventDefault();
-                onNavigate(n.id);
-              }}
+              className={active === n.id ? 'active' : ''}
+              onClick={(e) => handleNavClick(e, n)}
             >
-              <span>{n.label}</span>
+              {n.label}
             </a>
           ))}
-        </nav>
-        <a className="btn btn--primary btn--sm" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-          Falar agora →
-        </a>
-      </div>
-    </header>
+        </div>
+        <div className="mobile-drawer-cta">
+          <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+            <img src="assets/icon-whatsapp.svg" alt="" style={{ width: 22, height: 22 }} />
+            Falar no WhatsApp
+          </a>
+        </div>
+      </nav>
+    </>
   );
 }
 
@@ -930,9 +980,17 @@ const socialBtn = {
 /* ---------- WhatsApp Float ---------- */
 function WhatsAppFloat() {
   return (
-    <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
-      <img src="assets/icon-whatsapp.svg" alt="" />
-    </a>
+    <>
+      <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
+        <img src="assets/icon-whatsapp.svg" alt="" />
+      </a>
+      <div className="wa-sticky-bar">
+        <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+          <img src="assets/icon-whatsapp.svg" alt="" />
+          Falar no WhatsApp agora
+        </a>
+      </div>
+    </>
   );
 }
 
