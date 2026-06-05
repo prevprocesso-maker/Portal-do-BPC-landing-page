@@ -62,11 +62,12 @@
       '.hero-grid{grid-template-columns:1fr!important;}',
       '}',
       '@media (max-width:820px){',
+      '.sim2{min-height:0!important;padding-bottom:24px!important;}',
       '.sim2 .card{display:flex!important;flex-direction:column!important;}',
       /* Painel de perguntas fica no topo */
       '.sim2 .panel{order:1!important;}',
       /* Support (Carlos Costa) preenche o buraco abaixo */
-      '.sim2 .support{order:2!important;min-height:200px!important;background:linear-gradient(180deg,rgba(20,16,12,.1),rgba(20,16,12,.88)),url("assets/dr-carlos-costa.jpg") center 12%/cover no-repeat,var(--bone-2)!important;padding:20px 18px 24px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;border-radius:0 0 22px 22px!important;}',
+      '.sim2 .support{order:2!important;min-height:280px!important;background:linear-gradient(180deg,rgba(20,16,12,.05),rgba(20,16,12,.82)),url("assets/dr-carlos-costa.jpg") center 35%/cover no-repeat,var(--bone-2)!important;padding:20px 18px 24px!important;display:flex!important;flex-direction:column!important;justify-content:flex-end!important;border-radius:0 0 22px 22px!important;}',
       '.sim2 .support::after{display:none!important;}',
       '.sim2 .who{margin-bottom:10px!important;}',
       '.sim2 .reassure{font-size:1.1rem!important;min-height:auto!important;display:block!important;margin-top:0!important;}',
