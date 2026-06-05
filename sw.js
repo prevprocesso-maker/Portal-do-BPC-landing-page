@@ -3,8 +3,8 @@
    Cache-first para assets estáticos, network-first para HTML
    ============================================================ */
 
-const CACHE_NAME = 'pdbpc-v2';
-const CACHE_STATIC = 'pdbpc-static-v2';
+const CACHE_NAME = 'pdbpc-v3';
+const CACHE_STATIC = 'pdbpc-static-v3';
 
 /* Assets que vão para cache imediatamente (install) */
 const PRECACHE = [
@@ -64,8 +64,22 @@ self.addEventListener('fetch', function(e) {
     return;
   }
 
-  /* CSS, JS, imagens: cache-first (rápido) */
-  if (['style', 'script', 'image', 'font'].includes(e.request.destination)) {
+  /* CSS, JS: network-first para garantir versão nova sempre */
+  if (['style', 'script'].includes(e.request.destination)) {
+    e.respondWith(
+      fetch(e.request).then(function(res) {
+        var clone = res.clone();
+        caches.open(CACHE_STATIC).then(function(c) { c.put(e.request, clone); });
+        return res;
+      }).catch(function() {
+        return caches.match(e.request);
+      })
+    );
+    return;
+  }
+
+  /* Imagens e fontes: cache-first (mudam raramente) */
+  if (['image', 'font'].includes(e.request.destination)) {
     e.respondWith(
       caches.match(e.request).then(function(cached) {
         if (cached) return cached;
