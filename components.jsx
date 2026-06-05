@@ -183,7 +183,7 @@ function Hero({ onNavigate }) {
             Você não precisa enfrentar o INSS <em>sozinho</em>.
           </h1>
           <p className="lead" style={{ marginBottom: 32, maxWidth: 540 }}>
-            Documentação que confunde, prazo que aperta, perito que apressa, negativa sem explicação. O <strong>BPC</strong> existe para quem mais precisa — <strong>idoso de 65+ ou pessoa com deficiência</strong> em situação de vulnerabilidade. A gente te ajuda a chegar lá com a documentação certa, sem promessas e sem pressa.
+            O <strong>BPC</strong> é um salário mínimo por mês — <strong>R$ 1.621 em 2026</strong> — pago pelo governo para <strong>idosos a partir de 65 anos</strong> e <strong>pessoas com deficiência</strong> em situação de vulnerabilidade. Não precisa ter contribuído ao INSS. A gente analisa o seu caso, organiza a documentação e acompanha até a aprovação.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
@@ -360,7 +360,7 @@ function RecursosDestaque({ onNavigate }) {
       id: 'pericias',
       kicker: 'Onde a maioria das negativas começa',
       title: 'Perícia médica e social',
-      desc: 'Documentação incompleta, perita após 15 minutos, palavra mal escolhida — e o pedido cai. A gente reúne tudo o que você precisa levar e como se comportar. Checklist em PDF para imprimir.',
+      desc: 'A perícia médica e social é onde a maioria dos pedidos é negado — não por falta de direito, mas por documentação incompleta ou por não saber como se apresentar. Preparamos tudo que você precisa levar e como agir no dia. Checklist completo em PDF para imprimir.',
       stat: '34',
       statLabel: 'itens no checklist',
       cta: 'Ver guia da perícia',

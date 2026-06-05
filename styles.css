@@ -1511,7 +1511,36 @@ a.btn--secondary[href*="wa.me"]:hover,
    MELHORIAS MOBILE — Hambúrguer + WhatsApp Bar + Touch Targets
    ============================================================ */
 
-/* ---- Hambúrguer ---- */
+/* ---- Setas de navegação no header nav ---- */
+.header-nav-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--bone-2);
+  border: 1px solid var(--line);
+  color: var(--terra-400);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 180ms ease;
+  line-height: 1;
+  padding: 0;
+}
+.header-nav-arrow:hover {
+  background: var(--terra-500);
+  border-color: var(--terra-500);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Setas ficam no drawer mobile também */
+@media (max-width: 900px) {
+  .header-nav-arrow { display: none; }
+}
 .header-hamburger {
   display: none;
   flex-direction: column;
@@ -1726,12 +1755,12 @@ a.btn--secondary[href*="wa.me"]:hover,
    FOTOS MOBILE — proporções corretas
    ============================================================ */
 
-/* Hero photo: tablet — mantém proporção retrato como no desktop */
+/* Hero photo: tablet — retrato como no desktop */
 @media (max-width: 900px) {
   .hero-photo {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     height: auto;
-    max-width: 560px;
+    max-width: 420px;
     margin: 0 auto;
     border-radius: 20px;
   }
@@ -1739,9 +1768,9 @@ a.btn--secondary[href*="wa.me"]:hover,
 
   /* Sobre photo: tablet */
   .sobre-photo {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     height: auto;
-    max-width: 500px;
+    max-width: 400px;
     margin: 0 auto;
     border-radius: 20px;
   }
@@ -1754,19 +1783,21 @@ a.btn--secondary[href*="wa.me"]:hover,
   .hero { padding-top: calc(var(--header-h) + 24px) !important; }
 }
 
-/* Hero photo: celular — proporção 3:2 para mostrar mais do rosto */
+/* Hero photo: celular — retrato igual desktop, altura máxima razoável */
 @media (max-width: 560px) {
   .hero-photo {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 3 / 4;
     height: auto;
+    max-height: 380px;
     max-width: 100%;
     border-radius: 16px;
   }
 
   /* Sobre foto */
   .sobre-photo {
-    aspect-ratio: 4 / 3;
+    aspect-ratio: 3 / 4;
     height: auto;
+    max-height: 320px;
     max-width: 100%;
     border-radius: 16px;
   }
@@ -1908,76 +1939,80 @@ a.btn--secondary[href*="wa.me"]:hover,
   display: flex;
   align-items: stretch;
   gap: 12px;
-  padding: 24px 0 36px;
-  border-top: 1px solid var(--line);
-  margin-top: 16px;
+  padding: 28px 0 40px;
+  border-top: 2px solid var(--terra-700);
+  margin-top: 24px;
 }
 .pp-nav-arrow {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 18px 20px;
+  gap: 12px;
+  padding: 20px 22px;
   background: var(--bone);
-  border: 2px solid var(--line);
-  border-radius: 16px;
+  border: 2px solid var(--terra-700);
+  border-radius: 18px;
   color: var(--ink-900);
   font-family: var(--font-sans);
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
-  transition: all 180ms ease;
-  min-height: 64px;
+  transition: all 200ms ease;
+  min-height: 72px;
   flex: 1;
+  box-shadow: 0 2px 12px rgba(196,103,58,0.15);
 }
 .pp-nav-arrow:hover {
   border-color: var(--terra-500);
-  background: var(--bone-2);
+  background: var(--terra-900);
   color: var(--terra-300);
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(196,103,58,0.25);
 }
 .pp-nav-arrow--prev { flex-direction: row; }
 .pp-nav-arrow--next { flex-direction: row-reverse; text-align: right; }
 .pp-nav-arrow .arrow-icon {
-  font-size: 24px;
+  font-size: 28px;
   flex-shrink: 0;
   color: var(--terra-500);
   line-height: 1;
 }
 .pp-nav-arrow span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 15px; }
-.pp-nav-arrow .arrow-label { font-size: 11px; color: var(--ink-500); font-weight: 400; display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: 0.08em; }
+.pp-nav-arrow .arrow-label { font-size: 11px; color: var(--ink-500); font-weight: 400; display: block; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.1em; }
 
-/* Barra de posição no topo da patologia */
+/* Barra de posição no topo */
 .pp-position-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 8px;
   background: var(--bone);
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  padding: 14px 16px;
-  margin-bottom: 24px;
+  border: 2px solid var(--line);
+  border-radius: 16px;
+  padding: 12px 14px;
+  margin-bottom: 28px;
 }
 .pp-position-bar a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
-  background: var(--bone-2);
-  border: 1px solid var(--line);
-  color: var(--ink-900);
-  font-size: 22px;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: var(--terra-800);
+  border: 2px solid var(--terra-700);
+  color: var(--terra-300);
+  font-size: 26px;
+  font-weight: 700;
   text-decoration: none;
   flex-shrink: 0;
   transition: all 180ms ease;
 }
 .pp-position-bar a:hover { background: var(--terra-500); color: #fff; border-color: var(--terra-500); text-decoration: none; }
-.pp-position-bar a.disabled { opacity: 0.3; pointer-events: none; }
+.pp-position-bar a.disabled { opacity: 0.25; pointer-events: none; }
 .pp-position-center { flex: 1; text-align: center; }
-.pp-position-center strong { display: block; font-family: var(--font-sans); font-size: 13px; font-weight: 600; color: var(--ink-900); }
-.pp-position-center span { font-size: 12px; color: var(--ink-500); }
+.pp-position-center strong { display: block; font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--ink-900); margin-bottom: 2px; }
+.pp-position-center span { font-size: 12px; color: var(--terra-400); font-weight: 500; }
 
 /* Botão voltar */
 .pp-nav-back {

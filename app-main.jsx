@@ -18,8 +18,20 @@ function App() {
     else if (h === '#/estrangeiro' || h === '#/bpc-estrangeiro') setScreen('estrangeiro');
   }, []);
 
+  // Hashchange listener: tab bar e links externos navegam corretamente
   useEffect(() => {
-    // Força scroll instantâneo (sem animação suave) ao trocar de tela
+    function handleHash() {
+      const h = window.location.hash;
+      if (h === '#/simulador') { setScreen('simulador'); }
+      else if (h === '#/pericias') { setScreen('pericias'); }
+      else if (h === '#/estrangeiro' || h === '#/bpc-estrangeiro') { setScreen('estrangeiro'); }
+      else if (h === '#/blog') { setScreen('blog'); }
+      else if (h === '#/' || h === '#/home') { setScreen('home'); }
+    }
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+ (sem animação suave) ao trocar de tela
     document.documentElement.style.scrollBehavior = 'auto';
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
@@ -44,7 +56,9 @@ function App() {
   const navigate = (s, payload) => {
     if (s === 'patologia') setPatologia(payload);
     setScreen(s);
+    window.location.hash = '#/' + s;
   };
+  window.__bpcNavigate = navigate;
 
   return (
     <>

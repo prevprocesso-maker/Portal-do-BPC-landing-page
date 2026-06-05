@@ -64,12 +64,32 @@
             )
           ),
           e('nav', { className: 'header-nav' },
+            e('button', {
+              className: 'header-nav-arrow',
+              'aria-label': 'Seção anterior',
+              onClick: function() {
+                const navIds = nav.map(function(n){ return n.id; });
+                const cur = navIds.indexOf(active === 'patologias' ? 'patologias' : active);
+                const prev = nav[Math.max(0, cur - 1)];
+                if (prev) handleNavClick({ preventDefault: function(){} }, prev);
+              }
+            }, '←'),
             nav.map(n => e('a', {
               key: n.id,
               href: n.page || n.hash || `#/${n.id}`,
               className: active === n.id ? 'nav-link active' : 'nav-link',
               onClick: (ev) => handleNavClick(ev, n)
-            }, e('span', null, n.label)))
+            }, e('span', null, n.label))),
+            e('button', {
+              className: 'header-nav-arrow',
+              'aria-label': 'Próxima seção',
+              onClick: function() {
+                const navIds = nav.map(function(n){ return n.id; });
+                const cur = navIds.indexOf(active === 'patologias' ? 'patologias' : active);
+                const next = nav[Math.min(nav.length - 1, cur + 1)];
+                if (next) handleNavClick({ preventDefault: function(){} }, next);
+              }
+            }, '→')
           ),
           e('a', {
             className: 'btn btn--primary btn--sm header-cta-desktop',
@@ -135,21 +155,27 @@
         e('img', { src: 'assets/icon-whatsapp.svg', alt: '' })
       ),
       e('div', { className: 'mobile-tab-bar' },
-        e('a', { href: '#/', className: 'mobile-tab active', onClick: function(ev){ ev.preventDefault(); } },
+        e('a', { href: '#/', className: 'mobile-tab active',
+          onClick: function(ev){ ev.preventDefault(); if(window.__bpcNavigate) window.__bpcNavigate('home'); else window.location.hash='#/home'; }
+        },
           e('svg', { viewBox: '0 0 24 24' },
             e('path', { d: 'M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z' }),
             e('polyline', { points: '9,22 9,12 15,12 15,22' })
           ),
           'Início'
         ),
-        e('a', { href: '#patologias', className: 'mobile-tab' },
+        e('a', { href: '#patologias', className: 'mobile-tab',
+          onClick: function(ev){ ev.preventDefault(); if(window.__bpcNavigate) window.__bpcNavigate('home'); window.location.hash='#patologias'; setTimeout(function(){ var el=document.querySelector('#patologias'); if(el) window.scrollTo({top:el.getBoundingClientRect().top+window.scrollY-80,behavior:'smooth'}); },200); }
+        },
           e('svg', { viewBox: '0 0 24 24' },
             e('path', { d: 'M9 11l3 3L22 4' }),
             e('path', { d: 'M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11' })
           ),
           'Patologias'
         ),
-        e('a', { href: '#/simulador', className: 'mobile-tab' },
+        e('a', { href: '#/simulador', className: 'mobile-tab',
+          onClick: function(ev){ ev.preventDefault(); if(window.__bpcNavigate) window.__bpcNavigate('simulador'); else window.location.hash='#/simulador'; }
+        },
           e('svg', { viewBox: '0 0 24 24' },
             e('circle', { cx: '12', cy: '12', r: '10' }),
             e('line', { x1: '12', y1: '8', x2: '12', y2: '12' }),
