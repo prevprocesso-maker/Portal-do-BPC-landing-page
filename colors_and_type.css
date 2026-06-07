@@ -7,7 +7,7 @@
    ============================================================ */
 
 /* --------- Fonts (Google Fonts substitutions — see README) --- */
-@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
   /* ===== COLORS — DARK theme (matches carloscostaprev visual) ===== */
@@ -64,10 +64,10 @@
   --font-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Fluid type scale */
-  --text-display: clamp(3rem, 5.5vw + 1rem, 6rem);
-  --text-h1:      clamp(2.25rem, 2.5vw + 1rem, 3.5rem);
-  --text-h2:      clamp(1.75rem, 1.4vw + 1rem, 2.25rem);
-  --text-h3:      clamp(1.25rem, 0.4vw + 1rem, 1.5rem);
+  --text-display: clamp(3rem, calc(5.5vw + 1rem), 6rem);
+  --text-h1:      clamp(2.25rem, calc(2.5vw + 1rem), 3.5rem);
+  --text-h2:      clamp(1.75rem, calc(1.4vw + 1rem), 2.25rem);
+  --text-h3:      clamp(1.25rem, calc(0.4vw + 1rem), 1.5rem);
   --text-lead:    1.25rem;
   --text-body:    1.125rem;
   --text-small:   1rem;

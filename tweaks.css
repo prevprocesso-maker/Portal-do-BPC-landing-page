@@ -116,7 +116,7 @@ html[data-font="dmserif"] {
 }
 html[data-font="instrument"] {
   --font-serif: 'Instrument Serif', 'Fraunces', Georgia, serif;
-  --font-sans:  'Geist', 'Inter', system-ui, sans-serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
 }
 
 /* ============================================================
