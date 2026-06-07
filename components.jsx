@@ -68,6 +68,11 @@ function Header({ active, onNavigate }) {
       <div className="container header-inner">
         <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
           <img src="assets/logo-marca.png" alt="Portal do BPC — CarlosCostaPrev" className="header-logo-mark" />
+          <span className="header-logo-text">
+            <span className="header-logo-text-1">Portal do</span>
+            <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
+            <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
+          </span>
         </a>
         <nav className="header-nav">
           {nav.map(n => (
@@ -796,6 +801,10 @@ function Footer() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
               <img src="assets/logo-marca.png" alt="Portal do BPC — CarlosCostaPrev" style={{ height: 64, width: 52, objectFit: 'contain', display: 'block' }} />
+              <div>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 500, lineHeight: 1, color: 'var(--ink-900)' }}>Portal do</div>
+                <div style={{ fontFamily: 'var(--font-serif)', fontSize: 36, fontWeight: 700, fontStyle: 'italic', lineHeight: 1, color: 'var(--terra-500)', marginTop: 4 }}>BPC<span style={{color:'var(--terra-300)'}}>.</span></div>
+              </div>
             </div>
             <p className="footer-desc">Informação clara e atendimento humano sobre o Benefício de Prestação Continuada (BPC/LOAS).</p>
             <p className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
