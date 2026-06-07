@@ -31,12 +31,17 @@ function App() {
     window.addEventListener('hashchange', handleHash);
     return () => window.removeEventListener('hashchange', handleHash);
   }, []);
- (sem animação suave) ao trocar de tela
+
+  // Scroll to top (sem animação suave) ao trocar de tela
+  useEffect(() => {
     document.documentElement.style.scrollBehavior = 'auto';
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
     requestAnimationFrame(() => { document.documentElement.style.scrollBehavior = ''; });
-    // Dynamic <title> for SEO (also helps shareable links until SSR is in place)
+  }, [screen]);
+
+  // Dynamic <title> for SEO (also helps shareable links until SSR is in place)
+  useEffect(() => {
     const base = 'Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência';
     if (screen === 'patologia' && patologia) {
       document.title = `BPC para ${patologia.nome} — ${base}`;

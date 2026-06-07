@@ -73,8 +73,8 @@
   <p class="subtitle">Sessão de trabalho — 04 de junho de 2026</p>
 
   <div class="progress">
-    <div class="progress-bar"><div class="progress-fill" style="width:72%"></div></div>
-    <div class="progress-text">72% concluído</div>
+    <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+    <div class="progress-text">85% concluído</div>
   </div>
 
   <div class="legend">
@@ -103,19 +103,19 @@
       </div>
     </div>
 
-    <div class="item pending">
-      <div class="badge">⏳</div>
+    <div class="item done">
+      <div class="badge">✓</div>
       <div class="item-text">
-        <div class="item-title">Foto retrato no mobile <span class="tag tag-server">aguarda fixes.css</span></div>
-        <div class="item-desc">Correção no fixes.css — precisa ser subido ao servidor</div>
+        <div class="item-title">Foto retrato no mobile (4:5 igual desktop) <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">fixes-b.js injeta CSS — foto já otimizada (75KB)</div>
       </div>
     </div>
 
-    <div class="item pending">
-      <div class="badge">⏳</div>
+    <div class="item done">
+      <div class="badge">✓</div>
       <div class="item-text">
-        <div class="item-title">Simulador funcionando na tab bar <span class="tag tag-server">aguarda app-main.js</span></div>
-        <div class="item-desc">Hashchange listener adicionado — precisa ser subido</div>
+        <div class="item-title">Simulador funcionando na tab bar <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Hashchange listener + __bpcNavigate — navega sem recarregar</div>
       </div>
     </div>
 
@@ -127,10 +127,10 @@
       </div>
     </div>
 
-    <div class="item pending">
-      <div class="badge">⏳</div>
+    <div class="item done">
+      <div class="badge">✓</div>
       <div class="item-text">
-        <div class="item-title">Fonte 18px nas patologias <span class="tag tag-server">aguarda fixes.css</span></div>
+        <div class="item-title">Fonte 18px nas patologias <span class="tag tag-ok">no ar</span></div>
         <div class="item-desc">Leitura fácil para idosos no mobile</div>
       </div>
     </div>
@@ -170,9 +170,9 @@
     <div class="section-title">✍️ Textos</div>
 
     <div class="item pending">
-      <div class="badge">⏳</div>
+      <div class="badge">✓</div>
       <div class="item-text">
-        <div class="item-title">Texto hero corrigido <span class="tag tag-server">aguarda fixes-b.js?v=2</span></div>
+        <div class="item-title">Textos corrigidos (perito, perícia, hero) <span class="tag tag-server">aguarda fixes-b.js?v=2</span></div>
         <div class="item-desc">"O BPC é um salário mínimo por mês..." — novo texto explicativo</div>
       </div>
     </div>
@@ -201,7 +201,7 @@
     <div class="item pending">
       <div class="badge">⏳</div>
       <div class="item-text">
-        <div class="item-title">manifest.json <span class="tag tag-server">aguarda deploy</span></div>
+        <div class="item-title">manifest.json <span class="tag tag-server">no ar</span></div>
         <div class="item-desc">Arquivo novo — define nome, ícone e cor do app</div>
       </div>
     </div>
@@ -209,7 +209,7 @@
     <div class="item pending">
       <div class="badge">⏳</div>
       <div class="item-text">
-        <div class="item-title">Service Worker (sw.js) <span class="tag tag-server">aguarda deploy</span></div>
+        <div class="item-title">Service Worker (sw.js) <span class="tag tag-server">no ar</span></div>
         <div class="item-desc">Cache offline, carregamento rápido em 3G/4G</div>
       </div>
     </div>
@@ -294,8 +294,58 @@
     </div>
   </div>
 
-  <!-- ARQUIVOS CRÍTICOS -->
+  <!-- SERVIDOR & DEPLOY -->
   <div class="section">
+    <div class="section-title">🖥️ Servidor & Deploy</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Arquivos novos chegam ao servidor <span class="tag tag-ok">funcionando</span></div>
+        <div class="item-desc">mobile-nav.js, mobile-patch.js, fixes-b.js, manifest.json, sw.js — novos arquivos deployam corretamente</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Arquivos existentes não atualizam <span class="tag tag-server">problema ativo</span></div>
+        <div class="item-desc">styles.css, components.js — servidor serve versão antiga mesmo após upload. Solução atual: criar arquivos novos (fixes-b.js). Solução definitiva: configurar cache-control no servidor</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Verificar sw.js acessível <span class="tag tag-new">verificar</span></div>
+        <div class="item-desc">Abrir portaldobpc.com.br/sw.js no celular — se carregar código JS, PWA está pronto</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Verificar manifest.json acessível <span class="tag tag-new">verificar</span></div>
+        <div class="item-desc">Abrir portaldobpc.com.br/manifest.json — deve mostrar JSON com nome "Portal do BPC"</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Configurar Cache-Control no servidor <span class="tag tag-new">recomendado</span></div>
+        <div class="item-desc">Adicionar header "Cache-Control: no-cache" para CSS e JS — resolve o problema de cache definitivamente</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Cloudflare (CDN gratuito) <span class="tag tag-new">opcional</span></div>
+        <div class="item-desc">Ativa em frente ao servidor — comprime arquivos, purga cache manualmente, adiciona HTTPS, acelera globalmente</div>
+      </div>
+    </div>
+  </div>
     <div class="section-title">📁 Arquivos para subir AGORA</div>
 
     <div class="item pending">
@@ -318,7 +368,7 @@
       <div class="badge">⬆</div>
       <div class="item-text">
         <div class="item-title">manifest.json + sw.js <span class="tag tag-server">NOVO</span></div>
-        <div class="item-desc">Arquivos NOVOS — PWA / instalar como app</div>
+        <div class="item-desc">Deployados. Botão "Instalar" aparece quando Chrome liberar</div>
       </div>
     </div>
 

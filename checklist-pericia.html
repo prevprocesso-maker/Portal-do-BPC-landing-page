@@ -1,5 +1,4 @@
 <!doctype html>
-<!-- @dsCard group="UI Kit — Website" name="Checklist Perícia BPC (PDF imprimível)" -->
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -281,6 +280,66 @@
       a { color: var(--ink-900); text-decoration: none; }
       .checklist li, .tip, .errors li { break-inside: avoid; }
     }
+  
+    /* ========== B&W PRINT MODE — economy ink ========== */
+    @media print {
+      * {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+      }
+      body, .page { background: #fff !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3, h4, h5, h6 { color: #000 !important; }
+      h1 em, h2 em, h3 em, em { color: #000 !important; font-style: italic; }
+      strong { color: #000 !important; font-weight: 700; }
+      .doc-head, .doc-foot { border-color: #000 !important; }
+      .step, .change, .field, .qa, .article, .section, .action, .lei, .callout, .ok, .warn, .cmd, .blog-cal li, .tip, .card-checklist, .tips, .check li {
+        background: #fff !important;
+        border-color: #999 !important;
+      }
+      .step, .change, .field, .qa, .lei, .callout, .ok, .warn, .article .cta { border-left: 4px solid #000 !important; }
+      .errors li, .errors .checkbox { background: #fff !important; border-color: #333 !important; }
+      .errors .checkbox::after { color: #000 !important; }
+      .checkbox, .check li::before { background: #fff !important; border-color: #000 !important; }
+      .section-tag, .part-tag, .article-meta .num {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        padding: 2px 8px !important;
+      }
+      .doc-foot .wpp {
+        background: transparent !important;
+        color: #000 !important;
+        border: 2px solid #000 !important;
+      }
+      pre, .cmd {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #999 !important;
+      }
+      code { background: #f3f3f3 !important; color: #000 !important; border: 1px solid #ddd; }
+      img { filter: grayscale(100%) contrast(1.05) !important; }
+      svg { color: #000 !important; fill: #000 !important; stroke: #000 !important; }
+      .dot { background: #000 !important; border: 1px solid #000 !important; }
+      .step-num, .num, .tip-num, .change-num, .action-num, .micro .num {
+        color: #000 !important;
+        background: transparent !important;
+      }
+      .micro .num { font-style: italic; }
+      table th { background: #fff !important; border-bottom: 2px solid #000 !important; }
+      td { border-bottom: 1px solid #999 !important; }
+      td.ok, td.todo { color: #000 !important; font-weight: 700; }
+      .when { color: #000 !important; border-right-color: #000 !important; }
+      .phone-strip { background: #fff !important; color: #000 !important; border: 2px solid #000 !important; }
+      .phone-strip .num, .phone-strip .lbl { color: #000 !important; }
+      .doc-head .icon { background: #fff !important; border: 2px solid #000 !important; }
+      .doc-head .icon svg { color: #000 !important; }
+    }
   </style>
 </head>
 <body>
@@ -291,7 +350,7 @@
     </div>
 
     <div class="doc-head">
-      <img src="assets/logo-marca.png" alt="CarlosCostaPrev" style="height:48px;width:40px;" />
+      <img src="assets/logo-marca.png" alt="" />
       <div>
         <div class="title">Portal do <em>BPC.</em></div>
         <div class="sub">Checklist · Perícia médica e social</div>

@@ -6,111 +6,224 @@
 const { useState, useEffect, useRef } = React;
 
 /* ---------- Patologias data ----------
-   cat: 'neuro' | 'mental' | 'sensorial' | 'onco' | 'cronica' | 'desenv'
+   cat: 'desenv' | 'neuro' | 'mental' | 'sensorial' | 'onco' | 'cronica' | 'reuma' | 'respiratoria' | 'ortopedica'
 */
 const PATOLOGIAS = [
-  { sigla: 'TEA', cat: 'desenv', nome: 'Autismo (TEA)', resumo: 'Lei Berenice Piana equipara o autismo à pessoa com deficiência para todos os efeitos legais.' },
-  { sigla: 'SD',  cat: 'desenv', nome: 'Síndrome de Down', resumo: 'Trissomia do cromossomo 21 — direito reconhecido por lei desde o nascimento.' },
-  { sigla: 'PCx', cat: 'desenv', nome: 'Paralisia cerebral', resumo: 'Disfunção motora e cognitiva de origem cerebral, manifestada na infância.' },
+  /* ── Desenvolvimento (10) ── */
+  { sigla: 'TEA',  cat: 'desenv', nome: 'Autismo (TEA)', resumo: 'Lei Berenice Piana equipara o autismo à pessoa com deficiência para todos os efeitos legais.' },
+  { sigla: 'SD',   cat: 'desenv', nome: 'Síndrome de Down', resumo: 'Trissomia do cromossomo 21 — direito reconhecido por lei desde o nascimento.' },
+  { sigla: 'PCx',  cat: 'desenv', nome: 'Paralisia cerebral', resumo: 'Disfunção motora e cognitiva de origem cerebral, manifestada na infância.' },
+  { sigla: 'DI',   cat: 'desenv', nome: 'Déficit intelectual', resumo: 'Funcionamento intelectual abaixo da média com limitações adaptativas — CID F70-F79.' },
+  { sigla: 'ET',   cat: 'desenv', nome: 'Esclerose tuberosa', resumo: 'Doença genética com tumores benignos em múltiplos órgãos — epilepsia e déficit cognitivo frequentes.' },
+  { sigla: 'EB',   cat: 'desenv', nome: 'Espinha bífida', resumo: 'Malformação congênita do tubo neural com comprometimento motor e vesical.' },
+  { sigla: 'SR',   cat: 'desenv', nome: 'Síndrome de Rett', resumo: 'Transtorno genético do neurodesenvolvimento — regressão motora e cognitiva progressiva.' },
+  { sigla: 'SW',   cat: 'desenv', nome: 'Síndrome de Williams', resumo: 'Deleção cromossômica 7q11.23 com déficit intelectual e cardiopatia congênita.' },
+  { sigla: 'XF',   cat: 'desenv', nome: 'Síndrome do X Frágil', resumo: 'Causa genética mais comum de deficiência intelectual hereditária.' },
+  { sigla: 'TDAH', cat: 'desenv', nome: 'TDAH', resumo: 'Raramente elegível ao BPC — exige comorbidades graves e impacto funcional severo.' },
 
-  { sigla: 'EM',  cat: 'neuro', nome: 'Esclerose múltipla', resumo: 'Doença autoimune que afeta o sistema nervoso central.' },
-  { sigla: 'PK',  cat: 'neuro', nome: 'Doença de Parkinson', resumo: 'Doença neurodegenerativa do movimento.' },
-  { sigla: 'AZ',  cat: 'neuro', nome: 'Doença de Alzheimer', resumo: 'Demência com perda progressiva de função cognitiva.' },
-  { sigla: 'AVC', cat: 'neuro', nome: 'Sequelas de AVC', resumo: 'Limitações duradouras após acidente vascular cerebral.' },
-  { sigla: 'EL',  cat: 'neuro', nome: 'ELA', resumo: 'Esclerose lateral amiotrófica — doença neuromotora progressiva.' },
-  { sigla: 'EP',  cat: 'neuro', nome: 'Epilepsia refratária', resumo: 'Crises não controladas com impacto funcional significativo.' },
+  /* ── Neurológica (14) ── */
+  { sigla: 'EM',   cat: 'neuro', nome: 'Esclerose múltipla', resumo: 'Doença autoimune que afeta o sistema nervoso central.' },
+  { sigla: 'PK',   cat: 'neuro', nome: 'Doença de Parkinson', resumo: 'Doença neurodegenerativa do movimento.' },
+  { sigla: 'AZ',   cat: 'neuro', nome: 'Doença de Alzheimer', resumo: 'Demência com perda progressiva de função cognitiva.' },
+  { sigla: 'AVC',  cat: 'neuro', nome: 'Sequelas de AVC', resumo: 'Limitações duradouras após acidente vascular cerebral.' },
+  { sigla: 'EL',   cat: 'neuro', nome: 'ELA', resumo: 'Esclerose lateral amiotrófica — doença neuromotora progressiva.' },
+  { sigla: 'EP',   cat: 'neuro', nome: 'Epilepsia refratária', resumo: 'Crises não controladas com impacto funcional significativo.' },
+  { sigla: 'AME',  cat: 'neuro', nome: 'Atrofia muscular espinhal', resumo: 'Doença neuromuscular hereditária — fraqueza progressiva e atrofia.' },
+  { sigla: 'CMT',  cat: 'neuro', nome: 'Doença de Charcot-Marie-Tooth', resumo: 'Neuropatia hereditária com fraqueza distal progressiva — CID G60.0.' },
+  { sigla: 'HTG',  cat: 'neuro', nome: 'Doença de Huntington', resumo: 'Doença neurodegenerativa hereditária com movimentos involuntários e demência.' },
+  { sigla: 'HC',   cat: 'neuro', nome: 'Hidrocefalia', resumo: 'Acúmulo de líquor no cérebro — sequelas cognitivas e motoras quando graves.' },
+  { sigla: 'LM',   cat: 'neuro', nome: 'Lesão medular', resumo: 'Paraplegia ou tetraplegia por lesão da medula espinhal — CID G82.' },
+  { sigla: 'MG',   cat: 'neuro', nome: 'Miastenia grave', resumo: 'Doença autoimune neuromuscular com fraqueza flutuante — CID G70.0.' },
+  { sigla: 'NF',   cat: 'neuro', nome: 'Neurofibromatose', resumo: 'Doença genética com tumores nos nervos — CID Q85.0.' },
+  { sigla: 'WD',   cat: 'neuro', nome: 'Doença de Wilson', resumo: 'Acúmulo de cobre com danos hepáticos e neurológicos — CID E83.0.' },
 
-  { sigla: 'EQ',  cat: 'mental', nome: 'Esquizofrenia', resumo: 'Transtorno mental grave de longa duração.' },
-  { sigla: 'TB',  cat: 'mental', nome: 'Transtorno bipolar', resumo: 'Em quadros com prejuízo funcional importante.' },
+  /* ── Saúde mental (5) ── */
+  { sigla: 'EQ',   cat: 'mental', nome: 'Esquizofrenia', resumo: 'Transtorno mental grave de longa duração.' },
+  { sigla: 'TB',   cat: 'mental', nome: 'Transtorno bipolar', resumo: 'Em quadros com prejuízo funcional importante.' },
+  { sigla: 'DG',   cat: 'mental', nome: 'Depressão grave', resumo: 'Depressão maior com incapacidade funcional — alta taxa de negativa no INSS.' },
+  { sigla: 'ANS',  cat: 'mental', nome: 'Ansiedade', resumo: 'Transtorno de ansiedade generalizada raramente elegível — exige impacto severo.' },
+  { sigla: 'TPG',  cat: 'mental', nome: 'Transtorno de personalidade grave', resumo: 'Borderline e antissocial graves com prejuízo funcional documentado.' },
 
-  { sigla: 'DV',  cat: 'sensorial', nome: 'Deficiência visual', resumo: 'Cegueira total ou baixa visão grave em ambos os olhos.' },
-  { sigla: 'DA',  cat: 'sensorial', nome: 'Deficiência auditiva', resumo: 'Surdez bilateral profunda comprovada.' },
+  /* ── Sensorial (4) ── */
+  { sigla: 'DV',   cat: 'sensorial', nome: 'Deficiência visual', resumo: 'Cegueira total ou baixa visão grave em ambos os olhos.' },
+  { sigla: 'DA',   cat: 'sensorial', nome: 'Deficiência auditiva', resumo: 'Surdez bilateral profunda comprovada.' },
+  { sigla: 'RP',   cat: 'sensorial', nome: 'Retinose pigmentar', resumo: 'Degeneração progressiva da retina com perda gradual da visão — CID H35.5.' },
+  { sigla: 'VER',  cat: 'sensorial', nome: 'Vertigem', resumo: 'Raramente elegível — exige causa vestibular grave e permanente comprovada.' },
 
-  { sigla: 'CA',  cat: 'onco', nome: 'Câncer', resumo: 'Neoplasias malignas com impedimento de longa duração.' },
+  /* ── Oncológica (1) ── */
+  { sigla: 'CA',   cat: 'onco', nome: 'Câncer', resumo: 'Neoplasias malignas com impedimento de longa duração.' },
 
-  { sigla: 'IR',  cat: 'cronica', nome: 'Insuficiência renal', resumo: 'Doença renal crônica em hemodiálise.' },
-  { sigla: 'CG',  cat: 'cronica', nome: 'Cardiopatia grave', resumo: 'Doenças do coração que limitam a vida diária.' },
-  { sigla: 'HV',  cat: 'cronica', nome: 'HIV / AIDS', resumo: 'Quadro avançado com impedimentos importantes.' },
-  { sigla: 'HP',  cat: 'cronica', nome: 'Hepatopatia grave', resumo: 'Cirrose, hepatite crônica avançada.' },
-  { sigla: 'LE',  cat: 'cronica', nome: 'Lúpus (LES)', resumo: 'Doença autoimune sistêmica grave.' },
-  { sigla: 'DM',  cat: 'cronica', nome: 'Distrofia muscular', resumo: 'Doenças degenerativas musculares (Duchenne, etc).' },
+  /* ── Crônica (13) ── */
+  { sigla: 'IR',   cat: 'cronica', nome: 'Insuficiência renal', resumo: 'Doença renal crônica em hemodiálise.' },
+  { sigla: 'CG',   cat: 'cronica', nome: 'Cardiopatia grave', resumo: 'Doenças do coração que limitam a vida diária.' },
+  { sigla: 'HV',   cat: 'cronica', nome: 'HIV / AIDS', resumo: 'Quadro avançado com impedimentos importantes.' },
+  { sigla: 'HP',   cat: 'cronica', nome: 'Hepatopatia grave', resumo: 'Cirrose, hepatite crônica avançada.' },
+  { sigla: 'DM',   cat: 'cronica', nome: 'Distrofia muscular', resumo: 'Doenças degenerativas musculares (Duchenne, etc).' },
+  { sigla: 'ICA',  cat: 'cronica', nome: 'Insuficiência cardíaca avançada', resumo: 'IC classe III-IV da NYHA com limitação severa — CID I50.' },
+  { sigla: 'HAN',  cat: 'cronica', nome: 'Hanseníase com sequelas', resumo: 'Sequelas neurológicas e motoras permanentes da hanseníase — CID A30.' },
+  { sigla: 'DBC',  cat: 'cronica', nome: 'Diabetes com complicações', resumo: 'Diabetes raramente elegível — exige complicações graves (nefropatia, retinopatia, amputação).' },
+  { sigla: 'PCV',  cat: 'cronica', nome: 'Síndrome pós-COVID', resumo: 'Long COVID com limitações persistentes — alta dificuldade de aprovação.' },
+  { sigla: 'HIP',  cat: 'cronica', nome: 'Hipertensão', resumo: 'Raramente elegível — somente com cardiopatia hipertensiva grave documentada.' },
+  { sigla: 'VAR',  cat: 'cronica', nome: 'Varizes', resumo: 'Raramente elegível — exige insuficiência venosa crônica grave com úlceras.' },
+  { sigla: 'FEN',  cat: 'cronica', nome: 'Fenilcetonúria (PKU)', resumo: 'Erro inato do metabolismo — elegível quando há déficit intelectual associado.' },
+  { sigla: 'DC',   cat: 'cronica', nome: 'Dores crônicas', resumo: 'Dor sem lesão estrutural raramente elegível — exige comprovação funcional rigorosa.' },
+
+  /* ── Reumatológica (7) ── */
+  { sigla: 'LE',   cat: 'reuma', nome: 'Lúpus (LES)', resumo: 'Doença autoimune sistêmica grave com acometimento multiorgânico.' },
+  { sigla: 'FM',   cat: 'reuma', nome: 'Fibromialgia', resumo: 'Dor crônica generalizada — alta dificuldade de aprovação no INSS.' },
+  { sigla: 'AR',   cat: 'reuma', nome: 'Artrite reumatoide', resumo: 'Doença autoimune com destruição articular progressiva — CID M05.' },
+  { sigla: 'APs',  cat: 'reuma', nome: 'Artrite psoriásica', resumo: 'Artrite inflamatória associada à psoríase — CID L40.5.' },
+  { sigla: 'ESD',  cat: 'reuma', nome: 'Esclerodermia', resumo: 'Esclerose sistêmica com fibrose de pele e órgãos — CID M34.' },
+  { sigla: 'ART',  cat: 'reuma', nome: 'Artrose avançada', resumo: 'Degeneração articular grave com limitação funcional documentada.' },
+  { sigla: 'OPG',  cat: 'reuma', nome: 'Osteoporose grave', resumo: 'Osteoporose com fraturas patológicas e perda de mobilidade — CID M80.' },
+
+  /* ── Respiratória (2) ── */
+  { sigla: 'DPOC', cat: 'respiratoria', nome: 'DPOC grave', resumo: 'Doença pulmonar obstrutiva crônica GOLD III-IV com limitação respiratória severa.' },
+  { sigla: 'FP',   cat: 'respiratoria', nome: 'Fibrose pulmonar', resumo: 'Fibrose pulmonar idiopática com redução progressiva da capacidade respiratória.' },
+
+  /* ── Ortopédica (4) ── */
+  { sigla: 'AMP',  cat: 'ortopedica', nome: 'Amputação', resumo: 'Perda de membro ou segmento com impacto funcional — CID Z89.' },
+  { sigla: 'HD',   cat: 'ortopedica', nome: 'Hérnia de disco', resumo: 'Raramente elegível — exige síndrome da cauda equina ou falha cirúrgica comprovada.' },
+  { sigla: 'LC',   cat: 'ortopedica', nome: 'Lombalgia crônica', resumo: 'Raramente elegível — exige causa estrutural grave e limitação funcional permanente.' },
+  { sigla: 'STC',  cat: 'ortopedica', nome: 'Síndrome do túnel do carpo', resumo: 'Raramente elegível — exige comprometimento bilateral grave pós-cirúrgico.' },
 ];
 
 const CATEGORIAS = {
-  desenv:    { label: 'Desenvolvimento',  bg: '#f4e3d4', fg: '#813f22', dot: '#c4673a' },
-  neuro:     { label: 'Neurológica',      bg: '#e6ebe0', fg: '#353f2a', dot: '#5a6b4a' },
-  mental:    { label: 'Saúde mental',     bg: '#dee6ee', fg: '#2d4456', dot: '#4d6b85' },
-  sensorial: { label: 'Sensorial',        bg: '#f8ecd0', fg: '#5e4408', dot: '#c89020' },
-  onco:      { label: 'Oncológica',       bg: '#f3dcd8', fg: '#6d2a25', dot: '#a8413a' },
-  cronica:   { label: 'Crônica',          bg: '#f1eadf', fg: '#3d3128', dot: '#6b5a4d' },
+  desenv:       { label: 'Desenvolvimento',  bg: '#f4e3d4', fg: '#813f22', dot: '#c4673a' },
+  neuro:        { label: 'Neurológica',       bg: '#e6ebe0', fg: '#353f2a', dot: '#5a6b4a' },
+  mental:       { label: 'Saúde mental',      bg: '#dee6ee', fg: '#2d4456', dot: '#4d6b85' },
+  sensorial:    { label: 'Sensorial',         bg: '#f8ecd0', fg: '#5e4408', dot: '#c89020' },
+  onco:         { label: 'Oncológica',        bg: '#f3dcd8', fg: '#6d2a25', dot: '#a8413a' },
+  cronica:      { label: 'Crônica',           bg: '#f1eadf', fg: '#3d3128', dot: '#6b5a4d' },
+  reuma:        { label: 'Reumatológica',     bg: '#ede0eb', fg: '#4a2848', dot: '#8a5088' },
+  respiratoria: { label: 'Respiratória',      bg: '#dce8e6', fg: '#1e3a36', dot: '#3a7a70' },
+  ortopedica:   { label: 'Ortopédica',        bg: '#e4e2e0', fg: '#3a3632', dot: '#6e6660' },
 };
+
+/* slug de patologia → nome do arquivo estático (ex.: "Autismo (TEA)" → autismo-tea.html) */
+function patSlug(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
 
 /* ---------- Header ---------- */
 function Header({ active, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [menuOpen]);
+
   const nav = [
     { id: 'home', label: 'Início' },
-    { id: 'patologias', label: 'Patologias' },
+    { id: 'patologias', label: 'Patologias', page: 'patologias.html' },
     { id: 'pericias', label: 'Perícias' },
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
+    { id: 'blog', label: 'Blog' },
     { id: 'faq', label: 'Perguntas', hash: '#faq' },
   ];
 
+  function handleNavClick(e, n) {
+    setMenuOpen(false);
+    if (n.page) { window.location.href = n.page; return; }
+    e.preventDefault();
+    if (n.hash) {
+      if (active !== 'home') {
+        onNavigate('home');
+        setTimeout(() => {
+          const el = document.querySelector(n.hash);
+          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+        }, 150);
+      } else {
+        const el = document.querySelector(n.hash);
+        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+      }
+      return;
+    }
+    onNavigate(n.id);
+  }
+
   return (
-    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container header-inner">
-        <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
-          <img src="assets/logo-marca.png" alt="Portal do BPC" className="header-logo-mark" />
-          <span className="header-logo-text">
-            <span className="header-logo-text-1">Portal do</span>
-            <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
-            <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
-          </span>
-        </a>
-        <nav className="header-nav">
+    <>
+      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container header-inner">
+          <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
+            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" className="header-logo-mark" style={{ objectFit: 'contain' }} />
+            <span className="header-logo-text">
+              <span className="header-logo-text-1">Portal do</span>
+              <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
+              <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
+            </span>
+          </a>
+          <nav className="header-nav">
+            {nav.map(n => (
+              <a
+                key={n.id}
+                href={n.page || n.hash || `#/${n.id}`}
+                className={active === n.id ? 'nav-link active' : 'nav-link'}
+                onClick={(e) => handleNavClick(e, n)}
+              >
+                <span>{n.label}</span>
+              </a>
+            ))}
+          </nav>
+          <a className="btn btn--primary btn--sm header-cta-desktop" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+            Falar agora →
+          </a>
+          <button
+            className={`header-hamburger${menuOpen ? ' open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
+            aria-expanded={menuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+      <div
+        className={`mobile-drawer-overlay${menuOpen ? ' open' : ''}`}
+        onClick={() => setMenuOpen(false)}
+        aria-hidden="true"
+      />
+      <nav className={`mobile-drawer${menuOpen ? ' open' : ''}`} aria-label="Menu principal" aria-hidden={!menuOpen}>
+        <div className="mobile-drawer-header">
+          <a href="#/" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate('home'); }} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
+            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 40, width: 40, objectFit: 'contain' }} />
+            <span className="header-logo-text">
+              <span className="header-logo-text-1" style={{ fontSize: 13 }}>Portal do</span>
+              <span className="header-logo-text-2" style={{ fontSize: 20 }}>BPC<span className="header-logo-dot">.</span></span>
+            </span>
+          </a>
+          <button className="mobile-drawer-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu">✕</button>
+        </div>
+        <div className="mobile-drawer-nav">
           {nav.map(n => (
             <a
               key={n.id}
-              href={n.hash || `#/${n.id}`}
-              className={active === n.id ? 'nav-link active' : 'nav-link'}
-              onClick={(e) => {
-                if (n.hash) {
-                  // Hash-only link (e.g. #faq) — if NOT on home, go home first then scroll
-                  if (active !== 'home') {
-                    e.preventDefault();
-                    onNavigate('home');
-                    setTimeout(() => {
-                      const el = document.querySelector(n.hash);
-                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }, 100);
-                  } else {
-                    // Already on home — let default scroll-to-anchor happen, but smooth
-                    e.preventDefault();
-                    const el = document.querySelector(n.hash);
-                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                  return;
-                }
-                e.preventDefault();
-                onNavigate(n.id);
-              }}
+              href={n.page || n.hash || `#/${n.id}`}
+              className={active === n.id ? 'active' : ''}
+              onClick={(e) => handleNavClick(e, n)}
             >
-              <span>{n.label}</span>
+              {n.label}
             </a>
           ))}
-        </nav>
-        <a className="btn btn--primary btn--sm" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-          Falar agora →
-        </a>
-      </div>
-    </header>
+        </div>
+        <div className="mobile-drawer-cta">
+          <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+            <img src="assets/icon-whatsapp.svg" alt="" style={{ width: 22, height: 22 }} />
+            Falar no WhatsApp
+          </a>
+        </div>
+      </nav>
+    </>
   );
 }
 
@@ -125,7 +238,7 @@ function Hero({ onNavigate }) {
             Você não precisa enfrentar o INSS <em>sozinho</em>.
           </h1>
           <p className="lead" style={{ marginBottom: 32, maxWidth: 540 }}>
-            Documentação que confunde, prazo que aperta, perita que apressa, negativa sem explicação. O <strong>BPC</strong> existe para quem mais precisa — <strong>idoso de 65+ ou pessoa com deficiência</strong> em situação de vulnerabilidade. A gente te ajuda a chegar lá com a documentação certa, sem promessas e sem pressa.
+            O <strong>BPC</strong> é um salário mínimo por mês — <strong>R$ 1.621 em 2026</strong> — pago pelo governo para <strong>idosos a partir de 65 anos</strong> e <strong>pessoas com deficiência</strong> em situação de vulnerabilidade. Não precisa ter contribuído ao INSS. A gente analisa o seu caso, organiza a documentação e acompanha até a aprovação.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
@@ -142,7 +255,7 @@ function Hero({ onNavigate }) {
           </div>
         </div>
         <div className="hero-photo">
-          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa e equipe do Portal do BPC" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" width={820} height={1020} fetchpriority="high" decoding="async" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
         </div>
       </div>
     </section>
@@ -192,7 +305,7 @@ function Especialidades() {
               <li>Não receber outro benefício do INSS</li>
               <li>Cadastro no CadÚnico atualizado</li>
             </ul>
-            <a className="btn btn--secondary" href="#/patologia/idoso">Saber mais →</a>
+            <a className="btn btn--secondary" href="bpc-idoso/">Saber mais →</a>
           </div>
           <div className="esp-card">
             <div className="kicker">BPC para Pessoa com Deficiência</div>
@@ -204,7 +317,7 @@ function Especialidades() {
               <li>Renda familiar per capita até ¼ do salário mínimo</li>
               <li>Avaliação médica e social do INSS</li>
             </ul>
-            <a className="btn btn--secondary" href="#/patologia/pcd">Ver as 20 patologias →</a>
+            <a className="btn btn--secondary" href="patologias.html">Ver as 60 patologias →</a>
           </div>
         </div>
       </div>
@@ -213,17 +326,60 @@ function Especialidades() {
 }
 
 /* ---------- Patologias grid ---------- */
+const CID_MAP = {
+  /* desenv */    TEA:'F84.0', SD:'Q90', PCx:'G80', DI:'F70-F79', ET:'Q85.1', EB:'Q05', SR:'F84.2', SW:'Q93.7', XF:'Q99.2', TDAH:'F90',
+  /* neuro */     EM:'G35', PK:'G20', AZ:'G30', AVC:'I60-I69', EL:'G12.2', EP:'G40', AME:'G12.1', CMT:'G60.0', HTG:'G10', HC:'G91', LM:'G82', MG:'G70.0', NF:'Q85.0', WD:'E83.0',
+  /* mental */    EQ:'F20', TB:'F31', DG:'F32-F33', ANS:'F41', TPG:'F60',
+  /* sensorial */ DV:'H54', DA:'H90.3', RP:'H35.5', VER:'H81',
+  /* onco */      CA:'C00–C97',
+  /* cronica */   IR:'N18', CG:'I50', HV:'B20–B24', HP:'K70-K77', DM:'G71.0', ICA:'I50', HAN:'A30', DBC:'E10-E14', PCV:'U09.9', HIP:'I10-I15', VAR:'I83', FEN:'E70.0', DC:'R52',
+  /* reuma */     LE:'M32', FM:'M79.7', AR:'M05', APs:'L40.5', ESD:'M34', ART:'M15-M19', OPG:'M80',
+  /* respir */    DPOC:'J44', FP:'J84.1',
+  /* ortoped */   AMP:'Z89', HD:'M51', LC:'M54.5', STC:'G56.0',
+};
+const CIF_KW = {
+  /* desenv */    TEA:'linguagem interacao social comunicacao', SD:'intelectual fala aprendizagem autocuidado', PCx:'movimento mobilidade comunicacao', DI:'intelectual aprendizagem autocuidado comunicacao', ET:'cognitiva epilepsia aprendizagem', EB:'mobilidade bexiga autocuidado', SR:'motora comunicacao cognitiva regressao', SW:'intelectual cardiopatia aprendizagem', XF:'intelectual comportamento aprendizagem fala', TDAH:'atencao impulsividade aprendizagem funcional',
+  /* neuro */     EM:'mobilidade fadiga visao', PK:'movimento marcha tremor fala', AZ:'memoria orientacao autocuidado', AVC:'motora fala cognitiva mobilidade', EL:'movimento fala degluticao respiracao', EP:'consciencia seguranca crises', AME:'neuromuscular mobilidade respiracao', CMT:'marcha forca distal mobilidade', HTG:'movimento cognitiva comportamento', HC:'cognitiva motora pressao intracraniana', LM:'mobilidade bexiga autocuidado paraplegia', MG:'forca fadiga degluticao respiracao', NF:'tumores neurologica funcional', WD:'hepatica neurologica tremor cognitiva',
+  /* mental */    EQ:'pensamento percepcao autocuidado', TB:'humor energia trabalho', DG:'humor energia motivacao funcional autocuidado', ANS:'ansiedade funcional social trabalho', TPG:'emocional relacional impulsividade funcional',
+  /* sensorial */ DV:'visao mobilidade leitura', DA:'audicao comunicacao', RP:'visao progressiva campo visual mobilidade', VER:'equilibrio marcha tontura funcional',
+  /* onco */      CA:'dor fadiga imunidade mobilidade',
+  /* cronica */   IR:'fadiga hemodialise', CG:'cardiovascular esforco mobilidade', HV:'imunologica estigma', HP:'fadiga ascite hepatica', DM:'neuromuscular mobilidade', ICA:'cardiaca dispneia esforco edema', HAN:'sensitiva motora deformidade estigma', DBC:'renal visual neuropatia amputacao', PCV:'fadiga cognitiva respiratoria persistente', HIP:'cardiovascular cerebrovascular renal', VAR:'venosa ulcera edema mobilidade', FEN:'intelectual metabolica dieta cognitiva', DC:'dor funcional mobilidade trabalho',
+  /* reuma */     LE:'articular renal fadiga dor', FM:'dor fadiga sono funcional', AR:'articular deformidade funcional dor', APs:'articular cutanea funcional', ESD:'fibrose pele orgaos mobilidade', ART:'articular mobilidade dor funcional', OPG:'fraturas mobilidade dor ossea',
+  /* respir */    DPOC:'respiratoria esforco oxigenio mobilidade', FP:'respiratoria progressiva oxigenio esforco',
+  /* ortoped */   AMP:'membro mobilidade protese funcional', HD:'dor mobilidade coluna funcional', LC:'dor lombar mobilidade trabalho', STC:'mao forca preensao bilateral',
+};
+function patNorm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
+
 function PatologiasGrid({ onNavigate }) {
   const [filter, setFilter] = useState('all');
+  const [q, setQ] = useState('');
   const cats = ['all', ...Object.keys(CATEGORIAS)];
-  const filtered = filter === 'all' ? PATOLOGIAS : PATOLOGIAS.filter(p => p.cat === filter);
+  const qn = patNorm(q);
+  const filtered = PATOLOGIAS.filter(p => (filter === 'all' || p.cat === filter) && (qn === '' || patNorm(p.nome + p.sigla + p.resumo + (CID_MAP[p.sigla]||'') + (CIF_KW[p.sigla]||'') + 'cid cif funcionalidade').includes(qn)));
   return (
     <section className="bg-bone" id="patologias">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 20 patologias</div>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 60 patologias</div>
           <h2>O que pode dar direito ao <em>BPC</em>.</h2>
           <p>Cada doença tem uma história diferente dentro do INSS. Encontre a sua aqui — o que prova, o que costuma ser negado, o que o perito vai olhar. Análise sempre individual.</p>
+        </div>
+        <div style={{ maxWidth: 820, margin: '0 auto 30px', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
+          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CID — o diagnóstico</div>
+            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O código da doença (ex.: F84, Q90). É o que a <strong style={{ color: 'var(--ink-900)' }}>perícia médica</strong> do INSS confirma.</span>
+          </div>
+          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
+            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CIF — a funcionalidade</div>
+            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O quanto a condição impede a vida diária. É o que a <strong style={{ color: 'var(--ink-900)' }}>avaliação social</strong> mede.</span>
+          </div>
+        </div>
+        <p style={{ maxWidth: 760, margin: '0 auto 40px', textAlign: 'center', fontSize: 15.5, color: 'var(--ink-700)', lineHeight: 1.65 }}>
+          Ter o diagnóstico não basta sozinho: o BPC por deficiência exige <strong>impedimento de longo prazo somado a barreiras na participação</strong>. É a união do <strong>CID</strong> (o que você tem) com a <strong>CIF</strong> (o quanto isso te limita) que garante o direito — e cada patologia abaixo traz as duas classificações.
+        </p>
+        <div style={{ maxWidth: 520, margin: '0 auto 18px', position: 'relative' }}>
+          <svg viewBox="0 0 24 24" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', width: 18, height: 18, stroke: 'var(--ink-500)', fill: 'none', strokeWidth: 2 }}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>
+          <input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar por nome ou CID (ex.: autismo, F84, Q90)…" aria-label="Buscar patologia por nome ou CID" style={{ width: '100%', padding: '14px 18px 14px 44px', borderRadius: 999, border: '1px solid var(--line)', background: 'var(--bone)', color: 'var(--ink-900)', fontSize: 15, fontFamily: 'var(--font-sans)', outline: 'none' }} />
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 32 }}>
           {cats.map(c => {
@@ -250,17 +406,18 @@ function PatologiasGrid({ onNavigate }) {
             );
           })}
         </div>
+        {filtered.length === 0 && <p style={{ textAlign: 'center', color: 'var(--ink-500)', margin: '8px 0 32px' }}>Nenhuma patologia encontrada. Tente o nome ou o CID (ex.: <strong>F84</strong>, <strong>Q90</strong>).</p>}
         <div className="patologias-grid">
           {filtered.map(p => {
             const cat = CATEGORIAS[p.cat];
             return (
-              <a key={p.sigla} className="pat-card" href={`#/patologia/${p.sigla}`} onClick={(e) => { e.preventDefault(); onNavigate('patologia', p); }}>
+              <a key={p.sigla} className="pat-card" href={`/${patSlug(p.nome)}.html`}>
                 <div className="ic" style={{ background: cat.bg, color: cat.fg }}>{p.sigla}</div>
                 <h4>{p.nome}</h4>
                 <p>{p.resumo}</p>
-                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  <span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />
-                  {cat.label}
+                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />{cat.label}</span>
+                  <span style={{ color: 'var(--ink-500)', letterSpacing: '0.04em' }}>CID {CID_MAP[p.sigla] || '—'}</span>
                 </div>
               </a>
             );
@@ -278,7 +435,7 @@ function RecursosDestaque({ onNavigate }) {
       id: 'pericias',
       kicker: 'Onde a maioria das negativas começa',
       title: 'Perícia médica e social',
-      desc: 'Documentação incompleta, perita após 15 minutos, palavra mal escolhida — e o pedido cai. A gente reúne tudo o que você precisa levar e como se comportar. Checklist em PDF para imprimir.',
+      desc: 'A perícia médica e social é onde a maioria dos pedidos é negado — não por falta de direito, mas por documentação incompleta ou por não saber como se apresentar. Preparamos tudo que você precisa levar e como agir no dia. Checklist completo em PDF para imprimir.',
       stat: '34',
       statLabel: 'itens no checklist',
       cta: 'Ver guia da perícia',
@@ -339,7 +496,7 @@ function SobrePortal() {
     <section>
       <div className="container sobre-grid">
         <div className="sobre-photo" style={{ background: 'var(--bone)', border: '1px solid var(--line)', position: 'relative', overflow: 'hidden' }}>
-          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa, especialista em BPC" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, especialista em BPC" width={820} height={1020} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         </div>
         <div>
           <div className="eyebrow">Sobre o portal</div>
@@ -542,11 +699,20 @@ const FAQ_CATS = [
 function FAQ() {
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
+  const [expanded, setExpanded] = useState(false);
+  const INITIAL_LIMIT = 6;
   const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const q = norm(query.trim());
   const filtered = FAQ_ITEMS
     .filter(it => filter === 'all' || it.cat === filter)
     .filter(it => !q || norm(it.q).includes(q) || norm(it.a).includes(q));
+  // Show all if searching, filtering, or user clicked "show more"
+  const isFiltering = filter !== 'all' || q.length > 0;
+  const showAll = isFiltering || expanded;
+  const visible = showAll ? filtered : filtered.slice(0, INITIAL_LIMIT);
+  const hiddenCount = filtered.length - visible.length;
+  // Reset expansion when filter or query changes
+  useEffect(() => { setExpanded(false); }, [filter, query]);
   return (
     <section id="faq" className="bg-bone">
       <div className="container-narrow">
@@ -554,22 +720,28 @@ function FAQ() {
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Perguntas frequentes</div>
           <h2>Tire suas <em>dúvidas</em>.</h2>
           <p style={{ color: 'var(--ink-500)', maxWidth: 640, margin: '12px auto 0', textAlign: 'center' }}>
-            {FAQ_ITEMS.length} perguntas reais que mais aparecem no nosso WhatsApp — <strong>filtrado por tema</strong> ou <strong>pesquise por palavra-chave</strong> (autismo, perícia, CadÚnico, refugiado, biometria). Cada resposta abre ao clicar, com as referências legais (LOAS, Lei 13.146/2015, Lei 15.077/2024, Portarias 33 e 34/2025, súmulas da TNU). Atendemos online em todo o Brasil pelo WhatsApp.
+            <strong>{FAQ_ITEMS.length} perguntas</strong> que mais aparecem no nosso WhatsApp — <strong>pesquise por palavra-chave</strong> ou <strong>filtre por tema</strong>. Atualizamos com base na lei vigente (LOAS, Lei 15.077/2024, Portarias 33 e 34/2025). Atendemos online em todo o Brasil.
           </p>
         </div>
+
+        {/* SEARCH — destacado, magnético */}
         <div className="faq-search" role="search">
-          <span className="faq-search-icon" aria-hidden="true">🔎</span>
+          <span className="faq-search-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Pesquise: autismo, perícia, biometria, refugiado, CadÚnico, recurso, 2026..."
+            placeholder="Pesquise: autismo, perícia, biometria, refugiado, CadÚnico, 2026..."
             aria-label="Pesquisar nas perguntas frequentes"
           />
           {query && (
             <button className="faq-search-clear" onClick={() => setQuery('')} aria-label="Limpar pesquisa">×</button>
           )}
         </div>
+
+        {/* FILTROS — chips com hover */}
         <div className="faq-filters" role="tablist">
           {FAQ_CATS.map(c => (
             <button
@@ -586,21 +758,57 @@ function FAQ() {
             </button>
           ))}
         </div>
+
+        {/* Contador de resultados */}
+        {isFiltering && filtered.length > 0 && (
+          <div className="faq-result-count">
+            Mostrando <strong>{filtered.length}</strong> {filtered.length === 1 ? 'resultado' : 'resultados'}
+            {q && <> para <em>"{query}"</em></>}
+          </div>
+        )}
+
         <div className="faq">
           {filtered.length === 0 && (
             <div className="faq-empty">
-              <p>Nada encontrado pra <strong>"{query}"</strong>.</p>
+              <div className="faq-empty-icon" aria-hidden="true">🔍</div>
+              <h4>Nada encontrado para <em>"{query}"</em></h4>
+              <p>Manda sua dúvida direto no WhatsApp — a gente responde em até 1h útil.</p>
               <a className="btn btn--primary" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">Perguntar no WhatsApp</a>
             </div>
           )}
-          {filtered.map((it, i) => (
+          {visible.map((it, i) => (
             <details className="faq-item" key={`${filter}-${q}-${i}`}>
-              <summary>{it.q}</summary>
+              <summary>
+                <span className="faq-q">{it.q}</span>
+                <span className="faq-toggle" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><line x1="7" y1="2" x2="7" y2="12" className="faq-toggle-v"/><line x1="2" y1="7" x2="12" y2="7"/></svg>
+                </span>
+              </summary>
               <div className="answer">{it.a}</div>
             </details>
           ))}
         </div>
-        <div style={{ textAlign: 'center', marginTop: 40 }}>
+
+        {/* Mostrar mais perguntas */}
+        {!showAll && hiddenCount > 0 && (
+          <div className="faq-expand">
+            <button className="btn btn--secondary btn--lg faq-expand-btn" onClick={() => setExpanded(true)}>
+              Ver mais {hiddenCount} {hiddenCount === 1 ? 'pergunta' : 'perguntas'} ↓
+            </button>
+            <p style={{ marginTop: 12, fontSize: 13, color: 'var(--ink-500)' }}>
+              Ou use a pesquisa acima para encontrar sua dúvida específica
+            </p>
+          </div>
+        )}
+        {showAll && filter === 'all' && q.length === 0 && filtered.length > INITIAL_LIMIT && (
+          <div className="faq-expand">
+            <button className="btn btn--ghost faq-expand-btn" onClick={() => { setExpanded(false); window.scrollTo({ top: document.getElementById('faq').offsetTop - 80, behavior: 'smooth' }); }}>
+              ↑ Recolher
+            </button>
+          </div>
+        )}
+
+        <div style={{ textAlign: 'center', marginTop: 56 }}>
           <p style={{ color: 'var(--ink-500)', fontSize: 15, marginBottom: 16 }}>
             Sua dúvida não está aqui?
           </p>
@@ -639,8 +847,8 @@ function ContactForm() {
               </div>
               <div className="form-row">
                 <div className="field">
-                  <label>Para quem é o benefício?</label>
-                  <select required>
+                  <label htmlFor="lead-para-quem">Para quem é o benefício?</label>
+                  <select id="lead-para-quem" name="para-quem" aria-label="Para quem é o benefício?" required>
                     <option value="">Selecione...</option>
                     <option>Para mim — BPC idoso (65+)</option>
                     <option>Para mim — BPC deficiente</option>
@@ -749,26 +957,31 @@ function Footer() {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="assets/logo-marca.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
+              <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 500, lineHeight: 1, color: 'var(--ink-900)' }}>Portal do</div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 36, fontWeight: 700, fontStyle: 'italic', lineHeight: 1, color: 'var(--terra-500)', marginTop: 4 }}>BPC<span style={{color:'var(--terra-300)'}}>.</span></div>
               </div>
             </div>
             <p className="footer-desc">Informação clara e atendimento humano sobre o Benefício de Prestação Continuada (BPC/LOAS).</p>
-            <p className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 6 }}>Faz parte do escritório</span>
-              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, textDecoration: 'none' }}>
-                CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span>
+            <div className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 10 }}>Faz parte do escritório</span>
+              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                  <img src="assets/logo-monograma-cc.png" alt="CarlosCostaPrev" style={{ height: 52, width: 52, objectFit: 'contain', display: 'block', flex: 'none' }} />
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, lineHeight: 1.2 }}>CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span></span>
+                </span>
+                <span style={{ display: 'block', marginTop: 6, fontSize: 13, opacity: 0.7, paddingLeft: 64 }}>Aposentadorias, pensões, auxílios e BPC</span>
               </a>
-              <span style={{ display: 'block', marginTop: 4, fontSize: 13, opacity: 0.7 }}>Aposentadorias, pensões, auxílios e BPC</span>
-            </p>
+            </div>
           </div>
           <div>
             <h5>Navegação</h5>
             <ul>
               <li><a href="#/">Início</a></li>
               <li><a href="#patologias">Patologias</a></li>
+              <li><a href="#/pericias">Perícias</a></li>
+              <li><a href="#/estrangeiro">Estrangeiro</a></li>
               <li><a href="#/simulador">Simulador</a></li>
               <li><a href="#/blog">Blog</a></li>
               <li><a href="#faq">Perguntas frequentes</a></li>
@@ -777,11 +990,11 @@ function Footer() {
           <div>
             <h5>Conteúdo</h5>
             <ul>
-              <li><a href="#">BPC para idoso</a></li>
-              <li><a href="#">BPC para deficiente</a></li>
-              <li><a href="#">Como dar entrada</a></li>
-              <li><a href="#">Recurso de negativa</a></li>
-              <li><a href="#">Documentos necessários</a></li>
+              <li><a href="/bpc-idoso">BPC para idoso</a></li>
+              <li><a href="/bpc-deficiente">BPC para deficiente</a></li>
+              <li><a href="/pericias">Perícia médica e social</a></li>
+              <li><a href="/bpc-estrangeiro">BPC para estrangeiro</a></li>
+              <li><a href="/blog/bpc-idoso-2026">Como dar entrada no BPC</a></li>
             </ul>
           </div>
           <div>
@@ -842,9 +1055,17 @@ const socialBtn = {
 /* ---------- WhatsApp Float ---------- */
 function WhatsAppFloat() {
   return (
-    <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
-      <img src="assets/icon-whatsapp.svg" alt="" />
-    </a>
+    <>
+      <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
+        <img src="assets/icon-whatsapp.svg" alt="" />
+      </a>
+      <div className="wa-sticky-bar">
+        <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+          <img src="assets/icon-whatsapp.svg" alt="" />
+          Falar no WhatsApp agora
+        </a>
+      </div>
+    </>
   );
 }
 
