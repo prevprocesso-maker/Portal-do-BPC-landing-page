@@ -29,7 +29,7 @@
       { id: 'estrangeiro', label: 'Estrangeiro' },
       { id: 'simulador', label: 'Simulador' },
       { id: 'blog', label: 'Blog' },
-      { id: 'faq', label: 'Perguntas', hash: '#faq' },
+      { id: 'faq', label: 'Perguntas' },
     ];
 
     function handleNavClick(ev, n) {
