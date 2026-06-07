@@ -196,6 +196,7 @@ section.tight { padding: clamp(48px, 6vw, 96px) 0; }
 
 /* ---- Stats strip ---- */
 .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; padding: 32px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.hero + .container { margin-top: -2px; }
 .stat .n { font-family: var(--font-serif); font-size: 44px; line-height: 1; font-weight: 600; color: var(--terra-700); margin-bottom: 4px; letter-spacing: -0.02em; }
 .stat .l { font-family: var(--font-sans); font-size: 14px; color: var(--ink-500); line-height: 1.3; }
 
