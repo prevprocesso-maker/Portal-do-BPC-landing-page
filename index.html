@@ -1,4 +1,5 @@
 <!doctype html>
+<!-- @dsCard group="UI Kit — Website" name="UI Kit \u2014 Website" subtitle="Landing + patologia + simulador + blog \u2014 click-thru" viewport="1280x900" -->
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -44,16 +45,11 @@
   <link rel="icon" type="image/png" href="assets/favicon-256.png" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="apple-touch-icon" href="assets/favicon-256.png" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="Portal BPC" />
 
   <!-- ===== Analytics (Google Analytics 4) =====
-       Substitua G-6RVLVTFRGT pelo seu Measurement ID.
+       Substitua G-XXXXXXXXXX pelo seu Measurement ID.
        Cadastra grátis em https://analytics.google.com -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RVLVTFRGT"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
@@ -63,7 +59,7 @@
       'analytics_storage': 'denied',
       'ad_storage': 'denied'
     });
-    gtag('config', 'G-6RVLVTFRGT', { 'anonymize_ip': true });
+    gtag('config', 'G-XXXXXXXXXX', { 'anonymize_ip': true });
   </script>
 
   <!-- ===== Structured Data — Organization + LegalService + LocalBusiness ===== -->
@@ -198,23 +194,9 @@
   }
   </script>
 
-  <!-- ===== Performance: conectar cedo às origens críticas ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://unpkg.com" crossorigin />
-  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-
-  <!-- Fonte descoberta cedo (em vez de via @import dentro do CSS) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
-
-  <!-- Pré-carregar a foto do herói (elemento de LCP) -->
-  <link rel="preload" as="image" href="assets/dr-carlos-costa.jpg" fetchpriority="high" />
-
-  <link rel="stylesheet" href="colors_and_type.css?v=20260605" />
-  <link rel="stylesheet" href="styles.css?v=20260605" />
+  <link rel="stylesheet" href="colors_and_type.css" />
+  <link rel="stylesheet" href="styles.css" />
   <link rel="stylesheet" href="tweaks.css" />
-<link rel="stylesheet" href="fixes.css?v=20260605"/>
 </head>
 <body>
   <div id="root" data-screen-label="Website"></div>
@@ -251,25 +233,78 @@
     })();
   </script>
 
-  <!-- React -->
-  <script crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-  <script crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
-  <!-- JS pré-compilado (rápido, sem Babel no browser) -->
-  <script src="components.js?v=20260605b"></script>
-  <script src="screens.js?v=20260605b"></script>
-  <script src="mobile-patch.js?v=20260605b"></script>
-  <script src="app-main.js?v=20260605b"></script>
-  <script src="tweaks.js?v=20260605b"></script>
+  <script type="text/babel" src="components.jsx"></script>
+  <script type="text/babel" src="screens.jsx"></script>
+  <script type="text/babel">
+    const { useState, useEffect } = React;
 
-  <!-- PWA: registra Service Worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js').catch(function() {});
-      });
+    function App() {
+      const [screen, setScreen] = useState('home');
+      const [patologia, setPatologia] = useState(null);
+
+      // Initial route from hash (e.g. #/patologia/TEA)
+      useEffect(() => {
+        const h = window.location.hash;
+        const m = h.match(/^#\/patologia\/(\w+)/);
+        if (m) {
+          const p = PATOLOGIAS.find(x => x.sigla === m[1]);
+          if (p) { setPatologia(p); setScreen('patologia'); return; }
+        }
+        if (h === '#/simulador') setScreen('simulador');
+        else if (h === '#/blog') setScreen('blog');
+        else if (h === '#/pericias') setScreen('pericias');
+        else if (h === '#/estrangeiro' || h === '#/bpc-estrangeiro') setScreen('estrangeiro');
+      }, []);
+
+      useEffect(() => {
+        window.scrollTo(0, 0);
+        // Dynamic <title> for SEO (also helps shareable links until SSR is in place)
+        const base = 'Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência';
+        if (screen === 'patologia' && patologia) {
+          document.title = `BPC para ${patologia.nome} — ${base}`;
+        } else if (screen === 'simulador') {
+          document.title = `Simulador BPC gratuito — ${base}`;
+        } else if (screen === 'pericias') {
+          document.title = `Perícia médica e social do BPC — checklist e orientações | Portal do BPC`;
+        } else if (screen === 'estrangeiro') {
+          document.title = `BPC para estrangeiro — imigrante, refugiado, naturalizado | Portal do BPC`;
+        } else if (screen === 'blog') {
+          document.title = `Blog — Conteúdo sobre BPC/LOAS | Portal do BPC`;
+        } else {
+          document.title = `${base} | Irajá/RJ`;
+        }
+      }, [screen, patologia]);
+
+      const navigate = (s, payload) => {
+        if (s === 'patologia') setPatologia(payload);
+        setScreen(s);
+      };
+
+      return (
+        <>
+          <Header active={screen === 'patologia' ? 'patologias' : screen} onNavigate={navigate} />
+          <main>
+            {screen === 'home' && <ScreenLanding onNavigate={navigate} />}
+            {screen === 'patologia' && <ScreenPatologia patologia={patologia} onNavigate={navigate} />}
+            {screen === 'simulador' && <ScreenSimulador onNavigate={navigate} />}
+            {screen === 'pericias' && <ScreenPericias onNavigate={navigate} />}
+            {screen === 'estrangeiro' && <ScreenEstrangeiro onNavigate={navigate} />}
+            {screen === 'blog' && <ScreenBlog />}
+            {screen === 'patologias' && <ScreenLanding onNavigate={navigate} />}
+          </main>
+          {screen !== 'home' && <Footer />}
+          {screen === 'home' && <Footer />}
+          <WhatsAppFloat />
+        </>
+      );
     }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
-<script src="fixes-b.js?v=2"></script>
+  <script src="tweaks.js"></script>
 </body>
 </html>

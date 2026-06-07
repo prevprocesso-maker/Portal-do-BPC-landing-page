@@ -45,130 +45,72 @@ const CATEGORIAS = {
   cronica:   { label: 'Crônica',          bg: '#f1eadf', fg: '#3d3128', dot: '#6b5a4d' },
 };
 
-/* slug de patologia → nome do arquivo estático (ex.: "Autismo (TEA)" → autismo-tea.html) */
-function patSlug(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');}
-
 /* ---------- Header ---------- */
 function Header({ active, onNavigate }) {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 24);
     window.addEventListener('scroll', handler);
     return () => window.removeEventListener('scroll', handler);
   }, []);
 
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
-    return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
-
   const nav = [
     { id: 'home', label: 'Início' },
-    { id: 'patologias', label: 'Patologias', page: 'patologias.html' },
+    { id: 'patologias', label: 'Patologias', hash: '#patologias' },
     { id: 'pericias', label: 'Perícias' },
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
-    { id: 'blog', label: 'Blog' },
     { id: 'faq', label: 'Perguntas', hash: '#faq' },
   ];
 
-  function handleNavClick(e, n) {
-    setMenuOpen(false);
-    if (n.page) { window.location.href = n.page; return; }
-    e.preventDefault();
-    if (n.hash) {
-      if (active !== 'home') {
-        onNavigate('home');
-        setTimeout(() => {
-          const el = document.querySelector(n.hash);
-          if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-        }, 150);
-      } else {
-        const el = document.querySelector(n.hash);
-        if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-      }
-      return;
-    }
-    onNavigate(n.id);
-  }
-
   return (
-    <>
-      <header className={`header ${scrolled ? 'scrolled' : ''}`}>
-        <div className="container header-inner">
-          <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
-            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" className="header-logo-mark" style={{ objectFit: 'contain' }} />
-            <span className="header-logo-text">
-              <span className="header-logo-text-1">Portal do</span>
-              <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
-              <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
-            </span>
-          </a>
-          <nav className="header-nav">
-            {nav.map(n => (
-              <a
-                key={n.id}
-                href={n.page || n.hash || `#/${n.id}`}
-                className={active === n.id ? 'nav-link active' : 'nav-link'}
-                onClick={(e) => handleNavClick(e, n)}
-              >
-                <span>{n.label}</span>
-              </a>
-            ))}
-          </nav>
-          <a className="btn btn--primary btn--sm header-cta-desktop" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-            Falar agora →
-          </a>
-          <button
-            className={`header-hamburger${menuOpen ? ' open' : ''}`}
-            onClick={() => setMenuOpen(o => !o)}
-            aria-label={menuOpen ? 'Fechar menu' : 'Abrir menu'}
-            aria-expanded={menuOpen}
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
-        </div>
-      </header>
-      <div
-        className={`mobile-drawer-overlay${menuOpen ? ' open' : ''}`}
-        onClick={() => setMenuOpen(false)}
-        aria-hidden="true"
-      />
-      <nav className={`mobile-drawer${menuOpen ? ' open' : ''}`} aria-label="Menu principal" aria-hidden={!menuOpen}>
-        <div className="mobile-drawer-header">
-          <a href="#/" onClick={(e) => { e.preventDefault(); setMenuOpen(false); onNavigate('home'); }} style={{ display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }}>
-            <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 40, width: 40, objectFit: 'contain' }} />
-            <span className="header-logo-text">
-              <span className="header-logo-text-1" style={{ fontSize: 13 }}>Portal do</span>
-              <span className="header-logo-text-2" style={{ fontSize: 20 }}>BPC<span className="header-logo-dot">.</span></span>
-            </span>
-          </a>
-          <button className="mobile-drawer-close" onClick={() => setMenuOpen(false)} aria-label="Fechar menu">✕</button>
-        </div>
-        <div className="mobile-drawer-nav">
+    <header className={`header ${scrolled ? 'scrolled' : ''}`}>
+      <div className="container header-inner">
+        <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
+          <img src="assets/logo-marca.png" alt="Portal do BPC" className="header-logo-mark" />
+          <span className="header-logo-text">
+            <span className="header-logo-text-1">Portal do</span>
+            <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
+            <span className="header-logo-tagline">BENEFÍCIO · DIREITO · ACOLHIMENTO</span>
+          </span>
+        </a>
+        <nav className="header-nav">
           {nav.map(n => (
             <a
               key={n.id}
-              href={n.page || n.hash || `#/${n.id}`}
-              className={active === n.id ? 'active' : ''}
-              onClick={(e) => handleNavClick(e, n)}
+              href={n.hash || `#/${n.id}`}
+              className={active === n.id ? 'nav-link active' : 'nav-link'}
+              onClick={(e) => {
+                if (n.hash) {
+                  // Hash-only link (e.g. #faq) — if NOT on home, go home first then scroll
+                  if (active !== 'home') {
+                    e.preventDefault();
+                    onNavigate('home');
+                    setTimeout(() => {
+                      const el = document.querySelector(n.hash);
+                      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }, 100);
+                  } else {
+                    // Already on home — let default scroll-to-anchor happen, but smooth
+                    e.preventDefault();
+                    const el = document.querySelector(n.hash);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
+                  return;
+                }
+                e.preventDefault();
+                onNavigate(n.id);
+              }}
             >
-              {n.label}
+              <span>{n.label}</span>
             </a>
           ))}
-        </div>
-        <div className="mobile-drawer-cta">
-          <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-            <img src="assets/icon-whatsapp.svg" alt="" style={{ width: 22, height: 22 }} />
-            Falar no WhatsApp
-          </a>
-        </div>
-      </nav>
-    </>
+        </nav>
+        <a className="btn btn--primary btn--sm" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
+          Falar agora →
+        </a>
+      </div>
+    </header>
   );
 }
 
@@ -183,7 +125,7 @@ function Hero({ onNavigate }) {
             Você não precisa enfrentar o INSS <em>sozinho</em>.
           </h1>
           <p className="lead" style={{ marginBottom: 32, maxWidth: 540 }}>
-            O <strong>BPC</strong> é um salário mínimo por mês — <strong>R$ 1.621 em 2026</strong> — pago pelo governo para <strong>idosos a partir de 65 anos</strong> e <strong>pessoas com deficiência</strong> em situação de vulnerabilidade. Não precisa ter contribuído ao INSS. A gente analisa o seu caso, organiza a documentação e acompanha até a aprovação.
+            Documentação que confunde, prazo que aperta, perita que apressa, negativa sem explicação. O <strong>BPC</strong> existe para quem mais precisa — <strong>idoso de 65+ ou pessoa com deficiência</strong> em situação de vulnerabilidade. A gente te ajuda a chegar lá com a documentação certa, sem promessas e sem pressa.
           </p>
           <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
             <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
@@ -200,7 +142,7 @@ function Hero({ onNavigate }) {
           </div>
         </div>
         <div className="hero-photo">
-          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" width={820} height={1020} fetchpriority="high" decoding="async" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa e equipe do Portal do BPC" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
         </div>
       </div>
     </section>
@@ -250,7 +192,7 @@ function Especialidades() {
               <li>Não receber outro benefício do INSS</li>
               <li>Cadastro no CadÚnico atualizado</li>
             </ul>
-            <a className="btn btn--secondary" href="bpc-idoso/">Saber mais →</a>
+            <a className="btn btn--secondary" href="#/patologia/idoso">Saber mais →</a>
           </div>
           <div className="esp-card">
             <div className="kicker">BPC para Pessoa com Deficiência</div>
@@ -262,7 +204,7 @@ function Especialidades() {
               <li>Renda familiar per capita até ¼ do salário mínimo</li>
               <li>Avaliação médica e social do INSS</li>
             </ul>
-            <a className="btn btn--secondary" href="patologias.html">Ver as 25 patologias →</a>
+            <a className="btn btn--secondary" href="#/patologia/pcd">Ver as 20 patologias →</a>
           </div>
         </div>
       </div>
@@ -271,40 +213,17 @@ function Especialidades() {
 }
 
 /* ---------- Patologias grid ---------- */
-const CID_MAP = { TEA:'F84.0', SD:'Q90', PCx:'G80', EM:'G35', PK:'G20', AZ:'G30', AVC:'I69', EL:'G12.2', EP:'G40', EQ:'F20', TB:'F31', DV:'H54', DA:'H90.3', CA:'C00–C97', IR:'N18', CG:'I50', HV:'B20–B24', HP:'K74', LE:'M32', DM:'G71.0' };
-const CIF_KW = { TEA:'linguagem interacao social comunicacao', SD:'intelectual fala aprendizagem autocuidado', PCx:'movimento mobilidade comunicacao', EM:'mobilidade fadiga visao', PK:'movimento marcha tremor fala', AZ:'memoria orientacao autocuidado', AVC:'motora fala cognitiva mobilidade', EL:'movimento fala degluticao respiracao', EP:'consciencia seguranca crises', EQ:'pensamento percepcao autocuidado', TB:'humor energia trabalho', DV:'visao mobilidade leitura', DA:'audicao comunicacao', CA:'dor fadiga imunidade mobilidade', IR:'fadiga hemodialise', CG:'cardiovascular esforco mobilidade', HV:'imunologica estigma', HP:'fadiga ascite', LE:'articular renal fadiga dor', DM:'neuromuscular mobilidade' };
-function patNorm(s){return String(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]/g,'');}
-
 function PatologiasGrid({ onNavigate }) {
   const [filter, setFilter] = useState('all');
-  const [q, setQ] = useState('');
   const cats = ['all', ...Object.keys(CATEGORIAS)];
-  const qn = patNorm(q);
-  const filtered = PATOLOGIAS.filter(p => (filter === 'all' || p.cat === filter) && (qn === '' || patNorm(p.nome + p.sigla + p.resumo + (CID_MAP[p.sigla]||'') + (CIF_KW[p.sigla]||'') + 'cid cif funcionalidade').includes(qn)));
+  const filtered = filter === 'all' ? PATOLOGIAS : PATOLOGIAS.filter(p => p.cat === filter);
   return (
     <section className="bg-bone" id="patologias">
       <div className="container">
         <div className="section-head">
-          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 25 patologias</div>
+          <div className="eyebrow" style={{ justifyContent: 'center' }}>Doenças e condições · 20 patologias</div>
           <h2>O que pode dar direito ao <em>BPC</em>.</h2>
           <p>Cada doença tem uma história diferente dentro do INSS. Encontre a sua aqui — o que prova, o que costuma ser negado, o que o perito vai olhar. Análise sempre individual.</p>
-        </div>
-        <div style={{ maxWidth: 820, margin: '0 auto 30px', display: 'flex', flexWrap: 'wrap', gap: 12 }}>
-          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CID — o diagnóstico</div>
-            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O código da doença (ex.: F84, Q90). É o que a <strong style={{ color: 'var(--ink-900)' }}>perícia médica</strong> do INSS confirma.</span>
-          </div>
-          <div style={{ flex: '1 1 250px', background: 'var(--bone)', border: '1px solid var(--line)', borderRadius: 14, padding: '18px 20px' }}>
-            <div style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: 'var(--terra-400)', marginBottom: 6 }}>CIF — a funcionalidade</div>
-            <span style={{ fontSize: 14.5, color: 'var(--ink-500)', lineHeight: 1.55 }}>O quanto a condição impede a vida diária. É o que a <strong style={{ color: 'var(--ink-900)' }}>avaliação social</strong> mede.</span>
-          </div>
-        </div>
-        <p style={{ maxWidth: 760, margin: '0 auto 40px', textAlign: 'center', fontSize: 15.5, color: 'var(--ink-700)', lineHeight: 1.65 }}>
-          Ter o diagnóstico não basta sozinho: o BPC por deficiência exige <strong>impedimento de longo prazo somado a barreiras na participação</strong>. É a união do <strong>CID</strong> (o que você tem) com a <strong>CIF</strong> (o quanto isso te limita) que garante o direito — e cada patologia abaixo traz as duas classificações.
-        </p>
-        <div style={{ maxWidth: 520, margin: '0 auto 18px', position: 'relative' }}>
-          <svg viewBox="0 0 24 24" style={{ position: 'absolute', left: 16, top: '50%', transform: 'translateY(-50%)', width: 18, height: 18, stroke: 'var(--ink-500)', fill: 'none', strokeWidth: 2 }}><circle cx="11" cy="11" r="7" /><path d="M21 21l-4-4" /></svg>
-          <input value={q} onChange={e => setQ(e.target.value)} placeholder="Buscar por nome ou CID (ex.: autismo, F84, Q90)…" aria-label="Buscar patologia por nome ou CID" style={{ width: '100%', padding: '14px 18px 14px 44px', borderRadius: 999, border: '1px solid var(--line)', background: 'var(--bone)', color: 'var(--ink-900)', fontSize: 15, fontFamily: 'var(--font-sans)', outline: 'none' }} />
         </div>
         <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', justifyContent: 'center', marginBottom: 32 }}>
           {cats.map(c => {
@@ -331,18 +250,17 @@ function PatologiasGrid({ onNavigate }) {
             );
           })}
         </div>
-        {filtered.length === 0 && <p style={{ textAlign: 'center', color: 'var(--ink-500)', margin: '8px 0 32px' }}>Nenhuma patologia encontrada. Tente o nome ou o CID (ex.: <strong>F84</strong>, <strong>Q90</strong>).</p>}
         <div className="patologias-grid">
           {filtered.map(p => {
             const cat = CATEGORIAS[p.cat];
             return (
-              <a key={p.sigla} className="pat-card" href={`/${patSlug(p.nome)}.html`}>
+              <a key={p.sigla} className="pat-card" href={`#/patologia/${p.sigla}`} onClick={(e) => { e.preventDefault(); onNavigate('patologia', p); }}>
                 <div className="ic" style={{ background: cat.bg, color: cat.fg }}>{p.sigla}</div>
                 <h4>{p.nome}</h4>
                 <p>{p.resumo}</p>
-                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}><span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />{cat.label}</span>
-                  <span style={{ color: 'var(--ink-500)', letterSpacing: '0.04em' }}>CID {CID_MAP[p.sigla] || '—'}</span>
+                <div style={{ marginTop: 14, paddingTop: 12, borderTop: '1px solid var(--line)', display: 'flex', alignItems: 'center', gap: 6, fontSize: 12, fontWeight: 600, color: cat.fg, textTransform: 'uppercase', letterSpacing: '0.1em' }}>
+                  <span style={{ width: 6, height: 6, borderRadius: 999, background: cat.dot }} />
+                  {cat.label}
                 </div>
               </a>
             );
@@ -360,7 +278,7 @@ function RecursosDestaque({ onNavigate }) {
       id: 'pericias',
       kicker: 'Onde a maioria das negativas começa',
       title: 'Perícia médica e social',
-      desc: 'A perícia médica e social é onde a maioria dos pedidos é negado — não por falta de direito, mas por documentação incompleta ou por não saber como se apresentar. Preparamos tudo que você precisa levar e como agir no dia. Checklist completo em PDF para imprimir.',
+      desc: 'Documentação incompleta, perita após 15 minutos, palavra mal escolhida — e o pedido cai. A gente reúne tudo o que você precisa levar e como se comportar. Checklist em PDF para imprimir.',
       stat: '34',
       statLabel: 'itens no checklist',
       cta: 'Ver guia da perícia',
@@ -421,7 +339,7 @@ function SobrePortal() {
     <section>
       <div className="container sobre-grid">
         <div className="sobre-photo" style={{ background: 'var(--bone)', border: '1px solid var(--line)', position: 'relative', overflow: 'hidden' }}>
-          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, especialista em BPC" width={820} height={1020} loading="lazy" decoding="async" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
+          <img src="assets/dr-carlos-costa.jpg" alt="Dr. Carlos Costa, especialista em BPC" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 20%' }} />
         </div>
         <div>
           <div className="eyebrow">Sobre o portal</div>
@@ -772,8 +690,8 @@ function ContactForm() {
               </div>
               <div className="form-row">
                 <div className="field">
-                  <label htmlFor="lead-para-quem">Para quem é o benefício?</label>
-                  <select id="lead-para-quem" name="para-quem" aria-label="Para quem é o benefício?" required>
+                  <label>Para quem é o benefício?</label>
+                  <select required>
                     <option value="">Selecione...</option>
                     <option>Para mim — BPC idoso (65+)</option>
                     <option>Para mim — BPC deficiente</option>
@@ -882,31 +800,26 @@ function Footer() {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
+              <img src="assets/logo-marca.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 500, lineHeight: 1, color: 'var(--ink-900)' }}>Portal do</div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 36, fontWeight: 700, fontStyle: 'italic', lineHeight: 1, color: 'var(--terra-500)', marginTop: 4 }}>BPC<span style={{color:'var(--terra-300)'}}>.</span></div>
               </div>
             </div>
             <p className="footer-desc">Informação clara e atendimento humano sobre o Benefício de Prestação Continuada (BPC/LOAS).</p>
-            <div className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
-              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 10 }}>Faz parte do escritório</span>
-              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'block', textDecoration: 'none' }}>
-                <span style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <img src="assets/logo-monograma-cc.png" alt="CarlosCostaPrev" style={{ height: 52, width: 52, objectFit: 'contain', display: 'block', flex: 'none' }} />
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, lineHeight: 1.2 }}>CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span></span>
-                </span>
-                <span style={{ display: 'block', marginTop: 6, fontSize: 13, opacity: 0.7, paddingLeft: 64 }}>Aposentadorias, pensões, auxílios e BPC</span>
+            <p className="footer-desc" style={{ marginTop: 16, paddingTop: 16, borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+              <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-400, #d99466)', display: 'block', marginBottom: 6 }}>Faz parte do escritório</span>
+              <a href="https://www.carloscostaprev.com.br" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: '#f5ede0', fontWeight: 600, textDecoration: 'none' }}>
+                CarlosCostaPrev — Previdência geral <span aria-hidden="true">↗</span>
               </a>
-            </div>
+              <span style={{ display: 'block', marginTop: 4, fontSize: 13, opacity: 0.7 }}>Aposentadorias, pensões, auxílios e BPC</span>
+            </p>
           </div>
           <div>
             <h5>Navegação</h5>
             <ul>
               <li><a href="#/">Início</a></li>
               <li><a href="#patologias">Patologias</a></li>
-              <li><a href="#/pericias">Perícias</a></li>
-              <li><a href="#/estrangeiro">Estrangeiro</a></li>
               <li><a href="#/simulador">Simulador</a></li>
               <li><a href="#/blog">Blog</a></li>
               <li><a href="#faq">Perguntas frequentes</a></li>
@@ -915,11 +828,11 @@ function Footer() {
           <div>
             <h5>Conteúdo</h5>
             <ul>
-              <li><a href="/bpc-idoso">BPC para idoso</a></li>
-              <li><a href="/bpc-deficiente">BPC para deficiente</a></li>
-              <li><a href="/pericias">Perícia médica e social</a></li>
-              <li><a href="/bpc-estrangeiro">BPC para estrangeiro</a></li>
-              <li><a href="/blog/bpc-idoso-2026">Como dar entrada no BPC</a></li>
+              <li><a href="#">BPC para idoso</a></li>
+              <li><a href="#">BPC para deficiente</a></li>
+              <li><a href="#">Como dar entrada</a></li>
+              <li><a href="#">Recurso de negativa</a></li>
+              <li><a href="#">Documentos necessários</a></li>
             </ul>
           </div>
           <div>
@@ -980,17 +893,9 @@ const socialBtn = {
 /* ---------- WhatsApp Float ---------- */
 function WhatsAppFloat() {
   return (
-    <>
-      <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
-        <img src="assets/icon-whatsapp.svg" alt="" />
-      </a>
-      <div className="wa-sticky-bar">
-        <a href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-          <img src="assets/icon-whatsapp.svg" alt="" />
-          Falar no WhatsApp agora
-        </a>
-      </div>
-    </>
+    <a className="wa-float" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" aria-label="Falar no WhatsApp">
+      <img src="assets/icon-whatsapp.svg" alt="" />
+    </a>
   );
 }
 

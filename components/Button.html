@@ -1,0 +1,49 @@
+<!-- @dsCard group="Components" viewport="800x200" name="Button" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Button Component</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    body { padding: 40px; }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .group { padding: 20px; background: var(--bone); border-radius: 12px; border: 1px solid var(--line); }
+    .group h3 { margin: 0 0 12px; font-size: 14px; font-weight: 600; color: var(--ink-500); }
+    .group div { display: flex; gap: 8px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <h1 style="margin-bottom: 32px;">Button Component</h1>
+  
+  <div class="grid">
+    <div class="group">
+      <h3>Primary</h3>
+      <div>
+        <button class="btn btn--primary btn--sm">Small</button>
+        <button class="btn btn--primary">Medium</button>
+        <button class="btn btn--primary btn--lg">Large</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Secondary</h3>
+      <div>
+        <button class="btn btn--secondary btn--sm">Small</button>
+        <button class="btn btn--secondary">Medium</button>
+        <button class="btn btn--secondary btn--lg">Large</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h3>Ghost</h3>
+      <div>
+        <button class="btn btn--ghost btn--sm">Small</button>
+        <button class="btn btn--ghost">Medium</button>
+        <button class="btn btn--ghost btn--lg">Large</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

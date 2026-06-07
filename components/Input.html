@@ -1,0 +1,47 @@
+<!-- @dsCard group="Components" viewport="800x300" name="Input" -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Input Component</title>
+  <link rel="stylesheet" href="../../styles.css" />
+  <style>
+    body { padding: 40px; max-width: 600px; }
+    .form-row { margin-bottom: 28px; }
+    .form-row.two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  </style>
+</head>
+<body>
+  <h1 style="margin-bottom: 32px;">Input Component</h1>
+  
+  <form>
+    <div class="form-row">
+      <label class="field">
+        <span style="display: block; font-size: 14px; font-weight: 600; color: var(--ink-900); margin-bottom: 6px;">Nome Completo *</span>
+        <input type="text" placeholder="Seu nome" style="width: 100%; font-family: var(--font-sans); font-size: 16px; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--cream); color: var(--ink-900); box-sizing: border-box;">
+        <p style="font-size: 13px; color: var(--ink-500); margin-top: 6px;">Informe seu nome legal completo</p>
+      </label>
+    </div>
+
+    <div class="form-row two">
+      <label class="field">
+        <span style="display: block; font-size: 14px; font-weight: 600; color: var(--ink-900); margin-bottom: 6px;">E-mail *</span>
+        <input type="email" placeholder="seu@email.com" style="width: 100%; font-family: var(--font-sans); font-size: 16px; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--cream); color: var(--ink-900); box-sizing: border-box;">
+      </label>
+      <label class="field">
+        <span style="display: block; font-size: 14px; font-weight: 600; color: var(--ink-900); margin-bottom: 6px;">Telefone *</span>
+        <input type="tel" placeholder="(11) 99999-9999" style="width: 100%; font-family: var(--font-sans); font-size: 16px; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--cream); color: var(--ink-900); box-sizing: border-box;">
+      </label>
+    </div>
+
+    <div class="form-row">
+      <label class="field">
+        <span style="display: block; font-size: 14px; font-weight: 600; color: var(--ink-900); margin-bottom: 6px;">Mensagem (com erro)</span>
+        <input type="text" placeholder="Sua mensagem" style="width: 100%; font-family: var(--font-sans); font-size: 16px; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--err); background: var(--err-bg); color: var(--ink-900); box-sizing: border-box;">
+        <p style="font-size: 13px; color: var(--err); margin-top: 6px;">Este campo é obrigatório</p>
+      </label>
+    </div>
+  </form>
+</body>
+</html>

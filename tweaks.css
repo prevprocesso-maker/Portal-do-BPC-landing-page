@@ -45,7 +45,7 @@ html[data-accent="bordeaux"] {
 }
 
 /* ---------- TEMA ---------- */
-/* "Light" — paper/cream */
+/* "Light" — paper/cream (FIXED for WCAG AA contrast) */
 html[data-theme="light"] {
   --cream:    #f7f1e6;
   --bone:     #ffffff;
@@ -54,8 +54,11 @@ html[data-theme="light"] {
   --line-2:   #d4c4a8;
   --ink-900:  #1a140e;
   --ink-700:  #2a1f15;
-  --ink-500:  #6a5848;
-  --ink-300:  #a89678;
+  --ink-500:  #3d3028;
+  --ink-300:  #6a5848;
+  --terra-400: #a8562d;
+  --terra-500: #c4673a;
+  --terra-700: #823f22;
   --shadow-sm: 0 1px 2px rgba(60, 30, 10, 0.06);
   --shadow-md: 0 8px 24px rgba(60, 30, 10, 0.08), 0 1px 2px rgba(60, 30, 10, 0.05);
   --shadow-lg: 0 24px 60px rgba(60, 30, 10, 0.12), 0 6px 12px rgba(60, 30, 10, 0.06);
