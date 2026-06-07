@@ -272,6 +272,8 @@
           document.title = `Perícia médica e social do BPC — checklist e orientações | Portal do BPC`;
         } else if (screen === 'estrangeiro') {
           document.title = `BPC para estrangeiro — imigrante, refugiado, naturalizado | Portal do BPC`;
+        } else if (screen === 'patologias') {
+          document.title = `Patologias que dão direito ao BPC — 60+ doenças | Portal do BPC`;
         } else if (screen === 'blog') {
           document.title = `Blog — Conteúdo sobre BPC/LOAS | Portal do BPC`;
         } else {
@@ -294,7 +296,18 @@
             {screen === 'pericias' && <ScreenPericias onNavigate={navigate} />}
             {screen === 'estrangeiro' && <ScreenEstrangeiro onNavigate={navigate} />}
             {screen === 'blog' && <ScreenBlog />}
-            {screen === 'patologias' && <ScreenLanding onNavigate={navigate} />}
+            {screen === 'patologias' && (
+              <section style={{ paddingTop: 'calc(var(--header-h) + 48px)' }}>
+                <div className="container">
+                  <div className="section-head">
+                    <div className="eyebrow">Todas as patologias</div>
+                    <h1>Patologias que dão direito ao <em>BPC.</em></h1>
+                    <p>Mais de 60 condições de saúde analisadas. Encontre a sua e entenda seus direitos.</p>
+                  </div>
+                </div>
+                <PatologiasGrid onNavigate={navigate} />
+              </section>
+            )}
           </main>
           {screen !== 'home' && <Footer />}
           {screen === 'home' && <Footer />}

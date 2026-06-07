@@ -56,7 +56,7 @@ function Header({ active, onNavigate }) {
 
   const nav = [
     { id: 'home', label: 'Início' },
-    { id: 'patologias', label: 'Patologias', hash: '#patologias' },
+    { id: 'patologias', label: 'Patologias' },
     { id: 'pericias', label: 'Perícias' },
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
