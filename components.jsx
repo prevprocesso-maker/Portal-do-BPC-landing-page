@@ -67,7 +67,7 @@ function Header({ active, onNavigate }) {
     <header className={`header ${scrolled ? 'scrolled' : ''}`}>
       <div className="container header-inner">
         <a href="#/" className="header-logo" onClick={(e) => { e.preventDefault(); onNavigate('home'); }}>
-          <img src="assets/logo-marca.png" alt="Portal do BPC — CarlosCostaPrev" className="header-logo-mark" />
+          <img src="assets/logo-marca.png" alt="Portal do BPC" className="header-logo-mark" />
           <span className="header-logo-text">
             <span className="header-logo-text-1">Portal do</span>
             <span className="header-logo-text-2">BPC<span className="header-logo-dot">.</span></span>
@@ -542,20 +542,11 @@ const FAQ_CATS = [
 function FAQ() {
   const [filter, setFilter] = useState('all');
   const [query, setQuery] = useState('');
-  const [expanded, setExpanded] = useState(false);
-  const INITIAL_LIMIT = 6;
   const norm = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const q = norm(query.trim());
   const filtered = FAQ_ITEMS
     .filter(it => filter === 'all' || it.cat === filter)
     .filter(it => !q || norm(it.q).includes(q) || norm(it.a).includes(q));
-  // Show all if searching, filtering, or user clicked "show more"
-  const isFiltering = filter !== 'all' || q.length > 0;
-  const showAll = isFiltering || expanded;
-  const visible = showAll ? filtered : filtered.slice(0, INITIAL_LIMIT);
-  const hiddenCount = filtered.length - visible.length;
-  // Reset expansion when filter or query changes
-  useEffect(() => { setExpanded(false); }, [filter, query]);
   return (
     <section id="faq" className="bg-bone">
       <div className="container-narrow">
@@ -563,28 +554,22 @@ function FAQ() {
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Perguntas frequentes</div>
           <h2>Tire suas <em>dúvidas</em>.</h2>
           <p style={{ color: 'var(--ink-500)', maxWidth: 640, margin: '12px auto 0', textAlign: 'center' }}>
-            <strong>{FAQ_ITEMS.length} perguntas</strong> que mais aparecem no nosso WhatsApp — <strong>pesquise por palavra-chave</strong> ou <strong>filtre por tema</strong>. Atualizamos com base na lei vigente (LOAS, Lei 15.077/2024, Portarias 33 e 34/2025). Atendemos online em todo o Brasil.
+            {FAQ_ITEMS.length} perguntas reais que mais aparecem no nosso WhatsApp — <strong>filtrado por tema</strong> ou <strong>pesquise por palavra-chave</strong> (autismo, perícia, CadÚnico, refugiado, biometria). Cada resposta abre ao clicar, com as referências legais (LOAS, Lei 13.146/2015, Lei 15.077/2024, Portarias 33 e 34/2025, súmulas da TNU). Atendemos online em todo o Brasil pelo WhatsApp.
           </p>
         </div>
-
-        {/* SEARCH — destacado, magnético */}
         <div className="faq-search" role="search">
-          <span className="faq-search-icon" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          </span>
+          <span className="faq-search-icon" aria-hidden="true">🔎</span>
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Pesquise: autismo, perícia, biometria, refugiado, CadÚnico, 2026..."
+            placeholder="Pesquise: autismo, perícia, biometria, refugiado, CadÚnico, recurso, 2026..."
             aria-label="Pesquisar nas perguntas frequentes"
           />
           {query && (
             <button className="faq-search-clear" onClick={() => setQuery('')} aria-label="Limpar pesquisa">×</button>
           )}
         </div>
-
-        {/* FILTROS — chips com hover */}
         <div className="faq-filters" role="tablist">
           {FAQ_CATS.map(c => (
             <button
@@ -601,57 +586,21 @@ function FAQ() {
             </button>
           ))}
         </div>
-
-        {/* Contador de resultados */}
-        {isFiltering && filtered.length > 0 && (
-          <div className="faq-result-count">
-            Mostrando <strong>{filtered.length}</strong> {filtered.length === 1 ? 'resultado' : 'resultados'}
-            {q && <> para <em>"{query}"</em></>}
-          </div>
-        )}
-
         <div className="faq">
           {filtered.length === 0 && (
             <div className="faq-empty">
-              <div className="faq-empty-icon" aria-hidden="true">🔍</div>
-              <h4>Nada encontrado para <em>"{query}"</em></h4>
-              <p>Manda sua dúvida direto no WhatsApp — a gente responde em até 1h útil.</p>
+              <p>Nada encontrado pra <strong>"{query}"</strong>.</p>
               <a className="btn btn--primary" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">Perguntar no WhatsApp</a>
             </div>
           )}
-          {visible.map((it, i) => (
+          {filtered.map((it, i) => (
             <details className="faq-item" key={`${filter}-${q}-${i}`}>
-              <summary>
-                <span className="faq-q">{it.q}</span>
-                <span className="faq-toggle" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round"><line x1="7" y1="2" x2="7" y2="12" className="faq-toggle-v"/><line x1="2" y1="7" x2="12" y2="7"/></svg>
-                </span>
-              </summary>
+              <summary>{it.q}</summary>
               <div className="answer">{it.a}</div>
             </details>
           ))}
         </div>
-
-        {/* Mostrar mais perguntas */}
-        {!showAll && hiddenCount > 0 && (
-          <div className="faq-expand">
-            <button className="btn btn--secondary btn--lg faq-expand-btn" onClick={() => setExpanded(true)}>
-              Ver mais {hiddenCount} {hiddenCount === 1 ? 'pergunta' : 'perguntas'} ↓
-            </button>
-            <p style={{ marginTop: 12, fontSize: 13, color: 'var(--ink-500)' }}>
-              Ou use a pesquisa acima para encontrar sua dúvida específica
-            </p>
-          </div>
-        )}
-        {showAll && filter === 'all' && q.length === 0 && filtered.length > INITIAL_LIMIT && (
-          <div className="faq-expand">
-            <button className="btn btn--ghost faq-expand-btn" onClick={() => { setExpanded(false); window.scrollTo({ top: document.getElementById('faq').offsetTop - 80, behavior: 'smooth' }); }}>
-              ↑ Recolher
-            </button>
-          </div>
-        )}
-
-        <div style={{ textAlign: 'center', marginTop: 56 }}>
+        <div style={{ textAlign: 'center', marginTop: 40 }}>
           <p style={{ color: 'var(--ink-500)', fontSize: 15, marginBottom: 16 }}>
             Sua dúvida não está aqui?
           </p>
@@ -800,7 +749,7 @@ function Footer() {
         <div className="footer-grid">
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-              <img src="assets/logo-marca.png" alt="Portal do BPC — CarlosCostaPrev" style={{ height: 64, width: 52, objectFit: 'contain', display: 'block' }} />
+              <img src="assets/logo-marca.png" alt="Portal do BPC" style={{ height: 84, width: 84, objectFit: 'contain', display: 'block' }} />
               <div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 26, fontWeight: 500, lineHeight: 1, color: 'var(--ink-900)' }}>Portal do</div>
                 <div style={{ fontFamily: 'var(--font-serif)', fontSize: 36, fontWeight: 700, fontStyle: 'italic', lineHeight: 1, color: 'var(--terra-500)', marginTop: 4 }}>BPC<span style={{color:'var(--terra-300)'}}>.</span></div>
