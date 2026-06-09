@@ -921,7 +921,7 @@ function Footer() {
           {/* Map */}
           <div className="footer-map">
             <iframe
-              src="https://www.google.com/maps?q=Pra%C3%A7a+Nossa+Senhora+da+Apresenta%C3%A7%C3%A3o,+223,+Iraj%C3%A1,+Rio+de+Janeiro,+RJ,+21231-230&output=embed"
+              src="https://maps.google.com/maps?q=-22.8383,-43.3202&hl=pt-BR&z=17&t=m&output=embed"
               width="100%" height="100%" style={{ border: 0, display: 'block', filter: 'grayscale(0.3) brightness(0.9)' }}
               loading="lazy" referrerPolicy="no-referrer-when-downgrade"
               title="Mapa — Portal do BPC, Irajá/RJ">
