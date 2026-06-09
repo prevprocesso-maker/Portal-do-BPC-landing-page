@@ -230,7 +230,7 @@ function Header({ active, onNavigate }) {
 /* ---------- Hero ---------- */
 function Hero({ onNavigate }) {
   return (
-    <section className="hero" style={{ position: 'relative', height: '70dvh', minHeight: 520, overflow: 'hidden', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'var(--header-h)' }}>
+    <section className="hero" style={{ position: 'relative', minHeight: 'max(70dvh, 520px)', overflow: 'hidden', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'calc(var(--header-h) + 24px)', paddingBottom: 32 }}>
       {/* Foto fallback (aparece enquanto vídeo carrega) */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'url(assets/dr-carlos-costa.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 20%', zIndex: 0 }}></div>
       {/* Vídeo de fundo */}

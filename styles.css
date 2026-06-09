@@ -1804,7 +1804,7 @@ a.btn--secondary[href*="wa.me"]:hover,
 
   /* Seção padding reduzido */
   section { padding-top: 56px; padding-bottom: 56px; }
-  .hero { min-height: 400px !important; }
+  .hero { min-height: 400px; }
 }
 
 /* Hero photo: celular — retrato igual desktop, altura máxima razoável */
