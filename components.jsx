@@ -126,7 +126,7 @@ function Header({ active, onNavigate }) {
     { id: 'estrangeiro', label: 'Estrangeiro' },
     { id: 'simulador', label: 'Simulador' },
     { id: 'blog', label: 'Blog' },
-    { id: 'faq', label: 'Perguntas', hash: '#faq' },
+    { id: 'faq', label: 'Perguntas' },
   ];
 
   function handleNavClick(e, n) {
@@ -230,32 +230,39 @@ function Header({ active, onNavigate }) {
 /* ---------- Hero ---------- */
 function Hero({ onNavigate }) {
   return (
-    <section className="hero">
-      <div className="container hero-grid">
-        <div>
-          <div className="eyebrow">ATENDIMENTO HUMANO · IRAJÁ, RJ</div>
-          <h1 className="display" style={{ marginBottom: 20 }}>
-            Você não precisa enfrentar o INSS <em>sozinho</em>.
-          </h1>
-          <p className="lead" style={{ marginBottom: 32, maxWidth: 540 }}>
-            O <strong>BPC</strong> é um salário mínimo por mês — <strong>R$ 1.621 em 2026</strong> — pago pelo governo para <strong>idosos a partir de 65 anos</strong> e <strong>pessoas com deficiência</strong> em situação de vulnerabilidade. Não precisa ter contribuído ao INSS. A gente analisa o seu caso, organiza a documentação e acompanha até a aprovação.
-          </p>
-          <div style={{ display: 'flex', gap: 14, flexWrap: 'wrap' }}>
-            <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer">
-              Falar no WhatsApp
-            </a>
-            <button className="btn btn--secondary btn--lg" onClick={() => onNavigate('simulador')}>
-              Simular meu caso →
-            </button>
-          </div>
-          <div style={{ marginTop: 36, display: 'flex', gap: 24, color: 'var(--ink-500)', fontSize: 15, flexWrap: 'wrap' }}>
-            <span>✓ Análise gratuita do seu caso</span>
-            <span>✓ Sem promessas que ninguém cumpre</span>
-            <span>✓ Resposta no mesmo dia</span>
-          </div>
+    <section className="hero" style={{ position: 'relative', height: '70dvh', minHeight: 520, overflow: 'hidden', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'var(--header-h)' }}>
+      {/* Foto fallback (aparece enquanto vídeo carrega) */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'url(assets/dr-carlos-costa.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 20%', zIndex: 0 }}></div>
+      {/* Vídeo de fundo */}
+      <video autoPlay muted loop playsInline preload="metadata" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: 1 }}>
+        <source src="https://res.cloudinary.com/dowbnssen/video/upload/v1780852218/hero_jitabs.webm" type="video/webm" />
+        <source src="https://res.cloudinary.com/dowbnssen/video/upload/v1780852218/hero_jitabs.mp4" type="video/mp4" />
+      </video>
+      {/* Overlay gradient */}
+      <div style={{ position: 'absolute', width: '100%', height: '100%', background: 'linear-gradient(0deg, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 50%, rgba(0,0,0,0.3) 100%)', zIndex: 2 }}></div>
+      {/* Conteúdo */}
+      <div style={{ position: 'relative', zIndex: 3, textAlign: 'center', padding: 'clamp(20px, 5vw, 80px)', maxWidth: 800, margin: '0 auto' }}>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-300)', marginBottom: 24 }}>
+          ✦ Especialistas em BPC/LOAS · Irajá, RJ
         </div>
-        <div className="hero-photo">
-          <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa e equipe do Portal do BPC" width={820} height={1020} fetchpriority="high" decoding="async" style={{ objectFit: 'cover', objectPosition: 'top center', width: '100%', height: '100%' }} />
+        <h1 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(40px, 7vw, 72px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--terra-400)', marginBottom: 20, textWrap: 'balance' }}>
+          Seu direito ao BPC começa <br /><em style={{ fontStyle: 'italic', color: '#fff' }}>aqui</em>.
+        </h1>
+        <p style={{ fontSize: 'clamp(17px, 3vw, 22px)', color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, maxWidth: 560, margin: '0 auto 36px' }}>
+          O INSS negou? Não sabe se tem direito? Ou só quer entender como funciona? Aqui você encontra resposta clara — e, se precisar, um especialista de verdade para te ajudar, sem juridiquês.
+        </p>
+        <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
+          <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" style={{ fontSize: 18, padding: '18px 32px', boxShadow: '0 8px 32px rgba(196,103,58,0.4)' }}>
+            Consulta gratuita →
+          </a>
+          <button className="btn btn--lg" onClick={() => onNavigate('simulador')} style={{ fontSize: 18, padding: '18px 32px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1.5px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }}>
+            Simular meu caso
+          </button>
+        </div>
+        <div style={{ marginTop: 32, display: 'flex', gap: 20, justifyContent: 'center', color: 'rgba(255,255,255,0.6)', fontSize: 14, flexWrap: 'wrap' }}>
+          <span>✓ Análise gratuita</span>
+          <span>✓ Resposta no mesmo dia</span>
+          <span>✓ 60+ patologias</span>
         </div>
       </div>
     </section>
@@ -265,7 +272,7 @@ function Hero({ onNavigate }) {
 /* ---------- Stats strip ---------- */
 function StatsStrip() {
   const items = [
-    { n: '20+', l: 'patologias e condições cobertas em detalhe' },
+    { n: '60+', l: 'patologias com critérios reais, documentos e dicas de perícia' },
     { n: 'R$ 1.621', l: 'valor mensal do BPC em 2026' },
     { n: '65+', l: 'idade mínima para BPC do idoso' },
     { n: '0', l: 'contribuição necessária para receber' },
@@ -984,7 +991,7 @@ function Footer() {
               <li><a href="#/estrangeiro">Estrangeiro</a></li>
               <li><a href="#/simulador">Simulador</a></li>
               <li><a href="#/blog">Blog</a></li>
-              <li><a href="#faq">Perguntas frequentes</a></li>
+              <li><a href="#/faq">Perguntas frequentes</a></li>
             </ul>
           </div>
           <div>

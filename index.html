@@ -6,7 +6,7 @@
 
   <!-- ===== Primary SEO ===== -->
   <title>Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência | Irajá/RJ</title>
-  <meta name="description" content="Portal do BPC: informação clara sobre o Benefício de Prestação Continuada (BPC/LOAS) para idosos a partir de 65 anos e pessoas com deficiência. 60+ doenças que dão direito ao benefício, simulador gratuito e atendimento por WhatsApp." />
+  <meta name="description" content="Perdeu o BPC ou não sabe se tem direito? Simulador gratuito, 60+ doenças com critérios reais e atendimento humano por WhatsApp. Portal do BPC — Irajá, RJ." />
   <meta name="keywords" content="BPC, LOAS, BPC LOAS, benefício assistencial, BPC idoso, BPC deficiente, BPC INSS, doenças que dão direito ao BPC, simulador BPC, advogado BPC, autismo BPC, Síndrome de Down BPC, câncer BPC" />
   <meta name="author" content="Portal do BPC" />
   <meta name="google-site-verification" content="tjgbYe6EHtuUCsjMNvW4dPkAuB4ghjs9MUa_z0Ew9o4" />
@@ -37,7 +37,7 @@
   <!-- ===== Twitter ===== -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Portal do BPC — BPC/LOAS para idoso e pessoa com deficiência" />
-  <meta name="twitter:description" content="20+ doenças que dão direito ao BPC, simulador gratuito e atendimento por WhatsApp." />
+  <meta name="twitter:description" content="Perdeu o BPC ou quer saber se tem direito? 60+ doenças explicadas, simulador gratuito e atendimento humano por WhatsApp." />
   <meta name="twitter:image" content="https://www.portaldobpc.com.br/assets/og-cover.png" />
 
   <!-- ===== Favicon ===== -->
@@ -45,6 +45,9 @@
   <link rel="icon" type="image/png" href="assets/favicon-256.png" />
   <link rel="apple-touch-icon" href="assets/favicon-256.png" />
   <link rel="manifest" href="manifest.json" />
+  <!-- IA / LLM indexing -->
+  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — Portal do BPC" />
+  <meta name="ai-content-declaration" content="human-edited" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -78,7 +81,7 @@
         "legalName": "CarlosCostaPrev — Escritório de Advocacia Previdenciária",
         "alternateName": ["Portal do BPC", "CarlosCostaPrev", "CarlosCostaPrev Portal do BPC"],
         "url": "https://www.portaldobpc.com.br/",
-        "logo": "https://www.portaldobpc.com.br/assets/logo-color.svg",
+        "logo": "https://www.portaldobpc.com.br/assets/monogram-cc.png",
         "image": "https://www.portaldobpc.com.br/assets/og-cover.png",
         "description": "Portal de informação e atendimento sobre o Benefício de Prestação Continuada (BPC/LOAS) para idosos a partir de 65 anos e pessoas com deficiência.",
         "telephone": "+55-21-96423-8080",
@@ -109,7 +112,9 @@
           "contactType": "customer service",
           "areaServed": "BR",
           "availableLanguage": ["Portuguese"]
-        }]
+        }],
+        "isAccessibleForFree": true,
+        "knowsAbout": ["BPC","LOAS","BPC/LOAS","Benefício de Prestação Continuada","perícia médica INSS","recurso BPC negado","renda per capita BPC","CadÚnico","deficiência BPC","autismo BPC","síndrome de Down BPC","BPC idoso 65 anos","BPC estrangeiro imigrante refugiado","direito previdenciário assistencial"]
       },
       {
         "@type": "WebSite",
@@ -117,7 +122,14 @@
         "url": "https://www.portaldobpc.com.br/",
         "name": "Portal do BPC",
         "inLanguage": "pt-BR",
+        "isAccessibleForFree": true,
+        "datePublished": "2024-03-01",
+        "dateModified": "2026-06-08",
         "publisher": { "@id": "https://www.portaldobpc.com.br/#org" },
+        "speakable": {
+          "@type": "SpeakableSpecification",
+          "cssSelector": ["h1",".lead",".faq-answer",".eyebrow"]
+        },
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://www.portaldobpc.com.br/?s={search_term_string}",
@@ -251,16 +263,17 @@
     })();
   </script>
 
-  <!-- React -->
-  <script crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-  <script crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+  <!-- React + app (defer = não bloqueia parse HTML → FCP/LCP mais rápido no mobile) -->
+  <script defer crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+  <script defer crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 
   <!-- JS pré-compilado (rápido, sem Babel no browser) -->
-  <script src="components.js?v=20260607h"></script>
-  <script src="screens.js?v=20260607c"></script>
-  <script src="mobile-patch.js?v=20260607b"></script>
-  <script src="app-main.js?v=20260607c"></script>
-  <script src="tweaks.js?v=20260607a"></script>
+  <script defer src="components.js?v=20260608a"></script>
+  <script defer src="screens.js?v=20260608a"></script>
+  <script defer src="blog-posts.js?v=20260608a"></script>
+  <script defer src="mobile-patch.js?v=20260607b"></script>
+  <script defer src="app-main.js?v=20260608a"></script>
+  <script defer src="tweaks.js?v=20260607a"></script>
 
   <!-- PWA: registra Service Worker -->
   <script>
@@ -270,6 +283,6 @@
       });
     }
   </script>
-<script src="fixes-b.js?v=2"></script>
+<script defer src="fixes-b.js?v=3"></script>
 </body>
 </html>

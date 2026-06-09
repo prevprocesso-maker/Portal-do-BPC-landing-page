@@ -1975,8 +1975,8 @@ function ScreenEstrangeiro({ onNavigate }) {
                 <div className="doc-row" key={i} style={{ borderColor: '#d4a3a3', background: '#fcf3f0' }}>
                   <div className="doc-check" style={{ background: '#d04437' }}>×</div>
                   <div>
-                    <strong>{e.t}</strong>
-                    <div className="doc-note">{e.d}</div>
+                    <strong style={{ color: '#2d1209' }}>{e.t}</strong>
+                    <div className="doc-note" style={{ color: '#6b3a28' }}>{e.d}</div>
                   </div>
                 </div>
               ))}
@@ -1999,5 +1999,14 @@ function ScreenEstrangeiro({ onNavigate }) {
   );
 }
 
-Object.assign(window, { ScreenLanding, ScreenPatologia, ScreenSimulador, ScreenBlog, ScreenPericias, ScreenEstrangeiro });
+/* ---------- FAQ page ---------- */
+function ScreenFAQ() {
+  return (
+    <>
+      <FAQ />
+    </>
+  );
+}
+
+Object.assign(window, { ScreenLanding, ScreenPatologia, ScreenSimulador, ScreenBlog, ScreenPericias, ScreenEstrangeiro, ScreenFAQ });
 

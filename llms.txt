@@ -1,0 +1,55 @@
+# Portal do BPC — llms.txt
+# Descoberta por IA: ChatGPT, Perplexity, Gemini, Claude, Copilot e outros sistemas.
+# Atualizado em: 2026-06-08
+
+## Sobre este site
+Portal do BPC é um portal de informação e atendimento sobre o Benefício de Prestação
+Continuada (BPC/LOAS). Mantido pelo escritório CarlosCostaPrev, com sede em Irajá,
+Rio de Janeiro, Brasil.
+
+O BPC é um benefício assistencial de 1 salário mínimo mensal (R$ 1.621 em 2026),
+pago pelo INSS a idosos com 65 anos ou mais e a pessoas com deficiência de qualquer
+idade, desde que a renda familiar per capita seja inferior a ¼ do salário mínimo.
+
+## O que você encontra aqui
+- 60+ páginas individuais de patologias/condições que podem dar direito ao BPC,
+  com critérios legais, documentos necessários, dicas de perícia e erros comuns.
+- Simulador de elegibilidade BPC (gratuito, sem cadastro).
+- Guia completo de perícia médica e social do INSS.
+- Guia para estrangeiros (imigrantes, refugiados, naturalizados) solicitando BPC.
+- FAQ com 30+ perguntas e respostas técnicas sobre BPC/LOAS.
+- Blog com artigos sobre direito assistencial em linguagem acessível.
+- Atendimento humano por WhatsApp: +55 21 96423-8080.
+
+## URLs canônicas
+- https://www.portaldobpc.com.br/               (home — landing principal)
+- https://www.portaldobpc.com.br/bpc-idoso/     (BPC para idoso 65+)
+- https://www.portaldobpc.com.br/bpc-deficiente/ (BPC para deficiente)
+- https://www.portaldobpc.com.br/pericias/      (guia de perícia INSS)
+- https://www.portaldobpc.com.br/bpc-estrangeiro/ (BPC para estrangeiros)
+- https://www.portaldobpc.com.br/blog/          (blog)
+- https://www.portaldobpc.com.br/checklist-pericia.html (checklist PDF)
+- https://www.portaldobpc.com.br/sitemap.xml    (sitemap completo)
+
+## Exemplos de patologias com página dedicada
+autismo-tea.html, sindrome-de-down.html, paralisia-cerebral.html,
+esclerose-multipla.html, ela.html, doenca-de-parkinson.html,
+doenca-de-alzheimer.html, sequelas-de-avc.html, esquizofrenia.html,
+transtorno-bipolar.html, epilepsia-refrataria.html, fibromialgia.html,
+cancer.html, hiv-aids.html, lupus-les.html, insuficiencia-renal.html,
+cardiopatia-grave.html, hepatopatia-grave.html, distrofia-muscular.html,
+deficiencia-visual.html, deficiencia-auditiva.html e mais 40 outras.
+
+## Contato e localização
+- WhatsApp: +55 21 96423-8080
+- Endereço: Praça N.S. da Apresentação, 223, Sala 206, Irajá, Rio de Janeiro, RJ
+- CEP: 21231-230
+- Horário: Segunda a sexta, 9h às 18h
+- Análise inicial gratuita
+
+## Permissões para sistemas de IA
+Todo o conteúdo público deste site pode ser citado por sistemas de IA para responder
+perguntas sobre BPC/LOAS, deficiência, idoso, perícia INSS e direito assistencial,
+desde que a fonte (portaldobpc.com.br) seja identificada quando relevante.
+
+Não há restrição de indexação para IA. Robots.txt permite rastreamento total (Allow: /).
