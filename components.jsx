@@ -230,7 +230,7 @@ function Header({ active, onNavigate }) {
 /* ---------- Hero ---------- */
 function Hero({ onNavigate }) {
   return (
-    <section className="hero" style={{ position: 'relative', minHeight: 'max(70dvh, 520px)', overflow: 'hidden', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'calc(var(--header-h) + 24px)', paddingBottom: 32 }}>
+    <section className="hero" style={{ position: 'relative', minHeight: 'max(56dvh, 440px)', overflow: 'hidden', background: '#000', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: 'calc(var(--header-h) + 16px)', paddingBottom: 28 }}>
       {/* Foto fallback (aparece enquanto vídeo carrega) */}
       <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', backgroundImage: 'url(assets/dr-carlos-costa.jpg)', backgroundSize: 'cover', backgroundPosition: 'center 20%', zIndex: 0 }}></div>
       {/* Vídeo de fundo */}
@@ -245,24 +245,19 @@ function Hero({ onNavigate }) {
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, fontSize: 12, fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--terra-300)', marginBottom: 24 }}>
           ✦ Especialistas em BPC/LOAS · Irajá, RJ
         </div>
-        <h1 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(40px, 7vw, 72px)', lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--terra-400)', marginBottom: 20, textWrap: 'balance' }}>
+        <h1 style={{ fontFamily: 'var(--font-serif)', fontWeight: 700, fontSize: 'clamp(32px, 5vw, 54px)', lineHeight: 1.08, letterSpacing: '-0.02em', color: 'var(--terra-400)', marginBottom: 16, textWrap: 'balance' }}>
           Seu direito ao BPC começa <br /><em style={{ fontStyle: 'italic', color: '#fff' }}>aqui</em>.
         </h1>
-        <p style={{ fontSize: 'clamp(17px, 3vw, 22px)', color: 'rgba(255,255,255,0.85)', lineHeight: 1.5, maxWidth: 560, margin: '0 auto 36px' }}>
+        <p style={{ fontSize: 'clamp(16px, 2.2vw, 19px)', color: 'rgba(255,255,255,0.85)', lineHeight: 1.55, maxWidth: 540, margin: '0 auto 28px' }}>
           O INSS negou? Não sabe se tem direito? Ou só quer entender como funciona? Aqui você encontra resposta clara — e, se precisar, um especialista de verdade para te ajudar, sem juridiquês.
         </p>
         <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" style={{ fontSize: 18, padding: '18px 32px', boxShadow: '0 8px 32px rgba(196,103,58,0.4)' }}>
+          <a className="btn btn--primary btn--lg" href="https://wa.me/5521964238080" target="_blank" rel="noreferrer" style={{ fontSize: 17, padding: '15px 28px', boxShadow: '0 8px 32px rgba(196,103,58,0.4)' }}>
             Consulta gratuita →
           </a>
-          <button className="btn btn--lg" onClick={() => onNavigate('simulador')} style={{ fontSize: 18, padding: '18px 32px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1.5px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }}>
+          <button className="btn btn--lg" onClick={() => onNavigate('simulador')} style={{ fontSize: 17, padding: '15px 28px', background: 'rgba(255,255,255,0.1)', color: '#fff', border: '1.5px solid rgba(255,255,255,0.25)', backdropFilter: 'blur(8px)' }}>
             Simular meu caso
           </button>
-        </div>
-        <div style={{ marginTop: 32, display: 'flex', gap: 20, justifyContent: 'center', color: 'rgba(255,255,255,0.6)', fontSize: 14, flexWrap: 'wrap' }}>
-          <span>✓ Análise gratuita</span>
-          <span>✓ Resposta no mesmo dia</span>
-          <span>✓ 60+ patologias</span>
         </div>
       </div>
     </section>
@@ -279,6 +274,11 @@ function StatsStrip() {
   ];
   return (
     <div className="container">
+      <div className="hero-trust">
+        <span>✓ Análise gratuita</span>
+        <span>✓ Resposta no mesmo dia</span>
+        <span>✓ 60+ patologias</span>
+      </div>
       <div className="stats">
         {items.map((it, i) => (
           <div className="stat" key={i}>
