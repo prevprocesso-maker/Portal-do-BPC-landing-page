@@ -131,7 +131,7 @@ function ScreenBlog(){
     el('div',{className:'container'},
       el('div',{className:'eyebrow'},'Blog'),
       el('h1',{className:'display',style:{fontSize:'clamp(2.5rem,4vw,4rem)',marginBottom:16}},
-        'Conteúdo que ',el('em',null,'esclarece'),'.'
+        'Blog BPC/LOAS — ',el('em',null,'guias e artigos')
       ),
       el('p',{className:'lead',style:{color:'var(--ink-500)',marginBottom:56,maxWidth:600}},
         'Artigos sobre BPC/LOAS em linguagem de gente, sem juridiquês.'

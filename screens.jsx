@@ -956,7 +956,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
         </div>
 
         <h1 className="display" style={{ fontSize: 'clamp(2.5rem, 4.5vw, 4.5rem)', marginBottom: 20, maxWidth: 900 }}>
-          {p.nome}<span style={{ color: 'var(--terra-500)' }}>.</span>
+          BPC para {p.nome}
         </h1>
         <p className="lead" style={{ marginBottom: 56, color: 'var(--ink-500)', maxWidth: 720 }}>{p.resumo}</p>
 
@@ -974,7 +974,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           {/* O que é */}
           <section style={{ marginBottom: 64 }} id="o-que-e">
             <div className="eyebrow">Definição</div>
-            <h2>O que é</h2>
+            <h2>O que é {p.nome}</h2>
             {d.o_que_e.map((t, i) => <p key={i} style={{ fontSize: 18, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: t }} />)}
           </section>
 
@@ -982,7 +982,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           {(CID_FULL[p.sigla] || CIF_DOMINIOS[p.sigla]) && (
             <section style={{ marginBottom: 64 }} id="cid-cif">
               <div className="eyebrow">Classificações internacionais</div>
-              <h2>CID e CIF — {p.nome}</h2>
+              <h2>CID e CIF para BPC — {p.nome}</h2>
               <p style={{ fontSize: 17, color: 'var(--ink-500)', marginBottom: 28 }}>
                 <strong>CID</strong> confirma o diagnóstico na perícia médica. <strong>CIF</strong> mede o impacto funcional na avaliação social — a combinação dos dois que garante o benefício.
               </p>
@@ -1034,7 +1034,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           {/* Documentos */}
           <section style={{ marginBottom: 64 }} id="documentos">
             <div className="eyebrow">Documentação</div>
-            <h2>O que você precisa juntar</h2>
+            <h2>Documentos para BPC com {p.nome}</h2>
             <p style={{ fontSize: 17, color: 'var(--ink-500)', marginBottom: 28 }}>A documentação certa é o que faz diferença entre o BPC aprovado na primeira tentativa e o BPC negado.</p>
             <ol style={{ listStyle: 'none', padding: 0, margin: 0 }}>
               {d.docs.map((doc, i) => (
@@ -1052,7 +1052,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           {/* Perícia */}
           <section style={{ marginBottom: 64 }} id="pericia">
             <div className="eyebrow">Perícia médica e social</div>
-            <h2>Como o INSS vai te avaliar</h2>
+            <h2>Como o INSS avalia {p.nome} na perícia</h2>
             {d.pericia.map((t, i) => <p key={i} style={{ fontSize: 18, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: t }} />)}
           </section>
 
@@ -1075,7 +1075,7 @@ function ScreenPatologia({ patologia, onNavigate }) {
           {/* Recurso */}
           <section style={{ marginBottom: 64 }} id="recurso">
             <div className="eyebrow">Negativa do INSS</div>
-            <h2>Se o pedido for negado</h2>
+            <h2>BPC negado com {p.nome}? Como recorrer</h2>
             <p style={{ fontSize: 18, lineHeight: 1.6 }} dangerouslySetInnerHTML={{ __html: d.recurso }} />
           </section>
 

@@ -298,7 +298,7 @@ function Especialidades() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Quem tem direito</div>
-          <h2>Dois caminhos, <em>um direito</em>.</h2>
+          <h2>BPC/LOAS — dois caminhos, <em>um direito</em>.</h2>
           <p>Talvez ninguém tenha explicado direito qual é o seu caso. Em poucos minutos você entende qual porta abre pra sua família.</p>
         </div>
         <div className="especialidades-grid">
@@ -601,7 +601,7 @@ function Blog() {
       <div className="container">
         <div className="section-head">
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Blog</div>
-          <h2>Conteúdo que <em>esclarece</em>.</h2>
+          <h2>Blog BPC/LOAS — <em>guias e artigos</em></h2>
           <p>Artigos sobre direitos, documentos e o passo a passo do BPC.</p>
         </div>
         <div className="blog-grid">
@@ -725,7 +725,7 @@ function FAQ() {
       <div className="container-narrow">
         <div className="section-head">
           <div className="eyebrow" style={{ justifyContent: 'center' }}>Perguntas frequentes</div>
-          <h2>Tire suas <em>dúvidas</em>.</h2>
+          <h2>Perguntas frequentes sobre <em>BPC e LOAS</em></h2>
           <p style={{ color: 'var(--ink-500)', maxWidth: 640, margin: '12px auto 0', textAlign: 'center' }}>
             <strong>{FAQ_ITEMS.length} perguntas</strong> que mais aparecem no nosso WhatsApp — <strong>pesquise por palavra-chave</strong> ou <strong>filtre por tema</strong>. Atualizamos com base na lei vigente (LOAS, Lei 15.077/2024, Portarias 33 e 34/2025). Atendemos online em todo o Brasil.
           </p>

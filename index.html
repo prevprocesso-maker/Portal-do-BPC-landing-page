@@ -124,7 +124,7 @@
         "inLanguage": "pt-BR",
         "isAccessibleForFree": true,
         "datePublished": "2024-03-01",
-        "dateModified": "2026-06-08",
+        "dateModified": "2026-06-09",
         "publisher": { "@id": "https://www.portaldobpc.com.br/#org" },
         "speakable": {
           "@type": "SpeakableSpecification",
@@ -223,10 +223,16 @@
   <!-- Pré-carregar a foto do herói (elemento de LCP) -->
   <link rel="preload" as="image" href="assets/dr-carlos-costa.jpg" fetchpriority="high" />
 
-  <link rel="stylesheet" href="colors_and_type.css?v=20260605" />
-  <link rel="stylesheet" href="styles.css?v=20260607c" />
-  <link rel="stylesheet" href="tweaks.css" />
-<link rel="stylesheet" href="fixes.css?v=20260605"/>
+  <!-- DNS prefetch para recursos externos críticos -->
+  <link rel="dns-prefetch" href="https://unpkg.com" />
+  <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link rel="stylesheet" href="colors_and_type.css?v=20260609" />
+  <link rel="stylesheet" href="styles.css?v=20260609" />
+  <link rel="stylesheet" href="tweaks.css?v=20260609" />
+  <link rel="stylesheet" href="fixes.css?v=20260609" />
 </head>
 <body>
   <div id="root" data-screen-label="Website"></div>
@@ -268,12 +274,12 @@
   <script defer crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 
   <!-- JS pré-compilado (rápido, sem Babel no browser) -->
-  <script defer src="components.js?v=20260608a"></script>
-  <script defer src="screens.js?v=20260608a"></script>
-  <script defer src="blog-posts.js?v=20260608a"></script>
-  <script defer src="mobile-patch.js?v=20260607b"></script>
-  <script defer src="app-main.js?v=20260608a"></script>
-  <script defer src="tweaks.js?v=20260607a"></script>
+  <script defer src="components.js?v=20260609"></script>
+  <script defer src="screens.js?v=20260609"></script>
+  <script defer src="blog-posts.js?v=20260609"></script>
+  <script defer src="mobile-patch.js?v=20260609"></script>
+  <script defer src="app-main.js?v=20260609"></script>
+  <script defer src="tweaks.js?v=20260609"></script>
 
   <!-- PWA: registra Service Worker -->
   <script>
@@ -283,6 +289,6 @@
       });
     }
   </script>
-<script defer src="fixes-b.js?v=3"></script>
+  <script defer src="fixes-b.js?v=20260609"></script>
 </body>
 </html>
