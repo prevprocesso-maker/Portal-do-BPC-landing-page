@@ -568,7 +568,25 @@ a.btn--secondary[href*="wa.me"]:hover,
 /* ============================================================
    Simulador v2 — experiência "um atendimento, não um formulário"
    ============================================================ */
-.sim2{min-height:100vh;padding:calc(var(--header-h) + 24px) clamp(12px,3vw,40px) 64px;display:flex;align-items:flex-start;justify-content:center;background:radial-gradient(130% 100% at 15% 0%,#2a2018 0%,#1b1410 42%,var(--cream) 78%),var(--cream);}
+.sim2{min-height:100vh;padding:calc(var(--header-h) + 24px) clamp(12px,3vw,40px) 64px;display:flex;flex-direction:column;align-items:center;gap:26px;background:radial-gradient(130% 100% at 15% 0%,#2a2018 0%,#1b1410 42%,var(--cream) 78%),var(--cream);}
+/* SEO intro acima do card */
+.sim2-intro{width:100%;max-width:1000px;text-align:center;padding:4px clamp(8px,2vw,24px) 0;}
+.sim2-intro .si-ey{display:block;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--terra-400);margin-bottom:13px;}
+.sim2-intro .si-h1{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.45rem,3vw,2.05rem);line-height:1.2;color:#f5ede0;text-wrap:balance;margin-bottom:10px;}
+.sim2-intro .si-h2{font-size:clamp(.88rem,1.4vw,1rem);color:var(--ink-500);margin:0 auto 16px;line-height:1.55;max-width:54ch;}
+.sim2-intro .si-ul{list-style:none;display:flex;flex-wrap:wrap;gap:7px 22px;justify-content:center;font-size:13px;color:var(--ink-500);}
+.sim2-intro .si-ul li{display:flex;align-items:center;gap:6px;}
+.sim2-intro .si-ul li::before{content:"✓";color:var(--terra-400);font-size:12px;font-weight:700;flex:0 0 auto;}
+.sim2-intro .si-ul strong{color:#cdb899;font-weight:600;}
+/* FAQ abaixo do card */
+.sim2-faq{width:100%;max-width:1000px;background:rgba(31,24,18,.42);border:1px solid var(--line);border-radius:20px;padding:clamp(22px,3vw,36px);backdrop-filter:blur(4px);}
+.sim2-faq .sf-h2{font-family:var(--font-serif);font-size:1.15rem;font-weight:700;color:#f5ede0;margin-bottom:20px;text-align:center;}
+.sim2-faq .sf-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.sim2-faq .sf-item{background:rgba(245,237,224,.04);border:1px solid rgba(245,237,224,.08);border-radius:14px;padding:17px 19px;}
+.sim2-faq .sf-item h3{font-family:var(--font-serif);font-size:.95rem;font-weight:700;color:var(--terra-300);margin-bottom:9px;line-height:1.35;}
+.sim2-faq .sf-item p{font-size:13px;color:var(--ink-500);line-height:1.65;}
+.sim2-faq .sf-item strong{color:#c4a882;font-weight:600;}
+@media(max-width:640px){.sim2-faq .sf-grid{grid-template-columns:1fr;}}
 .sim2 .card{width:100%;max-width:1000px;background:rgba(31,24,18,.55);border:1px solid var(--line);border-radius:28px;box-shadow:0 40px 120px -30px rgba(0,0,0,.7);backdrop-filter:blur(6px);display:grid;grid-template-columns:340px 1fr;overflow:hidden;min-height:600px;}
 .sim2 .support{position:relative;background:linear-gradient(180deg,rgba(20,16,12,.2),rgba(20,16,12,.85)),url('assets/dr-carlos-costa.jpg') center 12%/cover no-repeat,var(--bone-2);padding:32px 30px;display:flex;flex-direction:column;}
 .sim2 .support::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(20,16,12,.55) 70%,rgba(20,16,12,.92));pointer-events:none;}

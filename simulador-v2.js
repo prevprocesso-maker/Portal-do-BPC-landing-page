@@ -1,421 +1,305 @@
-<!doctype html>
-<!-- @dsCard group="Brand" name="Simulador BPC — experiência" subtitle="Direção: um atendimento, não um formulário" viewport="1040x720" -->
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta name="format-detection" content="telephone=no" />
-<title>Simulador BPC/LOAS 2025 — Tenho Direito? Descubra Agora | Portal do BPC</title>
+/* ============================================================
+   Simulador BPC — experiência "um atendimento, não um formulário"
+   Protótipo vanilla JS. Lógica fiel ao simulador do site.
+   ============================================================ */
+(function(){
+  var WA='5521964238080';
+  var SALARIO=1621, TETO_FAM=1621, TETO_PC=1621/4;
 
-<!-- ═══ SEO ESSENCIAL ═══ -->
-<meta name="description" content="Faça o simulador gratuito do BPC/LOAS e descubra se você ou um familiar tem direito ao benefício. Para idosos com 65 anos ou mais e pessoas com deficiência. Análise sigilosa com o especialista Carlos Costa." />
-<meta name="keywords" content="simulador BPC, BPC LOAS 2025, tenho direito ao BPC, benefício de prestação continuada, como pedir BPC, requisitos BPC, BPC idoso 65 anos, BPC deficiência, renda per capita BPC, CadÚnico BPC, LOAS assistência social, BPC negado recurso, pente fino BPC, BPC INSS, elegibilidade BPC" />
-<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-<meta name="author" content="Carlos Costa — Especialista Previdenciário" />
-<link rel="canonical" href="https://portaldobpc.com.br/simulador-v2.html" />
+  function fmtBR(v){return v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function svg(p){return '<svg viewBox="0 0 24 24">'+p+'</svg>';}
 
-<!-- ═══ OPEN GRAPH ═══ -->
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Simulador BPC/LOAS 2025 — Descubra se Você Tem Direito | Portal do BPC" />
-<meta property="og:description" content="Verifique em minutos se você ou um familiar tem direito ao BPC/LOAS. Gratuito, sigiloso e com orientação do especialista Carlos Costa." />
-<meta property="og:url" content="https://portaldobpc.com.br/simulador-v2.html" />
-<meta property="og:site_name" content="Portal do BPC" />
-<meta property="og:locale" content="pt_BR" />
-<meta property="og:image" content="https://portaldobpc.com.br/assets/og-simulador.jpg" />
+  var I={
+    idoso:'<path d="M11 7a3 3 0 100-6 3 3 0 000 6z"/><path d="M8 22v-6l-2-2 1-5a3 3 0 013-2 3 3 0 013 2"/><path d="M14 9v13M14 13h3"/>',
+    pcd:'<circle cx="12" cy="4" r="2"/><path d="M12 6v8h5l3 5"/><path d="M12 14a6 6 0 11-5 9"/>',
+    estr:'<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 010 18M12 3a14 14 0 000 18"/>',
+    pente:'<path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 4v4h-4"/>',
+    doc:'<path d="M14 3v5h5"/><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M8 13h8M8 17h6"/>',
+    alert:'<path d="M10.3 3.3 1.8 18a2 2 0 001.7 3h17a2 2 0 001.7-3L14.3 3.3a2 2 0 00-3.4 0z"/><path d="M12 9v4M12 17h.01"/>',
+    refresh:'<path d="M21 12a9 9 0 11-3-6.7L21 8"/><path d="M21 4v4h-4"/>',
+    no:'<circle cx="12" cy="12" r="9"/><path d="M9 12h6"/>',
+    coin:'<circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.5h4a1.5 1.5 0 010 3h-3a1.5 1.5 0 000 3h4"/>',
+    gov:'<path d="M3 21h18M5 21V10M19 21V10M3 10l9-6 9 6M9 21v-6h6v6"/>',
+    bolsa:'<path d="M6 8h12l1 12H5z"/><path d="M9 8a3 3 0 016 0"/>',
+    ok:'<circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.5 2.5 4.5-5"/>',
+    clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+    heart:'<path d="M19 14c1.5-1.5 3-3.3 3-5.5A4.5 4.5 0 0012 6 4.5 4.5 0 002 8.5C2 12 5.5 15 12 21c2-1.8 3.7-3.3 5-4.7"/>',
+    info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>'
+  };
 
-<!-- ═══ TWITTER CARD ═══ -->
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="Simulador BPC/LOAS — Descubra seu Direito em 3 Minutos" />
-<meta name="twitter:description" content="Verifique se você tem direito ao BPC/LOAS gratuitamente. Para idosos, pessoas com deficiência e benefício suspenso." />
+  // ---------- choice configs ----------
+  var CHOICE={
+    quem:{q:'Para quem é o benefício?', sub:'O BPC/LOAS atende estes casos. Qual é o seu?', opts:[
+      {v:'idoso', ic:I.idoso, l:'Idoso (65 anos ou mais)', d:'Baixa renda, sem aposentadoria'},
+      {v:'pcd', ic:I.pcd, l:'Pessoa com deficiência', d:'De qualquer idade, inclusive crianças'},
+      {v:'estrangeiro', ic:I.estr, l:'Estrangeiro residente no Brasil', d:'Naturalizado, refugiado ou com residência permanente'},
+      {v:'pente_fino_user', ic:I.pente, l:'Já recebia e foi suspenso ou cessado', d:'Pente fino, revisão, aumento de renda ou CadÚnico desatualizado'}
+    ]},
+    situacao:{q:'Qual a situação hoje?', sub:'Isso muda completamente o caminho a seguir.', opts:[
+      {v:'nunca', ic:I.doc, l:'Nunca dei entrada no BPC', d:'Quero pedir pela primeira vez'},
+      {v:'negado', ic:I.alert, l:'Dei entrada e foi negado', d:'Cabe recurso administrativo ou judicial'},
+      {v:'pente_fino', ic:I.refresh, l:'Já recebia e caiu no pente fino', d:'Benefício suspenso/cessado em revisão'}
+    ]},
+    ja_recebe:{q:'A pessoa já recebe algum benefício?', sub:'O BPC não acumula com aposentadoria, pensão ou auxílio do INSS. Bolsa Família pode somar.', opts:[
+      {v:'nao', ic:I.no, l:'Não recebe nada', d:'Pode pedir o BPC'},
+      {v:'bolsa', ic:I.bolsa, l:'Apenas Bolsa Família', d:'Não impede o BPC'},
+      {v:'sim_inss', ic:I.gov, l:'Aposentadoria, pensão ou auxílio do INSS', d:'Em regra não cabe — mas vale conversar'},
+      {v:'sim_outro', ic:I.info, l:'Outro benefício do governo', d:'Vamos analisar caso a caso'}
+    ]},
+    cad:{q:'O CadÚnico da família está atualizado?', sub:'Sem CadÚnico em dia, o BPC não sai (ou pode ser bloqueado).', opts:[
+      {v:'sim', ic:I.ok, l:'Sim, atualizado nos últimos 2 anos'},
+      {v:'desatualizado', ic:I.clock, l:'Está desatualizado (mais de 2 anos)'},
+      {v:'nao', ic:I.info, l:'Não tenho CadÚnico / não sei'}
+    ]}
+  };
 
-<!-- ═══ GEO / LOCALIZAÇÃO ═══ -->
-<meta name="geo.region" content="BR" />
-<meta name="geo.country" content="Brazil" />
-<meta name="language" content="pt-BR" />
-<meta name="content-language" content="pt-BR" />
+  var QUEM_LABEL={idoso:'Idoso (65+)',pcd:'Pessoa com deficiência',estrangeiro:'Estrangeiro residente',pente_fino_user:'Benefício suspenso/cessado'};
+  var SIT_LABEL={nunca:'Nunca deu entrada',negado:'Foi negado (cabe recurso)',pente_fino:'Pente fino (revisão)'};
+  var BEN_LABEL={nao:'Não recebe nada',bolsa:'Só Bolsa Família',sim_inss:'Recebe do INSS',sim_outro:'Outro benefício'};
+  var CAD_LABEL={sim:'Atualizado',desatualizado:'Desatualizado',nao:'Não tem / não sabe'};
 
-<!-- ═══ DUBLIN CORE — descoberta por IAs (GEO) ═══ -->
-<meta name="DC.title" content="Simulador de Elegibilidade BPC/LOAS" />
-<meta name="DC.description" content="Ferramenta interativa gratuita para verificar elegibilidade ao Benefício de Prestação Continuada (BPC/LOAS) no Brasil. Atende idosos (65+), pessoas com deficiência e benefícios suspensos." />
-<meta name="DC.subject" content="BPC, LOAS, benefício assistencial, previdência social, INSS, assistência social" />
-<meta name="DC.language" content="pt-BR" />
-<meta name="DC.coverage" content="Brasil" />
-<meta name="DC.type" content="InteractiveResource" />
-<meta name="DC.creator" content="Carlos Costa" />
-<meta name="DC.rights" content="Portal do BPC" />
+  // compact patologia list (grupos)
+  var PATOL=[
+    ['Desenvolvimento e neuro',['Autismo (TEA)','Síndrome de Down','Paralisia cerebral','Microcefalia','Deficiência intelectual']],
+    ['Saúde mental',['Esquizofrenia','Transtorno bipolar','Depressão grave']],
+    ['Sensorial',['Cegueira / baixa visão','Surdez']],
+    ['Oncológico e crônico',['Câncer','Doença renal crônica','HIV/AIDS','Esclerose múltipla']]
+  ];
 
-<!-- ═══ STRUCTURED DATA — JSON-LD ═══ -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebApplication",
-      "name": "Simulador BPC/LOAS",
-      "alternateName": "Simulador de Elegibilidade BPC",
-      "description": "Ferramenta gratuita para verificar elegibilidade ao Benefício de Prestação Continuada (BPC/LOAS). Análise para idosos com 65 anos ou mais e pessoas com deficiência de qualquer idade.",
-      "url": "https://portaldobpc.com.br/simulador-v2.html",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "Web",
-      "inLanguage": "pt-BR",
-      "isAccessibleForFree": true,
-      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
-      "provider": {
-        "@type": "Person",
-        "name": "Carlos Costa",
-        "jobTitle": "Especialista Previdenciário",
-        "url": "https://portaldobpc.com.br"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "Portal do BPC", "item": "https://portaldobpc.com.br" },
-        { "@type": "ListItem", "position": 2, "name": "Simulador BPC/LOAS", "item": "https://portaldobpc.com.br/simulador-v2.html" }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Quem tem direito ao BPC/LOAS em 2025?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Têm direito ao BPC/LOAS: idosos com 65 anos ou mais sem aposentadoria, e pessoas com deficiência de qualquer idade (inclusive crianças). Em ambos os casos, a renda familiar per capita deve ser de até 1/4 do salário mínimo (R$ 405,25 em 2025). Estrangeiros naturalizados, refugiados e residentes permanentes também podem ter direito." }
-        },
-        {
-          "@type": "Question",
-          "name": "Qual é o valor do BPC em 2025?",
-          "acceptedAnswer": { "@type": "Answer", "text": "O BPC/LOAS em 2025 equivale a 1 salário mínimo — R$ 1.621,00 por mês. O benefício não é tributado pelo IR e é reajustado anualmente junto ao salário mínimo." }
-        },
-        {
-          "@type": "Question",
-          "name": "O BPC acumula com o Bolsa Família?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Sim, o BPC/LOAS pode ser acumulado com o Bolsa Família. No entanto, não pode ser acumulado com aposentadoria, pensão por morte ou auxílio do INSS." }
-        },
-        {
-          "@type": "Question",
-          "name": "O que fazer se o BPC foi negado?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Se o BPC foi negado, é possível entrar com recurso administrativo no INSS ou ação judicial. Muitas negativas são revertidas, especialmente quando há gastos com medicamentos ou cuidados que justificam exclusão da renda para fins de cálculo." }
-        },
-        {
-          "@type": "Question",
-          "name": "O que é o pente-fino do BPC?",
-          "acceptedAnswer": { "@type": "Answer", "text": "O pente-fino é a revisão periódica dos benefícios do BPC/LOAS feita pelo INSS. Pode resultar em suspensão ou cessação por desatualização do CadÚnico, mudança na composição familiar ou renda. Quem teve o benefício suspenso pode recorrer e, em muitos casos, receber com valores retroativos." }
-        }
-      ]
+  // reassurance per step
+  function reassureFor(key){
+    var s=state.answers;
+    if(key==='quem') return 'Vamos descobrir <span class="em">juntos</span> se você tem direito. É rápido e gratuito.';
+    if(key==='situacao') return 'Cada situação tem um caminho. Vou te mostrar <span class="em">o seu</span>.';
+    if(key==='ja_recebe') return 'Sem pressa. Responda com <span class="em">calma</span>.';
+    if(key==='patologia') return 'Não precisa de termo técnico — escolha o que <span class="em">mais se parece</span>.';
+    if(key==='pessoas_casa') return 'Estamos <span class="em">quase lá</span>.';
+    if(key==='renda_total') return 'Esse é o ponto que mais gera dúvida. <span class="em">Eu te ajudo</span>.';
+    if(key==='cad') return 'Última informação importante.';
+    if(key==='contato'){
+      if(s.situacao==='negado') return 'Uma negativa <span class="em">não é o fim</span>. Vamos olhar o seu caso.';
+      if(s.quem==='pente_fino_user'||s.situacao==='pente_fino') return 'Vamos <span class="em">recuperar</span> o que é seu.';
+      return 'Pronto. Vou <span class="em">preparar seu atendimento</span>.';
     }
-  ]
-}
-</script>
-
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="stylesheet" href="colors_and_type.css" />
-<link rel="stylesheet" href="styles.css" />
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html,body{min-height:100%;}
-  body{
-    background:
-      radial-gradient(130% 100% at 15% 0%, #2a2018 0%, #1b1410 42%, var(--cream) 78%),
-      var(--cream);
-    color:var(--ink-900);font-family:var(--font-sans);
-    line-height:var(--leading-normal);-webkit-font-smoothing:antialiased;
-    min-height:100vh;display:flex;align-items:flex-start;justify-content:center;
-    padding:calc(var(--header-h, 88px) + 24px) clamp(12px,3vw,40px) 48px;
+    return '';
   }
 
-  /* ============ CARD ============ */
-  .card{
-    width:100%;max-width:1000px;
-    background:rgba(31,24,18,.55);
-    border:1px solid var(--line);
-    border-radius:28px;
-    box-shadow:0 40px 120px -30px rgba(0,0,0,.7);
-    backdrop-filter:blur(6px);
-    display:grid;grid-template-columns:340px 1fr;
-    overflow:hidden;min-height:600px;
+  // ---------- state ----------
+  var state={step:0, answers:{quem:null,situacao:null,ja_recebe:null,patologia:null,pessoas_casa:1,renda_total:'',cad:null,nome:'',sobrenome:'',relato:''}};
+
+  function buildSteps(){
+    var a=state.answers, steps=[{kind:'choice',key:'quem'}];
+    if(a.quem!=='pente_fino_user'){steps.push({kind:'choice',key:'situacao'});steps.push({kind:'choice',key:'ja_recebe'});}
+    var pulaPat=a.quem==='idoso'||a.quem==='estrangeiro'||a.quem==='pente_fino_user'||a.situacao==='pente_fino';
+    if(a.quem==='pcd'&&!pulaPat) steps.push({kind:'patologia',key:'patologia'});
+    steps.push({kind:'pessoas',key:'pessoas_casa'});
+    steps.push({kind:'renda',key:'renda_total'});
+    steps.push({kind:'choice',key:'cad'});
+    steps.push({kind:'contato',key:'contato'});
+    return steps;
   }
 
-  /* ---- supportive aside ---- */
-  .support{
-    position:relative;
-    background:
-      linear-gradient(180deg, rgba(20,16,12,.2), rgba(20,16,12,.85)),
-      url('assets/dr-carlos-costa.jpg') center 12% / cover no-repeat,
-      var(--bone-2);
-    padding:32px 30px;
-    display:flex;flex-direction:column;
-    color:var(--ink-900);
-  }
-  .support::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(20,16,12,.55) 70%,rgba(20,16,12,.92));pointer-events:none;}
-  .support > *{position:relative;z-index:1;}
-  .who{display:flex;align-items:center;gap:12px;}
-  .who .av{width:46px;height:46px;border-radius:50%;border:2px solid var(--terra-400);background:rgba(0,0,0,.3) url('assets/dr-carlos-costa.jpg') center 18% / 200% no-repeat;flex:0 0 auto;}
-  .who .nm{display:block;font-family:var(--font-serif);font-weight:700;font-size:17px;line-height:1.05;}
-  .who .rl{display:block;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--terra-300);text-transform:uppercase;margin-top:3px;}
+  var app=document.getElementById('app'),
+      back=document.getElementById('back'),
+      reassure=document.getElementById('reassure'),
+      pbar=document.getElementById('pbar'),
+      plabel=document.getElementById('pbar-label');
 
-  .reassure{
-    margin-top:auto;font-family:var(--font-serif);
-    font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.25;font-weight:600;
-    color:#fff;text-wrap:balance;
-    min-height:3.2em;transition:opacity .3s;
-  }
-  .reassure .em{color:var(--terra-300);font-style:italic;}
+  function set(k,v){state.answers[k]=v;}
+  function curStep(){var s=buildSteps();return s[Math.min(state.step,s.length-1)];}
 
-  .pbar-wrap{margin-top:22px;}
-  .pbar-label{font-size:12.5px;font-weight:600;letter-spacing:.04em;color:var(--ink-500);margin-bottom:8px;}
-  .pbar{display:flex;gap:5px;}
-  .pbar span{height:5px;flex:1;border-radius:99px;background:rgba(245,237,224,.16);transition:background .35s;}
-  .pbar span.on{background:linear-gradient(90deg,var(--terra-500),var(--terra-300));}
-
-  .trust{margin-top:18px;font-size:12px;color:var(--ink-500);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
-  .trust b{color:var(--ink-700);font-weight:600;}
-  .trust .sep{opacity:.5;}
-
-  /* ---- main panel ---- */
-  .panel{
-    padding:clamp(26px,3.5vw,48px);
-    display:flex;flex-direction:column;
-    background:rgba(20,16,12,.35);
+  function updateChrome(){
+    var steps=buildSteps(), cur=steps[Math.min(state.step,steps.length-1)];
+    // progress bar
+    pbar.innerHTML='';
+    for(var i=0;i<steps.length;i++){var sp=document.createElement('span');if(i<=state.step)sp.className='on';pbar.appendChild(sp);}
+    plabel.textContent='Passo '+(Math.min(state.step,steps.length-1)+1)+' de '+steps.length;
+    reassure.innerHTML=reassureFor(cur.key);
+    back.hidden=false;
+    back.textContent = state.step===0 ? '← Voltar ao site' : '← Voltar';
   }
-  .back{
-    align-self:flex-start;display:inline-flex;align-items:center;gap:8px;
-    background:none;border:none;border-radius:999px;padding:8px 6px;cursor:pointer;
-    font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--ink-500);
-    transition:color .15s;margin-bottom:20px;
-  }
-  .back:hover{color:var(--terra-300);}
-  .back:focus-visible{outline:3px solid var(--terra-500);outline-offset:2px;}
-  .back[hidden]{display:none;}
 
-  /* animated step container */
-  #app{flex:1;display:flex;flex-direction:column;justify-content:center;}
-  .view{animation:slidein .4s cubic-bezier(.22,1,.36,1) both;}
-  .view.out{animation:slideout .25s ease both;}
-  @keyframes slidein{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:none;}}
-  @keyframes slideout{from{opacity:1;transform:none;}to{opacity:0;transform:translateY(-12px);}}
+  // animated render
+  function render(html, after){
+    var prev=app.querySelector('.view');
+    function paint(){
+      app.innerHTML='<div class="view">'+html+'</div>';
+      updateChrome();
+      if(after) after(app.querySelector('.view'));
+      app.scrollIntoView?null:null;
+      window.scrollTo(0,0);
+    }
+    if(prev){prev.classList.add('out');setTimeout(paint,200);}else paint();
+  }
 
-  .eyebrow{font-size:13px;font-weight:600;letter-spacing:var(--tracking-eyebrow);text-transform:uppercase;color:var(--terra-400);margin-bottom:12px;}
-  .q{font-family:var(--font-serif);font-weight:700;font-size:clamp(1.8rem,3.4vw,2.6rem);line-height:1.1;letter-spacing:var(--tracking-tight);color:var(--ink-900);margin-bottom:10px;text-wrap:balance;}
-  .q-sub{font-size:16px;color:var(--ink-500);margin-bottom:26px;max-width:46ch;line-height:1.5;}
+  // ---------- navigation ----------
+  function go(n){ state.step=n; route(); }
+  function next(){ state.step++; route(); }
+  function back_(){ if(state.step>0){state.step--;route();} else window.location.href='index.html'; }
+  back.onclick=function(){back_();};
 
-  /* option cards */
-  .opts{display:flex;flex-direction:column;gap:11px;}
-  .opt{
-    display:flex;align-items:center;gap:15px;width:100%;text-align:left;cursor:pointer;
-    background:var(--bone);border:1.5px solid var(--line);border-radius:15px;
-    padding:16px 18px;min-height:64px;font-family:var(--font-sans);color:var(--ink-900);
-    transition:border-color .15s,background .15s,transform .08s;
+  function pick(key,val){
+    if(key==='quem'&&val==='pente_fino_user'){set('quem',val);set('situacao','pente_fino');}
+    else set(key,val);
+    next();
   }
-  .opt:hover{border-color:var(--terra-700);background:var(--bone-2);}
-  .opt:active{transform:scale(.99);}
-  .opt:focus-visible{outline:3px solid var(--terra-500);outline-offset:2px;}
-  .opt .ic{flex:0 0 auto;width:44px;height:44px;border-radius:12px;background:var(--olive-100);color:var(--terra-300);display:flex;align-items:center;justify-content:center;}
-  .opt .ic svg{width:23px;height:23px;stroke:currentColor;fill:none;stroke-width:1.7;}
-  .opt .tx b{display:block;font-size:17px;font-weight:600;line-height:1.25;}
-  .opt .tx small{display:block;font-size:13.5px;color:var(--ink-500);margin-top:3px;line-height:1.4;}
-  .opt .arrow{margin-left:auto;color:var(--ink-300);font-size:20px;transition:color .15s,transform .15s;}
-  .opt:hover .arrow{color:var(--terra-400);transform:translateX(3px);}
 
-  /* stepper */
-  .stepper{display:flex;align-items:center;justify-content:center;gap:22px;background:var(--bone);border:1px solid var(--line);border-radius:18px;padding:28px 0;margin-bottom:26px;}
-  .stepper button{width:58px;height:58px;border-radius:50%;border:1.5px solid var(--line);background:var(--bone-2);font-size:28px;color:var(--ink-900);cursor:pointer;transition:border-color .15s,background .15s;display:flex;align-items:center;justify-content:center;}
-  .stepper button:hover:not(:disabled){border-color:var(--terra-500);}
-  .stepper button:disabled{opacity:.35;cursor:not-allowed;}
-  .stepper .val{min-width:120px;text-align:center;}
-  .stepper .val .n{font-family:var(--font-serif);font-size:60px;font-weight:600;line-height:1;color:var(--ink-900);}
-  .stepper .val .u{font-size:14px;color:var(--ink-500);margin-top:6px;}
+  // ---------- renderers ----------
+  function renderChoice(key){
+    var cfg=CHOICE[key];
+    var h='<div class="eyebrow">'+stepEyebrow()+'</div><h1 class="q">'+cfg.q+'</h1>'+
+      (cfg.sub?'<p class="q-sub">'+cfg.sub+'</p>':'')+'<div class="opts">';
+    cfg.opts.forEach(function(o){
+      h+='<button class="opt" data-v="'+o.v+'"><span class="ic">'+svg(o.ic)+'</span>'+
+         '<span class="tx"><b>'+o.l+'</b>'+(o.d?'<small>'+o.d+'</small>':'')+'</span>'+
+         '<span class="arrow">→</span></button>';
+    });
+    h+='</div>';
+    render(h,function(v){Array.prototype.forEach.call(v.querySelectorAll('.opt'),function(b){b.onclick=function(){pick(key,b.getAttribute('data-v'));};});});
+  }
 
-  /* currency */
-  .field label{display:block;font-size:14px;font-weight:600;color:var(--ink-700);margin-bottom:10px;}
-  .money{display:flex;align-items:center;background:var(--bone);border:1.5px solid var(--line);border-radius:15px;padding:0 18px;transition:border-color .15s;}
-  .money:focus-within{border-color:var(--terra-500);}
-  .money .cur{font-size:22px;font-weight:600;color:var(--ink-500);}
-  .money input{flex:1;border:none;background:none;outline:none;font-family:var(--font-serif);font-size:34px;font-weight:600;color:var(--ink-900);padding:18px 10px;width:100%;}
-  .feedback{margin-top:14px;font-size:15px;border-radius:12px;padding:13px 16px;display:flex;gap:10px;align-items:flex-start;line-height:1.45;}
-  .feedback svg{flex:0 0 auto;width:20px;height:20px;stroke-width:1.8;fill:none;margin-top:1px;}
-  .feedback.ok{background:var(--ok-bg);color:#bfe0bf;}.feedback.ok svg{stroke:var(--ok);}
-  .feedback.warn{background:var(--warn-bg);color:#e9c879;}.feedback.warn svg{stroke:var(--warn);}
-  .feedback.neutral{background:var(--bone);color:var(--ink-500);}.feedback.neutral svg{stroke:var(--ink-500);}
+  function renderPatologia(){
+    var h='<div class="eyebrow">'+stepEyebrow()+'</div><h1 class="q">Qual é a condição principal?</h1>'+
+      '<p class="q-sub">Se houver mais de uma, escolha a mais grave — a gente detalha depois.</p><div class="opts">';
+    PATOL.forEach(function(g){
+      h+='<div style="font-size:12px;font-weight:700;color:var(--terra-400);text-transform:uppercase;letter-spacing:.12em;margin:8px 2px 2px;">'+g[0]+'</div>';
+      g[1].forEach(function(n){h+='<button class="opt" data-n="'+n+'"><span class="tx"><b>'+n+'</b></span><span class="arrow">→</span></button>';});
+    });
+    h+='<button class="opt" data-n="Outra (a detalhar)"><span class="tx"><b>Outra condição</b><small>Vou detalhar pelo WhatsApp</small></span><span class="arrow">→</span></button></div>';
+    render(h,function(v){Array.prototype.forEach.call(v.querySelectorAll('.opt'),function(b){b.onclick=function(){set('patologia',b.getAttribute('data-n'));next();};});});
+  }
 
-  /* text inputs */
-  .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .inp{width:100%;background:var(--bone);border:1.5px solid var(--line);border-radius:13px;padding:15px 16px;font-family:var(--font-sans);font-size:16px;color:var(--ink-900);outline:none;transition:border-color .15s;}
-  .inp:focus{border-color:var(--terra-500);}
-  .inp::placeholder{color:var(--ink-300);}
+  function renderPessoas(){
+    function draw(){
+      var val=Math.max(1,Number(state.answers.pessoas_casa)||1);
+      var h='<div class="eyebrow">'+stepEyebrow()+'</div><h1 class="q">Quantas pessoas moram na casa?</h1>'+
+        '<p class="q-sub">Conte todo mundo que mora junto — cônjuge, filhos, pais, irmãos. <b>Inclua a própria pessoa que vai receber.</b></p>'+
+        '<div class="stepper"><button id="dec" '+(val<=1?'disabled':'')+'>−</button>'+
+        '<div class="val"><div class="n">'+val+'</div><div class="u">'+(val===1?'pessoa':'pessoas')+'</div></div>'+
+        '<button id="inc" '+(val>=15?'disabled':'')+'>+</button></div>'+
+        '<button class="btn btn--primary" id="cont">Continuar →</button>';
+      render(h,function(v){
+        v.querySelector('#dec').onclick=function(){set('pessoas_casa',Math.max(1,val-1));draw();};
+        v.querySelector('#inc').onclick=function(){set('pessoas_casa',Math.min(15,val+1));draw();};
+        v.querySelector('#cont').onclick=next;
+      });
+    }
+    draw();
+  }
 
-  /* relato / observação */
-  .note-wrap{margin-top:16px;}
-  .note-label{display:block;font-size:14.5px;font-weight:600;color:var(--ink-700);margin-bottom:8px;}
-  .note-label span{font-weight:400;color:var(--ink-500);}
-  .note{width:100%;background:var(--bone);border:1.5px solid var(--line);border-radius:13px;padding:14px 16px;font-family:var(--font-sans);font-size:15px;line-height:1.55;color:var(--ink-900);outline:none;resize:vertical;min-height:92px;transition:border-color .15s;}
-  .note:focus{border-color:var(--terra-500);}
-  .note::placeholder{color:#d9cbb6;opacity:1;}
+  function renderRenda(){
+    function fb(){
+      var digits=String(state.answers.renda_total||'').replace(/\D/g,'');
+      var num=(digits===''?0:parseInt(digits,10))/100;
+      var pessoas=Math.max(1,Number(state.answers.pessoas_casa)||1);
+      var pc=num/pessoas;
+      var el=document.getElementById('fbk'); if(!el)return;
+      if(num<=0){el.className='feedback neutral';el.innerHTML=svg(I.info)+'<span>Some tudo que entra na casa por mês. Bolsa Família não conta.</span>';return;}
+      if(pc<=TETO_PC){el.className='feedback ok';el.innerHTML=svg(I.ok)+'<span>R$ '+fmtBR(pc)+' por pessoa — <b>dentro do critério legal</b> (¼ do salário). Ótimo sinal.</span>';}
+      else if(num<=TETO_FAM){el.className='feedback warn';el.innerHTML=svg(I.alert)+'<span>R$ '+fmtBR(pc)+' por pessoa fica acima do critério estrito, <b>mas há jurisprudência</b> que amplia o limite. Vale analisar.</span>';}
+      else {el.className='feedback warn';el.innerHTML=svg(I.alert)+'<span>Renda acima de 1 salário mínimo — mas gastos com <b>saúde e deficiência</b> podem ser descontados. Não desista sem conversar.</span>';}
+    }
+    var h='<div class="eyebrow">'+stepEyebrow()+'</div><h1 class="q">Qual a renda total da família?</h1>'+
+      '<p class="q-sub">Salários, aposentadorias, pensões, bicos. <b>Não</b> some Bolsa Família.</p>'+
+      '<div class="field"><label>Renda somada por mês</label>'+
+      '<div class="money"><span class="cur">R$</span><input id="renda" inputmode="numeric" placeholder="0,00" /></div>'+
+      '<div class="feedback neutral" id="fbk"></div></div>'+
+      '<button class="btn btn--primary mt" id="cont">Continuar →</button>';
+    render(h,function(v){
+      var inp=v.querySelector('#renda');
+      function fmtInput(){
+        var d=String(state.answers.renda_total||'').replace(/\D/g,'');
+        var formatted = d===''?'':( (parseInt(d,10)/100).toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}) );
+        inp.value=formatted; inp.setAttribute('value',formatted);
+      }
+      fmtInput(); fb();
+      inp.oninput=function(){var d=inp.value.replace(/\D/g,'').slice(0,9);set('renda_total',d);fmtInput();fb();};
+      inp.focus();
+      v.querySelector('#cont').onclick=next;
+    });
+  }
 
-  /* primary button (escopado em .card pra não afetar o header do site) */
-  .card .btn{font-family:var(--font-sans);font-size:17px;font-weight:600;border-radius:999px;padding:16px 26px;border:1.5px solid transparent;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;min-height:56px;transition:background .15s,transform .1s,border-color .15s;width:100%;}
-  .card .btn:active{transform:translateY(1px);}
-  .card .btn--primary{background:var(--terra-500);color:#fff;box-shadow:var(--shadow-sm);}
-  .card .btn--primary:hover{background:var(--terra-700);}
-  .card .btn--wa{background:#117a52;color:#fff;box-shadow:0 8px 24px rgba(17,122,82,.3);}
-  .card .btn--wa:hover{background:#0d6543;}
-  .card .btn--wa svg{width:24px;height:24px;fill:#fff;}
-  .card .btn[disabled]{opacity:.45;cursor:not-allowed;}
-  .mt{margin-top:22px;}
+  function eligivelSoft(){
+    var a=state.answers;
+    var num=(String(a.renda_total||'').replace(/\D/g,'')==='')?0:parseInt(String(a.renda_total).replace(/\D/g,''),10)/100;
+    var rendaOk=num>0&&num<=TETO_FAM;
+    var recebeOutro=a.ja_recebe==='sim_inss'||a.ja_recebe==='sim_outro';
+    return rendaOk&&!recebeOutro;
+  }
 
-  /* result */
-  .res-recap{background:var(--bone);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:22px 0;}
-  .res-recap .rl{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-top:1px solid var(--line);font-size:14.5px;}
-  .res-recap .rl:first-child{border-top:none;}
-  .res-recap .rl span{color:var(--ink-500);}
-  .res-recap .rl b{color:var(--ink-900);font-weight:600;text-align:right;}
+  function buildWA(){
+    var a=state.answers, nome=((a.nome||'')+' '+(a.sobrenome||'')).trim();
+    var pessoas=Math.max(1,Number(a.pessoas_casa)||1);
+    var num=(String(a.renda_total||'').replace(/\D/g,'')==='')?0:parseInt(String(a.renda_total).replace(/\D/g,''),10)/100;
+    var L=['Olá! Sou '+(nome||'[nome]')+', vim pelo Portal do BPC.','','📋 *Resumo do meu caso:*',
+      '• Beneficiário: '+(QUEM_LABEL[a.quem]||'—'),
+      '• Situação: '+(SIT_LABEL[a.situacao]||'—')];
+    if(a.ja_recebe) L.push('• Benefício atual: '+(BEN_LABEL[a.ja_recebe]||'—'));
+    if(a.patologia) L.push('• Condição: '+a.patologia);
+    L.push('• Pessoas em casa: '+pessoas);
+    if(num>0) L.push('• Renda familiar: R$ '+fmtBR(num)+'/mês (R$ '+fmtBR(num/pessoas)+' por pessoa)');
+    L.push('• CadÚnico: '+(CAD_LABEL[a.cad]||'—'));
+    if((a.relato||'').trim()){ L.push('','🗒️ *Nas minhas palavras:*', a.relato.trim()); }
+    L.push('','Gostaria de conversar sobre o meu caso.');
+    return 'https://wa.me/'+WA+'?text='+encodeURIComponent(L.join('\n'));
+  }
 
-  /* ============ PAGE WRAP ============ */
-  .page-wrap{
-    width:100%;max-width:1000px;
-    display:flex;flex-direction:column;gap:26px;
+  function renderContato(){
+    var a=state.answers;
+    function draw(){
+      var nome=a.nome||'', sob=a.sobrenome||'';
+      var ready=nome.trim().length>=2;
+      var pessoas=Math.max(1,Number(a.pessoas_casa)||1);
+      var num=(String(a.renda_total||'').replace(/\D/g,'')==='')?0:parseInt(String(a.renda_total).replace(/\D/g,''),10)/100;
+      var soft=eligivelSoft();
+      var head = soft
+        ? 'Pelo que você me contou, <span style="color:var(--terra-300)">vale muito a pena dar entrada</span>.'
+        : 'Mesmo com pontos de atenção, <span style="color:var(--terra-300)">o seu caso merece ser analisado</span>.';
+      var h='<div class="eyebrow">Quase lá — só falta você</div>'+
+        '<h1 class="q">'+(nome.trim()? 'Prazer, '+nome.trim().split(' ')[0]+'!' : 'Como podemos te chamar?')+'</h1>'+
+        '<p class="q-sub">'+head+' Deixe seu nome e eu preparo seu atendimento já com o resumo.</p>'+
+        '<div class="row2"><input class="inp" id="nm" placeholder="Nome" value="'+nome.replace(/"/g,'&quot;')+'" />'+
+        '<input class="inp" id="sb" placeholder="Sobrenome" value="'+sob.replace(/"/g,'&quot;')+'" /></div>'+
+        '<div class="note-wrap"><label class="note-label" for="relato">✍️ Escreva aqui, com suas palavras, o que você está vivendo <span>(opcional — mas ajuda muito)</span></label>'+
+        '<textarea class="note" id="relato" placeholder="Escreva aqui... Ex.: Cuido sozinha do meu filho com autismo e não consigo trabalhar. Já tentei dar entrada e não sei o que fazer.">'+(a.relato||'').replace(/</g,'&lt;')+'</textarea></div>'+
+        '<div class="res-recap">'+
+          recapLine('Beneficiário',QUEM_LABEL[a.quem])+
+          recapLine('Situação',SIT_LABEL[a.situacao])+
+          (a.patologia?recapLine('Condição',a.patologia):'')+
+          recapLine('Pessoas em casa',String(pessoas))+
+          (num>0?recapLine('Renda por pessoa','R$ '+fmtBR(num/pessoas)):'')+
+          recapLine('CadÚnico',CAD_LABEL[a.cad])+
+        '</div>'+
+        '<a class="btn btn--wa" id="wa" '+(ready?'':'aria-disabled="true"')+' href="'+(ready?buildWA():'#')+'" '+(ready?'target="_blank" rel="noopener"':'')+'>'+
+          svg2wa()+'Falar com a equipe no WhatsApp</a>'+
+        (ready?'':'<p style="font-size:13px;color:var(--ink-500);text-align:center;margin-top:12px;">Digite seu nome para liberar o atendimento.</p>');
+      render(h,function(v){
+        var nm=v.querySelector('#nm'), sb=v.querySelector('#sb');
+        nm.oninput=function(){a.nome=nm.value;}; 
+        sb.oninput=function(){a.sobrenome=sb.value;};
+        nm.onblur=draw; sb.onblur=draw;
+        var rel=v.querySelector('#relato'); if(rel){rel.oninput=function(){a.relato=rel.value;};}
+        var wa=v.querySelector('#wa');
+        wa.onclick=function(e){ if(!(a.nome||'').trim()){e.preventDefault();nm.focus();} };
+      });
+    }
+    draw();
   }
-  /* remove max-width from card when inside wrap */
-  .page-wrap .card{max-width:none;}
+  function recapLine(k,val){return '<div class="rl"><span>'+k+'</span><b>'+(val||'—')+'</b></div>';}
+  function svg2wa(){return '<svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.087zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>';}
 
-  /* ============ SEO INTRO ============ */
-  .seo-intro{
-    text-align:center;
-    padding:4px clamp(8px,2vw,24px) 0;
-  }
-  .seo-eyebrow{
-    display:block;font-size:11px;font-weight:600;letter-spacing:.22em;
-    text-transform:uppercase;color:var(--terra-400);margin-bottom:13px;
-  }
-  .seo-h1{
-    font-family:var(--font-serif);font-weight:700;
-    font-size:clamp(1.45rem,3vw,2.05rem);line-height:1.2;
-    color:#f5ede0;text-wrap:balance;margin-bottom:10px;
-  }
-  .seo-h2-sub{
-    font-size:clamp(0.88rem,1.4vw,1rem);font-weight:400;
-    color:var(--ink-500);margin:0 auto 16px;line-height:1.55;
-    max-width:54ch;
-  }
-  .seo-bullets{
-    list-style:none;
-    display:flex;flex-wrap:wrap;gap:7px 22px;
-    justify-content:center;
-    font-size:13px;color:var(--ink-500);
-  }
-  .seo-bullets li{display:flex;align-items:center;gap:7px;}
-  .seo-bullets li::before{
-    content:"✓";color:var(--terra-400);font-size:12px;font-weight:700;flex:0 0 auto;
-  }
-  .seo-bullets strong{color:#cdb899;font-weight:600;}
+  var EYEBROW={quem:'Quem vai receber',situacao:'A sua situação',ja_recebe:'Benefícios atuais',patologia:'A condição',pessoas_casa:'A sua família',renda_total:'A renda da casa',cad:'CadÚnico'};
+  function stepEyebrow(){var cur=curStep();return EYEBROW[cur.key]||'Simulação';}
 
-  /* ============ SEO FAQ ============ */
-  .seo-faq{
-    background:rgba(31,24,18,.42);
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:clamp(22px,3vw,36px);
-    backdrop-filter:blur(4px);
+  // ---------- router ----------
+  function route(){
+    var cur=curStep();
+    if(cur.kind==='choice') renderChoice(cur.key);
+    else if(cur.kind==='patologia') renderPatologia();
+    else if(cur.kind==='pessoas') renderPessoas();
+    else if(cur.kind==='renda') renderRenda();
+    else if(cur.kind==='contato') renderContato();
   }
-  .faq-heading{
-    font-family:var(--font-serif);font-size:1.15rem;font-weight:700;
-    color:#f5ede0;margin-bottom:20px;text-align:center;
-  }
-  .faq-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:14px;
-  }
-  .faq-item{
-    background:rgba(245,237,224,.04);
-    border:1px solid rgba(245,237,224,.08);
-    border-radius:14px;
-    padding:17px 19px;
-  }
-  .faq-item h3{
-    font-family:var(--font-serif);font-size:.95rem;font-weight:700;
-    color:var(--terra-300);margin-bottom:9px;line-height:1.35;
-  }
-  .faq-item p{
-    font-size:13px;color:var(--ink-500);line-height:1.65;
-  }
-  .faq-item strong{color:#c4a882;font-weight:600;}
 
-  @media (max-width:820px){
-    .card{grid-template-columns:1fr;min-height:0;border-radius:22px;}
-    .support{flex-direction:row;align-items:center;gap:14px;padding:16px 18px;flex-wrap:wrap;}
-    .support::after{display:none;}
-    .reassure{display:none;}
-    .pbar-wrap{margin-top:0;flex:1;min-width:160px;}
-    .trust{display:none;}
-    .who{flex:0 0 auto;}
-    .who .nm{font-size:15px;}
-    .panel{padding:24px 20px 30px;}
-  }
-  @media (max-width:640px){
-    .faq-grid{grid-template-columns:1fr;}
-    .seo-intro{padding:0 2px;}
-  }
-</style>
-</head>
-<body>
-  <div class="page-wrap">
-
-  <!-- ═══ H1 + H2 INTRO — SEO/GEO ═══ -->
-  <section class="seo-intro" aria-label="Sobre o Simulador BPC/LOAS">
-    <span class="seo-eyebrow">✦ Benefício · Direito · Acolhimento</span>
-    <h1 class="seo-h1">Simulador BPC/LOAS: Veja se Você Tem Direito ao Benefício</h1>
-    <p class="seo-h2-sub">Análise gratuita e sigilosa para idosos, pessoas com deficiência e benefícios suspensos</p>
-    <ul class="seo-bullets">
-      <li>Idosos com <strong>65 anos ou mais</strong> sem aposentadoria</li>
-      <li>Pessoas com deficiência de <strong>qualquer idade</strong></li>
-      <li>Renda per capita até <strong>R$ 405,25/mês</strong> (¼ do salário mínimo 2025)</li>
-      <li>Benefício <strong>suspenso ou cessado</strong> no pente-fino</li>
-      <li>BPC <strong>negado</strong> com direito a recurso</li>
-    </ul>
-  </section>
-
-  <div class="card">
-    <aside class="support">
-      <div class="who">
-        <span class="av" aria-hidden="true"></span>
-        <span><span class="nm">Carlos Costa</span><span class="rl">Especialista previdenciário</span></span>
-      </div>
-      <p class="reassure" id="reassure"></p>
-      <div class="pbar-wrap">
-        <div class="pbar-label" id="pbar-label">Vamos começar</div>
-        <div class="pbar" id="pbar"></div>
-      </div>
-      <div class="trust"><b>Gratuito</b> <span class="sep">·</span> <b>Sigiloso</b> <span class="sep">·</span> <b>Sem compromisso</b></div>
-    </aside>
-    <main class="panel">
-      <button class="back" id="back" hidden>← Voltar</button>
-      <div id="app"></div>
-    </main>
-  </div>
-  <!-- ═══ FAQ — H2/H3 HUMANIZADOS — SEO/GEO ═══ -->
-  <section class="seo-faq" aria-label="Perguntas frequentes sobre o BPC/LOAS">
-    <h2 class="faq-heading">Perguntas frequentes sobre o BPC/LOAS</h2>
-    <div class="faq-grid">
-      <article class="faq-item">
-        <h3>Quem tem direito ao BPC em 2025?</h3>
-        <p>Idosos com 65 anos ou mais sem aposentadoria e pessoas com deficiência de qualquer idade — desde que a <strong>renda familiar per capita seja de até R$ 405,25</strong> (¼ do salário mínimo). Estrangeiros naturalizados, refugiados e residentes permanentes também podem ter direito.</p>
-      </article>
-      <article class="faq-item">
-        <h3>Qual é o valor do BPC/LOAS em 2025?</h3>
-        <p>O BPC equivale a <strong>1 salário mínimo — R$ 1.621,00/mês</strong>. É reajustado anualmente, não é tributado pelo Imposto de Renda e pode ser acumulado com o Bolsa Família, mas não com aposentadoria ou pensão do INSS.</p>
-      </article>
-      <article class="faq-item">
-        <h3>O que fazer se o BPC foi negado?</h3>
-        <p>Negativa não é o fim. É possível entrar com <strong>recurso administrativo no INSS</strong> ou ação judicial. Muitas negativas são revertidas — especialmente quando há gastos com saúde ou deficiência que justificam análise ampliada da renda familiar.</p>
-      </article>
-      <article class="faq-item">
-        <h3>O pente-fino suspendeu meu BPC — e agora?</h3>
-        <p>A suspensão pode ser contestada. Atualize o <strong>CadÚnico</strong>, reúna documentos que comprovem os critérios e solicite revisão. Em muitos casos, o benefício é restabelecido com <strong>pagamento retroativo</strong> das parcelas suspensas.</p>
-      </article>
-    </div>
-  </section>
-
-  </div><!-- /.page-wrap -->
-  <script src="simulador-v2.js"></script>
-</body>
-</html>
+  route();
+})();

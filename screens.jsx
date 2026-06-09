@@ -1427,6 +1427,21 @@ function ScreenSimulador({ onNavigate }) {
 
   return (
     <section className="sim2">
+
+      {/* ===== SEO INTRO: H1 + H2 + bullets ===== */}
+      <div className="sim2-intro" aria-label="Sobre o Simulador BPC/LOAS">
+        <span className="si-ey">✦ Benefício · Direito · Acolhimento</span>
+        <h1 className="si-h1">Simulador BPC/LOAS: Veja se Você Tem Direito ao Benefício</h1>
+        <p className="si-h2">Análise gratuita e sigilosa para idosos, pessoas com deficiência e benefícios suspensos</p>
+        <ul className="si-ul">
+          <li>Idosos com <strong>65 anos ou mais</strong> sem aposentadoria</li>
+          <li>Pessoas com deficiência de <strong>qualquer idade</strong></li>
+          <li>Renda per capita até <strong>R$ 405,25/mês</strong> (¼ do salário mínimo)</li>
+          <li>Benefício <strong>suspenso ou cessado</strong> no pente-fino</li>
+          <li>BPC <strong>negado</strong> com direito a recurso</li>
+        </ul>
+      </div>
+
       <div className="card">
         <aside className="support">
           <div className="who">
@@ -1451,6 +1466,30 @@ function ScreenSimulador({ onNavigate }) {
           </div>
         </main>
       </div>
+
+      {/* ===== FAQ: H2 + H3 humanizados ===== */}
+      <section className="sim2-faq" aria-label="Perguntas frequentes sobre o BPC/LOAS">
+        <h2 className="sf-h2">Perguntas frequentes sobre o BPC/LOAS</h2>
+        <div className="sf-grid">
+          <article className="sf-item">
+            <h3>Quem tem direito ao BPC em 2026?</h3>
+            <p>Idosos com 65 anos ou mais sem aposentadoria e pessoas com deficiência de qualquer idade — desde que a <strong>renda per capita seja até R$ 405,25</strong> (¼ do salário mínimo). Estrangeiros naturalizados e refugiados também podem ter direito.</p>
+          </article>
+          <article className="sf-item">
+            <h3>Qual é o valor do BPC/LOAS em 2026?</h3>
+            <p>O BPC equivale a <strong>1 salário mínimo — R$ 1.621,00/mês</strong>. É reajustado anualmente, não é tributado pelo IR e pode ser acumulado com o Bolsa Família, mas não com aposentadoria ou pensão do INSS.</p>
+          </article>
+          <article className="sf-item">
+            <h3>O que fazer se o BPC foi negado?</h3>
+            <p>Negativa não é o fim. É possível entrar com <strong>recurso administrativo no INSS</strong> ou ação judicial. Muitas negativas são revertidas quando há gastos com saúde que justificam análise ampliada da renda.</p>
+          </article>
+          <article className="sf-item">
+            <h3>O pente-fino suspendeu meu BPC — e agora?</h3>
+            <p>A suspensão pode ser contestada. Atualize o <strong>CadÚnico</strong>, reúna documentos que comprovem os critérios e solicite revisão. Em muitos casos, o benefício é restabelecido com <strong>pagamento retroativo</strong>.</p>
+          </article>
+        </div>
+      </section>
+
     </section>
   );
 }
