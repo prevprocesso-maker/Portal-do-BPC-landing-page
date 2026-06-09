@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Dossiê de Marketing — CarlosCostaPrev + Portal do BPC</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400;1,9..144,500;1,9..144,600;1,9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+html,body{margin:0;padding:0;background:#fffdfa;}
+.doc-block{padding-block:clamp(24px,4vw,44px);}
+.page-break{page-break-before:always;}
+@media print{ @page{size:A4;margin:13mm;} .doc-block{padding-block:0;} .no-print{display:none!important;} }
+.dossie-print-btn{position:fixed;bottom:22px;right:22px;z-index:9999;background:#c4673a;color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+/* === Playbook de Persuasão e Mensagem === */
+.dossie-0 {
+    --terra-500:#c4673a; --terra-700:#a8542d; --terra-50:#fbf2e9; --terra-100:#f4e3d4;
+    --ink:#221913; --ink-2:#4a3a2c; --ink-3:#7a6552;
+    --line:#e3d4c2; --line-2:#d0bca5; --bg:#fffdfa; --bg-soft:#f7efe4;
+    --info:#4a6a8a; --info-bg:#eaf0f5; --olive:#5e7245; --olive-bg:#eef1e6;
+    --err:#b3503f; --err-bg:#f6e7e2;
+  }
+.dossie-0 * {box-sizing:border-box;}
+.dossie-0 {margin:0;font-family:'Inter',system-ui,sans-serif;font-size:10.5pt;line-height:1.55;color:var(--ink);background:var(--bg);padding-block:clamp(28px,5vw,56px);}
+.dossie-0 .wrap {max-width:840px;margin-inline:auto;padding-inline:clamp(18px,5vw,32px);}
+.dossie-0 h1, .dossie-0 h2, .dossie-0 h3, .dossie-0 h4 {font-family:'Fraunces',Georgia,serif;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+.dossie-0 em {font-style:italic;color:var(--terra-700);}
+.dossie-0 p {margin:0 0 12px;}
+.dossie-0 .eyebrow {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra-700);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+.dossie-0 .eyebrow::before {content:"✦";}
+.dossie-0 .doc-head {margin-bottom:38px;}
+.dossie-0 .doc-head h1 {font-size:29pt;line-height:1.05;font-weight:600;margin-bottom:14px;}
+.dossie-0 .doc-head .lead {font-size:12pt;line-height:1.5;color:var(--ink-2);max-width:62ch;}
+.dossie-0 section.block {margin-bottom:42px;}
+.dossie-0 .sec-head {border-top:2px solid var(--ink);padding-top:16px;margin-bottom:20px;}
+.dossie-0 .sec-head .id {font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;background:var(--ink);color:var(--bg);padding:3px 9px;border-radius:4px;margin-right:10px;}
+.dossie-0 .sec-head h2 {display:inline;font-size:19pt;font-weight:600;}
+.dossie-0 .sec-head .sub {font-family:'Inter',sans-serif;font-size:10.5pt;color:var(--ink-3);margin-top:10px;}
+.dossie-0 h3.minor {font-family:'Inter',sans-serif;font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--terra-700);margin:24px 0 12px;}
+.dossie-0 .intro-p {font-size:11pt;color:var(--ink-2);font-style:italic;margin-bottom:18px;}
+.dossie-0 /* mother message */
+  .mother {background:var(--ink);color:#f5ede0;border-radius:16px;padding:26px 28px;margin:18px 0;}
+.dossie-0 .mother .lbl {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#e0b388;margin-bottom:10px;}
+.dossie-0 .mother .big {font-family:'Fraunces',serif;font-size:16pt;line-height:1.32;font-weight:500;color:#fff;}
+.dossie-0 .mother .big em {color:#e0b388;font-style:italic;}
+.dossie-0 .box {border:1px solid var(--line-2);border-radius:10px;padding:16px 20px;margin:16px 0;background:var(--bg-soft);}
+.dossie-0 .box.accent {border-left:4px solid var(--terra-500);}
+.dossie-0 .box.info {background:var(--info-bg);border-color:#cdd9e4;border-left:4px solid var(--info);}
+.dossie-0 .box.err {background:var(--err-bg);border-color:#e6c3ba;border-left:4px solid var(--err);}
+.dossie-0 .box .label {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;display:block;margin-bottom:7px;color:var(--terra-700);}
+.dossie-0 .box.info .label {color:var(--info);}
+.dossie-0 .box.err .label {color:var(--err);}
+.dossie-0 .box p:last-child {margin-bottom:0;}
+.dossie-0 /* lever cards */
+  .lever {border:1px solid var(--line);border-radius:12px;margin:14px 0;overflow:hidden;page-break-inside:avoid;background:#fff;}
+.dossie-0 .lever .lv-top {display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--terra-700);color:#fff;}
+.dossie-0 .lever .lv-top .ic {font-size:17pt;line-height:1;}
+.dossie-0 .lever .lv-top .nm {font-family:'Fraunces',serif;font-size:14pt;font-weight:600;}
+.dossie-0 .lever .lv-top .role {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;opacity:0.85;margin-left:auto;}
+.dossie-0 .lever .lv-body {padding:14px 18px;}
+.dossie-0 .lever .lv-body .what {font-size:9.8pt;color:var(--ink-2);margin-bottom:10px;}
+.dossie-0 .lever .lv-body .what strong {color:var(--ink);}
+.dossie-0 .hooks {list-style:none;margin:0;padding:0;}
+.dossie-0 .hooks li {position:relative;padding:7px 0 7px 22px;border-top:1px dashed var(--line-2);font-size:10pt;line-height:1.45;}
+.dossie-0 .hooks li:first-child {border-top:none;}
+.dossie-0 .hooks li::before {content:"“";position:absolute;left:0;top:6px;font-family:'Fraunces',serif;font-size:15pt;color:var(--terra-500);line-height:1;}
+.dossie-0 .hooks li em {color:var(--ink-3);font-style:italic;font-size:8.8pt;display:block;margin-top:2px;}
+.dossie-0 .arc {display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin:16px 0;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;}
+@media(max-width:640px){
+.dossie-0 .arc {grid-template-columns:1fr;}
+
+}
+.dossie-0 .arc .step {padding:16px 18px;border-right:1px solid var(--line-2);}
+.dossie-0 .arc .step:last-child {border-right:none;}
+@media(max-width:640px){
+.dossie-0 .arc .step {border-right:none;border-bottom:1px solid var(--line-2);}
+
+}
+.dossie-0 .arc .step .n {font-family:'Inter',sans-serif;font-size:8pt;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra-700);}
+.dossie-0 .arc .step h4 {font-family:'Fraunces',serif;font-size:13pt;font-weight:600;margin:5px 0 6px;}
+.dossie-0 .arc .step p {font-size:9.3pt;color:var(--ink-2);margin:0;}
+.dossie-0 .arc .step.s1 {background:var(--err-bg);}
+.dossie-0 .arc .step.s2 {background:var(--bg-soft);}
+.dossie-0 .arc .step.s3 {background:var(--olive-bg);}
+.dossie-0 .vs {display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+@media(max-width:640px){
+.dossie-0 .vs {grid-template-columns:1fr;}
+
+}
+.dossie-0 .vs > div {border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+.dossie-0 .vs .gen {background:var(--err-bg);border-color:#e6c3ba;}
+.dossie-0 .vs .esp {background:var(--olive-bg);border-color:#cdd6bd;}
+.dossie-0 .vs h4 {font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+.dossie-0 .vs .gen h4 {color:var(--err);}
+.dossie-0 .vs .esp h4 {color:var(--olive);}
+.dossie-0 .vs ul {margin:0;padding-left:18px;font-size:9.6pt;line-height:1.5;}
+.dossie-0 .vs ul li {margin-bottom:5px;}
+.dossie-0 ul.clean {margin:10px 0;padding-left:20px;}
+.dossie-0 ul.clean li {margin-bottom:6px;line-height:1.5;}
+.dossie-0 .closing {margin-top:38px;padding-top:22px;border-top:2px solid var(--ink);font-size:10pt;color:var(--ink-2);font-style:italic;}
+@media print{
+@page{size:A4;margin:13mm;}
+.dossie-0 {padding:0;background:#fff;}
+.dossie-0 .wrap {max-width:none;padding:0;}
+.dossie-0 .no-print {display:none!important;}
+.dossie-0 section.block, .dossie-0 .lever, .dossie-0 .box, .dossie-0 .arc, .dossie-0 .vs, .dossie-0 .mother {page-break-inside:avoid;}
+.dossie-0 .mother, .dossie-0 .lever .lv-top, .dossie-0 .arc .step, .dossie-0 .vs .gen, .dossie-0 .vs .esp, .dossie-0 .sec-head .id, .dossie-0 .box {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+}
+.dossie-0 .print-btn {position:fixed;bottom:22px;right:22px;z-index:50;background:var(--terra-500);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+.dossie-0 .print-btn:hover {background:var(--terra-700);}
+
+/* === Contexto Mestre do Projeto === */
+.dossie-1 {
+    --terra-500:#c4673a; --terra-700:#a8542d; --terra-50:#fbf2e9; --terra-100:#f4e3d4;
+    --ink:#221913; --ink-2:#4a3a2c; --ink-3:#7a6552;
+    --line:#e3d4c2; --line-2:#d0bca5; --bg:#fffdfa; --bg-soft:#f7efe4;
+    --info:#4a6a8a; --info-bg:#eaf0f5; --olive:#5e7245; --olive-bg:#eef1e6; --err:#b3503f; --err-bg:#f6e7e2;
+  }
+.dossie-1 * {box-sizing:border-box;}
+.dossie-1 {margin:0;font-family:'Inter',system-ui,sans-serif;font-size:10.5pt;line-height:1.55;color:var(--ink);background:var(--bg);padding-block:clamp(28px,5vw,56px);}
+.dossie-1 .wrap {max-width:840px;margin-inline:auto;padding-inline:clamp(18px,5vw,32px);}
+.dossie-1 h1, .dossie-1 h2, .dossie-1 h3, .dossie-1 h4 {font-family:'Fraunces',Georgia,serif;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+.dossie-1 em {font-style:italic;color:var(--terra-700);}
+.dossie-1 p {margin:0 0 12px;}
+.dossie-1 .eyebrow {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra-700);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+.dossie-1 .eyebrow::before {content:"✦";}
+.dossie-1 .doc-head {margin-bottom:36px;}
+.dossie-1 .doc-head h1 {font-size:28pt;line-height:1.05;font-weight:600;margin-bottom:14px;}
+.dossie-1 .doc-head .lead {font-size:12pt;line-height:1.5;color:var(--ink-2);max-width:62ch;}
+.dossie-1 .doc-head .meta-row {display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.dossie-1 .chip {font-size:8.5pt;font-weight:600;padding:5px 12px;border-radius:999px;background:var(--terra-50);color:var(--terra-700);border:1px solid var(--line-2);}
+.dossie-1 section.block {margin-bottom:40px;}
+.dossie-1 .sec-head {border-top:2px solid var(--ink);padding-top:14px;margin-bottom:18px;}
+.dossie-1 .sec-head .id {font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;background:var(--ink);color:var(--bg);padding:3px 9px;border-radius:4px;margin-right:10px;}
+.dossie-1 .sec-head h2 {display:inline;font-size:18pt;font-weight:600;}
+.dossie-1 h3.minor {font-family:'Inter',sans-serif;font-size:9.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--terra-700);margin:22px 0 10px;}
+.dossie-1 .box {border:1px solid var(--line-2);border-radius:10px;padding:14px 18px;margin:14px 0;background:var(--bg-soft);}
+.dossie-1 .box.accent {border-left:4px solid var(--terra-500);}
+.dossie-1 .box.err {background:var(--err-bg);border-color:#e6c3ba;border-left:4px solid var(--err);}
+.dossie-1 .box.olive {background:var(--olive-bg);border-color:#cdd6bd;border-left:4px solid var(--olive);}
+.dossie-1 .box .label {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;display:block;margin-bottom:7px;color:var(--terra-700);}
+.dossie-1 .box.err .label {color:var(--err);}
+.dossie-1 .box.olive .label {color:var(--olive);}
+.dossie-1 .box p:last-child {margin-bottom:0;}
+.dossie-1 ul.clean {margin:8px 0;padding-left:20px;}
+.dossie-1 ul.clean li {margin-bottom:6px;line-height:1.5;}
+.dossie-1 dl.kv {margin:10px 0;display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:10pt;}
+@media(max-width:560px){
+.dossie-1 dl.kv {grid-template-columns:1fr;gap:2px 0;}
+.dossie-1 dl.kv dd {margin-bottom:8px;}
+
+}
+.dossie-1 dl.kv dt {font-weight:600;color:var(--ink-3);}
+.dossie-1 dl.kv dd {margin:0;}
+.dossie-1 table {width:100%;border-collapse:collapse;margin:12px 0;font-size:9.5pt;}
+.dossie-1 th, .dossie-1 td {padding:8px 11px;border:1px solid var(--line-2);text-align:left;vertical-align:top;}
+.dossie-1 th {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;background:var(--ink);color:var(--bg);}
+.dossie-1 tr:nth-child(even) td {background:var(--bg-soft);}
+.dossie-1 td .doc {font-weight:600;color:var(--ink);}
+.dossie-1 code.inl {font-family:'JetBrains Mono',monospace;font-size:9pt;background:var(--terra-50);color:var(--terra-700);padding:1px 6px;border-radius:4px;}
+.dossie-1 .grid-2 {display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0;}
+@media(max-width:600px){
+.dossie-1 .grid-2 {grid-template-columns:1fr;}
+
+}
+.dossie-1 .card {border:1px solid var(--line);border-radius:10px;padding:13px 16px;background:#fff;}
+.dossie-1 .card h4 {font-family:'Fraunces',serif;font-size:12pt;font-weight:600;margin-bottom:4px;}
+.dossie-1 .card .tag {font-family:'Inter',sans-serif;font-size:8pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--terra-700);display:block;margin-bottom:4px;}
+.dossie-1 .card p {font-size:9.3pt;color:var(--ink-2);margin:0;}
+.dossie-1 .swatches {display:flex;gap:8px;flex-wrap:wrap;margin:10px 0;}
+.dossie-1 .sw {width:62px;text-align:center;font-size:7.5pt;color:var(--ink-3);}
+.dossie-1 .sw .chipc {height:40px;border-radius:8px;border:1px solid var(--line-2);margin-bottom:4px;}
+.dossie-1 .closing {margin-top:36px;padding-top:20px;border-top:2px solid var(--ink);font-size:10pt;color:var(--ink-2);font-style:italic;}
+@media print{
+@page{size:A4;margin:13mm;}
+.dossie-1 {padding:0;background:#fff;}
+.dossie-1 .wrap {max-width:none;padding:0;}
+.dossie-1 .no-print {display:none!important;}
+.dossie-1 section.block, .dossie-1 .box, .dossie-1 .card, .dossie-1 table, .dossie-1 .grid-2 {page-break-inside:avoid;}
+.dossie-1 .sec-head .id, .dossie-1 .box, .dossie-1 th, .dossie-1 tr:nth-child(even) td, .dossie-1 .swatches .chipc {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+}
+.dossie-1 .print-btn {position:fixed;bottom:22px;right:22px;z-index:50;background:var(--terra-500);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+.dossie-1 .print-btn:hover {background:var(--terra-700);}
+
+/* === Respostas ao Claude Code === */
+.dossie-2 {
+    --terra-500:#c4673a; --terra-700:#a8542d; --terra-50:#fbf2e9;
+    --ink:#221913; --ink-2:#4a3a2c; --ink-3:#7a6552;
+    --line:#e3d4c2; --line-2:#d0bca5; --bg:#fffdfa; --bg-soft:#f7efe4;
+    --info:#4a6a8a; --info-bg:#eaf0f5; --olive:#5e7245; --olive-bg:#eef1e6;
+  }
+.dossie-2 * {box-sizing:border-box;}
+.dossie-2 {margin:0;font-family:'Inter',system-ui,sans-serif;font-size:10.5pt;line-height:1.55;color:var(--ink);background:var(--bg);padding-block:clamp(28px,5vw,56px);}
+.dossie-2 .wrap {max-width:820px;margin-inline:auto;padding-inline:clamp(18px,5vw,32px);}
+.dossie-2 h1, .dossie-2 h2, .dossie-2 h3 {font-family:'Fraunces',Georgia,serif;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+.dossie-2 em {font-style:italic;color:var(--terra-700);}
+.dossie-2 .eyebrow {font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra-700);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+.dossie-2 .eyebrow::before {content:"✦";}
+.dossie-2 .doc-head {margin-bottom:32px;}
+.dossie-2 .doc-head h1 {font-size:27pt;line-height:1.05;font-weight:600;margin-bottom:14px;}
+.dossie-2 .doc-head .lead {font-size:12pt;line-height:1.5;color:var(--ink-2);max-width:62ch;}
+.dossie-2 .ctx {background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--terra-500);border-radius:10px;padding:14px 18px;margin:22px 0 8px;font-size:10pt;color:var(--ink-2);}
+.dossie-2 .ctx strong {color:var(--ink);}
+.dossie-2 .qa {border:1px solid var(--line);border-radius:12px;padding:0;margin:16px 0;overflow:hidden;page-break-inside:avoid;background:#fff;}
+.dossie-2 .qa .q {background:var(--ink);color:#fff;padding:13px 18px;display:flex;gap:12px;align-items:baseline;}
+.dossie-2 .qa .q .n {font-family:'Fraunces',serif;font-size:15pt;font-weight:700;color:#e0b388;line-height:1;}
+.dossie-2 .qa .q .t {font-family:'Fraunces',serif;font-size:13pt;font-weight:600;line-height:1.25;}
+.dossie-2 .qa .a {padding:14px 18px;}
+.dossie-2 .qa .a p {margin:0 0 10px;}
+.dossie-2 .qa .a p:last-child {margin-bottom:0;}
+.dossie-2 .qa .a .tldr {font-weight:600;color:var(--terra-700);}
+.dossie-2 .qa .a strong {color:var(--ink);}
+.dossie-2 pre {background:#1f1812;color:#f5ede0;border-radius:8px;padding:14px 16px;font-family:'JetBrains Mono',monospace;font-size:8.7pt;line-height:1.55;overflow-x:auto;margin:10px 0;}
+.dossie-2 pre .k {color:#e0b388;}
+.dossie-2 pre .c {color:#8a9a76;font-style:italic;}
+.dossie-2 code.inl {font-family:'JetBrains Mono',monospace;font-size:9pt;background:var(--terra-50);color:var(--terra-700);padding:1px 6px;border-radius:4px;}
+.dossie-2 ul.clean {margin:8px 0;padding-left:20px;}
+.dossie-2 ul.clean li {margin-bottom:5px;line-height:1.5;}
+.dossie-2 .flag {background:var(--info-bg);border-left:3px solid var(--info);border-radius:6px;padding:8px 12px;margin:10px 0;font-size:9.3pt;color:var(--ink-2);}
+.dossie-2 .flag strong {color:var(--info);}
+.dossie-2 .ask {background:var(--olive-bg);border-left:3px solid var(--olive);border-radius:6px;padding:8px 12px;margin:10px 0;font-size:9.3pt;color:var(--ink-2);}
+.dossie-2 .ask strong {color:var(--olive);}
+.dossie-2 .closing {margin-top:34px;padding-top:20px;border-top:2px solid var(--ink);font-size:10pt;color:var(--ink-2);font-style:italic;}
+.dossie-2 .sign {margin-top:18px;font-size:9.5pt;color:var(--ink-3);}
+@media print{
+@page{size:A4;margin:13mm;}
+.dossie-2 {padding:0;background:#fff;}
+.dossie-2 .wrap {max-width:none;padding:0;}
+.dossie-2 .no-print {display:none!important;}
+.dossie-2 .qa, .dossie-2 .ctx, .dossie-2 .flag, .dossie-2 .ask {page-break-inside:avoid;}
+.dossie-2 .qa .q, .dossie-2 pre {-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+
+}
+.dossie-2 .print-btn {position:fixed;bottom:22px;right:22px;z-index:50;background:var(--terra-500);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+.dossie-2 .print-btn:hover {background:var(--terra-700);}
+
+/* === Posicionamento Legal === */
+.dossie-3 /* ============================================================
+   Portal do BPC — Design Tokens
+   colors_and_type.css
+   
+   Import in any HTML/UI kit page:
+   <link rel="stylesheet" href="/colors_and_type.css">
+   ============================================================ */
+
+/* --------- Fonts (Google Fonts substitutions — see README) --- */
+
+
+:root {
+  /* ===== COLORS — DARK theme (matches carloscostaprev visual) ===== */
+
+  /* Terracotta (primary) — unchanged; the brand */
+  --terra-50:  #fbf2e9;
+  --terra-100: #f4e3d4;
+  --terra-200: #ecd0b3;
+  --terra-300: #e0b388;
+  --terra-400: #d68559;
+  --terra-500: #c4673a;   /* ← brand primary */
+  --terra-600: #c4673a;
+  --terra-700: #a8542d;
+  --terra-800: #813f22;
+  --terra-900: #5d2d18;
+
+  /* Warm DARK surfaces */
+  --cream:    #14100c;    /* page background — very dark warm */
+  --bone:     #1f1812;    /* elevated surface / cards */
+  --bone-2:   #2a2018;    /* hover / pressed surface */
+  --line:     #382a20;    /* borders, dividers */
+  --line-2:   #4a382c;    /* stronger borders */
+
+  /* Ink (warm CREAM tones on dark) */
+  --ink-900:  #f5ede0;    /* primary text */
+  --ink-700:  #f5ede0;    /* headings — same as 900 on dark */
+  --ink-500:  #b9a995;    /* secondary text */
+  --ink-300:  #6e5d4e;    /* tertiary / disabled */
+
+  /* Complementary (olive — health, growth, approval) */
+  --olive-100: #2a3025;
+  --olive-500: #8a9a76;
+  --olive-700: #a5b58e;
+  --olive-900: #c4d4a8;
+
+  /* Semantic — bright fg + dark tinted bg */
+  --ok:    #8fc48f;
+  --ok-bg: #1f2e1f;
+  --warn:    #e0b240;
+  --warn-bg: #2e2412;
+  --err:    #d97970;
+  --err-bg: #2e1815;
+  --info:    #8da8c4;
+  --info-bg: #1c2630;
+
+  /* WhatsApp brand */
+  --wa: #25d366;
+  --wa-dark: #128c7e;
+
+  /* ===== TYPOGRAPHY ===== */
+
+  --font-serif:  'Fraunces', 'Source Serif Pro', Georgia, serif;
+  --font-sans:   'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono:   'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Fluid type scale */
+  --text-display: clamp(3rem, 5.5vw + 1rem, 6rem);
+  --text-h1:      clamp(2.25rem, 2.5vw + 1rem, 3.5rem);
+  --text-h2:      clamp(1.75rem, 1.4vw + 1rem, 2.25rem);
+  --text-h3:      clamp(1.25rem, 0.4vw + 1rem, 1.5rem);
+  --text-lead:    1.25rem;
+  --text-body:    1.125rem;
+  --text-small:   1rem;
+  --text-tiny:    0.875rem;
+
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.55;
+  --leading-relaxed: 1.7;
+
+  --tracking-eyebrow: 0.12em;
+  --tracking-tight:   -0.02em;
+
+  /* ===== SPACING (4-base) ===== */
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:   12px;
+  --space-4:   16px;
+  --space-6:   24px;
+  --space-8:   32px;
+  --space-12:  48px;
+  --space-16:  64px;
+  --space-24:  96px;
+  --space-32:  128px;
+
+  /* ===== RADIUS ===== */
+  --radius-sm:    6px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --radius-xl:    24px;
+  --radius-pill:  999px;
+
+  /* ===== SHADOWS — on dark, shadows are darker AND subtle terra glow ===== */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 32px 80px rgba(0, 0, 0, 0.6), 0 8px 16px rgba(0, 0, 0, 0.4);
+  --shadow-press: 0 1px 0 rgba(0, 0, 0, 0.3);
+  --shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.3);
+  --glow-terra: 0 0 40px rgba(196, 103, 58, 0.25);
+
+  /* ===== TRANSITIONS ===== */
+  --ease-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 200ms;
+  --dur-comp:  350ms;
+  --dur-hero:  600ms;
+
+  /* ===== LAYOUT ===== */
+  --container: 1200px;
+  --container-narrow: 880px;
+  --header-h: 96px;
+}
+.dossie-3 /* ============================================================
+   BASE STYLES
+   ============================================================ */
+
+*, .dossie-3 *::before, .dossie-3 *::after { box-sizing: border-box; }
+.dossie-3 {
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.dossie-3 {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--leading-normal);
+  color: var(--ink-900);
+  background: var(--cream);
+  /* Subtle grid pattern — signature of the dark warm theme */
+  background-image:
+    linear-gradient(rgba(196, 103, 58, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(196, 103, 58, 0.04) 1px, transparent 1px);
+  background-size: 56px 56px;
+  background-attachment: fixed;
+  text-wrap: pretty;
+}
+.dossie-3 /* ============================================================
+   SEMANTIC TYPOGRAPHY
+   ============================================================ */
+
+h1, .dossie-3 h2, .dossie-3 h3, .dossie-3 h4 {
+  font-family: var(--font-serif);
+  color: var(--ink-900);
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  font-weight: 600;
+  margin: 0 0 var(--space-4) 0;
+  text-wrap: balance;
+}
+.dossie-3 h1 { font-size: var(--text-h1); }
+.dossie-3 h2 { font-size: var(--text-h2); }
+.dossie-3 h3 { font-size: var(--text-h3); font-weight: 600; }
+.dossie-3 h4 { font-size: 1.125rem; font-weight: 600; letter-spacing: 0; font-family: var(--font-sans); color: var(--ink-900); }
+.dossie-3 /* Display — for hero only */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--text-display);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--ink-900);
+  margin: 0;
+  text-wrap: balance;
+}
+.dossie-3 /* Italic accent inside headings (signature device) */
+h1 em, .dossie-3 h2 em, .dossie-3 .display em {
+  font-style: italic;
+  color: var(--terra-500);
+  font-weight: 600;
+}
+.dossie-3 /* Lead paragraph */
+.lead {
+  font-size: var(--text-lead);
+  line-height: var(--leading-snug);
+  color: var(--ink-500);
+}
+.dossie-3 p {
+  margin: 0 0 var(--space-4) 0;
+  line-height: var(--leading-normal);
+}
+.dossie-3 a {
+  color: var(--terra-400);
+  text-decoration: none;
+  text-underline-offset: 3px;
+  transition: color var(--dur-micro) var(--ease-out);
+}
+.dossie-3 a:hover {
+  color: var(--terra-300);
+  text-decoration: underline;
+}
+.dossie-3 small, .dossie-3 .small { font-size: var(--text-small); }
+.dossie-3 .tiny { font-size: var(--text-tiny); }
+.dossie-3 .muted { color: var(--ink-500); }
+.dossie-3 .faint { color: var(--ink-300); }
+.dossie-3 /* Eyebrow / kicker — signature device */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-sans);
+  font-size: var(--text-tiny);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-eyebrow);
+  color: var(--terra-400);
+  margin: 0 0 var(--space-4) 0;
+}
+.dossie-3 .eyebrow::before {
+  content: "✦";
+  font-size: 1em;
+  line-height: 1;
+}
+.dossie-3 /* Eyebrow without the asterisk (for inside cards) */
+.eyebrow--plain::before { content: none; }
+.dossie-3 /* ============================================================
+   FOCUS RING (accessibility)
+   ============================================================ */
+
+:focus-visible {
+  outline: 3px solid var(--terra-500);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+.dossie-3 ::selection {
+  background: var(--terra-200);
+  color: var(--ink-900);
+}
+.dossie-3 { padding-block: clamp(40px, 6vw, 80px); }
+.dossie-3 .wrap { max-width: 880px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+.dossie-3 .header { margin-bottom: 48px; }
+.dossie-3 .header .eyebrow { margin-bottom: 16px; }
+.dossie-3 .header h1 { font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); margin: 0 0 16px; }
+.dossie-3 .header p.lead { max-width: 640px; }
+.dossie-3 section.step { margin-bottom: 56px; }
+.dossie-3 section.step > .step-head { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
+.dossie-3 section.step > .step-head .num {
+    flex: 0 0 auto;
+    width: 44px; height: 44px; border-radius: var(--radius-pill);
+    background: var(--terra-500); color: white;
+    display: grid; place-items: center;
+    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+  }
+.dossie-3 section.step h2 { margin: 0; font-size: clamp(1.4rem, 2vw + 1rem, 2rem); }
+.dossie-3 section.step h2 small {
+    display: block; font-family: var(--font-sans); font-size: 14px;
+    font-weight: 500; color: var(--ink-500);
+    margin-top: 8px; text-transform: none;
+  }
+.dossie-3 /* Two-column do/don't */
+  .twocol {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin: 16px 0;
+  }
+@media (max-width: 640px){
+.dossie-3 .twocol { grid-template-columns: 1fr; }
+
+}
+.dossie-3 .twocol > div {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+  }
+.dossie-3 .twocol .head {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+  }
+.dossie-3 .twocol .yes .head { background: var(--ok-bg); color: var(--ok); }
+.dossie-3 .twocol .no  .head { background: var(--err-bg); color: var(--err); }
+.dossie-3 .twocol ul { margin: 0; padding-left: 22px; line-height: 1.6; }
+.dossie-3 .twocol ul li { margin-bottom: 6px; }
+.dossie-3 /* Mapping table (old → new) */
+  .map {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin: 14px 0;
+  }
+@media (max-width: 720px){
+.dossie-3 .map { grid-template-columns: 1fr; }
+
+}
+.dossie-3 .map .cell {
+    background: var(--bone);
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+.dossie-3 .map .cell.h {
+    background: var(--bone-2);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-500);
+  }
+.dossie-3 .map .cell.old { color: var(--err); text-decoration: line-through; text-decoration-thickness: 1px; opacity: 0.8; }
+.dossie-3 .map .cell.new { color: var(--ok); font-weight: 500; }
+.dossie-3 .map .cell.field { font-weight: 600; color: var(--terra-300); }
+.dossie-3 /* Notes */
+  .tip, .dossie-3 .note, .dossie-3 .ok, .dossie-3 .err {
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 15px;
+  }
+.dossie-3 .tip { background: var(--warn-bg); border-left: 3px solid var(--warn); }
+.dossie-3 .tip strong { color: var(--warn); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+.dossie-3 .note { background: var(--info-bg); border-left: 3px solid var(--info); }
+.dossie-3 .note strong { color: var(--info); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+.dossie-3 .ok { background: var(--ok-bg); border-left: 3px solid var(--ok); }
+.dossie-3 .ok strong { color: var(--ok); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+.dossie-3 .err { background: var(--err-bg); border-left: 3px solid var(--err); }
+.dossie-3 .err strong { color: var(--err); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+.dossie-3 /* People cards */
+  .pessoas {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+    margin: 20px 0;
+  }
+@media (max-width: 640px){
+.dossie-3 .pessoas { grid-template-columns: 1fr; }
+
+}
+.dossie-3 .pessoa {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 22px 24px;
+  }
+.dossie-3 .pessoa h3 { margin: 0 0 4px; font-size: 1.25rem; }
+.dossie-3 .pessoa .role { font-size: 13px; color: var(--ink-500); margin-bottom: 14px; }
+.dossie-3 .pessoa dl { margin: 0; display: grid; grid-template-columns: 110px 1fr; gap: 8px 12px; font-size: 14px; }
+.dossie-3 .pessoa dt { font-weight: 600; color: var(--ink-500); }
+.dossie-3 .pessoa dd { margin: 0; }
+.dossie-3 .pessoa .pill {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+.dossie-3 .pill-yes { background: var(--ok-bg); color: var(--ok); }
+.dossie-3 .pill-no { background: var(--err-bg); color: var(--err); }
+.dossie-3 /* Codeword (terminology) */
+  .terms {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 22px 26px;
+    margin: 16px 0;
+  }
+.dossie-3 .terms h4 { margin: 0 0 10px; font-size: 1rem; }
+.dossie-3 .terms .pair { display: grid; grid-template-columns: 1fr 32px 1fr; gap: 10px; align-items: center; padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 14px; }
+.dossie-3 .terms .pair:last-child { border-bottom: none; }
+.dossie-3 .terms .pair .old { color: var(--err); text-decoration: line-through; text-decoration-thickness: 1px; }
+.dossie-3 .terms .pair .arrow { text-align: center; color: var(--ink-500); }
+.dossie-3 .terms .pair .new { color: var(--ok); font-weight: 500; }
+@media (max-width: 600px){
+.dossie-3 .terms .pair { grid-template-columns: 1fr; gap: 4px; padding: 10px 0; }
+.dossie-3 .terms .pair .arrow { display: none; }
+.dossie-3 .terms .pair .new::before { content: '→ '; color: var(--ink-500); }
+
+}
+.dossie-3 /* Checklist */
+  .checklist {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 22px 26px;
+    margin-top: 16px;
+  }
+.dossie-3 .checklist h3 { margin: 0 0 12px; font-size: 1.125rem; }
+.dossie-3 .checklist-group {
+    margin-top: 18px;
+    margin-bottom: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--terra-400);
+  }
+.dossie-3 .checklist-group:first-of-type { margin-top: 0; }
+.dossie-3 .checklist-row {
+    display: grid; grid-template-columns: 28px 1fr; gap: 10px;
+    padding: 9px 0;
+    cursor: pointer;
+  }
+.dossie-3 .checklist-row input { width: 18px; height: 18px; accent-color: var(--terra-500); margin-top: 3px; }
+.dossie-3 .checklist-row span { font-size: 14.5px; line-height: 1.5; }
+.dossie-3 .checklist-row input:checked + span { color: var(--ink-300); text-decoration: line-through; }
+.dossie-3 /* Legal refs */
+  .leis {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 18px 22px;
+    margin: 16px 0;
+  }
+.dossie-3 .leis h4 { margin: 0 0 10px; font-size: 0.95rem; color: var(--terra-300); }
+.dossie-3 .leis ul { margin: 0; padding-left: 22px; font-size: 14px; line-height: 1.7; }
+.dossie-3 .leis ul li { margin-bottom: 4px; }
+.dossie-3 .leis code { font-family: var(--font-mono); font-size: 12.5px; background: var(--bone-2); padding: 1px 6px; border-radius: var(--radius-sm); color: var(--terra-300); }
+.dossie-3 .closing {
+    margin-top: 56px;
+    padding-top: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--ink-500);
+    font-size: 14px;
+  }
+.dossie-3 /* PRINT */
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: white !important; color: #1a140e !important; padding: 0 !important; font-size: 10.5pt; }
+    .wrap { max-width: none; padding: 0; }
+    h1, h2, h3, h4, p, span, div, li, label, dt, dd { color: #1a140e !important; }
+    .header h1 em { color: #c4673a !important; }
+    .eyebrow { color: #a8542d !important; }
+    .twocol > div, .pessoa, .terms, .checklist, .leis, .tip, .note, .ok, .err, .map {
+      background: white !important;
+      border: 1px solid #d4c0a8 !important;
+      color: #1a140e !important;
+      box-shadow: none !important;
+    }
+    .map .cell { background: white !important; border-right: 1px solid #d4c0a8; border-bottom: 1px solid #d4c0a8; }
+    .map .cell.h { background: #f4e3d4 !important; }
+    .map .cell.old { color: #a04020 !important; }
+    .map .cell.new { color: #4a7a3a !important; }
+    .tip { border-left: 3px solid #c89020 !important; }
+    .note { border-left: 3px solid #5a7a9a !important; }
+    .ok { border-left: 3px solid #5a8a4a !important; }
+    .err { border-left: 3px solid #c44545 !important; }
+    .twocol .yes .head, .pill-yes { background: #e8f4d8 !important; color: #4a7a3a !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .twocol .no .head, .pill-no { background: #f8e0dd !important; color: #c44545 !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    section.step > .step-head .num {
+      background: #c4673a !important; color: white !important;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact;
+    }
+    .checklist-group { color: #a8542d !important; border-bottom: 1px solid #d4c0a8 !important; }
+    .terms .pair { border-bottom: 1px solid #d4c0a8 !important; }
+    .terms .pair .old { color: #a04020 !important; }
+    .terms .pair .new { color: #4a7a3a !important; }
+    .pessoa .role, .checklist-row input:checked + span { color: #6b6258 !important; }
+    .leis code { background: #f4e3d4 !important; color: #a8542d !important; border: 1px solid #d4c0a8; }
+    section.step { page-break-inside: avoid; margin-bottom: 28px !important; }
+  }
+
+
+</style>
+</head>
+<body>
+<section class="dossie-0 doc-block">
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="eyebrow">Playbook de mensagem · v1 · Junho 2026</p>
+    <h1>As armas de persuasão: <em>dor, urgência, necessidade e curiosidade</em>.</h1>
+    <p class="lead">
+      O ângulo que faz o conteúdo converter. Como usar a precariedade do INSS como inimigo comum,
+      ativar a emoção certa em cada post e mostrar, sem arrogância, que previdência exige
+      <strong>especialista</strong> — não advogado generalista. Use junto com o Plano Editorial de 30 dias.
+    </p>
+  </header>
+
+  <!-- 01 · MENSAGEM-MÃE -->
+  <section class="block">
+    <div class="sec-head"><span class="id">01</span><h2>A mensagem-mãe</h2>
+      <p class="sub">Toda peça, no fundo, conta esta mesma história. Decore-a — é a espinha de tudo.</p>
+    </div>
+
+    <div class="mother">
+      <div class="lbl">A narrativa por trás de cada post</div>
+      <div class="big">"O INSS é um sistema que <em>não explica</em> seus direitos a quem mais precisa. Milhões perdem o que é deles por pura falta de informação — ou por confiar em quem não entende do assunto. A gente existe pra <em>virar esse jogo</em>: explicar do seu jeito e cuidar do seu caso com quem faz <em>só</em> previdência."</div>
+    </div>
+
+    <div class="box accent">
+      <span class="label">Os 3 vilões da história</span>
+      <p><strong>1. A burocracia que confunde de propósito</strong> — formulários, filas, juridiquês.<br>
+      <strong>2. O silêncio sobre os direitos</strong> — ninguém avisa o idoso, a mãe atípica, o trabalhador doente.<br>
+      <strong>3. O generalista despreparado</strong> — quem trata previdência como "mais um tema" e erra no básico.<br>
+      Você nunca ataca a pessoa. Ataca <em>o sistema e a desinformação</em>. A pessoa é a heroína; você é o guia.</p>
+    </div>
+  </section>
+
+  <!-- 02 · O ARCO -->
+  <section class="block">
+    <div class="sec-head"><span class="id">02</span><h2>O arco de todo post</h2>
+      <p class="sub">Nunca pare na dor. A dor abre a ferida; a esperança e o próximo passo fecham a venda.</p>
+    </div>
+    <div class="arc">
+      <div class="step s1"><div class="n">1 · Fisgar</div><h4>Dor / Curiosidade</h4><p>Abra na ferida real ou na pergunta que ninguém respondeu. É o gancho — os 2 primeiros segundos / o 1º slide.</p></div>
+      <div class="step s2"><div class="n">2 · Virar</div><h4>Verdade / Direito</h4><p>Revele o que o sistema esconde: existe um direito, existe um caminho. Aqui entra sua autoridade.</p></div>
+      <div class="step s3"><div class="n">3 · Conduzir</div><h4>Esperança + CTA</h4><p>Mostre que dá pra resolver — com a pessoa certa. Um único próximo passo: "manda mensagem".</p></div>
+    </div>
+    <div class="box err">
+      <span class="label">O erro fatal</span>
+      <p>Parar no passo 1. Conteúdo que só assusta gera medo e scroll — não cliente. <strong>Toda dor precisa de uma saída na mesma peça.</strong> A gente acolhe, não desespera.</p>
+    </div>
+  </section>
+
+  <!-- 03 · AS 4 ALAVANCAS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">03</span><h2>As 4 alavancas emocionais</h2>
+      <p class="sub">Cada post ativa UMA principal. Anote no roteiro qual é. Ganchos prontos pra usar e adaptar.</p>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">⚡</span><span class="nm">Dor</span><span class="role">A ferida que ele já sente</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> espelha o sofrimento real (cansaço da fila, medo da perícia, humilhação da negativa, solidão do idoso). A pessoa pensa "é exatamente isso que eu sinto".</p>
+        <ul class="hooks">
+          <li>Esperar pelo INSS dói no bolso e na alma — cada mês é uma conta que não para de chegar.</li>
+          <li>Receber um "não" depois de meses de espera parece um soco no estômago. Respira.</li>
+          <li>Tem idoso que aceita o "não" calado, achando que não merece insistir. Merece, sim.</li>
+          <li>A mãe atípica não dorme: além da rotina pesada, ainda carrega o medo de não conseguir o direito do filho.<em>Persona: P3 · @portaldobpc</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">⏳</span><span class="nm">Urgência</span><span class="role">Por que agir agora</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> tira a pessoa da inércia. Prazo que corre, benefício que se perde a cada mês parado, perícia que pode ser remarcada. Sem inventar pressão falsa — urgência real.</p>
+        <ul class="hooks">
+          <li>Cada mês que você adia o pedido é um mês de benefício que você não recebe de volta.</li>
+          <li>A negativa do INSS tem prazo de recurso. Perdeu o prazo, recomeça tudo do zero.</li>
+          <li>Quanto mais cedo o caso é organizado, menos a fila te castiga lá na frente.</li>
+          <li>Direito não retroage sozinho: tem benefício que só conta a partir do dia em que você pede.<em>Persona: P4, P6 · @carloscostaprev</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">🧩</span><span class="nm">Necessidade</span><span class="role">Isso é seu, e você precisa</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> conecta o direito à sobrevivência concreta — remédio, comida, dignidade. Transforma "benefício" em "o que falta na sua casa no fim do mês".</p>
+        <ul class="hooks">
+          <li>1 salário por mês pode ser a diferença entre comprar o remédio ou escolher qual conta atrasar.</li>
+          <li>Não é favor, não é esmola: é um direito previsto em lei pra quem precisa.</li>
+          <li>Envelhecer com dignidade às vezes começa com 1 salário caindo todo dia 1º.</li>
+          <li>Você cuidou da sua família a vida inteira. Agora é a vez de um direito cuidar de você.<em>Persona: P1, P2 · @portaldobpc</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">👀</span><span class="nm">Curiosidade</span><span class="role">O que você não sabe</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> abre um laço aberto (a pessoa precisa saber o resto). Ótimo pra gancho de carrossel e reel. Revela algo que o sistema não conta.</p>
+        <ul class="hooks">
+          <li>Existe uma segunda avaliação no BPC que quase ninguém te conta — e ela decide tudo.</li>
+          <li>Tem um documento que, sozinho, faz o INSS negar na hora. A maioria nem sabe.</li>
+          <li>Auxílio há mais de 1 ano? Talvez você já tenha direito a outra coisa — e ninguém te avisou.</li>
+          <li>O motivo nº 1 das negativas não é falta de direito. É outra coisa. Deslize pra ver.<em>Persona: P6 · ambas as contas</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box info">
+      <span class="label">Como combinar</span>
+      <p>O gancho usa <strong>1 alavanca</strong> (geralmente dor ou curiosidade). O corpo entrega a <strong>verdade/direito</strong>. O fim ativa <strong>necessidade + urgência</strong> ("isso é seu e cada mês conta — manda mensagem"). Nunca empilhe as 4 no gancho: confunde.</p>
+    </div>
+  </section>
+
+  <!-- 04 · O INIMIGO COMUM -->
+  <section class="block">
+    <div class="sec-head"><span class="id">04</span><h2>O inimigo comum: um sistema que não explica</h2>
+      <p class="sub">Posicionar o INSS como o obstáculo (não a pessoa) cria identificação imediata e te coloca do lado dela.</p>
+    </div>
+    <p class="intro-p">A regra: critique <strong>o sistema, a burocracia e a desinformação</strong> — com respeito, sem ataque pessoal a servidores e sem teoria da conspiração. Você é a tradução humana de um sistema que fala difícil.</p>
+    <h3 class="minor">Ganchos do inimigo comum</h3>
+    <ul class="hooks">
+      <li>O sistema te entrega um formulário cheio de juridiquês e espera que você se vire. A gente traduz.</li>
+      <li>Um serviço público que não explica seus direitos está, na prática, escondendo eles de você.</li>
+      <li>Não é você que é "burro pra entender o INSS". É o INSS que foi feito pra ser difícil.</li>
+      <li>Te deixam na fila, sem explicação, sem retorno. Você merece ser tratado como gente — e a gente trata.</li>
+    </ul>
+    <div class="box accent">
+      <span class="label">A virada generosa</span>
+      <p>Depois de nomear o inimigo, ofereça a saída de graça: informação. É isso que constrói autoridade — você <strong>resolve um pedaço do problema no próprio post</strong>, e a pessoa confia que você resolve o resto.</p>
+    </div>
+  </section>
+
+  <!-- 05 · ESPECIALISTA × GENERALISTA -->
+  <section class="block">
+    <div class="sec-head"><span class="id">05</span><h2>Especialista, não generalista</h2>
+      <p class="sub">Seu maior diferencial. Previdência é densa — não é "mais uma área". Mostre isso sem arrogância.</p>
+    </div>
+
+    <div class="vs">
+      <div class="gen">
+        <h4>✕ O generalista</h4>
+        <ul>
+          <li>Faz um pouco de tudo: trabalhista, família, cível… e previdência "também".</li>
+          <li>Não acompanha as mudanças constantes das regras do INSS.</li>
+          <li>Trata o caso como exceção na rotina — e erra no detalhe que decide.</li>
+          <li>Descobre a regra junto com você, no meio do processo.</li>
+        </ul>
+      </div>
+      <div class="esp">
+        <h4>✓ O CarlosCostaPrev</h4>
+        <ul>
+          <li>Previdência é a <strong>única</strong> coisa que a gente faz. O dia inteiro, todo dia.</li>
+          <li>Conhece a fundo BPC, incapacidade, perícia, avaliação social, recurso.</li>
+          <li>Já viu o seu tipo de caso dezenas de vezes — sabe o que cai e o que falta.</li>
+          <li>Antecipa o problema antes do INSS apontar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="minor">Ganchos do diferencial</h3>
+    <ul class="hooks">
+      <li>Você não chama um clínico geral pra fazer uma cirurgia no coração. Por que confiaria sua aposentadoria a um advogado generalista?</li>
+      <li>Previdência muda toda hora. Quem faz "um pouco de tudo" não consegue acompanhar — e o seu caso paga a conta.</li>
+      <li>A matéria previdenciária é densa de propósito. Não é qualquer um que domina — é quem faz só isso.</li>
+      <li>No nosso escritório, previdência não é "também". É tudo o que a gente faz.</li>
+    </ul>
+
+    <div class="box err">
+      <span class="label">⚖️ Atenção legal — leia antes de publicar</span>
+      <p>O diferencial "especialista" é da <strong>marca/escritório</strong> (CarlosCostaPrev — advocacia previdenciária, sustentada pelo sócio com OAB). Ao falar do <strong>Carlos pessoalmente</strong>, use <strong>"especialista em previdência administrativa"</strong> — nunca "advogado Carlos", "Dr." ou OAB associada a ele. E nunca compare ofendendo: "advogado generalista" é uma categoria, não uma pessoa específica. Nada de prometer resultado ("com a gente você ganha"); diga "a gente analisa e conduz o seu caso".</p>
+    </div>
+  </section>
+
+  <!-- 06 · APLICAR -->
+  <section class="block">
+    <div class="sec-head"><span class="id">06</span><h2>Como aplicar no dia a dia</h2>
+      <p class="sub">Uma checklist rápida pra todo post sair afiado — e seguro.</p>
+    </div>
+    <ul class="clean">
+      <li><strong>Escolha 1 alavanca</strong> pro gancho (dor / urgência / necessidade / curiosidade) e anote no roteiro.</li>
+      <li><strong>Nomeie o inimigo</strong> certo: o sistema e a desinformação — nunca a pessoa.</li>
+      <li><strong>Feche o arco:</strong> dor → verdade/direito → esperança + 1 CTA. Sem saída, não publique.</li>
+      <li><strong>Reforce o especialista</strong> ao menos 1×/semana (não em todo post, pra não soar repetitivo).</li>
+      <li><strong>Passe o filtro legal:</strong> Carlos = especialista em previdência administrativa; sem "Dr."/OAB; sem promessa de resultado.</li>
+      <li><strong>Um CTA só:</strong> quase sempre o WhatsApp. Dois CTAs anulam um ao outro.</li>
+    </ul>
+    <div class="box accent">
+      <span class="label">Liga com o resto</span>
+      <p>Este playbook é a <em>munição</em>; o <strong>Plano Editorial de 30 dias</strong> é o <em>campo de batalha</em>. Para cada slot do calendário, escolha a alavanca aqui. Para o Claude Code: cada post do JSON pode ganhar um campo <strong>"alavanca"</strong> (dor | urgencia | necessidade | curiosidade) — assim a automação equilibra os tons ao longo da semana.</p>
+    </div>
+  </section>
+
+  <p class="closing">
+    Esse é o tom que faltava: conteúdo que <strong>toca onde dói, mostra a saída e prova que precisa de especialista</strong>.
+    Use sempre com responsabilidade — a sua força é a verdade do problema, não o exagero. Acolher é a estratégia.
+  </p>
+
+</div>
+
+
+</section>
+<section class="dossie-1 doc-block page-break">
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="eyebrow">Documento mestre · fonte da verdade · Junho 2026</p>
+    <h1>Contexto do projeto: <em>CarlosCostaPrev + Portal do BPC</em>.</h1>
+    <p class="lead">Tudo num lugar só: quem é quem, os limites legais, a marca, os canais, o sistema de marketing e os documentos já produzidos. Leve este arquivo pra qualquer sessão nova ou pro Claude Code — ele põe qualquer um a par do projeto em 5 minutos.</p>
+    <div class="meta-row">
+      <span class="chip">Ecossistema digital</span>
+      <span class="chip">Posicionamento legal</span>
+      <span class="chip">Marca & tokens</span>
+      <span class="chip">Sistema de conteúdo</span>
+      <span class="chip">Entregáveis</span>
+    </div>
+  </header>
+
+  <!-- 01 · QUEM É QUEM -->
+  <section class="block">
+    <div class="sec-head"><span class="id">01</span><h2>Quem é quem & estrutura</h2></div>
+    <div class="grid-2">
+      <div class="card"><span class="tag">Front administrativo</span><h4>Carlos Rogério Costa</h4><p>Sócio-fundador. <strong>Bacharel em Direito, sem OAB.</strong> Atua no administrativo (INSS, requerimentos, recursos, procurações). É o rosto da comunicação.</p></div>
+      <div class="card"><span class="tag">Front judicial</span><h4>Alexandre Del Rio</h4><p>Sócio com <strong>OAB ativa</strong>. Cuida do contencioso (casos que viram ação judicial). Por enquanto, não mencionar nominalmente nos materiais.</p></div>
+    </div>
+    <div class="box accent">
+      <span class="label">Por que o escritório pode dizer "Advocacia"</span>
+      <p>O Estatuto da OAB exige ao menos 1 sócio com OAB pra operar como advocacia. Como o Alexandre tem, o <strong>"CarlosCostaPrev — Escritório de Advocacia Previdenciária"</strong> é legítimo. A pessoa jurídica comunica advocacia; a pessoa física Carlos, não.</p>
+    </div>
+  </section>
+
+  <!-- 02 · LIMITES LEGAIS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">02</span><h2>Limites legais (regra inquebrável)</h2></div>
+    <div class="box err">
+      <span class="label">⚖️ O que NUNCA fazer</span>
+      <ul class="clean" style="margin-top:4px;">
+        <li>Chamar Carlos de <strong>"advogado", "Dr." ou associar OAB a ele</strong> (exercício ilegal da profissão — crime).</li>
+        <li>Usar categoria "Advogado/Advogada" em perfis pessoais (use "Serviços de Consultoria").</li>
+        <li><strong>Prometer resultado</strong> ("garantimos que você ganha"). Diga "analisamos e conduzimos seu caso".</li>
+        <li>Verbos privativos atribuídos ao Carlos: "assinar petição", "impetrar", "defender em juízo".</li>
+      </ul>
+    </div>
+    <div class="box olive">
+      <span class="label">✓ O que PODE</span>
+      <p>Carlos = <strong>"especialista em previdência administrativa"</strong>, "consultor previdenciário", "sócio-fundador", "bacharel em Direito". O <strong>escritório</strong> = advocacia previdenciária (sustentada pelo sócio com OAB), inclusive "ação judicial previdenciária" como serviço. Procuração para representação administrativa é serviço legítimo do Carlos (Lei 8.213/91, art. 109).</p>
+    </div>
+  </section>
+
+  <!-- 03 · MARCA -->
+  <section class="block">
+    <div class="sec-head"><span class="id">03</span><h2>Marca & tokens visuais</h2></div>
+    <dl class="kv">
+      <dt>Cor primária</dt><dd>Terracota <code class="inl">#c4673a</code> (terra-500)</dd>
+      <dt>Tipografia</dt><dd>Fraunces (serif, títulos) + Inter (sans, corpo)</dd>
+      <dt>Tema</dt><dd>Warm dark no site; warm light/print nos documentos</dd>
+      <dt>Assinatura</dt><dd>Itálico em terracota dentro de títulos; eyebrow com ✦; grid sutil de fundo</dd>
+      <dt>Logo</dt><dd>Monograma CC (dourado / navy / creme) — arquivos em <code class="inl">deploy/assets/</code></dd>
+    </dl>
+    <div class="swatches">
+      <div class="sw"><div class="chipc" style="background:#c4673a;"></div>terra-500</div>
+      <div class="sw"><div class="chipc" style="background:#a8542d;"></div>terra-700</div>
+      <div class="sw"><div class="chipc" style="background:#14100c;"></div>cream(dark)</div>
+      <div class="sw"><div class="chipc" style="background:#5e7245;"></div>olive</div>
+      <div class="sw"><div class="chipc" style="background:#f4e3d4;"></div>terra-100</div>
+    </div>
+    <div class="box">
+      <span class="label">Tom de voz (4 pilares)</span>
+      <p><strong>Acolhedor</strong> ("você não está sozinho") · <strong>Provocador</strong> ("o INSS te negou injustamente?") · <strong>Esperançoso</strong> ("você tem direito sim") · <strong>Direto</strong> ("leva esses 5 documentos"). Sempre "você", nunca "o segurado". Sem juridiquês.</p>
+    </div>
+  </section>
+
+  <!-- 04 · CANAIS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">04</span><h2>Canais & públicos</h2></div>
+    <table>
+      <thead><tr><th>Canal</th><th>Papel</th><th>Público</th></tr></thead>
+      <tbody>
+        <tr><td class="doc">@portaldobpc</td><td>Autoridade em BPC/LOAS, idoso 65+, PCD. Tom popular.</td><td>P1, P2, P3, P6</td></tr>
+        <tr><td class="doc">@carloscostaprev</td><td>Previdência geral, incapacidade, perícia, negativa. Tom técnico-humano.</td><td>P4, P5, P6</td></tr>
+        <tr><td class="doc">Facebook (1 página)</td><td>Público 55+ e grupos de bairro. Texto mais longo.</td><td>P1, P2</td></tr>
+        <tr><td class="doc">2 sites (SEO/GEO)</td><td>portaldobpc.com.br + carloscostaprev.com.br. Blog + páginas-pilar.</td><td>Busca</td></tr>
+        <tr><td class="doc">Google Meu Negócio</td><td>Busca local Irajá/RJ. 5,0★. 1 post/semana + reviews.</td><td>Local</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:9.3pt;color:var(--ink-3);"><strong>Personas:</strong> P1 idoso 65+ · P2 família do idoso · P3 PCD/família · P4 auxílio &gt;1 ano · P5 multiplicador (saúde) · P6 indeferido. <strong>Carros-chefe:</strong> BPC, aposentadoria por incapacidade, auxílio por incapacidade.</p>
+  </section>
+
+  <!-- 05 · SISTEMA DE CONTEÚDO -->
+  <section class="block">
+    <div class="sec-head"><span class="id">05</span><h2>O sistema de conteúdo</h2></div>
+    <h3 class="minor">Ritmo diário (2 posts/dia)</h3>
+    <p><strong>Manhã (8h–9h) = Autoridade & Educação</strong> (carrossel, checklist, mito vs verdade). <strong>Tarde (18h–19h) = Conexão & Emoção</strong> (história real, dor/sentimento, pergunta). Quarta = dia do blog. Domingo = produção em lote. Stories diários.</p>
+    <h3 class="minor">6 colunas editoriais</h3>
+    <p style="font-size:9.8pt;">01 Você tem direito · 02 Checklist prático · 03 Mito vs Verdade · 04 História real · 05 Alerta/bastidor · 06 Pergunta da semana.</p>
+    <h3 class="minor">4 alavancas de persuasão</h3>
+    <p style="font-size:9.8pt;"><strong>Dor</strong> (espelha a ferida) · <strong>Urgência</strong> (cada mês conta) · <strong>Necessidade</strong> (é seu, você precisa) · <strong>Curiosidade</strong> (o que o sistema não conta). Arco de todo post: <strong>dor → verdade/direito → esperança + 1 CTA</strong>. Inimigo comum = o sistema que não explica os direitos (nunca a pessoa). Diferencial = <strong>especialista, não generalista</strong>.</p>
+  </section>
+
+  <!-- 06 · COLABORAÇÃO ENTRE AGENTES -->
+  <section class="block">
+    <div class="sec-head"><span class="id">06</span><h2>Colaboração Claude Design × Claude Code</h2></div>
+    <p><strong>Claude Design</strong> (conteúdo, copy, visual) entrega; <strong>Claude Code</strong> (automação, deploy, integração) consome e publica; <strong>Nike</strong> faz a ponte. Definições fechadas:</p>
+    <ul class="clean">
+      <li><strong>Entrega:</strong> JSON estruturado por post (id, data, turno, conta, formato, gancho, legenda, slides, cta, hashtags, grupo_fb, versao_grupo) + HTML pra humano aprovar.</li>
+      <li><strong>Blog→Social:</strong> roteamento por site; carro-chefe vai pras duas contas.</li>
+      <li><strong>Cross-mention:</strong> 1×/semana, sempre na quinta.</li>
+      <li><strong>Grupos:</strong> campo <code class="inl">versao_grupo</code> sem hashtag, informal; distribuição manual assistida (sem disparo automático).</li>
+      <li><strong>Visual:</strong> Claude Design gera; Claude Code agenda no Meta Business Suite.</li>
+      <li><strong>Calendário:</strong> template fixo, conteúdo dinâmico; JSON do mês entregue todo dia 25.</li>
+      <li><strong>Em aberto:</strong> lista real de grupos (Nike/Carlos levantam).</li>
+    </ul>
+  </section>
+
+  <!-- 07 · DOCUMENTOS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">07</span><h2>Documentos já produzidos</h2></div>
+    <table>
+      <thead><tr><th>Arquivo</th><th>O que é</th></tr></thead>
+      <tbody>
+        <tr><td class="doc">plano-editorial-30-dias.html</td><td>Calendário de junho — 60 posts (2/dia) com gancho, copy, CTA, hashtags + playbook de grupos + pipeline de blog/guias + fluxo de batch.</td></tr>
+        <tr><td class="doc">playbook-persuasao.html</td><td>As 4 alavancas (dor/urgência/necessidade/curiosidade), inimigo comum, especialista × generalista, com bancos de ganchos.</td></tr>
+        <tr><td class="doc">plano-marketing-carloscostaprev-pb.html</td><td>Plano estratégico mestre (posicionamento, canais, 20 patologias, KPIs, roadmap 90 dias).</td></tr>
+        <tr><td class="doc">resumo-posicionamento-legal.html</td><td>Documento de posicionamento legal (o que pode / não pode comunicar).</td></tr>
+        <tr><td class="doc">respostas-claude-code.html</td><td>As 7 respostas técnicas pro Claude Code (schema JSON + regras de integração).</td></tr>
+        <tr><td class="doc">deploy/ (site)</td><td>Portal do BPC: home, BPC idoso/deficiente/estrangeiro, perícias, blog.</td></tr>
+      </tbody>
+    </table>
+    <div class="box accent">
+      <span class="label">Próximos passos sugeridos</span>
+      <p>1) Reescrever os 60 posts aplicando as alavancas (cada um marcado). 2) Transformar a Semana 1 em carrosséis prontos no estilo da marca. 3) Levantar a lista de grupos. 4) Gerar o JSON dos 60 posts pro Claude Code. 5) Produzir o lead magnet #1 (Checklist BPC Idoso 2026).</p>
+    </div>
+  </section>
+
+  <p class="closing">
+    Fonte da verdade v1 — atualize quando algo mudar (entrada do Alexandre nos materiais, nova lista de grupos, virada de mês).
+    Tudo o que foi conversado e construído está condensado aqui. <strong>Pode levar.</strong>
+  </p>
+
+</div>
+
+
+</section>
+<section class="dossie-2 doc-block page-break">
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="eyebrow">Coordenação entre agentes · Junho 2026</p>
+    <h1>Respostas do <em>Claude Design</em> ao Claude Code.</h1>
+    <p class="lead">Definições do sistema de marketing conjunto — CarlosCostaPrev + Portal do BPC. Documento de referência pro Claude Code construir a automação em cima. O Nike faz a ponte.</p>
+    <div class="ctx"><strong>Divisão de trabalho:</strong> Claude Code automatiza, deploya e integra. Claude Design gera conteúdo, copy e visual. Quem publica/agenda é o Claude Code (Meta Business Suite). Quem aprova é o Carlos.</div>
+  </header>
+
+  <div class="qa">
+    <div class="q"><span class="n">1</span><span class="t">Formato de entrega do conteúdo</span></div>
+    <div class="a">
+      <p class="tldr">Pode ser estruturado — entrego JSON pra automação e HTML pra humano aprovar.</p>
+      <p>HTML quando é pra ler / aprovar / virar PDF (como o plano de 30 dias). Pra você consumir no código, entrego <strong>JSON</strong> com este schema por post:</p>
+<pre><span class="k">{</span>
+  "id": "2026-06-01-am",
+  "data": "2026-06-01",
+  "turno": "manha",          <span class="c">// manha | tarde</span>
+  "horario": "08:30",
+  "conta": "portaldobpc",    <span class="c">// portaldobpc | carloscostaprev | facebook</span>
+  "formato": "carrossel",    <span class="c">// carrossel | reel | post_imagem | card | pergunta | story</span>
+  "coluna": "voce_tem_direito",
+  "persona": "P2",
+  "gancho": "...",
+  "legenda": "...",
+  "slides": ["...", "..."],  <span class="c">// só quando formato = carrossel</span>
+  "cta": "...",
+  "hashtags": ["#BPC", "..."],
+  "grupo_fb": true,          <span class="c">// se gera variante pra grupo</span>
+  "versao_grupo": "..."      <span class="c">// texto adaptado, sem hashtag (ver item 4)</span>
+<span class="k">}</span></pre>
+      <p>Se preferir <strong>Markdown com front-matter</strong>, também faço — mas JSON é o que recomendo pra parsear direto.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">2</span><span class="t">Blog × Social — integração</span></div>
+    <div class="a">
+      <p class="tldr">Sim, automático, com roteamento por site.</p>
+      <p>Quando o blog publicar, eu gero a legenda do Instagram correspondente. Regra de conta:</p>
+      <ul class="clean">
+        <li>Artigo de <code class="inl">portaldobpc.com.br</code> → <strong>@portaldobpc</strong></li>
+        <li>Artigo de <code class="inl">carloscostaprev.com.br</code> → <strong>@carloscostaprev</strong></li>
+        <li>Tema <strong>carro-chefe</strong> (BPC, aposentadoria por incapacidade, auxílio por incapacidade) → gera pras <strong>duas</strong> contas, com ângulos diferentes (uma popular, outra técnica).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">3</span><span class="t">Menção cruzada mensal</span></div>
+    <div class="a">
+      <p class="tldr">1 cross-mention por semana, por ponte temática — não por contagem de posts.</p>
+      <p>Em vez de "a cada 4 posts", a regra é <strong>1 menção cruzada por semana</strong>, sempre quando o tema faz ponte natural (ex.: post de incapacidade no @carloscostaprev → "se for por deficiência, veja também o @portaldobpc").</p>
+      <div class="flag"><strong>Pra deixar determinístico no código:</strong> dispare a cross-mention sempre na <strong>quinta-feira</strong>, 1 por semana.</div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">4</span><span class="t">Grupos de bairro — estrutura</span></div>
+    <div class="a">
+      <p class="tldr">Variante separada — não é o mesmo texto do Instagram.</p>
+      <p>O "▶ GRUPO FB" vem no campo <code class="inl">versao_grupo</code>: <strong>sem hashtags, mais informal, mais curto, sem "link na bio"</strong> (grupo não tem bio) e com CTA adaptado pra "chama no WhatsApp / comenta aqui". Serve pra grupo de Facebook <strong>e</strong> de WhatsApp.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">5</span><span class="t">Canva — quem cria os visuais</span></div>
+    <div class="a">
+      <p class="tldr">Eu faço o design, no estilo da marca.</p>
+      <p>Produzo carrosséis e cards em HTML e consigo exportar pra <strong>Canva editável</strong> ou <strong>PDF/PNG</strong>. O Carlos não desenha do zero — recebe a arte pronta e só ajusta se quiser. Eu entrego <strong>texto + visual</strong>; você cuida do agendamento e deploy.</p>
+      <div class="flag"><strong>O que eu não faço:</strong> publicar/postar sozinho. Quem agenda é o Claude Code no Meta Business Suite.</div>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">6</span><span class="t">Calendário recorrente</span></div>
+    <div class="a">
+      <p class="tldr">Estrutura fixa, conteúdo dinâmico.</p>
+      <p>O <strong>esqueleto se repete todo mês</strong>: ritmo 2/dia (manhã autoridade + tarde emoção), as 6 colunas editoriais, blog na quarta, batch no domingo. O que <strong>muda a cada mês</strong>: o tema das 4 semanas, os ganchos e as datas comemorativas.</p>
+      <p>Construa o sistema <strong>dinâmico no conteúdo, fixo no template</strong>. Combinado: <strong>todo dia 25 eu entrego o JSON do mês seguinte</strong>.</p>
+    </div>
+  </div>
+
+  <div class="qa">
+    <div class="q"><span class="n">7</span><span class="t">Grupos de WhatsApp / Facebook — volume</span></div>
+    <div class="a">
+      <p class="tldr">Sem lista no momento — fica em aberto, a levantar com o Nike/Carlos.</p>
+      <p>Não há lista nem número definido agora. No plano deixei os <strong>critérios de busca</strong> dos grupos; a lista real é levantamento manual. Quando existir, peça ao Nike: (a) quantos grupos, (b) Facebook vs WhatsApp, (c) tamanho médio.</p>
+      <div class="ask"><strong>Recomendação de arquitetura enquanto não há lista:</strong> trate como <strong>distribuição manual assistida</strong> — eu entrego o texto pronto por grupo (<code class="inl">versao_grupo</code>), o colar é manual. <strong>Não</strong> implemente disparo automático em massa no WhatsApp: queima número e fere os termos. Quando a lista existir, a gente reavalia.</div>
+    </div>
+  </div>
+
+  <p class="closing">Resumo: schema JSON definido (item 1), roteamento blog→social por site (2), cross-mention toda quinta (3), variante de grupo sem hashtag (4), visual por minha conta (5), template fixo + conteúdo mensal entregue dia 25 (6), grupos em aberto com distribuição manual assistida (7).</p>
+  <p class="sign">— Claude Design · para o Claude Code · ponte: Nike</p>
+
+</div>
+
+
+</section>
+<section class="dossie-3 doc-block page-break">
+
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Decisão estratégica · Posicionamento</p>
+    <h1>Posicionamento legal <em>do Carlos</em> e do escritório.</h1>
+    <p class="lead">
+      Documento de referência: por que a separação entre Carlos Costa (bacharel) e o escritório (com sócio advogado) é importante, o que cada um pode e não pode comunicar, e como ficou todo o material após a revisão.
+    </p>
+
+    <div class="err" style="margin-top: 24px;">
+      <strong>O que está em jogo</strong>
+      Apresentar Carlos Costa como "advogado", "Dr." ou com "OAB" configura <strong>exercício ilegal da profissão</strong> (Lei das Contravenções Penais, art. 47) — passível de prisão simples ou multa, além de sanções éticas pela OAB. Essa página existe pra garantir que nenhum material caia nesse erro.
+    </div>
+  </header>
+
+
+  <!-- ============== STEP 1 — Quem é quem ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">1</div>
+      <div>
+        <h2>Quem é quem<small>A estrutura societária e o que cada um pode legalmente comunicar.</small></h2>
+      </div>
+    </div>
+
+    <div class="pessoas">
+      <div class="pessoa">
+        <h3>Carlos Rogério Costa</h3>
+        <div class="role">Sócio-fundador · Front do administrativo</div>
+        <dl>
+          <dt>Formação</dt>
+          <dd>Bacharel em Direito</dd>
+          <dt>OAB</dt>
+          <dd><span class="pill pill-no">Não</span></dd>
+          <dt>Atua em</dt>
+          <dd>Administrativo (INSS, requerimentos, recursos, procurações)</dd>
+          <dt>Pode</dt>
+          <dd>Representar segurados em processos administrativos com procuração</dd>
+          <dt>Não pode</dt>
+          <dd>Assinar petição judicial, ser apresentado como advogado/Dr., usar OAB</dd>
+        </dl>
+      </div>
+      <div class="pessoa">
+        <h3>Alexandre Del Rio</h3>
+        <div class="role">Sócio · Front do contencioso</div>
+        <dl>
+          <dt>Formação</dt>
+          <dd>Bacharel em Direito</dd>
+          <dt>OAB</dt>
+          <dd><span class="pill pill-yes">Ativa</span></dd>
+          <dt>Atua em</dt>
+          <dd>Judicial — casos não admitidos no administrativo viram ação</dd>
+          <dt>Visibilidade externa</dt>
+          <dd><strong>Por enquanto, não mencionar nominalmente</strong> nos materiais. A OAB do escritório opera nos bastidores até o Carlos decidir expor a parceria.</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Por que a empresa pode usar "Advocacia"</strong>
+      O Estatuto da OAB (Lei 8.906/94) exige que a sociedade tenha pelo menos um sócio com OAB ativa pra operar como advocacia. Como o Alexandre tem OAB, o escritório <strong>"CarlosCostaPrev — Escritório de Advocacia Previdenciária"</strong> é legítimo. A regra é apenas: <em>a pessoa jurídica</em> pode comunicar advocacia; <em>a pessoa física Carlos Costa</em> não pode.
+    </div>
+  </section>
+
+
+  <!-- ============== STEP 2 — Pode / Não pode ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">2</div>
+      <div>
+        <h2>Pode / Não pode<small>A linha clara entre o que vai pro material e o que fica de fora.</small></h2>
+      </div>
+    </div>
+
+    <div class="twocol">
+      <div class="yes">
+        <span class="head">✅ Pode (e fica)</span>
+        <ul>
+          <li><strong>"Escritório de Advocacia"</strong> — o escritório é, legitimamente</li>
+          <li><strong>"Jurídico"</strong>, <strong>"previdenciário"</strong>, <strong>"direito previdenciário"</strong> — sem restrição</li>
+          <li><strong>"Ação judicial previdenciária"</strong> como serviço do escritório (executado pelo sócio com OAB)</li>
+          <li><strong>"Bacharel em Direito"</strong> — título acadêmico do Carlos, fato comprovável</li>
+          <li><strong>"Especialista em previdência administrativa"</strong> — descritor técnico do que o Carlos faz</li>
+          <li><strong>"Consultor previdenciário"</strong>, <strong>"Sócio-fundador"</strong> — papéis funcionais</li>
+          <li><strong>Procuração para representação administrativa</strong> — serviço legítimo do Carlos</li>
+          <li>Categoria "Escritório de advocacia" no Google Meu Negócio (porque é a empresa)</li>
+        </ul>
+      </div>
+      <div class="no">
+        <span class="head">❌ Não pode (foi removido)</span>
+        <ul>
+          <li><strong>"Advogado Carlos Costa"</strong> ou <strong>"Carlos Costa, advogado"</strong> em qualquer lugar</li>
+          <li><strong>"Dr. Carlos Costa"</strong> em alt text de fotos, bios ou legendas</li>
+          <li><strong>"OAB"</strong> associada ao Carlos individualmente (placa, descrição, perfil pessoal)</li>
+          <li>Categoria <strong>"Advogado/Advogada"</strong> em perfis pessoais (@carloscostaprev no IG)</li>
+          <li>Nome de exibição <strong>"Carlos Costa · Advocacia Previdenciária"</strong></li>
+          <li>Descrição WhatsApp/IG do Carlos com <strong>"⚖️ Advogado · OAB-RJ"</strong></li>
+          <li>Meta description posicionando Carlos como <strong>"advogado previdenciário"</strong></li>
+          <li>Verbos que sugerem prática privativa: <em>"assinar petição"</em>, <em>"impetrar"</em>, <em>"patrocinar a causa"</em>, <em>"defender em juízo"</em> em material atribuído ao Carlos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ============== STEP 3 — Vocabulário aprovado ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">3</div>
+      <div>
+        <h2>Vocabulário aprovado<small>Tradução dos termos: o que evitar, o que usar no lugar.</small></h2>
+      </div>
+    </div>
+
+    <div class="terms">
+      <h4>Apresentação do Carlos</h4>
+      <div class="pair"><span class="old">Advogado previdenciário</span><span class="arrow">→</span><span class="new">Especialista em previdência administrativa</span></div>
+      <div class="pair"><span class="old">Dr. Carlos Costa</span><span class="arrow">→</span><span class="new">Carlos Costa</span></div>
+      <div class="pair"><span class="old">Carlos Costa · Advocacia Previdenciária</span><span class="arrow">→</span><span class="new">Carlos Costa · Previdência Administrativa</span></div>
+      <div class="pair"><span class="old">OAB-RJ</span><span class="arrow">→</span><span class="new">Sócio-fundador · Bacharel em Direito</span></div>
+    </div>
+
+    <div class="terms">
+      <h4>Categoria de perfil pessoal (Instagram / WhatsApp Business)</h4>
+      <div class="pair"><span class="old">Advogado/Advogada</span><span class="arrow">→</span><span class="new">Serviços de Consultoria</span></div>
+      <div class="pair"><span class="old">⚖️ Advogado previdenciário</span><span class="arrow">→</span><span class="new">📋 Previdência administrativa · INSS</span></div>
+    </div>
+
+    <div class="terms">
+      <h4>Verbos do site (quando atribuído ao Carlos pessoalmente)</h4>
+      <div class="pair"><span class="old">Defendemos seus direitos</span><span class="arrow">→</span><span class="new">Orientamos e preparamos o requerimento</span></div>
+      <div class="pair"><span class="old">Movemos ação</span><span class="arrow">→</span><span class="new">Encaminhamos o caso no INSS</span></div>
+      <div class="pair"><span class="old">Patrocinamos a causa</span><span class="arrow">→</span><span class="new">Acompanhamos o processo até a concessão</span></div>
+    </div>
+
+    <div class="tip">
+      <strong>Atenção</strong>
+      Esses verbos só são problema quando associados ao Carlos individualmente. Material do escritório como um todo (ex: página institucional CarlosCostaPrev, com a equipe completa) pode usar a linguagem normal de advocacia — porque o sócio com OAB sustenta a comunicação.
+    </div>
+  </section>
+
+
+  <!-- ============== STEP 4 — O que mudou no projeto ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">4</div>
+      <div>
+        <h2>O que já foi corrigido<small>14 edições aplicadas em 6 arquivos do projeto. Tudo no GitHub depois do próximo commit.</small></h2>
+      </div>
+    </div>
+
+    <div class="map">
+      <div class="cell h">Arquivo</div>
+      <div class="cell h">Antes</div>
+      <div class="cell h">Depois</div>
+
+      <div class="cell field">deploy/components.jsx<br><small style="color:var(--ink-500); font-size:12px;">alt text de 2 fotos do hero/sobre</small></div>
+      <div class="cell old">"Dr. Carlos Costa e equipe…" / "Dr. Carlos Costa, especialista em BPC"</div>
+      <div class="cell new">"Carlos Costa e equipe…" / "Carlos Costa, especialista em BPC"</div>
+
+      <div class="cell field">deploy/guia-instagram.html<br><small style="color:var(--ink-500); font-size:12px;">nome de exibição @carloscostaprev</small></div>
+      <div class="cell old">"Carlos Costa · Advocacia Previdenciária" (3 ocorrências)</div>
+      <div class="cell new">"Carlos Costa · Previdência Administrativa" (3 ocorrências)</div>
+
+      <div class="cell field">deploy/guia-instagram.html<br><small style="color:var(--ink-500); font-size:12px;">categoria do perfil profissional do IG</small></div>
+      <div class="cell old">"Advogado/Advogada" (3 ocorrências — passo + 2 checklist)</div>
+      <div class="cell new">"Serviços de Consultoria"</div>
+
+      <div class="cell field">deploy/kit-whatsapp-business.html<br><small style="color:var(--ink-500); font-size:12px;">descrição do WhatsApp Business</small></div>
+      <div class="cell old">"⚖️ Advogado previdenciário · OAB-RJ"</div>
+      <div class="cell new">"📋 Previdência administrativa · INSS"</div>
+
+      <div class="cell field">deploy/handoff-carloscostaprev.html + deploy/prompt-claude-code-ecossistema-seo-geo.md<br><small style="color:var(--ink-500); font-size:12px;">meta description SEO</small></div>
+      <div class="cell old">"CarlosCostaPrev — Advogado previdenciário em Irajá/RJ"</div>
+      <div class="cell new">"CarlosCostaPrev — Especialistas em previdência administrativa em Irajá/RJ"</div>
+
+      <div class="cell field">deploy/guia-google-meu-negocio.html<br><small style="color:var(--ink-500); font-size:12px;">lista de fotos do passo 4-A</small></div>
+      <div class="cell old">"foto profissional do advogado"</div>
+      <div class="cell new">"fotos profissionais da equipe"</div>
+
+      <div class="cell field">deploy/guia-google-meu-negocio.html<br><small style="color:var(--ink-500); font-size:12px;">item "identificação" das fotos</small></div>
+      <div class="cell old">"placa na porta, OAB enquadrada"</div>
+      <div class="cell new">"placa na porta com o nome do escritório, certificados e identificação do espaço"</div>
+
+      <div class="cell field">deploy/guia-google-meu-negocio.html<br><small style="color:var(--ink-500); font-size:12px;">lista de serviços (passo 4-D)</small></div>
+      <div class="cell old">Não tinha "Procuração para representação administrativa"</div>
+      <div class="cell new">Adicionado entre "Recurso administrativo" e "Ação judicial"</div>
+    </div>
+
+    <div class="ok" style="margin-top: 20px;">
+      <strong>Resultado</strong>
+      Zero ocorrências de Carlos posicionado como advogado, Dr. ou OAB em qualquer material do projeto. Linguagem do escritório como pessoa jurídica (incluindo "Ação judicial previdenciária" como serviço) preservada — porque o sócio com OAB sustenta legalmente.
+    </div>
+  </section>
+
+
+  <!-- ============== STEP 5 — Ação manual fora do projeto ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">5</div>
+      <div>
+        <h2>Ação manual que você precisa fazer<small>Plataformas externas não dão pra editar pelo código — só pelo painel delas.</small></h2>
+      </div>
+    </div>
+
+    <p style="margin-bottom: 12px;">Tudo abaixo precisa ser ajustado manualmente nos painéis. Use o checklist no final pra controlar.</p>
+
+    <div class="checklist" id="checklist">
+      <div class="checklist-group">Instagram — @carloscostaprev (perfil pessoal)</div>
+      <label class="checklist-row"><input type="checkbox" data-key="ig1"><span>Nome de exibição: trocar pra <strong>"Carlos Costa · Previdência Administrativa"</strong></span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="ig2"><span>Categoria do perfil profissional: trocar de "Advogado/Advogada" pra <strong>"Serviços de Consultoria"</strong></span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="ig3"><span>Bio: revisar texto pra não mencionar OAB ou termo "advogado" sobre Carlos</span></label>
+
+      <div class="checklist-group">Instagram — @portaldobpc (institucional)</div>
+      <label class="checklist-row"><input type="checkbox" data-key="ig4"><span>Categoria: <strong>"Serviços de Consultoria"</strong> (mesma do pessoal — operado pelo Carlos)</span></label>
+
+      <div class="checklist-group">WhatsApp Business</div>
+      <label class="checklist-row"><input type="checkbox" data-key="wa1"><span>Descrição: trocar pra <strong>"📋 Previdência administrativa · INSS"</strong> (sem ⚖️ e sem OAB)</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="wa2"><span>Categoria do negócio: <strong>"Serviços de Consultoria"</strong> ou <strong>"Outras empresas"</strong></span></label>
+
+      <div class="checklist-group">Google Meu Negócio</div>
+      <label class="checklist-row"><input type="checkbox" data-key="gmb1"><span>Lista de serviços: garantir que <strong>"Procuração para representação administrativa"</strong> está adicionada</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="gmb2"><span>Descrição da empresa (750 chars): não usar "advogado Carlos Costa" — usar "escritório" ou "equipe"</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="gmb3"><span>Fotos: não publicar foto com placa de OAB associada visualmente ao Carlos individualmente</span></label>
+
+      <div class="checklist-group">Outros perfis (se existirem)</div>
+      <label class="checklist-row"><input type="checkbox" data-key="o1"><span>LinkedIn pessoal do Carlos: trocar headline pra "Especialista em previdência administrativa · Sócio-fundador"</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="o2"><span>Jusbrasil, Doutoria, OAB-RJ associados: <strong>não cadastrar Carlos individualmente</strong> nessas plataformas (são pra advogados OAB)</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="o3"><span>Cartão de visita / assinatura de e-mail: não usar "Dr." ou "OAB"</span></label>
+
+      <div class="checklist-group">Validação final</div>
+      <label class="checklist-row"><input type="checkbox" data-key="v1"><span>Buscar "Carlos Costa advogado" no Google → conferir que nenhum resultado nosso vem com essa associação</span></label>
+      <label class="checklist-row"><input type="checkbox" data-key="v2"><span>Buscar "Carlos Costa OAB" → idem</span></label>
+    </div>
+  </section>
+
+
+  <!-- ============== STEP 6 — Base legal ============== -->
+  <section class="step">
+    <div class="step-head">
+      <div class="num">6</div>
+      <div>
+        <h2>Base legal<small>O fundamento jurídico de cada parte do posicionamento.</small></h2>
+      </div>
+    </div>
+
+    <div class="leis">
+      <h4>Por que Carlos pode atuar no administrativo</h4>
+      <ul>
+        <li><code>Lei 8.213/91, art. 109</code> — segurado pode constituir procurador para tratar de assuntos administrativos no INSS, sem exigência de OAB</li>
+        <li><code>Decreto 3.048/99, art. 651</code> — regulamenta a representação administrativa por procurador (qualquer pessoa capaz)</li>
+        <li><code>Instrução Normativa INSS 128/2022</code> — formaliza a procuração administrativa e seus requisitos</li>
+      </ul>
+    </div>
+
+    <div class="leis">
+      <h4>Por que Carlos não pode usar "advogado" / "Dr." / "OAB"</h4>
+      <ul>
+        <li><code>Lei 8.906/94 (Estatuto da OAB), art. 1º</code> — atividades privativas de advocacia (postular em juízo, consultoria-parecer, assinatura de petição)</li>
+        <li><code>Lei 8.906/94, art. 4º</code> — atos privativos de advogado, nulos se praticados por quem não tem OAB</li>
+        <li><code>Lei de Contravenções Penais (Dec.-Lei 3.688/41), art. 47</code> — exercício ilegal de profissão: prisão simples de 15 dias a 3 meses, ou multa</li>
+        <li><code>Código Penal, art. 282</code> — exercício ilegal da medicina, arte dentária ou farmacêutica (analogia aplicada quando há habitualidade e dano)</li>
+      </ul>
+    </div>
+
+    <div class="leis">
+      <h4>Por que o escritório pode comunicar "Advocacia"</h4>
+      <ul>
+        <li><code>Lei 8.906/94, art. 15</code> — sociedade de advogados é regulada pela OAB e exige ao menos um sócio inscrito</li>
+        <li><code>Provimento CFOAB 112/2006</code> — disciplina a publicidade da sociedade (nome, logomarca, atividade)</li>
+        <li><code>Código de Ética da OAB, art. 39-44</code> — limites da publicidade (informativa, sóbria, sem captação)</li>
+      </ul>
+    </div>
+  </section>
+
+
+  <p class="closing">
+    Documento de referência. Mantenha atualizado quando algo mudar — entrada do Alexandre nos materiais, formação do Carlos (caso obtenha OAB no futuro), criação de novos perfis em plataformas. Imprima e mantenha em pasta física pra consulta quando criar peças novas (anúncios, panfletos, eventos).
+  </p>
+
+</div>
+
+
+
+</section>
+
+<button class="dossie-print-btn no-print" onclick="window.print()">⬇ Salvar como PDF</button>
+</body>
+</html>

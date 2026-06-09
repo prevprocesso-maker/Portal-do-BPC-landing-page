@@ -1,0 +1,290 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="CarlosCostaPrev — Mudanças para o ecossistema (handoff)" viewport="900x1100" -->
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mudanças no carloscostaprev.com.br · Handoff</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --terra-500:#c4673a; --terra-700:#8a4214; --paper:#fbf6ec;
+      --bone:#fff; --ink-900:#1a140e; --ink-500:#6a5848; --line:#d4c4a8;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;color:var(--ink-900);background:#f5ede0;line-height:1.55;font-size:14px}
+    .page{max-width:860px;margin:0 auto;padding:40px;background:var(--bone);box-shadow:0 12px 60px rgba(60,30,10,0.12);min-height:100vh}
+    @media (max-width:600px){.page{padding:24px 18px}}
+    .toolbar{position:sticky;top:0;z-index:10;display:flex;gap:10px;justify-content:flex-end;padding:12px 0 18px;background:linear-gradient(to bottom,var(--bone) 70%,transparent);margin:-16px 0 24px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--ink-900);font-family:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none}
+    .btn.primary{background:var(--terra-500);color:#fff;border-color:var(--terra-500)}
+    .doc-head{padding-bottom:22px;border-bottom:2px solid var(--ink-900);margin-bottom:28px}
+    .title{font-family:'Fraunces',Georgia,serif;font-size:22px;font-weight:600}
+    .title em{color:var(--terra-700);font-style:italic}
+    .sub{font-size:12px;color:var(--ink-500);margin-top:4px;letter-spacing:0.06em;text-transform:uppercase}
+    h1{font-family:'Fraunces',Georgia,serif;font-size:34px;font-weight:600;letter-spacing:-0.02em;margin:0 0 12px;line-height:1.1}
+    h1 em{color:var(--terra-700);font-style:italic}
+    .intro{font-size:16px;color:var(--ink-500);margin:0 0 30px;max-width:680px;line-height:1.55}
+    .change{margin-bottom:30px;padding:24px 26px;border-radius:14px;background:var(--paper);border-left:4px solid var(--terra-500);page-break-inside:avoid}
+    .change-num{font-family:'Fraunces',Georgia,serif;font-style:italic;font-size:30px;font-weight:600;color:var(--terra-500);line-height:1}
+    .change h2{font-family:'Fraunces',Georgia,serif;font-size:21px;font-weight:600;margin:6px 0 6px;letter-spacing:-0.01em}
+    .change .where{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-500);margin-bottom:14px}
+    .change p{margin:0 0 12px}
+    code,pre{font-family:'JetBrains Mono','Courier New',monospace}
+    code{background:rgba(196,103,58,0.10);padding:2px 6px;border-radius:4px;font-size:12.5px;color:var(--terra-700)}
+    pre{background:var(--ink-900);color:#f5ede0;padding:16px 20px;border-radius:10px;font-size:12.5px;line-height:1.55;overflow-x:auto;margin:12px 0;white-space:pre;tab-size:2}
+    pre .c{color:#9e8c78}
+    .note{background:rgba(31,94,54,0.08);border-left:3px solid #1f5e36;padding:12px 16px;border-radius:6px;margin:12px 0;font-size:13.5px;color:#1f5e36}
+    .warn{background:rgba(196,103,58,0.08);border-left:3px solid var(--terra-500);padding:12px 16px;border-radius:6px;margin:12px 0;font-size:13.5px}
+    .warn strong{color:var(--terra-700)}
+    ul{padding-left:22px;margin:8px 0}
+    li{margin-bottom:6px}
+    .doc-foot{margin-top:36px;padding-top:20px;border-top:2px solid var(--ink-900);display:flex;gap:18px;flex-wrap:wrap}
+    .doc-foot h4{font-family:'Fraunces',serif;font-size:16px;margin:0 0 4px}
+    .doc-foot p{margin:0;font-size:12.5px;color:var(--ink-500)}
+    .doc-foot .wpp{margin-left:auto;padding:10px 18px;background:var(--terra-500);color:#fff;text-decoration:none;border-radius:999px;font-weight:700;font-size:13px}
+    @media print{body{background:#fff}.page{box-shadow:none;padding:24px;max-width:100%}.toolbar{display:none}.change{break-inside:avoid}.doc-foot .wpp{background:transparent;color:var(--terra-700);border:2px solid var(--terra-700)}}
+  
+    /* ========== B&W PRINT MODE — economy ink ========== */
+    @media print {
+      * {
+        background: transparent !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        color: #000 !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+        filter: none !important;
+      }
+      body, .page { background: #fff !important; }
+      a { color: #000 !important; text-decoration: underline; }
+      h1, h2, h3, h4, h5, h6 { color: #000 !important; }
+      h1 em, h2 em, h3 em, em { color: #000 !important; font-style: italic; }
+      strong { color: #000 !important; font-weight: 700; }
+      .doc-head, .doc-foot { border-color: #000 !important; }
+      .step, .change, .field, .qa, .article, .section, .action, .lei, .callout, .ok, .warn, .cmd, .blog-cal li, .tip, .card-checklist, .tips, .check li {
+        background: #fff !important;
+        border-color: #999 !important;
+      }
+      .step, .change, .field, .qa, .lei, .callout, .ok, .warn, .article .cta { border-left: 4px solid #000 !important; }
+      .errors li, .errors .checkbox { background: #fff !important; border-color: #333 !important; }
+      .errors .checkbox::after { color: #000 !important; }
+      .checkbox, .check li::before { background: #fff !important; border-color: #000 !important; }
+      .section-tag, .part-tag, .article-meta .num {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #000 !important;
+        padding: 2px 8px !important;
+      }
+      .doc-foot .wpp {
+        background: transparent !important;
+        color: #000 !important;
+        border: 2px solid #000 !important;
+      }
+      pre, .cmd {
+        background: #fff !important;
+        color: #000 !important;
+        border: 1px solid #999 !important;
+      }
+      code { background: #f3f3f3 !important; color: #000 !important; border: 1px solid #ddd; }
+      img { filter: grayscale(100%) contrast(1.05) !important; }
+      svg { color: #000 !important; fill: #000 !important; stroke: #000 !important; }
+      .dot { background: #000 !important; border: 1px solid #000 !important; }
+      .step-num, .num, .tip-num, .change-num, .action-num, .micro .num {
+        color: #000 !important;
+        background: transparent !important;
+      }
+      .micro .num { font-style: italic; }
+      table th { background: #fff !important; border-bottom: 2px solid #000 !important; }
+      td { border-bottom: 1px solid #999 !important; }
+      td.ok, td.todo { color: #000 !important; font-weight: 700; }
+      .when { color: #000 !important; border-right-color: #000 !important; }
+      .phone-strip { background: #fff !important; color: #000 !important; border: 2px solid #000 !important; }
+      .phone-strip .num, .phone-strip .lbl { color: #000 !important; }
+      .doc-head .icon { background: #fff !important; border: 2px solid #000 !important; }
+      .doc-head .icon svg { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="toolbar">
+      <button class="btn primary" onclick="window.print()">📥 Imprimir / Salvar PDF</button>
+    </div>
+
+    <div class="doc-head">
+      <div class="title">CarlosCostaPrev × Portal do <em>BPC.</em></div>
+      <div class="sub">Handoff de mudanças · ecossistema digital</div>
+    </div>
+
+    <h1>Mudanças para fazer no <em>carloscostaprev.com.br</em>.</h1>
+    <p class="intro">
+      Pacote técnico de alterações para fechar o ecossistema entre carloscostaprev.com.br e portaldobpc.com.br. Implementação direta no código (HTML + Schema.org). Tempo estimado: 30 a 60 minutos para um desenvolvedor.
+    </p>
+
+    <!-- ============== 1. Footer ============== -->
+    <div class="change">
+      <div class="change-num">01</div>
+      <h2>Link recíproco no footer apontando para Portal do BPC</h2>
+      <div class="where">Onde: footer do site, abaixo do logo ou da descrição</div>
+      <p>Adicione um card discreto no rodapé. Texto e código sugerido:</p>
+      <pre>&lt;div class="footer-marca-irma"&gt;
+  &lt;span class="kicker"&gt;ESPECIALIZAÇÃO EM BPC/LOAS&lt;/span&gt;
+  &lt;a href="https://www.portaldobpc.com.br" target="_blank" rel="noopener"&gt;
+    Portal do BPC — Idoso, deficiente e estrangeiro ↗
+  &lt;/a&gt;
+  &lt;p&gt;Atendimento humano para o Benefício Assistencial&lt;/p&gt;
+&lt;/div&gt;</pre>
+      <div class="note"><strong>Por quê:</strong> sinaliza ao Google que os dois sites pertencem à mesma entidade. No portaldobpc.com.br já existe o link reverso.</div>
+    </div>
+
+    <!-- ============== 2. Schema.org ============== -->
+    <div class="change">
+      <div class="change-num">02</div>
+      <h2>Schema.org JSON-LD — declarar entidade única</h2>
+      <div class="where">Onde: dentro de &lt;head&gt;, no bloco &lt;script type="application/ld+json"&gt; principal</div>
+      <p>Adicione (ou complemente) as propriedades dentro do objeto Organization/LocalBusiness:</p>
+      <pre>{
+  "@context": "https://schema.org",
+  "@type": ["Organization", "LegalService", "LocalBusiness"],
+  "@id": "https://www.carloscostaprev.com.br/#org",
+  "name": "CarlosCostaPrev",
+  "legalName": "CarlosCostaPrev — Escritório de Advocacia Previdenciária",
+  "alternateName": ["CarlosCostaPrev", "Portal do BPC"],
+  "url": "https://www.carloscostaprev.com.br/",
+  "sameAs": [
+    "https://www.portaldobpc.com.br",
+    "https://www.instagram.com/carloscostaprev",
+    "https://www.facebook.com/carloscostaprev"
+  ],
+  "telephone": "+55-21-96423-8080",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Praça Nossa Sra. da Apresentação, 223 — Sala 206",
+    "addressLocality": "Irajá",
+    "addressRegion": "RJ",
+    "postalCode": "21231-230",
+    "addressCountry": "BR"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": -22.8383, "longitude": -43.3202 },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "09:00", "closes": "18:00"
+  }
+}</pre>
+      <div class="note"><strong>Por quê:</strong> sameAs e legalName declaram oficialmente que CarlosCostaPrev e Portal do BPC são a mesma entidade jurídica. Sinal de altíssimo valor para SEO.</div>
+    </div>
+
+    <!-- ============== 3. Menu ============== -->
+    <div class="change">
+      <div class="change-num">03</div>
+      <h2>Adicionar item "BPC/LOAS" no menu principal</h2>
+      <div class="where">Onde: navigation/header do site</div>
+      <p>Insira um novo link no menu, entre "Serviços" e "Blog":</p>
+      <pre>&lt;a href="https://www.portaldobpc.com.br" target="_blank" rel="noopener"&gt;
+  BPC/LOAS ↗
+&lt;/a&gt;</pre>
+      <div class="note"><strong>Por quê:</strong> oferece um caminho claro ao usuário interessado em BPC, direcionando-o para o portal especializado.</div>
+    </div>
+
+    <!-- ============== 4. Meta tags ============== -->
+    <div class="change">
+      <div class="change-num">04</div>
+      <h2>Atualizar Open Graph mencionando Portal do BPC</h2>
+      <div class="where">Onde: dentro de &lt;head&gt;</div>
+      <pre>&lt;meta property="og:description" content="Escritório especializado em previdência social no Rio de Janeiro. Aposentadorias, pensões, INSS e BPC/LOAS (via Portal do BPC). Atendimento humano em Irajá/RJ." /&gt;
+&lt;meta name="description" content="CarlosCostaPrev — Especialistas em previdência administrativa em Irajá/RJ. Aposentadorias, pensões, auxílios do INSS e BPC/LOAS via portal especializado portaldobpc.com.br. WhatsApp (21) 96423-8080." /&gt;</pre>
+    </div>
+
+    <!-- ============== 5. NAP ============== -->
+    <div class="change">
+      <div class="change-num">05</div>
+      <h2>Padronizar NAP (Nome, Endereço, Telefone)</h2>
+      <div class="where">Onde: todos os lugares do site que mostram contato</div>
+      <p>Os 3 dados devem ser idênticos ao Portal do BPC e ao Google Meu Negócio. Padrão exato:</p>
+      <pre>Nome:     CarlosCostaPrev · Portal do BPC
+Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206
+          Irajá, Rio de Janeiro/RJ, CEP 21231-230
+Telefone: (21) 96423-8080
+WhatsApp: https://wa.me/5521964238080</pre>
+      <div class="warn"><strong>Importante:</strong> qualquer variação (vírgula a mais, sigla em vez de "Senhora", etc.) confunde o Google e reduz autoridade local.</div>
+    </div>
+
+    <!-- ============== 6. Páginas legais ============== -->
+    <div class="change">
+      <div class="change-num">06</div>
+      <h2>Atualizar páginas legais (LGPD)</h2>
+      <div class="where">Onde: /privacidade e /termos</div>
+      <p>Trecho a incluir na Política de Privacidade (item "Controlador dos dados"):</p>
+      <pre>O controlador dos dados pessoais coletados neste site é:
+
+CarlosCostaPrev — Escritório de Advocacia Previdenciária
+(operador também da marca Portal do BPC — portaldobpc.com.br)
+Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206
+           Irajá, Rio de Janeiro/RJ — CEP 21231-230
+WhatsApp: (21) 96423-8080
+E-mail: contato@carloscostaprev.com.br</pre>
+      <p>Trecho a incluir nos Termos de Uso (item 1):</p>
+      <pre>O CarlosCostaPrev é um escritório de advocacia previdenciária
+no Rio de Janeiro, operador também da marca Portal do BPC
+(portaldobpc.com.br), com foco em aposentadorias, pensões,
+auxílios e o Benefício de Prestação Continuada (BPC/LOAS).</pre>
+    </div>
+
+    <!-- ============== 7. Nova página /bpc-loas ============== -->
+    <div class="change">
+      <div class="change-num">07</div>
+      <h2>Criar página /bpc-loas — ponte para o Portal do BPC</h2>
+      <div class="where">Onde: nova rota /bpc-loas dentro do carloscostaprev.com.br</div>
+      <p>Objetivo: capturar buscas relacionadas a BPC dentro do CarlosCostaPrev e direcioná-las ao portal especializado. Estrutura sugerida:</p>
+      <ul>
+        <li>Hero: "O Benefício de Prestação Continuada é um direito complexo."</li>
+        <li>3 parágrafos explicando o BPC e sua diferença das aposentadorias</li>
+        <li>5 cards com os grupos atendidos: Idoso 65+ · Deficiente · Autismo · Pente fino · Estrangeiro</li>
+        <li>Card final destacado: "Pra aprofundar, criamos um portal só sobre BPC: Portal do BPC ↗"</li>
+        <li>CTA: WhatsApp + link para portaldobpc.com.br</li>
+      </ul>
+      <div class="note"><strong>SEO bonus:</strong> adicione meta tag específica e Schema.org Service na página. Use as palavras-chave: BPC, LOAS, Benefício Assistencial, Irajá, Rio de Janeiro.</div>
+    </div>
+
+    <!-- ============== 8. Search Console ============== -->
+    <div class="change">
+      <div class="change-num">08</div>
+      <h2>Verificar carloscostaprev.com.br no Google Search Console</h2>
+      <div class="where">Onde: search.google.com/search-console (separado do código)</div>
+      <ul>
+        <li>Adicionar nova propriedade — Prefixo do URL: <code>https://www.carloscostaprev.com.br</code></li>
+        <li>Escolher "Tag HTML" como método de validação</li>
+        <li>Copiar o token (content="..." da meta tag) e enviar para o desenvolvedor inserir no &lt;head&gt;</li>
+        <li>Após inserir e fazer deploy, clicar em "Validar"</li>
+        <li>Após verificação: Sitemaps → adicionar <code>sitemap.xml</code></li>
+      </ul>
+    </div>
+
+    <!-- ============== 9. Sitemap ============== -->
+    <div class="change">
+      <div class="change-num">09</div>
+      <h2>Garantir que o sitemap.xml inclua a página /bpc-loas</h2>
+      <div class="where">Onde: arquivo sitemap.xml na raiz do site</div>
+      <p>Adicionar entrada:</p>
+      <pre>&lt;url&gt;
+  &lt;loc&gt;https://www.carloscostaprev.com.br/bpc-loas&lt;/loc&gt;
+  &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+  &lt;priority&gt;0.85&lt;/priority&gt;
+&lt;/url&gt;</pre>
+    </div>
+
+    <div class="doc-foot">
+      <div>
+        <h4>Handoff técnico</h4>
+        <p>9 mudanças · estimativa: 30 a 60 minutos</p>
+      </div>
+      <a class="wpp" href="https://wa.me/5521964238080" target="_blank" rel="noopener noreferrer">WhatsApp · (21) 96423-8080</a>
+    </div>
+  </div>
+</body>
+</html>

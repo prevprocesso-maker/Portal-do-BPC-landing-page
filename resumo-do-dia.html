@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Resumo do dia · Portal do BPC · 27 mai 2026</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding-block: clamp(40px, 6vw, 80px); }
+  .wrap { max-width: 880px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+
+  .header { margin-bottom: 48px; }
+  .header .eyebrow { margin-bottom: 12px; }
+  .header h1 { font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); margin: 0 0 12px; }
+  .header .date { font-family: var(--font-mono); font-size: 14px; color: var(--ink-500); }
+
+  section { margin-bottom: 56px; }
+  h2 { font-size: clamp(1.5rem, 2vw + 1rem, 2.125rem); margin: 0 0 8px; }
+  h2 small { display: block; font-family: var(--font-sans); font-size: 14px; font-weight: 500; color: var(--ink-500); margin-top: 6px; text-transform: none; }
+
+  .ok-list, .next-list {
+    list-style: none; padding: 0; margin: 24px 0 0;
+    display: grid; gap: 12px;
+  }
+  .ok-list li, .next-list li {
+    display: grid; grid-template-columns: 32px 1fr; gap: 14px;
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+  }
+  .ok-list .icon, .next-list .icon {
+    width: 28px; height: 28px; border-radius: 50%;
+    display: grid; place-items: center;
+    font-weight: 700; font-size: 14px;
+    flex: 0 0 auto;
+  }
+  .ok-list .icon { background: var(--ok-bg); color: var(--ok); border: 1px solid var(--ok); }
+  .next-list .icon { background: var(--terra-900); color: var(--terra-300); border: 1px solid var(--line-2); }
+  .ok-list strong, .next-list strong { color: var(--ink-900); display: block; margin-bottom: 4px; }
+  .ok-list .sub, .next-list .sub { font-size: 14px; color: var(--ink-500); }
+
+  /* Timeline */
+  table.timeline {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  table.timeline th, table.timeline td {
+    padding: 14px 18px;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    font-size: 15px;
+  }
+  table.timeline th {
+    background: var(--bone-2);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--terra-400);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+  }
+  table.timeline tr:last-child td { border-bottom: none; }
+  table.timeline td:first-child { font-family: var(--font-mono); font-size: 13px; color: var(--terra-400); font-weight: 600; white-space: nowrap; }
+
+  /* Tip / Note */
+  .tip {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 15px;
+  }
+  .tip strong { color: var(--warn); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+
+  .note {
+    background: var(--info-bg);
+    border-left: 3px solid var(--info);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 15px;
+  }
+  .note strong { color: var(--info); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+
+  /* Field/checklist boxes for GMN section */
+  .fields {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 8px 22px;
+    margin: 16px 0;
+  }
+  .fields .row {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--line);
+  }
+  .fields .row:last-child { border-bottom: none; }
+  .fields .lab { font-size: 13px; color: var(--terra-400); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; padding-top: 2px; }
+  .fields .val { font-size: 15px; }
+  .fields .val .hint { display: block; margin-top: 4px; font-size: 13px; color: var(--ink-500); }
+  @media (max-width: 640px) { .fields .row { grid-template-columns: 1fr; gap: 4px; } }
+
+  /* PRINT */
+  @media print {
+    @page { size: A4; margin: 14mm; }
+    body { background: white !important; color: #1a140e !important; padding: 0 !important; font-size: 10.5pt; }
+    .wrap { max-width: none; padding: 0; }
+    h1, h2, h3, h4, p, span, div, li, td, th, label { color: #1a140e !important; }
+    .header h1 em { color: #c4673a !important; }
+    .header .eyebrow, .fields .lab { color: #a8542d !important; }
+    .ok-list li, .next-list li, table.timeline, .fields, .tip, .note {
+      background: white !important;
+      border: 1px solid #d4c0a8 !important;
+      color: #1a140e !important;
+      box-shadow: none !important;
+    }
+    .ok-list .icon { background: #e7f0e0 !important; color: #5a8a4a !important; border: 1px solid #5a8a4a !important;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    .next-list .icon { background: #f4e3d4 !important; color: #1a140e !important; border: 1px solid #d4c0a8 !important;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    table.timeline th { background: #f4ecdf !important; color: #a8542d !important;
+      print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    table.timeline td:first-child { color: #a8542d !important; }
+    .tip { border-left: 3px solid #c89020 !important; }
+    .note { border-left: 3px solid #5a7a9a !important; }
+    section { page-break-inside: avoid; margin-bottom: 28px !important; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Resumo do dia · Portal do BPC</p>
+    <h1>O que conquistamos <em>hoje</em>.</h1>
+    <p class="date">27 mai 2026 · Pauta de SEO, redes sociais e ecossistema digital</p>
+  </header>
+
+
+  <!-- ============== CONQUISTADO ============== -->
+  <section>
+    <h2>✅ Conquistado hoje<small>Cinco frentes fechadas em uma sessão.</small></h2>
+
+    <ul class="ok-list">
+      <li>
+        <div class="icon">✓</div>
+        <div>
+          <strong>Sitemap atualizado com <code>&lt;lastmod&gt;</code></strong>
+          <div class="sub">Todas as 27 URLs receberam a marca de "modificado em 27/05/2026". O sinal de frescor sobe a prioridade de rastreamento pro Google e Bing.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">✓</div>
+        <div>
+          <strong>Bing Webmaster Tools configurado e sitemap submetido</strong>
+          <div class="sub">Status: <strong>Êxito</strong>. URLs descobertas começam a aparecer em 24-72h. Cobre Bing, Yahoo, Copilot e ChatGPT Search.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">✓</div>
+        <div>
+          <strong>IndexNow ativado com arquivo de chave no ar</strong>
+          <div class="sub">Chave: <code>a7f3c92d8e4b461fa05d7c89b3e2f146</code>. Alimenta Bing + Yandex + DuckDuckGo + Seznam + Naver com um único sinal.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">✓</div>
+        <div>
+          <strong>GitHub + Vercel publicaram tudo</strong>
+          <div class="sub">Commit, deploy automático em 30 segundos, e os 2 arquivos novos já estão acessíveis no domínio público.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">✓</div>
+        <div>
+          <strong>Bio do @carloscostaprev repositionada</strong>
+          <div class="sub">De "Especialista BPC/LOAS" para "Advocacia Previdenciária no Rio" + menção a @portaldobpc. Os dois perfis agora conversam.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- ============== TIMELINE ============== -->
+  <section>
+    <h2>⏳ O que esperar dos motores de busca<small>Janela natural do Bing e do Google.</small></h2>
+
+    <table class="timeline">
+      <thead>
+        <tr><th>Quando</th><th>O que conferir</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>24–72 h</td><td>Bing → "URLs descobertas" sai de 0 e vira 27.</td></tr>
+        <tr><td>5–10 dias</td><td>Páginas começam a aparecer indexadas. Faça inspeção das principais (Inspeção de URL).</td></tr>
+        <tr><td>14 dias</td><td>Métricas começam a aparecer no "Desempenho de Pesquisa" do Bing.</td></tr>
+        <tr><td>30 dias</td><td>Todas as 27 URLs indexadas no Bing. AI Performance começa a popular com Copilot/ChatGPT Search.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+
+  <!-- ============== PENDENTES ============== -->
+  <section>
+    <h2>🎯 Pendentes do <code>STATUS.md</code><small>Em ordem de impacto + facilidade.</small></h2>
+
+    <ul class="next-list">
+      <li>
+        <div class="icon">1</div>
+        <div>
+          <strong>Botão WhatsApp no @carloscostaprev</strong>
+          <div class="sub">Precisa fazer no <strong>app do celular</strong> — desktop não oferece. Editar perfil → Opções de contato → WhatsApp Business → verificar com código SMS.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">2</div>
+        <div>
+          <strong>Configurar o @portaldobpc</strong>
+          <div class="sub">Mesmo passo a passo do <code>guia-instagram.html</code>: foto, nome, bio, links, destaques, post fixado. Esse perfil herda a autoridade do @carloscostaprev em BPC.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">3</div>
+        <div>
+          <strong>Google Meu Negócio — solicitar verificação por carta</strong>
+          <div class="sub">Antes de clicar em "Solicitar", confirmar todos os campos (veja seção abaixo). Depois do pedido, nada pode ser editado até a carta chegar.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">4</div>
+        <div>
+          <strong>Atualizar o <code>STATUS.md</code> marcando o que foi feito</strong>
+          <div class="sub">Mantém a documentação viva. Faço isso pra você na próxima sessão, se quiser.</div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+
+  <!-- ============== GMN ============== -->
+  <section>
+    <h2>📮 Google Meu Negócio · Verificação por carta<small>Quando você for clicar em "Solicitar verificação por correspondência".</small></h2>
+
+    <div class="tip">
+      <strong>Importante</strong>
+      Depois de pedir a carta, o perfil <strong>congela</strong>: nenhum campo pode ser editado até o código de 5 dígitos ser inserido. Se algo estiver errado, você espera mais 15 dias por uma carta nova.
+    </div>
+
+    <p style="margin-top: 16px;">Confira os 5 campos abaixo <strong>antes</strong> de clicar:</p>
+
+    <div class="fields">
+      <div class="row">
+        <div class="lab">Nome da empresa</div>
+        <div class="val"><strong>CarlosCostaPrev — Advocacia Previdenciária</strong>
+          <span class="hint">Idêntico ao nome do site e do Instagram. Sem variações.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">Endereço</div>
+        <div class="val"><strong>Praça Nossa Sra. da Apresentação, 223 — Sala 206</strong><br/>
+          Irajá · Rio de Janeiro/RJ · CEP 21231-230
+          <span class="hint">Use exatamente "Nossa Sra." — é a versão que o Google normaliza e exibe. Site, Instagram, schema.org e Google Meu Negócio estão todos alinhados nesse padrão.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">Telefone</div>
+        <div class="val"><strong>(21) 96423-8080</strong>
+          <span class="hint">Mesmo número do WhatsApp e do botão de contato dos dois sites.</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">Categoria principal</div>
+        <div class="val"><strong>Escritório de advocacia</strong>
+          <span class="hint">Secundária (se permitir): "Advogado previdenciário" ou "Serviços jurídicos".</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="lab">Destinatário da carta</div>
+        <div class="val"><strong>Carlos Costa</strong>
+          <span class="hint">A carta chega com esse nome. Mais fácil pra porteiro identificar.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Avise o porteiro hoje</strong>
+      "Vai chegar uma carta do Google pra Carlos Costa nos próximos 15-20 dias. Por favor, guarda — parece propaganda mas é importante."
+      Já vi caso de carta ser jogada fora porque parecia mala-direta. Esses 15 dias são preciosos.
+    </div>
+
+    <h3 style="margin-top: 32px; font-size: 1.0625rem; color: var(--terra-400);">Enquanto a carta não chega — adiantar tudo isso</h3>
+
+    <ul class="next-list" style="margin-top: 12px;">
+      <li>
+        <div class="icon">A</div>
+        <div><strong>Adicionar fotos</strong>
+          <div class="sub">Fachada do prédio, recepção, sala 206, foto do Carlos atendendo, logo da CarlosCostaPrev. Mínimo de 5.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">B</div>
+        <div><strong>Horário de atendimento</strong>
+          <div class="sub">Seg-Sex 9h às 18h (ou o que for real). Feriados nacionais marcados como fechado.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">C</div>
+        <div><strong>Descrição (até 750 caracteres)</strong>
+          <div class="sub">Mencione BPC/LOAS, aposentadoria, pensão, e o bairro Irajá. Repita "previdência" 2× — bom pra SEO local.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">D</div>
+        <div><strong>Serviços</strong>
+          <div class="sub">BPC para idoso · BPC para pessoa com deficiência · Aposentadoria por idade · Aposentadoria especial · Pensão por morte · Auxílio-doença · Revisão de benefício.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">E</div>
+        <div><strong>Link do site + WhatsApp</strong>
+          <div class="sub">Site principal: <code>www.carloscostaprev.com.br</code>. WhatsApp: <code>wa.me/5521964238080</code>.</div>
+        </div>
+      </li>
+      <li>
+        <div class="icon">F</div>
+        <div><strong>Primeira publicação ("novidade")</strong>
+          <div class="sub">Tipo: "Faça aqui sua análise gratuita de BPC — atendimento por WhatsApp ou presencial em Irajá." Link pro site.</div>
+        </div>
+      </li>
+    </ul>
+
+    <p style="margin-top: 20px;">Tudo isso fica preenchido mas <strong>pendente de verificação</strong>. No dia em que o código chegar, em 2 minutos tudo vai ao ar.</p>
+  </section>
+
+
+  <p style="margin-top: 56px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--ink-500); font-size: 14px;">
+    Bom descanso. Quando estiver pronto pra atacar qualquer um dos pendentes, é só me chamar. 🚀
+  </p>
+
+</div>
+</body>
+</html>

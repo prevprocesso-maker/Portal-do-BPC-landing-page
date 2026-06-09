@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Checklist — Portal do BPC</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', system-ui, sans-serif; background: #0f0c09; color: #f5ede0; min-height: 100vh; padding: 32px 16px 80px; }
+
+  .print-btn { position: fixed; bottom: 24px; right: 24px; padding: 14px 24px; background: #c4673a; color: #fff; border: none; border-radius: 999px; font-size: 15px; font-weight: 700; cursor: pointer; box-shadow: 0 4px 20px rgba(196,103,58,0.4); z-index: 99; }
+  .print-btn:hover { background: #a8542d; }
+
+  @media print {
+    body { background: #fff !important; color: #111 !important; padding: 10px !important; font-size: 9pt; }
+    .container { max-width: 100% !important; }
+    h1 { color: #111 !important; font-size: 14pt; margin-bottom: 2px; }
+    .subtitle { color: #555 !important; font-size: 8pt; margin-bottom: 12px; }
+    .section { margin-bottom: 10px; }
+    .section-title { color: #c4673a !important; border-bottom-color: #ddd !important; font-size: 8pt; margin-bottom: 6px; padding-bottom: 4px; }
+    .item { background: none !important; border: 1px solid #eee; margin-bottom: 3px !important; break-inside: avoid; padding: 6px 10px !important; }
+    .item:hover { background: none !important; }
+    .badge { width: 18px !important; height: 18px !important; font-size: 9pt !important; border-radius: 4px !important; }
+    .done .badge { background: #e8f5e8 !important; color: #2a6b2a !important; }
+    .pending .badge { background: #fff8e1 !important; color: #b8860b !important; }
+    .todo .badge { background: #e8f0ff !important; color: #2a4a8b !important; }
+    .item-title { color: #111 !important; font-size: 9pt !important; margin-bottom: 1px; }
+    .item-desc { color: #555 !important; font-size: 7.5pt !important; line-height: 1.3 !important; }
+    .tag { font-size: 6.5pt !important; padding: 1px 5px !important; }
+    .tag-server { background: #fde8e8 !important; color: #c0392b !important; }
+    .tag-ok { background: #e8f5e8 !important; color: #2a6b2a !important; }
+    .tag-new { background: #e8f0ff !important; color: #2a4a8b !important; }
+    .progress { background: #f5f5f5 !important; border: 1px solid #ddd; padding: 10px 14px !important; margin-bottom: 12px; }
+    .progress-text { color: #c4673a !important; font-size: 14pt !important; }
+    .progress-fill { background: #c4673a !important; }
+    .legend { margin-bottom: 10px; gap: 12px; }
+    .legend-item { color: #555 !important; font-size: 8pt !important; }
+    .print-btn { display: none !important; }
+  }
+  .container { max-width: 760px; margin: 0 auto; }
+  h1 { font-size: 28px; font-weight: 700; color: #f5ede0; margin-bottom: 6px; }
+  .subtitle { font-size: 15px; color: #b9a995; margin-bottom: 40px; }
+  .section { margin-bottom: 32px; }
+  .section-title { font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #c4673a; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 1px solid #382a20; }
+  .item { display: flex; align-items: flex-start; gap: 14px; padding: 14px 16px; border-radius: 12px; margin-bottom: 8px; transition: background 150ms; cursor: pointer; }
+  .item:hover { background: #1f1812; }
+  .badge { width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .done .badge { background: #1f2e1f; color: #8fc48f; }
+  .pending .badge { background: #2e2412; color: #e0b240; }
+  .todo .badge { background: #1c2630; color: #8da8c4; }
+  .item-text { flex: 1; }
+  .item-title { font-size: 15px; font-weight: 600; color: #f5ede0; margin-bottom: 3px; line-height: 1.3; }
+  .item-desc { font-size: 13px; color: #b9a995; line-height: 1.5; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; margin-left: 8px; vertical-align: middle; }
+  .tag-server { background: #2e1815; color: #d97970; }
+  .tag-ok { background: #1f2e1f; color: #8fc48f; }
+  .tag-new { background: #1c2630; color: #8da8c4; }
+  .progress { background: #1f1812; border-radius: 16px; padding: 20px 24px; margin-bottom: 32px; display: flex; align-items: center; gap: 20px; }
+  .progress-bar { flex: 1; height: 8px; background: #382a20; border-radius: 999px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, #c4673a, #d68559); border-radius: 999px; transition: width 1s ease; }
+  .progress-text { font-size: 22px; font-weight: 700; color: #c4673a; white-space: nowrap; }
+  .legend { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; }
+  .legend-item { display: flex; align-items: center; gap: 8px; font-size: 13px; color: #b9a995; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <button class="print-btn" onclick="window.print()">🖨️ Imprimir checklist</button>
+
+  <h1>Checklist — Portal do BPC</h1>
+  <p class="subtitle">Sessão de trabalho — 04 de junho de 2026</p>
+
+  <div class="progress">
+    <div class="progress-bar"><div class="progress-fill" style="width:85%"></div></div>
+    <div class="progress-text">85% concluído</div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:#8fc48f"></div>Concluído</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#e0b240"></div>Aguardando deploy</div>
+    <div class="legend-item"><div class="legend-dot" style="background:#8da8c4"></div>Próximo passo</div>
+  </div>
+
+  <!-- MOBILE -->
+  <div class="section">
+    <div class="section-title">📱 Mobile — UX e Responsivo</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Menu hambúrguer <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Gaveta lateral com todos os links. Funciona em todas as 61 páginas via mobile-nav.js</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Tab bar mobile <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Início | Patologias | Simulador | WhatsApp — fixo na parte de baixo</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Foto retrato no mobile (4:5 igual desktop) <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">fixes-b.js injeta CSS — foto já otimizada (75KB)</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Simulador funcionando na tab bar <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Hashchange listener + __bpcNavigate — navega sem recarregar</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Botões com área de toque ≥44px <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Touch targets grandes para idosos e tablets</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Fonte 18px nas patologias <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Leitura fácil para idosos no mobile</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVEGAÇÃO -->
+  <div class="section">
+    <div class="section-title">🧭 Navegação</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Setas ← → entre patologias <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Barra de posição no topo + setas grandes no rodapé em todas as 61 páginas</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Setas ← → no header desktop <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Navega entre seções (Início, Patologias, Perícias, Simulador...)</div>
+      </div>
+    </div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Botão "← Todas as patologias" <span class="tag tag-ok">no ar</span></div>
+        <div class="item-desc">Voltar para lista de patologias em cada página individual</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEXTOS -->
+  <div class="section">
+    <div class="section-title">✍️ Textos</div>
+
+    <div class="item pending">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Textos corrigidos (perito, perícia, hero) <span class="tag tag-server">aguarda fixes-b.js?v=2</span></div>
+        <div class="item-desc">"O BPC é um salário mínimo por mês..." — novo texto explicativo</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">"Perita → Perito" corrigido <span class="tag tag-server">aguarda fixes-b.js?v=2</span></div>
+        <div class="item-desc">fixes-b.js?v=2 corrige via DOM após carregamento</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Texto da perícia melhorado <span class="tag tag-server">aguarda fixes-b.js?v=2</span></div>
+        <div class="item-desc">"A perícia médica e social é onde a maioria dos pedidos é negado..."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PWA -->
+  <div class="section">
+    <div class="section-title">📲 PWA — Instalar como App</div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">manifest.json <span class="tag tag-server">no ar</span></div>
+        <div class="item-desc">Arquivo novo — define nome, ícone e cor do app</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Service Worker (sw.js) <span class="tag tag-server">no ar</span></div>
+        <div class="item-desc">Cache offline, carregamento rápido em 3G/4G</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMULADOR MOBILE -->
+  <div class="section">
+    <div class="section-title">🎯 Simulador Mobile</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Barra compacta no topo (Carlos Costa + passo X de Y) <span class="tag tag-ok">fixes-b.js?v=2 v5</span></div>
+        <div class="item-desc">O painel esquerdo do desktop aparece como barra no topo do celular</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Foto muda a cada passo do simulador <span class="tag tag-new">próximo passo</span></div>
+        <div class="item-desc">7 fotos necessárias — uma por fase. Passo 1: retrato confiante · Passo 2: escutando · Passo 3: documentos · Passo 4: empático · Passo 5: sorrindo · Passo 6: explicando · Passo 7: celular/WhatsApp</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ROTAÇÃO DE FOTOS -->
+  <div class="section">
+    <div class="section-title">📸 Rotação de Fotos</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Script photo-rotation.js criado</div>
+        <div class="item-desc">Ciclo de 10 fotos, troca a cada 3 dias. Aguarda envio das fotos.</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Enviar 10 fotos (hero + simulador) <span class="tag tag-new">ação necessária</span></div>
+        <div class="item-desc">Nomear hero-1.jpg até hero-10.jpg + sim-1.jpg até sim-7.jpg → salvar em assets/</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SEO -->
+  <div class="section">
+    <div class="section-title">🔍 SEO e Conteúdo</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">74 páginas indexadas no Google <span class="tag tag-ok">concluído</span></div>
+        <div class="item-desc">Sitemap aceito em 04/06/2026. Rastreamento em 1-7 dias.</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Artigos do blog — patologias <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Conteúdo sobre autismo, paralisia cerebral, fibromialgia + BPC acelera ranking</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Google Meu Negócio atualizado <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Foto, horário, posts semanais → mais visibilidade local</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Instagram — posts regulares <span class="tag tag-new">próximo</span></div>
+        <div class="item-desc">Posts sobre patologias geram tráfego para o site</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVIDOR & DEPLOY -->
+  <div class="section">
+    <div class="section-title">🖥️ Servidor & Deploy</div>
+
+    <div class="item done">
+      <div class="badge">✓</div>
+      <div class="item-text">
+        <div class="item-title">Arquivos novos chegam ao servidor <span class="tag tag-ok">funcionando</span></div>
+        <div class="item-desc">mobile-nav.js, mobile-patch.js, fixes-b.js, manifest.json, sw.js — novos arquivos deployam corretamente</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⏳</div>
+      <div class="item-text">
+        <div class="item-title">Arquivos existentes não atualizam <span class="tag tag-server">problema ativo</span></div>
+        <div class="item-desc">styles.css, components.js — servidor serve versão antiga mesmo após upload. Solução atual: criar arquivos novos (fixes-b.js). Solução definitiva: configurar cache-control no servidor</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Verificar sw.js acessível <span class="tag tag-new">verificar</span></div>
+        <div class="item-desc">Abrir portaldobpc.com.br/sw.js no celular — se carregar código JS, PWA está pronto</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Verificar manifest.json acessível <span class="tag tag-new">verificar</span></div>
+        <div class="item-desc">Abrir portaldobpc.com.br/manifest.json — deve mostrar JSON com nome "Portal do BPC"</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Configurar Cache-Control no servidor <span class="tag tag-new">recomendado</span></div>
+        <div class="item-desc">Adicionar header "Cache-Control: no-cache" para CSS e JS — resolve o problema de cache definitivamente</div>
+      </div>
+    </div>
+
+    <div class="item todo">
+      <div class="badge">→</div>
+      <div class="item-text">
+        <div class="item-title">Cloudflare (CDN gratuito) <span class="tag tag-new">opcional</span></div>
+        <div class="item-desc">Ativa em frente ao servidor — comprime arquivos, purga cache manualmente, adiciona HTTPS, acelera globalmente</div>
+      </div>
+    </div>
+  </div>
+    <div class="section-title">📁 Arquivos para subir AGORA</div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">fixes.css <span class="tag tag-server">CRÍTICO</span></div>
+        <div class="item-desc">Arquivo NOVO — foto retrato, layout mobile, tab bar</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">fixes-b.js?v=2 <span class="tag tag-server">CRÍTICO</span></div>
+        <div class="item-desc">Arquivo NOVO — corrige textos (perita, perícia, hero)</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">manifest.json + sw.js <span class="tag tag-server">NOVO</span></div>
+        <div class="item-desc">Deployados. Botão "Instalar" aparece quando Chrome liberar</div>
+      </div>
+    </div>
+
+    <div class="item pending">
+      <div class="badge">⬆</div>
+      <div class="item-text">
+        <div class="item-title">Todos os 62 .html <span class="tag tag-server">atualizado</span></div>
+        <div class="item-desc">Incluem fixes.css, fixes-b.js?v=2 e manifest</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

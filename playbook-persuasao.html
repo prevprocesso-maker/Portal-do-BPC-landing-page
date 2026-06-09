@@ -1,0 +1,293 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Playbook de Persuasão e Mensagem" subtitle="Dor, urgência, necessidade, curiosidade + especialista × generalista" -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Playbook de Persuasão — CarlosCostaPrev + Portal do BPC</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+  :root{
+    --terra-500:#c4673a; --terra-700:#a8542d; --terra-50:#fbf2e9; --terra-100:#f4e3d4;
+    --ink:#221913; --ink-2:#4a3a2c; --ink-3:#7a6552;
+    --line:#e3d4c2; --line-2:#d0bca5; --bg:#fffdfa; --bg-soft:#f7efe4;
+    --info:#4a6a8a; --info-bg:#eaf0f5; --olive:#5e7245; --olive-bg:#eef1e6;
+    --err:#b3503f; --err-bg:#f6e7e2;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',system-ui,sans-serif;font-size:10.5pt;line-height:1.55;color:var(--ink);background:var(--bg);padding-block:clamp(28px,5vw,56px);}
+  .wrap{max-width:840px;margin-inline:auto;padding-inline:clamp(18px,5vw,32px);}
+  h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;letter-spacing:-0.015em;margin:0;color:var(--ink);}
+  em{font-style:italic;color:var(--terra-700);}
+  p{margin:0 0 12px;}
+  .eyebrow{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--terra-700);display:inline-flex;align-items:center;gap:8px;margin-bottom:16px;}
+  .eyebrow::before{content:"✦";}
+  .doc-head{margin-bottom:38px;}
+  .doc-head h1{font-size:29pt;line-height:1.05;font-weight:600;margin-bottom:14px;}
+  .doc-head .lead{font-size:12pt;line-height:1.5;color:var(--ink-2);max-width:62ch;}
+
+  section.block{margin-bottom:42px;}
+  .sec-head{border-top:2px solid var(--ink);padding-top:16px;margin-bottom:20px;}
+  .sec-head .id{font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;background:var(--ink);color:var(--bg);padding:3px 9px;border-radius:4px;margin-right:10px;}
+  .sec-head h2{display:inline;font-size:19pt;font-weight:600;}
+  .sec-head .sub{font-family:'Inter',sans-serif;font-size:10.5pt;color:var(--ink-3);margin-top:10px;}
+  h3.minor{font-family:'Inter',sans-serif;font-size:10pt;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;color:var(--terra-700);margin:24px 0 12px;}
+  .intro-p{font-size:11pt;color:var(--ink-2);font-style:italic;margin-bottom:18px;}
+
+  /* mother message */
+  .mother{background:var(--ink);color:#f5ede0;border-radius:16px;padding:26px 28px;margin:18px 0;}
+  .mother .lbl{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#e0b388;margin-bottom:10px;}
+  .mother .big{font-family:'Fraunces',serif;font-size:16pt;line-height:1.32;font-weight:500;color:#fff;}
+  .mother .big em{color:#e0b388;font-style:italic;}
+
+  .box{border:1px solid var(--line-2);border-radius:10px;padding:16px 20px;margin:16px 0;background:var(--bg-soft);}
+  .box.accent{border-left:4px solid var(--terra-500);}
+  .box.info{background:var(--info-bg);border-color:#cdd9e4;border-left:4px solid var(--info);}
+  .box.err{background:var(--err-bg);border-color:#e6c3ba;border-left:4px solid var(--err);}
+  .box .label{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;display:block;margin-bottom:7px;color:var(--terra-700);}
+  .box.info .label{color:var(--info);} .box.err .label{color:var(--err);}
+  .box p:last-child{margin-bottom:0;}
+
+  /* lever cards */
+  .lever{border:1px solid var(--line);border-radius:12px;margin:14px 0;overflow:hidden;page-break-inside:avoid;background:#fff;}
+  .lever .lv-top{display:flex;align-items:center;gap:12px;padding:13px 18px;background:var(--terra-700);color:#fff;}
+  .lever .lv-top .ic{font-size:17pt;line-height:1;}
+  .lever .lv-top .nm{font-family:'Fraunces',serif;font-size:14pt;font-weight:600;}
+  .lever .lv-top .role{font-family:'Inter',sans-serif;font-size:8.5pt;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;opacity:0.85;margin-left:auto;}
+  .lever .lv-body{padding:14px 18px;}
+  .lever .lv-body .what{font-size:9.8pt;color:var(--ink-2);margin-bottom:10px;}
+  .lever .lv-body .what strong{color:var(--ink);}
+  .hooks{list-style:none;margin:0;padding:0;}
+  .hooks li{position:relative;padding:7px 0 7px 22px;border-top:1px dashed var(--line-2);font-size:10pt;line-height:1.45;}
+  .hooks li:first-child{border-top:none;}
+  .hooks li::before{content:"“";position:absolute;left:0;top:6px;font-family:'Fraunces',serif;font-size:15pt;color:var(--terra-500);line-height:1;}
+  .hooks li em{color:var(--ink-3);font-style:italic;font-size:8.8pt;display:block;margin-top:2px;}
+
+  .arc{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;margin:16px 0;border:1px solid var(--line-2);border-radius:12px;overflow:hidden;}
+  @media(max-width:640px){.arc{grid-template-columns:1fr;}}
+  .arc .step{padding:16px 18px;border-right:1px solid var(--line-2);}
+  .arc .step:last-child{border-right:none;}
+  @media(max-width:640px){.arc .step{border-right:none;border-bottom:1px solid var(--line-2);}}
+  .arc .step .n{font-family:'Inter',sans-serif;font-size:8pt;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra-700);}
+  .arc .step h4{font-family:'Fraunces',serif;font-size:13pt;font-weight:600;margin:5px 0 6px;}
+  .arc .step p{font-size:9.3pt;color:var(--ink-2);margin:0;}
+  .arc .step.s1{background:var(--err-bg);} .arc .step.s2{background:var(--bg-soft);} .arc .step.s3{background:var(--olive-bg);}
+
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:16px 0;}
+  @media(max-width:640px){.vs{grid-template-columns:1fr;}}
+  .vs > div{border:1px solid var(--line);border-radius:12px;padding:16px 18px;}
+  .vs .gen{background:var(--err-bg);border-color:#e6c3ba;}
+  .vs .esp{background:var(--olive-bg);border-color:#cdd6bd;}
+  .vs h4{font-family:'Inter',sans-serif;font-size:9pt;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:10px;}
+  .vs .gen h4{color:var(--err);} .vs .esp h4{color:var(--olive);}
+  .vs ul{margin:0;padding-left:18px;font-size:9.6pt;line-height:1.5;} .vs ul li{margin-bottom:5px;}
+
+  ul.clean{margin:10px 0;padding-left:20px;} ul.clean li{margin-bottom:6px;line-height:1.5;}
+  .closing{margin-top:38px;padding-top:22px;border-top:2px solid var(--ink);font-size:10pt;color:var(--ink-2);font-style:italic;}
+
+  @media print{ @page{size:A4;margin:13mm;} body{padding:0;background:#fff;} .wrap{max-width:none;padding:0;} .no-print{display:none!important;} section.block,.lever,.box,.arc,.vs,.mother{page-break-inside:avoid;} .mother,.lever .lv-top,.arc .step,.vs .gen,.vs .esp,.sec-head .id,.box{-webkit-print-color-adjust:exact;print-color-adjust:exact;} }
+  .print-btn{position:fixed;bottom:22px;right:22px;z-index:50;background:var(--terra-500);color:#fff;border:none;border-radius:999px;padding:13px 22px;font-family:'Inter',sans-serif;font-size:11pt;font-weight:600;cursor:pointer;box-shadow:0 6px 20px rgba(196,103,58,0.4);}
+  .print-btn:hover{background:var(--terra-700);}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="doc-head">
+    <p class="eyebrow">Playbook de mensagem · v1 · Junho 2026</p>
+    <h1>As armas de persuasão: <em>dor, urgência, necessidade e curiosidade</em>.</h1>
+    <p class="lead">
+      O ângulo que faz o conteúdo converter. Como usar a precariedade do INSS como inimigo comum,
+      ativar a emoção certa em cada post e mostrar, sem arrogância, que previdência exige
+      <strong>especialista</strong> — não advogado generalista. Use junto com o Plano Editorial de 30 dias.
+    </p>
+  </header>
+
+  <!-- 01 · MENSAGEM-MÃE -->
+  <section class="block">
+    <div class="sec-head"><span class="id">01</span><h2>A mensagem-mãe</h2>
+      <p class="sub">Toda peça, no fundo, conta esta mesma história. Decore-a — é a espinha de tudo.</p>
+    </div>
+
+    <div class="mother">
+      <div class="lbl">A narrativa por trás de cada post</div>
+      <div class="big">"O INSS é um sistema que <em>não explica</em> seus direitos a quem mais precisa. Milhões perdem o que é deles por pura falta de informação — ou por confiar em quem não entende do assunto. A gente existe pra <em>virar esse jogo</em>: explicar do seu jeito e cuidar do seu caso com quem faz <em>só</em> previdência."</div>
+    </div>
+
+    <div class="box accent">
+      <span class="label">Os 3 vilões da história</span>
+      <p><strong>1. A burocracia que confunde de propósito</strong> — formulários, filas, juridiquês.<br>
+      <strong>2. O silêncio sobre os direitos</strong> — ninguém avisa o idoso, a mãe atípica, o trabalhador doente.<br>
+      <strong>3. O generalista despreparado</strong> — quem trata previdência como "mais um tema" e erra no básico.<br>
+      Você nunca ataca a pessoa. Ataca <em>o sistema e a desinformação</em>. A pessoa é a heroína; você é o guia.</p>
+    </div>
+  </section>
+
+  <!-- 02 · O ARCO -->
+  <section class="block">
+    <div class="sec-head"><span class="id">02</span><h2>O arco de todo post</h2>
+      <p class="sub">Nunca pare na dor. A dor abre a ferida; a esperança e o próximo passo fecham a venda.</p>
+    </div>
+    <div class="arc">
+      <div class="step s1"><div class="n">1 · Fisgar</div><h4>Dor / Curiosidade</h4><p>Abra na ferida real ou na pergunta que ninguém respondeu. É o gancho — os 2 primeiros segundos / o 1º slide.</p></div>
+      <div class="step s2"><div class="n">2 · Virar</div><h4>Verdade / Direito</h4><p>Revele o que o sistema esconde: existe um direito, existe um caminho. Aqui entra sua autoridade.</p></div>
+      <div class="step s3"><div class="n">3 · Conduzir</div><h4>Esperança + CTA</h4><p>Mostre que dá pra resolver — com a pessoa certa. Um único próximo passo: "manda mensagem".</p></div>
+    </div>
+    <div class="box err">
+      <span class="label">O erro fatal</span>
+      <p>Parar no passo 1. Conteúdo que só assusta gera medo e scroll — não cliente. <strong>Toda dor precisa de uma saída na mesma peça.</strong> A gente acolhe, não desespera.</p>
+    </div>
+  </section>
+
+  <!-- 03 · AS 4 ALAVANCAS -->
+  <section class="block">
+    <div class="sec-head"><span class="id">03</span><h2>As 4 alavancas emocionais</h2>
+      <p class="sub">Cada post ativa UMA principal. Anote no roteiro qual é. Ganchos prontos pra usar e adaptar.</p>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">⚡</span><span class="nm">Dor</span><span class="role">A ferida que ele já sente</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> espelha o sofrimento real (cansaço da fila, medo da perícia, humilhação da negativa, solidão do idoso). A pessoa pensa "é exatamente isso que eu sinto".</p>
+        <ul class="hooks">
+          <li>Esperar pelo INSS dói no bolso e na alma — cada mês é uma conta que não para de chegar.</li>
+          <li>Receber um "não" depois de meses de espera parece um soco no estômago. Respira.</li>
+          <li>Tem idoso que aceita o "não" calado, achando que não merece insistir. Merece, sim.</li>
+          <li>A mãe atípica não dorme: além da rotina pesada, ainda carrega o medo de não conseguir o direito do filho.<em>Persona: P3 · @portaldobpc</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">⏳</span><span class="nm">Urgência</span><span class="role">Por que agir agora</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> tira a pessoa da inércia. Prazo que corre, benefício que se perde a cada mês parado, perícia que pode ser remarcada. Sem inventar pressão falsa — urgência real.</p>
+        <ul class="hooks">
+          <li>Cada mês que você adia o pedido é um mês de benefício que você não recebe de volta.</li>
+          <li>A negativa do INSS tem prazo de recurso. Perdeu o prazo, recomeça tudo do zero.</li>
+          <li>Quanto mais cedo o caso é organizado, menos a fila te castiga lá na frente.</li>
+          <li>Direito não retroage sozinho: tem benefício que só conta a partir do dia em que você pede.<em>Persona: P4, P6 · @carloscostaprev</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">🧩</span><span class="nm">Necessidade</span><span class="role">Isso é seu, e você precisa</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> conecta o direito à sobrevivência concreta — remédio, comida, dignidade. Transforma "benefício" em "o que falta na sua casa no fim do mês".</p>
+        <ul class="hooks">
+          <li>1 salário por mês pode ser a diferença entre comprar o remédio ou escolher qual conta atrasar.</li>
+          <li>Não é favor, não é esmola: é um direito previsto em lei pra quem precisa.</li>
+          <li>Envelhecer com dignidade às vezes começa com 1 salário caindo todo dia 1º.</li>
+          <li>Você cuidou da sua família a vida inteira. Agora é a vez de um direito cuidar de você.<em>Persona: P1, P2 · @portaldobpc</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="lever">
+      <div class="lv-top"><span class="ic">👀</span><span class="nm">Curiosidade</span><span class="role">O que você não sabe</span></div>
+      <div class="lv-body">
+        <p class="what"><strong>O que faz:</strong> abre um laço aberto (a pessoa precisa saber o resto). Ótimo pra gancho de carrossel e reel. Revela algo que o sistema não conta.</p>
+        <ul class="hooks">
+          <li>Existe uma segunda avaliação no BPC que quase ninguém te conta — e ela decide tudo.</li>
+          <li>Tem um documento que, sozinho, faz o INSS negar na hora. A maioria nem sabe.</li>
+          <li>Auxílio há mais de 1 ano? Talvez você já tenha direito a outra coisa — e ninguém te avisou.</li>
+          <li>O motivo nº 1 das negativas não é falta de direito. É outra coisa. Deslize pra ver.<em>Persona: P6 · ambas as contas</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="box info">
+      <span class="label">Como combinar</span>
+      <p>O gancho usa <strong>1 alavanca</strong> (geralmente dor ou curiosidade). O corpo entrega a <strong>verdade/direito</strong>. O fim ativa <strong>necessidade + urgência</strong> ("isso é seu e cada mês conta — manda mensagem"). Nunca empilhe as 4 no gancho: confunde.</p>
+    </div>
+  </section>
+
+  <!-- 04 · O INIMIGO COMUM -->
+  <section class="block">
+    <div class="sec-head"><span class="id">04</span><h2>O inimigo comum: um sistema que não explica</h2>
+      <p class="sub">Posicionar o INSS como o obstáculo (não a pessoa) cria identificação imediata e te coloca do lado dela.</p>
+    </div>
+    <p class="intro-p">A regra: critique <strong>o sistema, a burocracia e a desinformação</strong> — com respeito, sem ataque pessoal a servidores e sem teoria da conspiração. Você é a tradução humana de um sistema que fala difícil.</p>
+    <h3 class="minor">Ganchos do inimigo comum</h3>
+    <ul class="hooks">
+      <li>O sistema te entrega um formulário cheio de juridiquês e espera que você se vire. A gente traduz.</li>
+      <li>Um serviço público que não explica seus direitos está, na prática, escondendo eles de você.</li>
+      <li>Não é você que é "burro pra entender o INSS". É o INSS que foi feito pra ser difícil.</li>
+      <li>Te deixam na fila, sem explicação, sem retorno. Você merece ser tratado como gente — e a gente trata.</li>
+    </ul>
+    <div class="box accent">
+      <span class="label">A virada generosa</span>
+      <p>Depois de nomear o inimigo, ofereça a saída de graça: informação. É isso que constrói autoridade — você <strong>resolve um pedaço do problema no próprio post</strong>, e a pessoa confia que você resolve o resto.</p>
+    </div>
+  </section>
+
+  <!-- 05 · ESPECIALISTA × GENERALISTA -->
+  <section class="block">
+    <div class="sec-head"><span class="id">05</span><h2>Especialista, não generalista</h2>
+      <p class="sub">Seu maior diferencial. Previdência é densa — não é "mais uma área". Mostre isso sem arrogância.</p>
+    </div>
+
+    <div class="vs">
+      <div class="gen">
+        <h4>✕ O generalista</h4>
+        <ul>
+          <li>Faz um pouco de tudo: trabalhista, família, cível… e previdência "também".</li>
+          <li>Não acompanha as mudanças constantes das regras do INSS.</li>
+          <li>Trata o caso como exceção na rotina — e erra no detalhe que decide.</li>
+          <li>Descobre a regra junto com você, no meio do processo.</li>
+        </ul>
+      </div>
+      <div class="esp">
+        <h4>✓ O CarlosCostaPrev</h4>
+        <ul>
+          <li>Previdência é a <strong>única</strong> coisa que a gente faz. O dia inteiro, todo dia.</li>
+          <li>Conhece a fundo BPC, incapacidade, perícia, avaliação social, recurso.</li>
+          <li>Já viu o seu tipo de caso dezenas de vezes — sabe o que cai e o que falta.</li>
+          <li>Antecipa o problema antes do INSS apontar.</li>
+        </ul>
+      </div>
+    </div>
+
+    <h3 class="minor">Ganchos do diferencial</h3>
+    <ul class="hooks">
+      <li>Você não chama um clínico geral pra fazer uma cirurgia no coração. Por que confiaria sua aposentadoria a um advogado generalista?</li>
+      <li>Previdência muda toda hora. Quem faz "um pouco de tudo" não consegue acompanhar — e o seu caso paga a conta.</li>
+      <li>A matéria previdenciária é densa de propósito. Não é qualquer um que domina — é quem faz só isso.</li>
+      <li>No nosso escritório, previdência não é "também". É tudo o que a gente faz.</li>
+    </ul>
+
+    <div class="box err">
+      <span class="label">⚖️ Atenção legal — leia antes de publicar</span>
+      <p>O diferencial "especialista" é da <strong>marca/escritório</strong> (CarlosCostaPrev — advocacia previdenciária, sustentada pelo sócio com OAB). Ao falar do <strong>Carlos pessoalmente</strong>, use <strong>"especialista em previdência administrativa"</strong> — nunca "advogado Carlos", "Dr." ou OAB associada a ele. E nunca compare ofendendo: "advogado generalista" é uma categoria, não uma pessoa específica. Nada de prometer resultado ("com a gente você ganha"); diga "a gente analisa e conduz o seu caso".</p>
+    </div>
+  </section>
+
+  <!-- 06 · APLICAR -->
+  <section class="block">
+    <div class="sec-head"><span class="id">06</span><h2>Como aplicar no dia a dia</h2>
+      <p class="sub">Uma checklist rápida pra todo post sair afiado — e seguro.</p>
+    </div>
+    <ul class="clean">
+      <li><strong>Escolha 1 alavanca</strong> pro gancho (dor / urgência / necessidade / curiosidade) e anote no roteiro.</li>
+      <li><strong>Nomeie o inimigo</strong> certo: o sistema e a desinformação — nunca a pessoa.</li>
+      <li><strong>Feche o arco:</strong> dor → verdade/direito → esperança + 1 CTA. Sem saída, não publique.</li>
+      <li><strong>Reforce o especialista</strong> ao menos 1×/semana (não em todo post, pra não soar repetitivo).</li>
+      <li><strong>Passe o filtro legal:</strong> Carlos = especialista em previdência administrativa; sem "Dr."/OAB; sem promessa de resultado.</li>
+      <li><strong>Um CTA só:</strong> quase sempre o WhatsApp. Dois CTAs anulam um ao outro.</li>
+    </ul>
+    <div class="box accent">
+      <span class="label">Liga com o resto</span>
+      <p>Este playbook é a <em>munição</em>; o <strong>Plano Editorial de 30 dias</strong> é o <em>campo de batalha</em>. Para cada slot do calendário, escolha a alavanca aqui. Para o Claude Code: cada post do JSON pode ganhar um campo <strong>"alavanca"</strong> (dor | urgencia | necessidade | curiosidade) — assim a automação equilibra os tons ao longo da semana.</p>
+    </div>
+  </section>
+
+  <p class="closing">
+    Esse é o tom que faltava: conteúdo que <strong>toca onde dói, mostra a saída e prova que precisa de especialista</strong>.
+    Use sempre com responsabilidade — a sua força é a verdade do problema, não o exagero. Acolher é a estratégia.
+  </p>
+
+</div>
+<button class="print-btn no-print" onclick="window.print()">⬇ Salvar como PDF</button>
+</body>
+</html>

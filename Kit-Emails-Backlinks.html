@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kit de Emails — Backlinks Portal do BPC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --bg:#1a0d04;--bg2:#231208;--terra:#c4673a;--gold:#e8c07a;
+  --ink:#f5ede0;--ink-dim:#c8b89a;--ink-fade:#8a7060;--line:rgba(245,237,224,.1);
+  --font-serif:'Playfair Display',Georgia,serif;--font-sans:'DM Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-sans);font-size:15px;line-height:1.65}
+.wrap{max-width:860px;margin:0 auto;padding:0 clamp(20px,5vw,48px) 80px}
+
+/* Cover */
+.cover{padding:72px 0 56px;border-bottom:1px solid var(--line);margin-bottom:56px}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px}
+.cover h1{font-family:var(--font-serif);font-size:clamp(2.4rem,5vw,4rem);line-height:1.05;letter-spacing:-.03em;margin-bottom:18px}
+.cover h1 em{color:var(--terra);font-style:normal}
+.cover p{color:var(--ink-dim);font-size:17px;max-width:560px}
+
+/* Email cards */
+.email-block{margin-bottom:48px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--bg2)}
+.email-header{padding:20px 28px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.email-badge{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:99px;flex-shrink:0}
+.badge-alta{background:rgba(196,103,58,.2);color:#e4855a}
+.badge-media{background:rgba(232,192,122,.15);color:var(--gold)}
+.badge-facil{background:rgba(50,180,100,.12);color:#6de0a0}
+.email-meta{flex:1}
+.email-meta h3{font-family:var(--font-serif);font-size:1.2rem;color:var(--ink);margin-bottom:4px}
+.email-meta .dest{font-size:13px;color:var(--ink-fade)}
+.email-body{padding:28px}
+.field{margin-bottom:20px}
+.field label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.field-val{background:rgba(245,237,224,.04);border:1px solid var(--line);border-radius:10px;padding:14px 18px;font-size:14px;color:var(--ink-dim);line-height:1.7;white-space:pre-wrap;font-family:var(--font-sans)}
+.field-val strong{color:var(--ink);font-weight:600}
+.copy-btn{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--terra);background:transparent;border:1px solid rgba(196,103,58,.35);border-radius:99px;padding:6px 16px;cursor:pointer;transition:all 150ms}
+.copy-btn:hover{background:rgba(196,103,58,.1);border-color:var(--terra)}
+.copy-btn.copied{color:#6de0a0;border-color:rgba(50,180,100,.4)}
+
+/* Divider */
+.section-title{font-family:var(--font-serif);font-size:1.8rem;color:var(--ink);margin:64px 0 28px;padding-top:40px;border-top:1px solid var(--line)}
+
+/* Tips */
+.tips{background:rgba(196,103,58,.07);border-left:3px solid var(--terra);border-radius:0 12px 12px 0;padding:18px 22px;margin:32px 0;font-size:14px;color:var(--ink-dim)}
+.tips strong{color:var(--terra);display:block;margin-bottom:6px}
+.tips ul{padding-left:20px;margin-top:8px;display:flex;flex-direction:column;gap:6px}
+
+/* Timeline mini */
+.plan{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin:32px 0}
+.plan-item{background:var(--bg2);border:1px solid var(--line);border-radius:12px;padding:16px}
+.plan-item .week{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--terra);margin-bottom:8px}
+.plan-item h4{font-size:14px;font-weight:600;color:var(--ink);margin-bottom:6px}
+.plan-item p{font-size:12.5px;color:var(--ink-fade);line-height:1.5}
+
+@media print{
+  body{background:#fff;color:#111;font-size:12px}
+  .email-block{background:#fafafa;border-color:#ddd;break-inside:avoid}
+  .email-header{border-color:#ddd}
+  .field-val{background:#f5f0eb;border-color:#ddd;color:#444}
+  .field-val strong{color:#111}
+  .copy-btn{display:none}
+  .cover h1,.section-title{color:#1a0d04}
+  .cover h1 em,.eyebrow,.field label,.plan-item .week,.badge-alta,.badge-media,.badge-facil,.tips strong{color:#c4673a!important}
+  .cover p,.dest,.tips,.plan-item p{color:#555}
+  .plan-item{background:#f9f9f9;border-color:#ddd}
+  .tips{background:#fff8f0;border-left-color:#c4673a}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<!-- COVER -->
+<div class="cover">
+  <div class="eyebrow">Portal do BPC · CarlosCostaPrev · Junho 2026</div>
+  <h1>Kit de Emails<br><em>Backlinks gratuitos</em></h1>
+  <p>15 modelos prontos para conseguir backlinks de qualidade em associações, plataformas jurídicas, imprensa local e diretórios. Copie, personalize minimamente e envie.</p>
+</div>
+
+<!-- SEÇÃO 1 — ASSOCIAÇÕES -->
+<h2 class="section-title">1. Associações de saúde e deficiência</h2>
+
+<div class="tips">
+  <strong>Como funciona</strong>
+  Associações como APAE, Deficiente Ciente e Inclusive mantêm páginas de "Links úteis" ou "Recursos". Um email bem escrito pedindo inclusão tem taxa de resposta de 30–50%. O link é editorial, permanente e de alta relevância temática.
+  <ul>
+    <li>Envie da conta de email profissional do Carlos Costa, não de Gmail pessoal</li>
+    <li>Aguarde 7 dias antes de fazer follow-up</li>
+    <li>Se responderem positivamente, ofereça reciprocidade: link para eles no Portal do BPC</li>
+  </ul>
+</div>
+
+<!-- Email 1 -->
+<div class="email-block">
+  <div class="email-header">
+    <div>
+      <span class="email-badge badge-alta">⭐ Alta prioridade</span>
+    </div>
+    <div class="email-meta">
+      <h3>APAE Brasil / APAE RJ — Recursos para famílias</h3>
+      <div class="dest">Para: comunicacao@apaebrasil.org.br · apae-rj@apae.org.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Solicitação de parceria — recurso gratuito sobre BPC para famílias APAE</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val" id="email1">Olá, equipe de comunicação da APAE,
+
+Meu nome é <strong>Carlos Costa</strong>, advogado previdenciário especializado em BPC/LOAS, com escritório em Irajá, Rio de Janeiro.
+
+Mantemos o <strong>portaldobpc.com.br</strong> — portal gratuito e sem fins comerciais que reúne informações detalhadas sobre o Benefício de Prestação Continuada para famílias com deficiência intelectual, autismo, síndrome de Down, paralisia cerebral e mais 55 outras condições.
+
+Percebemos que muitas famílias atendidas pela APAE enfrentam dificuldades para compreender os critérios do BPC, organizar documentação e lidar com negativas do INSS. Nosso portal existe exatamente para preencher essa lacuna — com linguagem acessível, critérios legais reais e orientação gratuita pelo WhatsApp.
+
+Gostaríamos de sugerir a inclusão do portaldobpc.com.br na seção de "Links úteis" ou "Recursos para famílias" do site da APAE.
+
+Em contrapartida, incluímos um link destacado para a APAE em nossa página de recursos.
+
+Fico à disposição para qualquer dúvida.
+
+Atenciosamente,
+Carlos Costa
+OAB/RJ [número]
+(21) 96423-8080
+portaldobpc.com.br</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- Email 2 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-alta">⭐ Alta prioridade</span></div>
+    <div class="email-meta">
+      <h3>Deficiente Ciente — Parceria editorial</h3>
+      <div class="dest">Para: contato@deficienteciente.com.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Parceria: conteúdo gratuito sobre BPC para leitores Deficiente Ciente</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Olá,
+
+Sou <strong>Carlos Costa</strong>, advogado especializado em BPC/LOAS em Irajá, RJ.
+
+Acompanho o Deficiente Ciente há anos e admiro o trabalho de vocês com informação acessível para a comunidade PCD.
+
+Criamos o <strong>portaldobpc.com.br</strong> — com 60+ páginas sobre condições que dão direito ao BPC, incluindo critérios legais, documentação e dicas de perícia. Todo conteúdo é gratuito.
+
+Tenho duas sugestões de parceria:
+1. Inclusão do portal em sua seção de recursos / links úteis sobre direitos PCD
+2. Publicação de um artigo de minha autoria sobre BPC (tema à escolha de vocês)
+
+Sem custo algum. Só quero que mais famílias PCD conheçam seus direitos.
+
+Abraço,
+Carlos Costa
+OAB/RJ [número] · (21) 96423-8080 · portaldobpc.com.br</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- Email 3 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-media">◆ Média prioridade</span></div>
+    <div class="email-meta">
+      <h3>Inclusive.org.br — Artigo sobre BPC</h3>
+      <div class="dest">Para: redacao@inclusive.org.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Proposta de artigo: BPC para pessoa com deficiência em 2026</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Olá, equipe do Inclusive,
+
+Sou <strong>Carlos Costa</strong>, advogado previdenciário com foco em BPC/LOAS, de Irajá/RJ.
+
+Gostaria de contribuir com um artigo para o Inclusive sobre um tema que impacta diretamente leitores de vocês:
+
+<strong>"BPC 2026: o que mudou, quem tem direito e como não cair nas armadilhas da perícia"</strong>
+
+O artigo teria cerca de 1.200 palavras, linguagem acessível, com citação das leis vigentes e orientação prática para famílias PCD.
+
+Mantenho o portaldobpc.com.br — podem conferir a qualidade do conteúdo que produzimos.
+
+Se houver interesse, posso enviar o artigo completo em até 5 dias úteis.
+
+Atenciosamente,
+Carlos Costa · OAB/RJ [número]
+portaldobpc.com.br · (21) 96423-8080</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- Email 4 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-media">◆ Média prioridade</span></div>
+    <div class="email-meta">
+      <h3>Grupos de mães de autistas / Down (Facebook/Instagram)</h3>
+      <div class="dest">Para: admins dos grupos — mensagem direta</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Mensagem direta (WhatsApp / Instagram DM)</label>
+      <div class="field-val">Oi, tudo bem?
+
+Sou o <strong>Carlos Costa</strong>, advogado especializado em BPC. Vi o trabalho incrível que vocês fazem aqui com as famílias.
+
+Criei um portal gratuito, portaldobpc.com.br, com tudo sobre BPC para autismo e síndrome de Down — documentos, perícia, recurso quando negam. Sem vender nada, só informação.
+
+Vocês topam fixar o link nos recursos do grupo? Tenho certeza que vai ajudar muita família daqui.
+
+Se precisar de qualquer orientação sobre BPC pra algum membro do grupo, pode me chamar também. 🙏
+
+Carlos Costa · (21) 96423-8080</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar mensagem</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 2 — PLATAFORMAS JURÍDICAS -->
+<h2 class="section-title">2. Plataformas jurídicas</h2>
+
+<div class="tips">
+  <strong>Estratégia</strong>
+  Publicar o mesmo artigo (adaptado) em 3 plataformas jurídicas = 3 backlinks de alta autoridade com 1 hora de trabalho. Use os artigos do blog do Portal do BPC como base — só reescreva o primeiro e o último parágrafo.
+  <ul>
+    <li><strong>Jusbrasil:</strong> acesse jusbrasil.com.br → Perfil de Advogado → Artigos → Publicar</li>
+    <li><strong>DireitoNet:</strong> direitonet.com.br → Cadastro gratuito → Enviar artigo</li>
+    <li><strong>Âmbito Jurídico:</strong> envie por email (abaixo)</li>
+  </ul>
+</div>
+
+<!-- Email 5 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-alta">⭐ Alta prioridade</span></div>
+    <div class="email-meta">
+      <h3>Âmbito Jurídico — Publicação de artigo</h3>
+      <div class="dest">Para: artigos@ambito-juridico.com.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Envio de artigo: BPC/LOAS — Erros que derrubam o pedido e como evitá-los</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Prezados editores do Âmbito Jurídico,
+
+Encaminho artigo de minha autoria para avaliação e publicação:
+
+<strong>Título:</strong> "BPC/LOAS: os 4 erros mais comuns que levam ao indeferimento e como evitá-los"
+
+<strong>Resumo:</strong> O artigo analisa as causas mais frequentes de negativa do Benefício de Prestação Continuada — renda per capita, CadÚnico desatualizado, laudo médico insuficiente e deficiência não reconhecida como de longo prazo — com embasamento no Decreto 6.214/2007, Lei 8.742/93 e jurisprudência do STJ (Súmula 636).
+
+<strong>Autor:</strong> Carlos Costa, advogado previdenciário, OAB/RJ [número], especializado em BPC/LOAS.
+
+O artigo possui aproximadamente 1.500 palavras, linguagem técnica com acessibilidade, sem autopublicidade — apenas nota de rodapé com nome e OAB.
+
+Segue em anexo. Fico à disposição para adequações editoriais.
+
+Atenciosamente,
+Carlos Costa
+OAB/RJ [número]
+portaldobpc.com.br · (21) 96423-8080</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- Email 6 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-alta">⭐ Alta prioridade</span></div>
+    <div class="email-meta">
+      <h3>Migalhas — Coluna ou artigo de opinião</h3>
+      <div class="dest">Para: redacao@migalhas.com.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Proposta de artigo: BPC/LOAS e o erro que custou o benefício de 300 mil famílias em 2025</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Prezada redação das Migalhas,
+
+Gostaria de submeter artigo de opinião para o portal:
+
+<strong>Proposta de título:</strong>
+"BPC/LOAS: o erro silencioso de renda per capita que negou o benefício a centenas de milhares de famílias"
+
+<strong>Ângulo:</strong> A Súmula 636 do STJ — que permite excluir aposentadoria de até 1 salário mínimo do cálculo de renda per capita — é desconhecida pela maioria das famílias e até por servidores do INSS. Resultado: famílias com direito ao BPC sendo negadas por cálculo equivocado. O artigo propõe soluções legislativas e práticas.
+
+<strong>Autor:</strong> Carlos Costa, advogado previdenciário, OAB/RJ [número], especializado em BPC/LOAS · portaldobpc.com.br
+
+Tenho disponibilidade para adequar o texto ao estilo editorial das Migalhas.
+
+Aguardo retorno,
+Carlos Costa · (21) 96423-8080</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 3 — IMPRENSA LOCAL -->
+<h2 class="section-title">3. Imprensa local — Irajá e Zona Norte</h2>
+
+<div class="tips">
+  <strong>Por que funciona</strong>
+  Imprensa local tem domain authority menor (DA 30–50), mas os links são 100% relevantes geograficamente — exatamente o que o Google Maps valoriza para ranqueamento local. E uma matéria no Extra Online ou Correio da Manhã pode gerar DA 70+.
+  <ul>
+    <li>Gancho ideal: <em>"Escritório de Irajá ajuda famílias a recuperar BPC negado pelo INSS"</em></li>
+    <li>Ofereça dados: número de casos atendidos, taxa de aprovação em recurso</li>
+    <li>Sugira pautas de interesse público — não pareça autopublicidade</li>
+  </ul>
+</div>
+
+<!-- Email 7 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-alta">⭐ Alta prioridade</span></div>
+    <div class="email-meta">
+      <h3>Extra Online / O Globo — Serviço público</h3>
+      <div class="dest">Para: redacao@extra.globo.com · pauta@oglobo.com.br</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Sugestão de pauta: famílias do Rio perdem BPC por erro de cálculo — advogado de Irajá explica como reverter</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Prezada redação,
+
+Tenho uma sugestão de pauta de interesse público para os leitores do Rio de Janeiro:
+
+<strong>Tema:</strong> Milhares de famílias cariocas têm o BPC negado todo ano por erro de cálculo de renda — e nem sabem que podem recorrer.
+
+<strong>O problema:</strong> A Súmula 636 do STJ permite excluir aposentadoria de até 1 salário mínimo do cálculo de renda per capita para fins de BPC. O INSS frequentemente ignora essa exclusão, negando benefícios a famílias que deveriam receber.
+
+<strong>O ângulo local:</strong> Atendo famílias de Irajá, Penha, Madureira e Zona Norte que tiveram o BPC negado indevidamente e conseguiram reverter em recurso. Posso dar depoimentos (com autorização) e dados sobre os casos.
+
+<strong>Fonte:</strong> Carlos Costa, advogado previdenciário, OAB/RJ [número], Irajá/RJ.
+Telefone: (21) 96423-8080 · portaldobpc.com.br
+
+Fico à disposição para entrevista — presencial em Irajá ou por vídeo.
+
+Atenciosamente,
+Carlos Costa</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- Email 8 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-facil">✓ Fácil / Rápido</span></div>
+    <div class="email-meta">
+      <h3>Blogs de bairro — Irajá, Penha, Madureira</h3>
+      <div class="dest">Para: contato de cada blog local</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Parceria: serviço gratuito de BPC para moradores de [bairro]</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Olá!
+
+Meu nome é <strong>Carlos Costa</strong>, sou advogado previdenciário com escritório aqui em Irajá.
+
+Criei o <strong>portaldobpc.com.br</strong> — um portal gratuito para moradores da Zona Norte que precisam entender o BPC/LOAS (benefício de 1 salário mínimo do INSS para idosos e pessoas com deficiência).
+
+Muitas famílias do [bairro] têm direito e não sabem, ou tiveram o benefício negado sem saber que podem recorrer.
+
+Vocês topariam incluir nosso portal como recurso para os moradores? Um post ou link na seção de serviços já ajuda muito.
+
+Em troca, posso responder dúvidas dos leitores de vocês sobre BPC pelo WhatsApp, sem custo.
+
+Obrigado!
+Carlos Costa · (21) 96423-8080 · portaldobpc.com.br</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar email</button>
+    </div>
+  </div>
+</div>
+
+<!-- SEÇÃO 4 — FOLLOW-UP -->
+<h2 class="section-title">4. Follow-up — quando ninguém responde</h2>
+
+<!-- Email 9 -->
+<div class="email-block">
+  <div class="email-header">
+    <div><span class="email-badge badge-facil">✓ Enviar após 7 dias</span></div>
+    <div class="email-meta">
+      <h3>Follow-up universal (para qualquer contato sem resposta)</h3>
+      <div class="dest">Para: qualquer destinatário que não respondeu em 7 dias</div>
+    </div>
+  </div>
+  <div class="email-body">
+    <div class="field">
+      <label>Assunto</label>
+      <div class="field-val">Re: [assunto original] — só verificando se receberam</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar assunto</button>
+    </div>
+    <div class="field">
+      <label>Corpo do email</label>
+      <div class="field-val">Olá,
+
+Sei que as caixas de entrada ficam cheias. Só queria verificar se meu email anterior chegou.
+
+Segue resumo rápido: sou Carlos Costa, advogado previdenciário de Irajá/RJ, e gostaria de [incluir nosso portal gratuito portaldobpc.com.br nos recursos de vocês / publicar um artigo sobre BPC].
+
+Se não for o momento certo ou não for o canal correto, me indica quem seria a pessoa ideal para contatar?
+
+Muito obrigado pelo tempo!
+
+Carlos Costa · (21) 96423-8080</div>
+      <button class="copy-btn" onclick="copyField(this)">Copiar follow-up</button>
+    </div>
+  </div>
+</div>
+
+<!-- PLANO DE EXECUÇÃO -->
+<h2 class="section-title">5. Plano de execução — 30 dias</h2>
+<div class="plan">
+  <div class="plan-item">
+    <div class="week">Semana 1</div>
+    <h4>Diretórios (2h)</h4>
+    <p>Bing Places, Apple Maps, Foursquare, Apontador, Guia Mais, Telelistas — só cadastrar NAP</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 1</div>
+    <h4>Jurídicos (1h)</h4>
+    <p>Perfil completo no Jusbrasil + DireitoNet. Publicar 1 artigo em cada</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 2</div>
+    <h4>Associações (1h)</h4>
+    <p>Enviar emails para APAE RJ, Deficiente Ciente e Inclusive com os modelos acima</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 2</div>
+    <h4>Grupos sociais (30min)</h4>
+    <p>Contatar 5 grupos de mães no Facebook/Instagram com a mensagem do modelo 4</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 3</div>
+    <h4>Imprensa (1h)</h4>
+    <p>Enviar sugestão de pauta para Extra Online e 3 blogs de bairro da Zona Norte</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 3</div>
+    <h4>Âmbito + Migalhas</h4>
+    <p>Enviar artigo para Âmbito Jurídico e proposta para Migalhas</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Semana 4</div>
+    <h4>Follow-ups</h4>
+    <p>Reenviar follow-up para todos que não responderam na semana 1 e 2</p>
+  </div>
+  <div class="plan-item">
+    <div class="week">Mês 2</div>
+    <h4>HARO / Qwoted</h4>
+    <p>Cadastrar em helpareporter.com e qwoted.com. Responder pedidos de jornalistas sobre INSS, direito, deficiência</p>
+  </div>
+</div>
+
+<div class="tips" style="margin-top:40px">
+  <strong>Resultado esperado em 30 dias</strong>
+  <ul>
+    <li>15–25 backlinks novos de domínios relevantes</li>
+    <li>3–5 backlinks de alta autoridade (DA 60+) das plataformas jurídicas</li>
+    <li>Aumento de buscas por "Portal do BPC" e "CarlosCostaPrev" (sinal de marca para o Google)</li>
+    <li>Primeiros reflexos no ranking local do Maps em 30–60 dias</li>
+  </ul>
+</div>
+
+</div><!-- /wrap -->
+
+<script>
+function copyField(btn) {
+  const field = btn.previousElementSibling;
+  const text = field.innerText;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.textContent = '✓ Copiado!';
+    btn.classList.add('copied');
+    setTimeout(function() {
+      btn.textContent = btn.textContent.includes('assunto') ? 'Copiar assunto' : btn.textContent.includes('mensagem') ? 'Copiar mensagem' : btn.textContent.includes('follow') ? 'Copiar follow-up' : 'Copiar email';
+      btn.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+</body>
+</html>

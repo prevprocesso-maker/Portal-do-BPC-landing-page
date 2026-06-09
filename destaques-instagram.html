@@ -1,0 +1,439 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="destaques-instagram-galeria" subtitle="Galeria com 14 capas de destaques + downloads" -->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<title>Capas de Destaques · Instagram</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  body { padding-block: clamp(40px, 6vw, 80px); }
+  .wrap { max-width: 1080px; margin-inline: auto; padding-inline: clamp(20px, 5vw, 32px); }
+
+  .header { margin-bottom: 48px; }
+  .header .eyebrow { margin-bottom: 16px; }
+  .header h1 { font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem); margin: 0 0 16px; }
+  .header p.lead { max-width: 680px; }
+
+  /* Profile section */
+  section.profile {
+    margin-bottom: 64px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid var(--line);
+  }
+  section.profile:last-child { border-bottom: none; }
+  .profile-head {
+    display: flex; align-items: center; gap: 16px;
+    margin-bottom: 8px;
+  }
+  .profile-head .handle-pill {
+    display: inline-block;
+    padding: 6px 16px;
+    background: var(--terra-500);
+    color: white;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .profile-meta { color: var(--ink-500); font-size: 14px; }
+
+  /* Mock Instagram profile preview row */
+  .ig-preview {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-top: 18px;
+  }
+  .ig-preview .ig-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-500);
+    margin-bottom: 14px;
+  }
+  .ig-row {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 8px 4px 12px;
+  }
+  .ig-row .item {
+    flex: 0 0 auto;
+    display: flex; flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .ig-row .ring {
+    width: 84px; height: 84px;
+    border-radius: 50%;
+    background-size: cover; background-position: center;
+    border: 2.5px solid var(--ink-500);
+    padding: 3px;
+    background-clip: content-box;
+  }
+  .ig-row .cap-name {
+    font-size: 12px;
+    color: var(--ink-900);
+    max-width: 88px;
+    text-align: center;
+    line-height: 1.25;
+  }
+
+  /* Grid of cards */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 24px;
+  }
+  .card {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: transform var(--dur-micro) var(--ease-out), border-color var(--dur-micro) var(--ease-out);
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--terra-400); }
+  .card .thumb {
+    aspect-ratio: 1080 / 1920;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--terra-500);
+  }
+  .card .meta {
+    padding: 12px 14px 14px;
+  }
+  .card .meta .num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-500);
+    margin-bottom: 4px;
+  }
+  .card .meta .lbl {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-900);
+    margin-bottom: 10px;
+  }
+  .card .dl {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px;
+    background: var(--bone-2);
+    border: 1px solid var(--line-2);
+    border-radius: var(--radius-pill);
+    color: var(--ink-900);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all var(--dur-micro) var(--ease-out);
+  }
+  .card .dl:hover { background: var(--terra-500); color: white; border-color: transparent; text-decoration: none; }
+
+  /* Actions row */
+  .actions {
+    display: flex; gap: 12px; flex-wrap: wrap;
+    margin-top: 22px;
+    padding-top: 22px;
+    border-top: 1px dashed var(--line);
+  }
+  .actions .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: var(--terra-500);
+    color: white;
+    border-radius: var(--radius-pill);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all var(--dur-micro) var(--ease-out);
+  }
+  .actions .btn:hover { background: var(--terra-700); transform: translateY(-1px); }
+  .actions .btn.secondary {
+    background: transparent;
+    border: 1px solid var(--line-2);
+    color: var(--ink-900);
+  }
+  .actions .btn.secondary:hover { background: var(--bone); }
+
+  /* Notes */
+  .note {
+    background: var(--info-bg);
+    border-left: 3px solid var(--info);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 15px;
+  }
+  .note strong { color: var(--info); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+
+  .tip {
+    background: var(--warn-bg);
+    border-left: 3px solid var(--warn);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 15px;
+  }
+  .tip strong { color: var(--warn); display: block; margin-bottom: 4px; text-transform: uppercase; font-size: 12px; letter-spacing: 0.08em; }
+
+  /* How to upload */
+  .howto {
+    background: var(--bone);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 22px 26px;
+    margin: 24px 0;
+  }
+  .howto h3 { margin: 0 0 12px; font-size: 1.0625rem; }
+  .howto ol { margin: 0; padding-left: 22px; font-size: 14.5px; line-height: 1.7; }
+  .howto ol li { margin-bottom: 6px; }
+  .howto code {
+    font-family: var(--font-mono); font-size: 12.5px;
+    background: var(--bone-2); padding: 1px 6px;
+    border-radius: var(--radius-sm); color: var(--terra-300);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="header">
+    <p class="eyebrow">Asset · Identidade visual</p>
+    <h1>Capas dos <em>Destaques</em> do Instagram.</h1>
+    <p class="lead">
+      14 capas (7 por perfil) em estilo editorial vintage — vinheta radial profunda,
+      grão de filme sutil, frame medalhão hairline duplo, tipografia serif italic
+      e ícones em linha fina cor creme. Formato 1080×1920 (story padrão).
+    </p>
+
+    <div class="note">
+      <strong>Direção de arte</strong>
+      Cada capa funciona como um <strong>selo de escritório de advocacia premium</strong> — não emoji em fundo plano.
+      Vinheta cria profundidade (centro luminoso → bordas vinho-marrom). Frame hairline
+      duplo lembra medalhão antigo. Assinatura editorial discreta no rodapé reforça
+      identidade. Mesma linguagem visual nos 2 perfis pra parecerem "irmãos".
+    </div>
+    <div class="note" style="margin-top: 10px;">
+      <strong>Como usar</strong>
+      Vai no Instagram do perfil → 3 pontos no canto do destaque → "Editar destaque" → "Editar capa" → selecione "Galeria" e escolha a capa correspondente. Detalhes no fim da página.
+    </div>
+  </header>
+
+
+  <!-- ============== @portaldobpc ============== -->
+  <section class="profile">
+    <div class="profile-head">
+      <span class="handle-pill">@portaldobpc</span>
+      <span class="profile-meta">Portal do BPC · 7 destaques</span>
+    </div>
+
+    <div class="ig-preview">
+      <div class="ig-label">Preview — como vai aparecer no perfil</div>
+      <div class="ig-row" data-profile="portaldobpc">
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/01-tenho-direito.png')"></div><div class="cap-name">Tenho direito?</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/02-idoso-65.png')"></div><div class="cap-name">Idoso 65+</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/03-deficiencia.png')"></div><div class="cap-name">Deficiência</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/04-documentos.png')"></div><div class="cap-name">Documentos</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/05-depoimentos.png')"></div><div class="cap-name">Depoimentos</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/06-pericia.png')"></div><div class="cap-name">Perícia</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/portaldobpc/07-whatsapp.png')"></div><div class="cap-name">WhatsApp</div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/01-tenho-direito.png')"></div>
+        <div class="meta"><div class="num">01</div><div class="lbl">Tenho direito?</div><a class="dl" href="assets/highlights/portaldobpc/01-tenho-direito.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/02-idoso-65.png')"></div>
+        <div class="meta"><div class="num">02</div><div class="lbl">Idoso 65+</div><a class="dl" href="assets/highlights/portaldobpc/02-idoso-65.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/03-deficiencia.png')"></div>
+        <div class="meta"><div class="num">03</div><div class="lbl">Deficiência</div><a class="dl" href="assets/highlights/portaldobpc/03-deficiencia.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/04-documentos.png')"></div>
+        <div class="meta"><div class="num">04</div><div class="lbl">Documentos</div><a class="dl" href="assets/highlights/portaldobpc/04-documentos.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/05-depoimentos.png')"></div>
+        <div class="meta"><div class="num">05</div><div class="lbl">Depoimentos</div><a class="dl" href="assets/highlights/portaldobpc/05-depoimentos.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/06-pericia.png')"></div>
+        <div class="meta"><div class="num">06</div><div class="lbl">Perícia</div><a class="dl" href="assets/highlights/portaldobpc/06-pericia.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/portaldobpc/07-whatsapp.png')"></div>
+        <div class="meta"><div class="num">07</div><div class="lbl">WhatsApp</div><a class="dl" href="assets/highlights/portaldobpc/07-whatsapp.png" download>⬇ PNG</a></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" data-bulk="portaldobpc">⬇ Baixar todas as 7 (uma de cada vez)</button>
+    </div>
+  </section>
+
+
+  <!-- ============== @carloscostaprev ============== -->
+  <section class="profile">
+    <div class="profile-head">
+      <span class="handle-pill">@carloscostaprev</span>
+      <span class="profile-meta">Carlos Costa · Previdência Administrativa · 7 destaques</span>
+    </div>
+
+    <div class="ig-preview">
+      <div class="ig-label">Preview — como vai aparecer no perfil</div>
+      <div class="ig-row" data-profile="carloscostaprev">
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/01-quem-somos.png')"></div><div class="cap-name">Quem somos</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/02-aposentadoria.png')"></div><div class="cap-name">Aposentadoria</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/03-pensao.png')"></div><div class="cap-name">Pensão</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/04-bpc-loas.png')"></div><div class="cap-name">BPC/LOAS</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/05-casos.png')"></div><div class="cap-name">Casos</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/06-auxilio-doenca.png')"></div><div class="cap-name">Auxílio-doença</div></div>
+        <div class="item"><div class="ring" style="background-image:url('assets/highlights/carloscostaprev/07-whatsapp.png')"></div><div class="cap-name">WhatsApp</div></div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/01-quem-somos.png')"></div>
+        <div class="meta"><div class="num">01</div><div class="lbl">Quem somos</div><a class="dl" href="assets/highlights/carloscostaprev/01-quem-somos.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/02-aposentadoria.png')"></div>
+        <div class="meta"><div class="num">02</div><div class="lbl">Aposentadoria</div><a class="dl" href="assets/highlights/carloscostaprev/02-aposentadoria.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/03-pensao.png')"></div>
+        <div class="meta"><div class="num">03</div><div class="lbl">Pensão</div><a class="dl" href="assets/highlights/carloscostaprev/03-pensao.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/04-bpc-loas.png')"></div>
+        <div class="meta"><div class="num">04</div><div class="lbl">BPC/LOAS</div><a class="dl" href="assets/highlights/carloscostaprev/04-bpc-loas.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/05-casos.png')"></div>
+        <div class="meta"><div class="num">05</div><div class="lbl">Casos</div><a class="dl" href="assets/highlights/carloscostaprev/05-casos.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/06-auxilio-doenca.png')"></div>
+        <div class="meta"><div class="num">06</div><div class="lbl">Auxílio-doença</div><a class="dl" href="assets/highlights/carloscostaprev/06-auxilio-doenca.png" download>⬇ PNG</a></div>
+      </div>
+      <div class="card">
+        <div class="thumb" style="background-image:url('assets/highlights/carloscostaprev/07-whatsapp.png')"></div>
+        <div class="meta"><div class="num">07</div><div class="lbl">WhatsApp</div><a class="dl" href="assets/highlights/carloscostaprev/07-whatsapp.png" download>⬇ PNG</a></div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn" data-bulk="carloscostaprev">⬇ Baixar todas as 7 (uma de cada vez)</button>
+    </div>
+  </section>
+
+
+  <!-- ============== Como usar ============== -->
+  <div class="howto">
+    <h3>Como aplicar as capas no Instagram</h3>
+    <ol>
+      <li><strong>Baixa</strong> os PNGs no celular (clica em "⬇ PNG" nas cards acima e salva na galeria).</li>
+      <li>Abre o <strong>Instagram</strong> no app, vai pro perfil.</li>
+      <li>Se o destaque <strong>já existe</strong>: pressiona e segura o destaque → <code>Editar destaque</code> → <code>Editar capa</code> → toca no ícone de imagem (canto inferior esquerdo) → seleciona o PNG da galeria.</li>
+      <li>Se o destaque <strong>não existe ainda</strong>: cria primeiro publicando um story qualquer + adicionando aos destaques. Depois edita a capa com o passo acima.</li>
+      <li>Repete pros 7 destaques de cada perfil.</li>
+    </ol>
+    <div class="tip" style="margin-top: 16px;">
+      <strong>Atenção</strong>
+      O Instagram às vezes não aceita o PNG direto se o app estiver desatualizado. Se travar, faz screenshot da capa aberta no celular e seleciona o screenshot na galeria.
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <p style="margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); color: var(--ink-500); font-size: 14px;">
+    Quer adicionar ou trocar uma capa? Me fala qual + ícone que tem em mente que eu gero. Tudo segue o mesmo padrão (terracota #c4673a + ícone branco linha-fina, 1080×1920).
+  </p>
+</div>
+
+<script>
+  // Cache-bust querystring (força refresh das imagens se estavam em cache)
+  const v = Date.now();
+  document.querySelectorAll('[style*="background-image"]').forEach(el => {
+    const src = el.style.backgroundImage;
+    const url = src.match(/url\(['"]?([^'")]+)['"]?\)/);
+    if (url) {
+      el.style.backgroundImage = `url('${url[1]}?v=${v}')`;
+    }
+  });
+  document.querySelectorAll('a.dl[href]').forEach(a => {
+    a.href = a.getAttribute('href') + '?v=' + v;
+  });
+
+  // Download via fetch + blob (resolve o problema de .txt do iframe)
+  async function downloadFile(url, filename) {
+    try {
+      const res = await fetch(url);
+      const blob = await res.blob();
+      const blobUrl = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = blobUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(blobUrl), 1000);
+      return true;
+    } catch (err) {
+      console.error('Download falhou:', err);
+      return false;
+    }
+  }
+
+  // Intercepta cliques nos links de download individual
+  document.querySelectorAll('a.dl').forEach(a => {
+    a.addEventListener('click', async (e) => {
+      e.preventDefault();
+      const url = a.href;
+      const filename = url.split('/').pop().split('?')[0];
+      const origText = a.textContent;
+      a.textContent = '⏳ ...';
+      const ok = await downloadFile(url, filename);
+      a.textContent = ok ? '✅ Baixado' : '❌ Erro';
+      setTimeout(() => { a.textContent = origText; }, 2000);
+    });
+  });
+
+  // Bulk download — dispara downloads em sequência via fetch+blob
+  document.querySelectorAll('button[data-bulk]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const profile = btn.dataset.bulk;
+      const links = document.querySelectorAll(`.card a.dl[href*="${profile}"]`);
+      btn.disabled = true;
+      const origText = btn.textContent;
+      for (let i = 0; i < links.length; i++) {
+        btn.textContent = `⏳ Baixando ${i+1}/${links.length}...`;
+        const url = links[i].href;
+        const filename = url.split('/').pop().split('?')[0];
+        await downloadFile(url, filename);
+        await new Promise(r => setTimeout(r, 350));
+      }
+      btn.textContent = `✅ ${links.length} baixadas`;
+      setTimeout(() => {
+        btn.disabled = false;
+        btn.textContent = origText;
+      }, 3000);
+    });
+  });
+</script>
+</body>
+</html>
