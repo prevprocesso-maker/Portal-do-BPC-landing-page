@@ -149,7 +149,7 @@ function ScreenBlog(){
             el('div',{className:'body'},
               el('div',{className:'cat'},(p.tipo?(p.tipo==='Artigo'?'ARTIGO':'GUIA')+' · ':'')+p.cat+' · '+p.date),
               el('h4',null,p.titulo),
-              el('p',null,p.desc)
+              el('p',{dangerouslySetInnerHTML:{__html:p.desc}})
             )
           );
         })
@@ -182,7 +182,7 @@ function ScreenBlogPost(props){
         el('div',{style:{maxWidth:760}},
           el('div',{className:'eyebrow',style:{marginBottom:12}},(post.tipo?(post.tipo==='Artigo'?'ARTIGO':'GUIA')+' · ':'')+post.cat+' · '+post.date+' · '+post.readTime+' de leitura'),
           el('h1',{style:{fontFamily:'var(--font-serif)',fontSize:'clamp(2rem,4vw,3.2rem)',lineHeight:1.1,marginBottom:20,letterSpacing:'-0.02em'}},post.titulo),
-          el('p',{className:'lead',style:{color:'var(--ink-500)',fontSize:19,marginBottom:0}},post.intro)
+          el('p',{className:'lead',style:{color:'var(--ink-500)',fontSize:19,marginBottom:0},dangerouslySetInnerHTML:{__html:post.intro}})
         )
       )
     ),
@@ -195,7 +195,7 @@ function ScreenBlogPost(props){
               el('div',{className:'bpc-art',style:{fontSize:17,lineHeight:1.75,color:'var(--ink-700)'},dangerouslySetInnerHTML:{__html:s.body}})
             );
           }),
-          post.faq?el('div',{className:'bpc-faq'},el('h3',null,'Perguntas frequentes'),post.faq.map(function(f,i){return el('div',{key:i,className:'bpc-faq-item'},el('p',{className:'bpc-faq-q'},f.q),el('p',{className:'bpc-faq-a'},f.a));})):null,
+          post.faq?el('div',{className:'bpc-faq'},el('h3',null,'Perguntas frequentes'),post.faq.map(function(f,i){return el('div',{key:i,className:'bpc-faq-item'},el('p',{className:'bpc-faq-q'},f.q),el('p',{className:'bpc-faq-a',dangerouslySetInnerHTML:{__html:f.a}}));})):null,
           el('div',{className:'pericia-cta',style:{marginTop:56}},
             el('div',null,
               el('div',{className:'eyebrow'},'Atendimento gratuito'),
