@@ -3,17 +3,16 @@
 <head>
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>60 patologias e condições — BPC/LOAS | Portal do BPC</title>
-<meta name="description" content="Lista completa com 60 patologias — elegíveis, condicionais e raramente elegíveis para o BPC/LOAS. Autismo, câncer, Parkinson, Alzheimer, deficiência visual, auditiva e muito mais. CID e CIF de cada patologia."/>
+<title>60 Doenças que Dão Direito ao BPC/LOAS | Portal do BPC</title>
+<meta name="description" content="60 doenças que dão direito ao BPC/LOAS: autismo, câncer, Parkinson, Alzheimer, fibromialgia e mais. CID, CIF e orientação para a perícia INSS."/>
 <meta name="robots" content="index, follow, max-image-preview:large"/>
 <link rel="canonical" href="https://www.portaldobpc.com.br/patologias.html"/>
 <meta property="og:type" content="website"/>
 <meta property="og:locale" content="pt_BR"/>
-<meta property="og:title" content="60 patologias — BPC/LOAS | Portal do BPC"/>
+<meta property="og:title" content="60 Doenças que Dão Direito ao BPC/LOAS | Portal do BPC"/>
 <meta property="og:description" content="Lista completa com CID e CIF de cada condição. Clique na sua doença e saiba o que provar no INSS."/>
 <meta property="og:url" content="https://www.portaldobpc.com.br/patologias.html"/>
 <meta property="og:image" content="https://www.portaldobpc.com.br/assets/og-cover.png"/>
-<link rel="icon" type="image/png" href="assets/favicon-256.png"/>
 <link rel="icon" type="image/png" href="assets/favicon-256.png"/>
 <meta name="theme-color" content="#c4673a"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -55,6 +54,13 @@
 <body>
 
 <div id="root"></div>
+
+<!-- SEO: conteúdo estático para crawlers (oculto quando React monta) -->
+<div id="seo-fallback" style="max-width:960px;margin:0 auto;padding:40px 24px;font-family:Inter,system-ui,sans-serif;color:#1f1812;">
+  <h1 style="font-size:2rem;line-height:1.2;margin:0 0 16px;">60 Doenças que Dão Direito ao BPC/LOAS</h1>
+  <p>Lista completa com CID, CIF e orientação para a perícia INSS de cada condição. Clique na sua doença e saiba o que provar.</p>
+</div>
+<script>document.getElementById('seo-fallback').style.display='none';</script>
 
 <script crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
 <script crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
