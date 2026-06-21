@@ -1,66 +1,34 @@
-# robots.txt — Portal do BPC
-# https://www.portaldobpc.com.br/robots.txt
-# Atualizado: junho/2026
+# Robots.txt — Portal do BPC
+# Coloque este arquivo na raiz do domínio (https://www.portaldobpc.com.br/robots.txt)
 
-# Regra geral — permite tudo
 User-agent: *
 Allow: /
 
-# Quando criar área logada, adicione:
+# Permite tudo, sem páginas privadas (ainda).
+# Quando criar área do beneficiário (logada), adicione:
 # Disallow: /minha-conta/
 # Disallow: /admin/
 
-# Sitemap
 Sitemap: https://www.portaldobpc.com.br/sitemap.xml
 
-# ─────────────────────────────────────────
-# Bots de IA — permitidos explicitamente
-# ─────────────────────────────────────────
-
-# OpenAI — treinamento
+# Indexação por IA (ChatGPT, Perplexity, Gemini, Claude, Copilot, etc.)
 User-agent: GPTBot
 Allow: /
 
-# OpenAI — busca em tempo real (ChatGPT Search)
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: OAI-SearchBot
+User-agent: Google-Extended
 Allow: /
 
-# Anthropic — treinamento
-User-agent: ClaudeBot
+User-agent: PerplexityBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-# Anthropic — busca em tempo real
-User-agent: Claude-User
+User-agent: ClaudeBot
 Allow: /
 
-User-agent: Claude-SearchBot
-Allow: /
-
-# Google — Gemini / treinamento
-User-agent: Google-Extended
-Allow: /
-
-# Perplexity — busca em tempo real
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-# Microsoft Copilot
-User-agent: Bingbot
-Allow: /
-
-# Meta
-User-agent: Meta-ExternalAgent
-Allow: /
-
-# Common Crawl (alimenta modelos open-source)
-User-agent: CCBot
-Allow: /
+# Arquivo de descoberta para LLMs
+LLMs: https://www.portaldobpc.com.br/llms.txt
