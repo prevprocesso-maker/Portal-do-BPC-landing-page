@@ -29,6 +29,3 @@ Allow: /
 
 User-agent: ClaudeBot
 Allow: /
-
-# Arquivo de descoberta para LLMs
-LLMs: https://www.portaldobpc.com.br/llms.txt

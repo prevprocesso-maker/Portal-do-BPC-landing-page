@@ -45,7 +45,7 @@
   <link rel="apple-touch-icon" href="assets/favicon-256.png" />
   <link rel="manifest" href="manifest.json" />
   <!-- IA / LLM indexing -->
-  <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — Portal do BPC" />
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt — Portal do BPC" />
   <meta name="ai-content-declaration" content="human-edited" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,19 +53,27 @@
   <meta name="apple-mobile-web-app-title" content="Portal BPC" />
 
   <!-- ===== Analytics (Google Analytics 4) =====
-       Substitua G-6RVLVTFRGT pelo seu Measurement ID.
+       Deferred: carrega 2s após load para não competir com LCP.
        Cadastra grátis em https://analytics.google.com -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RVLVTFRGT"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    // anonymize_ip + sem cookies persistentes até consentimento
     gtag('consent', 'default', {
       'analytics_storage': 'denied',
       'ad_storage': 'denied'
     });
-    gtag('config', 'G-6RVLVTFRGT', { 'anonymize_ip': true });
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-6RVLVTFRGT';
+        s.async = true;
+        document.head.appendChild(s);
+        s.onload = function() {
+          gtag('js', new Date());
+          gtag('config', 'G-6RVLVTFRGT', { 'anonymize_ip': true });
+        };
+      }, 2000);
+    });
   </script>
 
   <!-- ===== Structured Data — Organization + LegalService + LocalBusiness ===== -->
@@ -147,17 +155,7 @@
           "query-input": "required name=search_term_string"
         }
       },
-      {
-        "@type": "VideoObject",
-        "@id": "https://www.portaldobpc.com.br/#hero-video",
-        "name": "Portal do BPC — Apresentação",
-        "description": "Vídeo de apresentação do Portal do BPC: orientação sobre o Benefício de Prestação Continuada (BPC/LOAS) para idosos 65+ e pessoas com deficiência, com o especialista Carlos Costa.",
-        "thumbnailUrl": "https://res.cloudinary.com/dowbnssen/video/upload/so_0/v1780852218/hero_jitabs.jpg",
-        "contentUrl": "https://res.cloudinary.com/dowbnssen/video/upload/v1780852218/hero_jitabs.mp4",
-        "uploadDate": "2026-06-07T00:00:00-03:00",
-        "inLanguage": "pt-BR",
-        "publisher": { "@id": "https://www.portaldobpc.com.br/#org" }
-      },
+
       {
         "@type": ["Service", "WebPage"],
         "@id": "https://www.portaldobpc.com.br/bpc-estrangeiro",
@@ -318,10 +316,10 @@
   <link rel="alternate" hreflang="pt-BR" href="https://www.portaldobpc.com.br/" />
   <link rel="alternate" hreflang="x-default" href="https://www.portaldobpc.com.br/" />
 
-  <link rel="stylesheet" href="colors_and_type.css?v=20260610" />
-  <link rel="stylesheet" href="styles.css?v=20260610" />
-  <link rel="stylesheet" href="tweaks.css?v=20260610" />
-  <link rel="stylesheet" href="fixes.css?v=20260610" />
+  <link rel="stylesheet" href="colors_and_type.css?v=20260622" />
+  <link rel="stylesheet" href="styles.css?v=20260622" />
+  <link rel="stylesheet" href="tweaks.css?v=20260622" />
+  <link rel="stylesheet" href="fixes.css?v=20260622" />
 </head>
 <body>
   <div id="root" data-screen-label="Website"></div>
@@ -440,12 +438,12 @@
   <script defer crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 
   <!-- JS pré-compilado (rápido, sem Babel no browser) -->
-  <script defer src="components.js?v=20260610"></script>
-  <script defer src="screens.js?v=20260610"></script>
-  <script defer src="blog-posts.js?v=20260610"></script>
-  <script defer src="mobile-patch.js?v=20260610"></script>
-  <script defer src="app-main.js?v=20260610"></script>
-  <script defer src="tweaks.js?v=20260610"></script>
+  <script defer src="components.js?v=20260622"></script>
+  <script defer src="screens.js?v=20260622"></script>
+  <script defer src="blog-posts.js?v=20260622"></script>
+  <script defer src="mobile-patch.js?v=20260622"></script>
+  <script defer src="app-main.js?v=20260622"></script>
+  <script defer src="tweaks.js?v=20260622"></script>
 
   <!-- PWA: registra Service Worker -->
   <script>
@@ -455,6 +453,7 @@
       });
     }
   </script>
-  <script defer src="fixes-b.js?v=20260610"></script>
+  <script defer src="fixes-b.js?v=20260622"></script>
+  <script defer src="lighthouse-a11y.js?v=20260622"></script>
 </body>
 </html>

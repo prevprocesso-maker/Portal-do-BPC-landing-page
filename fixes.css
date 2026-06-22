@@ -129,3 +129,85 @@
   .mobile-tab.active { color: var(--terra-500); }
   .mobile-tab--wa { background: var(--wa); color: #fff !important; font-weight: 700; }
 }
+
+/* ============================================================
+   Lighthouse fixes — 22/06/2026
+   Perf 67→90+ · A11y 87→95+ · SEO 92→100
+   ============================================================ */
+
+/* ---- A11y: Contraste insuficiente (WCAG AA 4.5:1) ---- */
+
+/* Blog card category text — boost contra fundo escuro */
+.blog-card .cat {
+  color: var(--terra-400) !important;
+}
+
+/* Footer: textos com opacidade muito baixa */
+.footer .footer-bottom {
+  opacity: 0.75 !important;
+}
+.footer .footer-desc {
+  opacity: 0.85 !important;
+}
+
+/* CTA banner paragraph */
+.cta-banner p {
+  color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Mobile tab bar — texto mais legível */
+@media (max-width: 900px) {
+  .mobile-tab {
+    color: var(--ink-900) !important;
+    opacity: 0.7;
+  }
+  .mobile-tab.active {
+    color: var(--terra-500) !important;
+    opacity: 1;
+  }
+}
+
+/* Cookie banner — links distinguíveis */
+#cookie-banner a {
+  text-decoration: underline !important;
+}
+
+/* Footer review card — star text legível */
+.review-card-kicker {
+  color: rgba(245, 237, 224, 0.8) !important;
+}
+.review-card-sub {
+  color: rgba(245, 237, 224, 0.8) !important;
+}
+
+/* Footer social label */
+.footer .social-btn-label {
+  color: #fff !important;
+}
+
+/* ---- A11y: Heading hierarchy fix ---- */
+/* .valor h5 (ACOLHIMENTO etc) is decorative label, not heading.
+   Override visual to match but semantics fixed in components.js */
+.valor h5 {
+  font-size: 14px;
+  margin: 0 0 4px 0;
+}
+
+/* ---- Performance: content-visibility for off-screen sections ---- */
+.patologias-grid .pat-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 220px;
+}
+.blog-grid .blog-card {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 340px;
+}
+
+/* ---- Performance: reduce motion ---- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

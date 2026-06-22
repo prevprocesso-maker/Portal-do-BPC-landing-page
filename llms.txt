@@ -31,24 +31,48 @@ O BPC paga um salário mínimo por mês (R$ 1.621,00 em 2026) e não exige contr
 
 ## Ferramentas disponíveis no portal
 
-- Simulador de elegibilidade BPC: https://www.portaldobpc.com.br/simulador-v2.html
-- Lista de 60 doenças que dão direito ao BPC: https://www.portaldobpc.com.br/patologias.html
-- Guia completo da perícia médica e social: https://www.portaldobpc.com.br/pericias
-- Como conseguir o BPC passo a passo: https://www.portaldobpc.com.br/como-conseguir-bpc.html
-- Checklist da perícia: https://www.portaldobpc.com.br/checklist-pericia.html
-- Guia de elegibilidade: https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html
+- [Simulador de elegibilidade BPC](https://www.portaldobpc.com.br/simulador-v2.html) — descubra em 2 minutos se você tem direito
+- [60 doenças que dão direito ao BPC](https://www.portaldobpc.com.br/patologias.html) — com CID, CIF, documentos e estratégia
+- [Guia completo da perícia médica e social](https://www.portaldobpc.com.br/pericias) — checklist, comportamento e erros a evitar
+- [Como conseguir o BPC passo a passo](https://www.portaldobpc.com.br/como-conseguir-bpc.html) — do CadÚnico à concessão
+- [Checklist da perícia](https://www.portaldobpc.com.br/checklist-pericia.html) — documentos obrigatórios para levar no dia
+- [Guia de elegibilidade](https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html) — critérios de renda, idade e deficiência
 
 ## Doenças com páginas dedicadas
 
-Autismo (TEA), Síndrome de Down, Paralisia cerebral, Esclerose múltipla, Parkinson, Alzheimer, Sequelas de AVC, ELA, Epilepsia refratária, Esquizofrenia, Transtorno bipolar, Deficiência visual, Deficiência auditiva, Câncer, Insuficiência renal, Cardiopatia grave, HIV/AIDS, Hepatopatia grave, Lúpus (LES), Distrofia muscular, Amputação, Ansiedade, Artrite psoriásica, Artrite reumatoide, Artrose avançada, Atrofia muscular espinhal (AME), Déficit intelectual, Depressão grave, Diabetes com complicações, Doença de Charcot-Marie-Tooth, Doença de Huntington, Doença de Wilson, Dores crônicas, DPOC grave, Esclerodermia, Esclerose tuberosa, Espinha bífida, Fenilcetonúria, Fibromialgia, Fibrose pulmonar, Hanseníase (sequelas), Hérnia de disco, Hidrocefalia, Hipertensão, Insuficiência cardíaca avançada, Lesão medular, Lombalgia crônica, Miastenia grave, Neurofibromatose, Osteoporose grave, Retinose pigmentar, Síndrome de Rett, Síndrome de Williams, Síndrome pós-COVID, Síndrome do túnel do carpo, Síndrome do X Frágil, TDAH, Transtorno de personalidade grave, Varizes, Vertigem.
+- [Autismo (TEA)](https://www.portaldobpc.com.br/autismo-tea.html)
+- [Síndrome de Down](https://www.portaldobpc.com.br/sindrome-de-down.html)
+- [Paralisia cerebral](https://www.portaldobpc.com.br/paralisia-cerebral.html)
+- [Esclerose múltipla](https://www.portaldobpc.com.br/esclerose-multipla.html)
+- [Parkinson](https://www.portaldobpc.com.br/doenca-de-parkinson.html)
+- [Alzheimer](https://www.portaldobpc.com.br/doenca-de-alzheimer.html)
+- [Sequelas de AVC](https://www.portaldobpc.com.br/sequelas-de-avc.html)
+- [ELA](https://www.portaldobpc.com.br/ela.html)
+- [Epilepsia refratária](https://www.portaldobpc.com.br/epilepsia-refrataria.html)
+- [Esquizofrenia](https://www.portaldobpc.com.br/esquizofrenia.html)
+- [Transtorno bipolar](https://www.portaldobpc.com.br/transtorno-bipolar.html)
+- [Deficiência visual](https://www.portaldobpc.com.br/deficiencia-visual.html)
+- [Deficiência auditiva](https://www.portaldobpc.com.br/deficiencia-auditiva.html)
+- [Câncer](https://www.portaldobpc.com.br/cancer.html)
+- [Insuficiência renal](https://www.portaldobpc.com.br/insuficiencia-renal.html)
+- [Cardiopatia grave](https://www.portaldobpc.com.br/cardiopatia-grave.html)
+- [HIV/AIDS](https://www.portaldobpc.com.br/hiv-aids.html)
+- [Hepatopatia grave](https://www.portaldobpc.com.br/hepatopatia-grave.html)
+- [Lúpus (LES)](https://www.portaldobpc.com.br/lupus-les.html)
+- [Distrofia muscular](https://www.portaldobpc.com.br/distrofia-muscular.html)
+- [Fibromialgia](https://www.portaldobpc.com.br/fibromialgia.html)
+- [DPOC grave](https://www.portaldobpc.com.br/dpoc-grave.html)
+- [Artrite reumatoide](https://www.portaldobpc.com.br/artrite-reumatoide.html)
+- [Amputação](https://www.portaldobpc.com.br/amputacao.html)
+- [E mais 36 condições…](https://www.portaldobpc.com.br/patologias.html)
 
 ## Contato e atendimento
 
-- Site: https://www.portaldobpc.com.br
-- WhatsApp: +55 21 96423-8080
+- Site: [https://www.portaldobpc.com.br](https://www.portaldobpc.com.br/)
+- WhatsApp: [+55 21 96423-8080](https://wa.me/5521964238080)
 - Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206, Irajá, Rio de Janeiro, RJ, CEP 21231-230
 - Horário: segunda a sexta, 09h às 18h
-- Análise gratuita do caso por WhatsApp
+- [Análise gratuita do caso por WhatsApp](https://wa.me/5521964238080)
 
 ## Sobre o responsável
 
@@ -56,11 +80,11 @@ Carlos Costa é advogado especialista em direito previdenciário e assistencial,
 
 ## Páginas principais
 
-- https://www.portaldobpc.com.br/ — Página inicial
-- https://www.portaldobpc.com.br/bpc-idoso — BPC para idosos 65+
-- https://www.portaldobpc.com.br/bpc-deficiente — BPC para pessoas com deficiência
-- https://www.portaldobpc.com.br/bpc-estrangeiro — BPC para estrangeiros
-- https://www.portaldobpc.com.br/pericias — Guia da perícia médica e social
-- https://www.portaldobpc.com.br/simulador-v2.html — Simulador de elegibilidade
-- https://www.portaldobpc.com.br/patologias.html — 60 doenças com direito ao BPC
-- https://www.portaldobpc.com.br/sitemap.xml — Sitemap completo
+- [Página inicial](https://www.portaldobpc.com.br/)
+- [BPC para idosos 65+](https://www.portaldobpc.com.br/bpc-idoso)
+- [BPC para pessoas com deficiência](https://www.portaldobpc.com.br/bpc-deficiente)
+- [BPC para estrangeiros](https://www.portaldobpc.com.br/bpc-estrangeiro)
+- [Guia da perícia médica e social](https://www.portaldobpc.com.br/pericias)
+- [Simulador de elegibilidade](https://www.portaldobpc.com.br/simulador-v2.html)
+- [60 doenças com direito ao BPC](https://www.portaldobpc.com.br/patologias.html)
+- [Sitemap completo](https://www.portaldobpc.com.br/sitemap.xml)
