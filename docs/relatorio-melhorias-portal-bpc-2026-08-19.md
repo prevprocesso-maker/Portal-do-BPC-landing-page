@@ -70,3 +70,11 @@ O GA4 foi configurado com consentimento e sem duplicação. A instalação de GT
 ## Conclusão
 
 As correções estruturais do CarlosCostaPrev foram adaptadas ao Portal do BPC sem copiar identificadores de analytics, dados profissionais ou qualificações não confirmadas. O portal agora tem uma base mais sólida para indexação, compreensão local por mecanismos de busca e assistentes, consentimento analítico, acessibilidade e carregamento. A recomendação é publicar este conjunto, aguardar dados de campo e tratar o LCP residual em uma segunda etapa de divisão do bundle e CSS crítico.
+
+## Atualização institucional autorizada
+
+Após o fornecimento dos dados pelo usuário, o portal passou a exibir o **CNPJ 15.648.800/0001-80** e a seguinte delimitação de responsabilidade: Carlos Costa permanece identificado como **Especialista Previdenciário**; quando houver necessidade de atuação judicial, a representação processual e os atos privativos da advocacia ficam sob responsabilidade de **Alexandre Del Rio Furtado — Advogado — OAB/RJ 270.465**.
+
+A informação foi propagada para 72 páginas HTML públicas com rodapé institucional, para os rodapés dos hubs e páginas legais, para o `llms.txt` e para o JSON-LD da homepage. A homepage recebeu `taxID` na entidade, além de um nó `Person` para Alexandre com o identificador OAB e vínculo de responsabilidade judicial. O bloco `aggregateRating` e as avaliações estruturadas não auditáveis foram removidos do JSON-LD da homepage.
+
+Durante a validação, foram corrigidas também duas aspas não escapadas que tornavam inválidos os JSON-LD de `tdah.html` e `dores-cronicas.html`. O teste institucional final confirmou 80 páginas HTML verificadas, CNPJ e OAB presentes em 72 páginas com conteúdo institucional, 97 blocos JSON-LD válidos e ausência de erros no validador estrutural. O smoke test da homepage confirmou no DOM renderizado a presença do CNPJ, do nome de Alexandre, da OAB e do schema sem `aggregateRating`.

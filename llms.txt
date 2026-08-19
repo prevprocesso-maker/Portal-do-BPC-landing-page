@@ -6,6 +6,10 @@
 
 O Portal do BPC organiza informação pública sobre requisitos, CadÚnico, perícia médica e social, documentos, recursos e condições de saúde relacionadas ao BPC. O conteúdo é informativo e não substitui a análise individual de um profissional habilitado.
 
+## Identidade institucional
+
+O Portal do BPC é operado pela CarlosCostaPrev — CNPJ 15.648.800/0001-80. Carlos Costa é apresentado como Especialista Previdenciário. Quando um caso exigir atuação judicial, a representação processual e os atos privativos da advocacia ficam sob responsabilidade de Alexandre Del Rio Furtado, Advogado inscrito na OAB/RJ sob o nº 270.465.
+
 ## Conteúdos e ferramentas
 
 - [Simulador de elegibilidade BPC](https://www.portaldobpc.com.br/simulador-v2.html)
