@@ -1,28 +1,40 @@
-# Robots.txt — Portal do BPC
-# Política de rastreamento do site: https://www.portaldobpc.com.br/
+# Robots policy — Portal do BPC
+# O conteúdo pode ser indexado para busca e citação, mas não está autorizado para treinamento.
 
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no, use=reference
 Allow: /
 
-# Não há áreas privadas públicas neste momento.
-# Quando existirem áreas autenticadas, adicione Disallow específico.
-Sitemap: https://www.portaldobpc.com.br/sitemap.xml
-
-# Indexação por IA, busca e citação — política explicitamente permissiva.
+# Robôs de treinamento: bloqueados.
 User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+# Robôs de busca, resposta e citação: permitidos.
+User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: Google-Extended
+User-agent: PerplexityBot
 Allow: /
 
-User-agent: PerplexityBot
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: anthropic-ai
 Allow: /
 
-User-agent: ClaudeBot
-Allow: /
+Sitemap: https://www.portaldobpc.com.br/sitemap.xml

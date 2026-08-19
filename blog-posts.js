@@ -216,14 +216,14 @@ function ScreenBlogPost(props){
           post.faq?el('div',{className:'bpc-faq'},el('h3',null,'Perguntas frequentes'),post.faq.map(function(f,i){return el('div',{key:i,className:'bpc-faq-item'},el('p',{className:'bpc-faq-q'},f.q),el('p',{className:'bpc-faq-a',dangerouslySetInnerHTML:{__html:f.a}}));})):null,
           el('div',{className:'pericia-cta',style:{marginTop:56}},
             el('div',null,
-              el('div',{className:'eyebrow'},'Atendimento gratuito'),
+              el('div',{className:'eyebrow'},'Orientação inicial'),
               el('h3',null,post.cta),
-              el('p',null,'Análise pelo WhatsApp. Atendimento humano, resposta em até 1 dia útil.')
+              el('p',null,'Análise técnica inicial pelo WhatsApp. Atendimento humano, resposta em até 1 dia útil.')
             ),
             el('a',{className:'btn btn--primary btn--lg',href:'https://wa.me/5521964238080?text='+encodeURIComponent(post.ctaMsg),target:'_blank',rel:'noopener'},'💬 Falar no WhatsApp')
           ),
           post.fontes?el('div',{style:{marginTop:36,padding:'20px 24px',background:'var(--bone)',border:'1px solid var(--line)',borderLeft:'3px solid var(--terra-500)',borderRadius:8}},el('h3',{style:{fontFamily:'var(--font-sans)',fontSize:11,fontWeight:700,letterSpacing:'0.12em',textTransform:'uppercase',color:'var(--terra-400)',margin:'0 0 12px'}},'Fontes consultadas'),el('ul',{style:{margin:0,paddingLeft:22,fontSize:14,lineHeight:1.7,color:'var(--ink-700)'}},post.fontes.map(function(f,i){return el('li',{key:i},f);}))):null,
-          el('div',{style:{marginTop:24,padding:'20px 24px',background:'var(--bone)',border:'1px solid var(--line)',borderRadius:12,display:'flex',alignItems:'center',gap:16}},el('div',{style:{width:48,height:48,borderRadius:'50%',background:'var(--terra-500)',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontWeight:700,fontSize:18,flexShrink:0}},'CC'),el('div',null,el('div',{style:{fontFamily:'var(--font-serif)',fontSize:15,fontWeight:600,marginBottom:2}},post.autor||'Equipe CarlosCostaPrev'),el('div',{style:{fontSize:13,color:'var(--ink-500)'}},'Advocacia previdenciária · Irajá, RJ'))),
+          el('div',{style:{marginTop:24,padding:'20px 24px',background:'var(--bone)',border:'1px solid var(--line)',borderRadius:12,display:'flex',alignItems:'center',gap:16}},el('div',{style:{width:48,height:48,borderRadius:'50%',background:'var(--terra-500)',display:'flex',alignItems:'center',justifyContent:'center',color:'white',fontWeight:700,fontSize:18,flexShrink:0}},'CC'),el('div',null,el('div',{style:{fontFamily:'var(--font-serif)',fontSize:15,fontWeight:600,marginBottom:2}},post.autor||'Equipe CarlosCostaPrev'),el('div',{style:{fontSize:13,color:'var(--ink-500)'}},'Conteúdo previdenciário · Irajá, RJ'))),
           el('div',{style:{marginTop:48,paddingTop:32,borderTop:'1px solid var(--line)'}},
             el('a',{href:'#/blog',onClick:function(e){e.preventDefault();onNavigate('blog');},style:{color:'var(--terra-400)',fontFamily:'var(--font-sans)',fontSize:15,textDecoration:'none',display:'inline-flex',alignItems:'center',gap:8}},'← Voltar para o Blog')
           )

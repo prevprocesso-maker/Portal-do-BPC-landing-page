@@ -2133,3 +2133,35 @@ a.btn--secondary[href*="wa.me"]:hover,
   /* Erros comuns */
   .pp-erros li { font-size: 15px; padding-left: 24px; }
 }
+
+/* ---- Compliance notices in pathology CTAs ---- */
+.pp-cta .lgpd-notice,
+.pp-cta .institutional-bridge {
+  max-width: 62ch;
+  margin: 14px auto 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-300, var(--ink-500));
+  text-align: center;
+}
+.pp-cta .institutional-bridge { margin-top: 8px; }
+.pp-cta .institutional-bridge a {
+  color: var(--terra-300);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@media (max-width: 520px) {
+  .pp-cta .lgpd-notice,
+  .pp-cta .institutional-bridge { font-size: 12px; }
+}
+
+/* Institutional data on standalone and article templates */
+.institutional-data--standalone {
+  max-width: 960px;
+  margin: 14px auto 24px;
+  padding: 0 20px;
+  text-align: center;
+  color: var(--ink-500, #6f6358);
+  font-size: 13px;
+  line-height: 1.55;
+}
