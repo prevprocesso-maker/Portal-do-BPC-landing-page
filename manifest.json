@@ -7,19 +7,14 @@
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#14100c",
-  "theme_color": "#c4673a",
+  "theme_color": "#075e54",
   "lang": "pt-BR",
   "icons": [
     {
       "src": "assets/favicon-256.png",
-      "sizes": "192x192",
+      "sizes": "256x256",
       "type": "image/png",
       "purpose": "any maskable"
-    },
-    {
-      "src": "assets/favicon-256.png",
-      "sizes": "256x256",
-      "type": "image/png"
     }
   ],
   "shortcuts": [
@@ -28,7 +23,13 @@
       "short_name": "WhatsApp",
       "description": "Fale agora com a equipe do Portal do BPC",
       "url": "https://wa.me/5521964238080",
-      "icons": [{ "src": "assets/icon-whatsapp.svg", "sizes": "96x96" }]
+      "icons": [
+        {
+          "src": "assets/favicon-256.png",
+          "sizes": "256x256",
+          "type": "image/png"
+        }
+      ]
     },
     {
       "name": "Simular meu caso",
@@ -37,7 +38,11 @@
       "url": "/#/simulador"
     }
   ],
-  "categories": ["health", "medical", "legal"],
+  "categories": [
+    "health",
+    "medical",
+    "legal"
+  ],
   "screenshots": [
     {
       "src": "assets/og-cover.png",

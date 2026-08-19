@@ -124,6 +124,7 @@
     hamburger.className = 'header-hamburger';
     hamburger.setAttribute('aria-label', 'Abrir menu');
     hamburger.setAttribute('aria-expanded', 'false');
+    hamburger.setAttribute('aria-controls', 'mobile-drawer');
     hamburger.innerHTML = '<span></span><span></span><span></span>';
     headerInner.appendChild(hamburger);
 
@@ -142,12 +143,13 @@
 
     var drawer = document.createElement('nav');
     drawer.className = 'mobile-drawer';
+    drawer.id = 'mobile-drawer';
     drawer.setAttribute('aria-label', 'Menu principal');
     drawer.setAttribute('aria-hidden', 'true');
     drawer.innerHTML =
       '<div class="mobile-drawer-header">' +
         '<a href="' + logoHref + '" style="display:flex;align-items:center;gap:10px;text-decoration:none;">' +
-          '<img src="assets/logo-monograma-cc.png" alt="Portal do BPC" style="height:40px;width:40px;object-fit:contain;"/>' +
+          '<img src="/assets/logo-monograma-cc.png" alt="Portal do BPC" style="height:40px;width:40px;object-fit:contain;"/>' +
           '<span class="header-logo-text">' +
             '<span class="header-logo-text-1" style="font-size:13px;">Portal do</span>' +
             '<span class="header-logo-text-2" style="font-size:20px;">BPC<span class="header-logo-dot">.</span></span>' +
@@ -157,8 +159,8 @@
       '</div>' +
       '<div class="mobile-drawer-nav">' + navHTML + '</div>' +
       '<div class="mobile-drawer-cta">' +
-        '<a href="' + waUrl + '" target="_blank" rel="noreferrer">' +
-          '<img src="assets/icon-whatsapp.svg" alt="" style="width:22px;height:22px;"/>' +
+        '<a href="' + waUrl + '" target="_blank" rel="noopener noreferrer">' +
+          '<img src="/assets/icon-whatsapp.svg" alt="" style="width:22px;height:22px;"/>' +
           'Falar no WhatsApp' +
         '</a>' +
       '</div>';
@@ -233,22 +235,29 @@
         '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>' +
         'Simulador' +
       '</a>' +
-      '<a href="' + waUrl + '" class="mobile-tab mobile-tab--wa" target="_blank" rel="noreferrer">' +
-        '<img src="assets/icon-whatsapp.svg" alt="" style="width:24px;height:24px;"/>' +
+      '<a href="' + waUrl + '" class="mobile-tab mobile-tab--wa" target="_blank" rel="noopener noreferrer">' +
+        '<img src="/assets/icon-whatsapp.svg" alt="" style="width:24px;height:24px;"/>' +
         'WhatsApp' +
       '</a>';
     document.body.appendChild(tabBar);
 
     /* ---- Open / Close ---- */
+    drawer.setAttribute('inert', '');
+
     function openMenu() {
       hamburger.classList.add('open'); overlay.classList.add('open'); drawer.classList.add('open');
       hamburger.setAttribute('aria-expanded', 'true'); drawer.setAttribute('aria-hidden', 'false');
+      drawer.removeAttribute('inert');
       document.body.style.overflow = 'hidden';
+      var firstFocusable = drawer.querySelector('a, button');
+      if (firstFocusable) firstFocusable.focus();
     }
     function closeMenu() {
       hamburger.classList.remove('open'); overlay.classList.remove('open'); drawer.classList.remove('open');
       hamburger.setAttribute('aria-expanded', 'false'); drawer.setAttribute('aria-hidden', 'true');
+      drawer.setAttribute('inert', '');
       document.body.style.overflow = '';
+      hamburger.focus();
     }
 
     hamburger.addEventListener('click', function () { drawer.classList.contains('open') ? closeMenu() : openMenu(); });
@@ -256,6 +265,9 @@
     var closeBtn = drawer.querySelector('.mobile-drawer-close');
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
     drawer.querySelectorAll('.mobile-drawer-nav a').forEach(function (link) { link.addEventListener('click', closeMenu); });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && drawer.classList.contains('open')) closeMenu();
+    });
   }
 
   if (document.readyState === 'loading') {

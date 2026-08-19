@@ -152,7 +152,7 @@
 
 /* CTA banner paragraph */
 .cta-banner p {
-  color: rgba(255, 255, 255, 0.95) !important;
+  color: #1f100a !important;
 }
 
 /* Mobile tab bar — texto mais legível */
@@ -162,14 +162,21 @@
     opacity: 0.7;
   }
   .mobile-tab.active {
-    color: var(--terra-500) !important;
+    color: #f0a06f !important;
     opacity: 1;
   }
 }
 
 /* Cookie banner — links distinguíveis */
 #cookie-banner a {
+  color: #075e54 !important;
   text-decoration: underline !important;
+  text-underline-offset: 2px;
+}
+.form-card label a {
+  color: #f0a06f !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px;
 }
 
 /* Footer review card — star text legível */

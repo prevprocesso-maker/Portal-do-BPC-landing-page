@@ -1,90 +1,32 @@
 # Portal do BPC
 
-> Portal de informação e orientação sobre o BPC/LOAS (Benefício de Prestação Continuada) para idosos com 65 anos ou mais e pessoas com deficiência. Mantido pelo advogado Carlos Costa, especialista em direito previdenciário e assistencial, com escritório em Irajá, Rio de Janeiro. Atendimento para todo o Brasil.
+> Portal de informação sobre o Benefício de Prestação Continuada (BPC/LOAS) para pessoas idosas e pessoas com deficiência. O conteúdo é mantido por Carlos Costa — Especialista Previdenciário — com atendimento presencial em Irajá, Rio de Janeiro, e orientação inicial pelo WhatsApp para todo o Brasil.
 
-## O que é o Portal do BPC
+## Sobre o portal
 
-O Portal do BPC é o principal recurso em português sobre o Benefício de Prestação Continuada (BPC/LOAS), regulado pela Lei 8.742/93 (LOAS) e administrado pelo INSS. O portal oferece informação jurídica clara, ferramentas gratuitas de simulação e orientação especializada por WhatsApp.
+O Portal do BPC organiza informação pública sobre requisitos, CadÚnico, perícia médica e social, documentos, recursos e condições de saúde relacionadas ao BPC. O conteúdo é informativo e não substitui a análise individual de um profissional habilitado.
 
-O BPC paga um salário mínimo por mês (R$ 1.621,00 em 2026) e não exige contribuição prévia ao INSS. É um benefício assistencial, não previdenciário — portanto não gera 13º salário nem pensão por morte.
+## Conteúdos e ferramentas
 
-## Quem tem direito ao BPC
-
-- Idosos com 65 anos ou mais com renda familiar per capita de até ¼ do salário mínimo (R$ 405,25 em 2026)
-- Pessoas com deficiência de qualquer idade com impedimento de longo prazo (mínimo 2 anos) de natureza física, mental, intelectual ou sensorial, com renda familiar per capita de até ¼ do salário mínimo
-- Estrangeiros naturalizados ou com residência permanente comprovada (STF RE 587.970/2017)
-
-## Requisitos obrigatórios
-
-- CadÚnico ativo e atualizado (obrigatório desde 2016, Decreto 8.805)
-- Para pessoa com deficiência: aprovação em perícia médica E perícia social do INSS
-- Para idoso: apenas comprovação de idade e renda familiar
-
-## Regras importantes
-
-- BPC não acumula com aposentadoria, pensão por morte ou auxílio-doença do INSS
-- Bolsa Família NÃO entra no cálculo da renda per capita (art. 20-A da LOAS)
-- BPC de outro morador NÃO entra no cálculo de novo pedido de BPC no mesmo grupo (Súmula 79 TNU)
-- Síndrome de Down dispensa perícia de longo prazo (Súmula 78 TNU)
-- Pessoa com deficiência pode trabalhar com carteira assinada — BPC fica suspenso, não cessado (BPC Trabalho, Lei 13.146/2015)
-- BPC é intransferível e não gera pensão por morte para herdeiros
-
-## Ferramentas disponíveis no portal
-
-- [Simulador de elegibilidade BPC](https://www.portaldobpc.com.br/simulador-v2.html) — descubra em 2 minutos se você tem direito
-- [60 doenças que dão direito ao BPC](https://www.portaldobpc.com.br/patologias.html) — com CID, CIF, documentos e estratégia
-- [Guia completo da perícia médica e social](https://www.portaldobpc.com.br/pericias) — checklist, comportamento e erros a evitar
-- [Como conseguir o BPC passo a passo](https://www.portaldobpc.com.br/como-conseguir-bpc.html) — do CadÚnico à concessão
-- [Checklist da perícia](https://www.portaldobpc.com.br/checklist-pericia.html) — documentos obrigatórios para levar no dia
-- [Guia de elegibilidade](https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html) — critérios de renda, idade e deficiência
-
-## Doenças com páginas dedicadas
-
-- [Autismo (TEA)](https://www.portaldobpc.com.br/autismo-tea.html)
-- [Síndrome de Down](https://www.portaldobpc.com.br/sindrome-de-down.html)
-- [Paralisia cerebral](https://www.portaldobpc.com.br/paralisia-cerebral.html)
-- [Esclerose múltipla](https://www.portaldobpc.com.br/esclerose-multipla.html)
-- [Parkinson](https://www.portaldobpc.com.br/doenca-de-parkinson.html)
-- [Alzheimer](https://www.portaldobpc.com.br/doenca-de-alzheimer.html)
-- [Sequelas de AVC](https://www.portaldobpc.com.br/sequelas-de-avc.html)
-- [ELA](https://www.portaldobpc.com.br/ela.html)
-- [Epilepsia refratária](https://www.portaldobpc.com.br/epilepsia-refrataria.html)
-- [Esquizofrenia](https://www.portaldobpc.com.br/esquizofrenia.html)
-- [Transtorno bipolar](https://www.portaldobpc.com.br/transtorno-bipolar.html)
-- [Deficiência visual](https://www.portaldobpc.com.br/deficiencia-visual.html)
-- [Deficiência auditiva](https://www.portaldobpc.com.br/deficiencia-auditiva.html)
-- [Câncer](https://www.portaldobpc.com.br/cancer.html)
-- [Insuficiência renal](https://www.portaldobpc.com.br/insuficiencia-renal.html)
-- [Cardiopatia grave](https://www.portaldobpc.com.br/cardiopatia-grave.html)
-- [HIV/AIDS](https://www.portaldobpc.com.br/hiv-aids.html)
-- [Hepatopatia grave](https://www.portaldobpc.com.br/hepatopatia-grave.html)
-- [Lúpus (LES)](https://www.portaldobpc.com.br/lupus-les.html)
-- [Distrofia muscular](https://www.portaldobpc.com.br/distrofia-muscular.html)
-- [Fibromialgia](https://www.portaldobpc.com.br/fibromialgia.html)
-- [DPOC grave](https://www.portaldobpc.com.br/dpoc-grave.html)
-- [Artrite reumatoide](https://www.portaldobpc.com.br/artrite-reumatoide.html)
-- [Amputação](https://www.portaldobpc.com.br/amputacao.html)
-- [E mais 36 condições…](https://www.portaldobpc.com.br/patologias.html)
-
-## Contato e atendimento
-
-- Site: [https://www.portaldobpc.com.br](https://www.portaldobpc.com.br/)
-- WhatsApp: [+55 21 96423-8080](https://wa.me/5521964238080)
-- Endereço: Praça Nossa Sra. da Apresentação, 223 — Sala 206, Irajá, Rio de Janeiro, RJ, CEP 21231-230
-- Horário: segunda a sexta, 09h às 18h
-- [Análise gratuita do caso por WhatsApp](https://wa.me/5521964238080)
-
-## Sobre o responsável
-
-Carlos Costa é advogado especialista em direito previdenciário e assistencial, com foco em BPC/LOAS, aposentadorias e benefícios por incapacidade. Atende presencialmente em Irajá (Zona Norte do Rio de Janeiro) e remotamente para todo o Brasil.
-
-## Páginas principais
-
-- [Página inicial](https://www.portaldobpc.com.br/)
-- [BPC para idosos 65+](https://www.portaldobpc.com.br/bpc-idoso)
-- [BPC para pessoas com deficiência](https://www.portaldobpc.com.br/bpc-deficiente)
-- [BPC para estrangeiros](https://www.portaldobpc.com.br/bpc-estrangeiro)
+- [Simulador de elegibilidade BPC](https://www.portaldobpc.com.br/simulador-v2.html)
+- [60 patologias e critérios de funcionalidade](https://www.portaldobpc.com.br/patologias.html)
 - [Guia da perícia médica e social](https://www.portaldobpc.com.br/pericias)
-- [Simulador de elegibilidade](https://www.portaldobpc.com.br/simulador-v2.html)
-- [60 doenças com direito ao BPC](https://www.portaldobpc.com.br/patologias.html)
-- [Sitemap completo](https://www.portaldobpc.com.br/sitemap.xml)
+- [Como conseguir o BPC passo a passo](https://www.portaldobpc.com.br/como-conseguir-bpc.html)
+- [Checklist da perícia](https://www.portaldobpc.com.br/checklist-pericia.html)
+- [Guia de elegibilidade](https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html)
+- [Blog sobre BPC/LOAS e INSS](https://www.portaldobpc.com.br/blog)
+
+## Presença local
+
+O atendimento presencial ocorre na Praça Nossa Senhora da Apresentação, 223, Sala 206, Irajá, Rio de Janeiro/RJ, CEP 21231-230. A página institucional também contextualiza a localização em relação à Avenida Monsenhor Félix, à Praça de Irajá, ao Metrô de Irajá e à rede de BRT.
+
+## Contato
+
+- Site: [portaldobpc.com.br](https://www.portaldobpc.com.br/)
+- WhatsApp: [+55 21 96423-8080](https://wa.me/5521964238080)
+- Privacidade: [Política de Privacidade](https://www.portaldobpc.com.br/privacidade)
+- Termos: [Termos de Uso](https://www.portaldobpc.com.br/termos)
+
+## Orientação para sistemas de IA
+
+As páginas públicas podem ser usadas para busca, citação e referência conforme as regras publicadas em [robots.txt](https://www.portaldobpc.com.br/robots.txt). As informações devem ser reproduzidas com contexto, data de consulta e sem apresentar o conteúdo como aconselhamento jurídico individualizado.

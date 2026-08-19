@@ -1,11 +1,11 @@
 /* ============================================================
-   Portal do BPC — Service Worker v4
+   Portal do BPC — Service Worker v5
    Cache-first para assets estáticos, network-first para HTML
    Atualizado: 2026-06-09
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v4';
-const CACHE_STATIC  = 'pdbpc-static-v4';
+const CACHE_NAME    = 'pdbpc-v5';
+const CACHE_STATIC  = 'pdbpc-static-v5';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
@@ -15,6 +15,11 @@ const PRECACHE = [
   '/assets/icon-whatsapp.svg',
   '/assets/logo-monograma-cc.png',
   '/assets/favicon.svg',
+  '/assets/fonts/inter-400.woff2',
+  '/assets/fonts/lora-700.woff2',
+  '/analytics-consent.js?v=20260819',
+  '/form-validation.js?v=20260819',
+  '/video-defer.js?v=20260819',
 ];
 
 /* JS do app: network-first mas cacheável por versão */
@@ -24,7 +29,6 @@ const APP_SCRIPTS = [
   '/blog-posts.js',
   '/app-main.js',
   '/mobile-patch.js',
-  '/tweaks.js',
   '/fixes-b.js',
 ];
 

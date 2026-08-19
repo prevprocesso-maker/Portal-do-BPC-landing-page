@@ -51,48 +51,21 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="apple-mobile-web-app-title" content="Portal BPC" />
-
-  <!-- ===== Analytics (Google Analytics 4) =====
-       Deferred: carrega 2s após load para não competir com LCP.
-       Cadastra grátis em https://analytics.google.com -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', {
-      'analytics_storage': 'denied',
-      'ad_storage': 'denied'
-    });
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        var s = document.createElement('script');
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-6RVLVTFRGT';
-        s.async = true;
-        document.head.appendChild(s);
-        s.onload = function() {
-          gtag('js', new Date());
-          gtag('config', 'G-6RVLVTFRGT', { 'anonymize_ip': true });
-        };
-      }, 2000);
-    });
-  </script>
-
-  <!-- ===== Structured Data — Organization + LegalService + LocalBusiness ===== -->
+<!-- ===== Structured Data — Organization + LegalService + LocalBusiness ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "LegalService", "LocalBusiness"],
+        "@type": ["Organization", "LocalBusiness"],
         "@id": "https://www.portaldobpc.com.br/#org",
         "name": "Portal do BPC",
-        "legalName": "CarlosCostaPrev — Escritório de Advocacia Previdenciária",
         "alternateName": ["Portal do BPC", "CarlosCostaPrev", "CarlosCostaPrev Portal do BPC"],
         "url": "https://www.portaldobpc.com.br/",
         "logo": "https://www.portaldobpc.com.br/assets/monogram-cc.png",
         "image": "https://www.portaldobpc.com.br/assets/og-cover.png",
         "description": "Portal de informação e atendimento sobre o Benefício de Prestação Continuada (BPC/LOAS) para idosos a partir de 65 anos e pessoas com deficiência.",
         "telephone": "+55-21-96423-8080",
-        "priceRange": "Análise gratuita",
         "areaServed": { "@type": "Country", "name": "Brasil" },
         "address": {
           "@type": "PostalAddress",
@@ -130,7 +103,7 @@
           "reviewCount": "22"
         },
         "review": [
-          {"@type":"Review","author":{"@type":"Person","name":"Maria S."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Consegui o BPC para minha mãe de 72 anos graças à orientação do Dr. Carlos. Ele explicou tudo com paciência, ajudou com o CadÚnico e a documentação. Em 60 dias saiu o benefício."},
+          {"@type":"Review","author":{"@type":"Person","name":"Maria S."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Consegui o BPC para minha mãe de 72 anos graças à orientação do Carlos Costa. Ele explicou tudo com paciência, ajudou com o CadÚnico e a documentação. Em 60 dias saiu o benefício."},
           {"@type":"Review","author":{"@type":"Person","name":"Cláudia R."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Meu filho tem autismo e o INSS negou o BPC duas vezes. O Carlos entrou com recurso e em 4 meses conseguiu reverter. Profissional sério e humano."},
           {"@type":"Review","author":{"@type":"Person","name":"José A."},"reviewRating":{"@type":"Rating","ratingValue":"5","bestRating":"5"},"reviewBody":"Atendimento excelente pelo WhatsApp, mesmo morando em outro estado. Me orientou sobre a renda per capita e os documentos certos. Recomendo demais."}
         ]
@@ -300,36 +273,47 @@
   </script>
 
   <!-- ===== Performance: conectar cedo às origens críticas ===== -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="preconnect" href="https://unpkg.com" crossorigin />
+<link rel="preconnect" href="https://unpkg.com" crossorigin />
   <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
 
   <!-- Fonte descoberta cedo (em vez de via @import dentro do CSS) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
-
-  <!-- Pré-carregar a foto do herói (elemento de LCP) -->
-  <link rel="preload" as="image" href="assets/dr-carlos-costa.jpg" fetchpriority="high" />
+<!-- Pré-carregar a foto do herói (elemento de LCP) -->
+  <link rel="preload" as="image" href="assets/dr-carlos-costa.webp" fetchpriority="high" />
 
   <!-- hreflang (site monolíngue pt-BR) -->
   <link rel="alternate" hreflang="pt-BR" href="https://www.portaldobpc.com.br/" />
   <link rel="alternate" hreflang="x-default" href="https://www.portaldobpc.com.br/" />
 
-  <link rel="stylesheet" href="colors_and_type.css?v=20260622" />
-  <link rel="stylesheet" href="styles.css?v=20260622" />
-  <link rel="stylesheet" href="tweaks.css?v=20260622" />
-  <link rel="stylesheet" href="fixes.css?v=20260622" />
+  <link rel="stylesheet" href="colors_and_type.css?v=20260819" />
+  <link rel="stylesheet" href="styles.css?v=20260819" />
+  <link rel="stylesheet" href="fixes.css?v=20260819" />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/lora-700.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400.woff2" crossorigin />
 </head>
 <body>
-  <div id="root" data-screen-label="Website"></div>
+  <div id="root" data-screen-label="Website">
+    <main data-react-fallback="true" aria-label="Portal do BPC" style="min-height:100vh;background:#100b08;color:#f5ede0;padding:76px 16px 48px;font-family:Inter,system-ui,sans-serif;">
+      <section style="max-width:980px;margin:0 auto;display:grid;gap:20px;justify-items:center;text-align:center;">
+        <div style="position:relative;width:min(100%,820px);aspect-ratio:820/420;overflow:hidden;border-radius:24px;background:#1b110c;display:grid;place-items:center;">
+          <img src="assets/dr-carlos-costa.webp" alt="" width="820" height="420" fetchpriority="high" loading="eager" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;" />
+          <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,.18));"></div>
+          <div style="position:relative;z-index:1;max-width:680px;padding:24px;">
+            <p style="margin:0 0 16px;color:#f5c845;font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;">Especialistas em BPC/LOAS · Irajá, RJ</p>
+            <h2 style="margin:0 0 14px;color:#f0a06f;font:700 clamp(30px,5vw,52px)/1.08 Lora,Georgia,serif;">Seu direito ao BPC começa <em style="color:#fff;">aqui</em>.</h2>
+            <p style="margin:0;color:rgba(255,255,255,.9);font-size:clamp(15px,2vw,18px);line-height:1.55;">Informação clara sobre BPC/LOAS e orientação inicial para entender o seu caso.</p>
+          </div>
+        </div>
+        <a href="https://wa.me/5521964238080" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;justify-content:center;padding:14px 24px;border-radius:999px;background:#075e54;color:#fff;font-weight:700;text-decoration:none;">Falar no WhatsApp →</a>
+      </section>
+    </main>
+  </div>
 
   <!-- ===== SEO: conteúdo estático para crawlers (oculto quando React monta) ===== -->
   <div id="seo-fallback" style="max-width:960px;margin:0 auto;padding:40px 24px;font-family:Inter,system-ui,sans-serif;color:#1f1812;">
     <h1 style="font-size:2rem;line-height:1.3;margin:0 0 16px;">BPC/LOAS 2026: Descubra se Você Tem Direito ao Benefício de R$ 1.621 por Mês</h1>
     <h2 style="font-size:1.25rem;font-weight:400;color:#5a4a3a;margin:0 0 20px;">Orientação gratuita para idosos 65+ e pessoas com deficiência — simulador online, 60 doenças explicadas e atendimento humano</h2>
 
-    <img src="assets/dr-carlos-costa.jpg" alt="Carlos Costa, advogado especialista em BPC/LOAS e direito previdenciário, atendimento em Irajá, Rio de Janeiro" width="320" height="320" loading="eager" style="float:right;margin:0 0 16px 24px;border-radius:16px;max-width:40%;height:auto;" />
+    <img src="assets/dr-carlos-costa.webp" alt="Carlos Costa, Especialista Previdenciário em BPC/LOAS, atendimento em Irajá, Rio de Janeiro" width="320" height="320" loading="eager" style="float:right;margin:0 0 16px 24px;border-radius:16px;max-width:40%;height:auto;" decoding="async" />
 
     <p>O <strong>BPC/LOAS</strong> (Benefício de Prestação Continuada) é um <strong>direito assistencial</strong> garantido pela <strong>Lei Orgânica da Assistência Social (LOAS)</strong> que paga <strong>um salário mínimo por mês</strong> (R$&nbsp;1.621,00 em 2026) para quem cumpre os requisitos de renda e condição. É administrado pelo <strong>INSS</strong> e não exige contribuição prévia — é o principal benefício do INSS sem contribuição.</p>
 
@@ -369,15 +353,15 @@
     <h3 style="font-size:1rem;margin:16px 0 8px;color:#5a4a3a;">Preciso do CadÚnico para pedir o BPC?</h3>
     <p>Sim, obrigatoriamente desde 2016. Sem <strong>CadÚnico</strong> ativo, o INSS nega automaticamente. Cadastro gratuito no CRAS da sua cidade.</p>
 
-    <h2 style="font-size:1.15rem;margin:24px 0 10px;">Advogado Especialista em BPC/LOAS — Irajá, Zona Norte do Rio de Janeiro</h2>
-    <p>O <strong>Portal do BPC</strong> é mantido pelo advogado <strong>Carlos Costa</strong>, especialista em direito previdenciário e assistencial, com escritório em <strong>Irajá, Zona Norte do Rio de Janeiro</strong>. Atendimento humano por <strong>WhatsApp</strong> para todo o Brasil: análise gratuita do seu caso.</p>
-    <p style="font-size:15px;color:#5a4a3a;">Atendimento presencial em Irajá e remoto para todo o Brasil. Bairros próximos: Vista Alegre, Colégio, Brás de Pina, Penha, Madureira, Vila da Penha, Pavuna, Coelho Neto, Anchieta, Guadalupe.</p>
+    <h2 style="font-size:1.15rem;margin:24px 0 10px;">Especialista Previdenciário em BPC/LOAS — Irajá, Zona Norte do Rio de Janeiro</h2>
+    <p>O <strong>Portal do BPC</strong> é mantido pelo advogado <strong>Carlos Costa</strong>, especialista em direito previdenciário e assistencial, com escritório em <strong>Irajá, Zona Norte do Rio de Janeiro</strong>. Atendimento humano por <strong>WhatsApp</strong> para todo o Brasil: orientação inicial pelo WhatsApp.</p>
+    <p style="font-size:15px;color:#5a4a3a;">Atendimento presencial na Praça Nossa Senhora da Apresentação, 223, Sala 206, em Irajá, próximo ao Metrô de Irajá e com acesso à Avenida Monsenhor Félix, à Praça de Irajá e à rede de BRT. Atendimento remoto para todo o Brasil. Bairros próximos: Vista Alegre, Colégio, Brás de Pina, Penha, Madureira, Vila da Penha, Pavuna, Coelho Neto, Anchieta, Guadalupe.</p>
 
     <h2 style="font-size:1.15rem;margin:24px 0 10px;">O que dizem nossos clientes</h2>
     <div style="display:grid;gap:16px;margin:12px 0 24px;">
       <div style="background:#faf5eb;border:1px solid #d4c4a8;border-radius:12px;padding:18px 20px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><strong style="font-size:15px;">Maria S.</strong><span style="color:#e8a500;font-size:14px;">★★★★★</span></div>
-        <p style="margin:0;font-size:15px;color:#5a4a3a;line-height:1.5;">"Consegui o BPC para minha mãe de 72 anos graças à orientação do Dr. Carlos. Ele explicou tudo com paciência, ajudou com o CadÚnico e a documentação. Em 60 dias saiu o benefício."</p>
+        <p style="margin:0;font-size:15px;color:#5a4a3a;line-height:1.5;">"Consegui o BPC para minha mãe de 72 anos graças à orientação do Carlos Costa. Ele explicou tudo com paciência, ajudou com o CadÚnico e a documentação. Em 60 dias saiu o benefício."</p>
       </div>
       <div style="background:#faf5eb;border:1px solid #d4c4a8;border-radius:12px;padding:18px 20px;">
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;"><strong style="font-size:15px;">Cláudia R.</strong><span style="color:#e8a500;font-size:14px;">★★★★★</span></div>
@@ -400,50 +384,18 @@
     </ul>
   </div>
   <script>document.getElementById('seo-fallback').style.display='none';</script>
-
-  <!-- ===== LGPD Cookie Banner ===== -->
-  <div id="cookie-banner" style="display:none;position:fixed;bottom:20px;left:20px;right:20px;max-width:560px;margin:0 auto;background:#1f1812;border:1px solid #382a20;border-radius:16px;padding:20px 24px;box-shadow:0 16px 40px rgba(0,0,0,0.5);z-index:9999;color:#f5ede0;font-family:Inter,system-ui,sans-serif;">
-    <p style="margin:0 0 14px 0;font-size:15px;line-height:1.5;">
-      Usamos cookies para entender como o site é usado e melhorar sua experiência.
-      <a href="/privacidade" style="color:#d68559;">Saiba mais</a>.
-    </p>
-    <div style="display:flex;gap:8px;flex-wrap:wrap;">
-      <button id="cookie-accept" style="flex:1;min-width:120px;padding:10px 16px;border-radius:999px;border:none;background:#c4673a;color:#fff;font-weight:600;font-size:14px;cursor:pointer;">Aceitar</button>
-      <button id="cookie-reject" style="flex:1;min-width:120px;padding:10px 16px;border-radius:999px;border:1px solid #382a20;background:transparent;color:#f5ede0;font-weight:600;font-size:14px;cursor:pointer;">Recusar</button>
-    </div>
-  </div>
-  <script>
-    (function() {
-      const key = 'pdbpc_cookie_consent_v1';
-      const saved = localStorage.getItem(key);
-      const banner = document.getElementById('cookie-banner');
-      function grant() {
-        localStorage.setItem(key, 'granted');
-        banner.style.display = 'none';
-        if (window.gtag) gtag('consent', 'update', { 'analytics_storage': 'granted' });
-      }
-      function deny() {
-        localStorage.setItem(key, 'denied');
-        banner.style.display = 'none';
-      }
-      if (!saved) banner.style.display = 'block';
-      else if (saved === 'granted' && window.gtag) gtag('consent', 'update', { 'analytics_storage': 'granted' });
-      document.getElementById('cookie-accept').onclick = grant;
-      document.getElementById('cookie-reject').onclick = deny;
-    })();
-  </script>
-
-  <!-- React + app (defer = não bloqueia parse HTML → FCP/LCP mais rápido no mobile) -->
+<!-- React + app (defer = não bloqueia parse HTML → FCP/LCP mais rápido no mobile) -->
   <script defer crossorigin="anonymous" src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
   <script defer crossorigin="anonymous" src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 
   <!-- JS pré-compilado (rápido, sem Babel no browser) -->
-  <script defer src="components.js?v=20260622"></script>
-  <script defer src="screens.js?v=20260622"></script>
-  <script defer src="blog-posts.js?v=20260622"></script>
-  <script defer src="mobile-patch.js?v=20260622"></script>
-  <script defer src="app-main.js?v=20260622"></script>
-  <script defer src="tweaks.js?v=20260622"></script>
+  <script defer src="components.js?v=20260819"></script>
+  <script defer src="screens.js?v=20260819"></script>
+  <script defer src="blog-posts.js?v=20260819"></script>
+  <script defer src="mobile-patch.js?v=20260819"></script>
+  <script defer src="app-main.js?v=20260819"></script>
+  <script defer src="video-defer.js?v=20260819"></script>
+
 
   <!-- PWA: registra Service Worker -->
   <script>
@@ -453,7 +405,10 @@
       });
     }
   </script>
-  <script defer src="fixes-b.js?v=20260622"></script>
-  <script defer src="lighthouse-a11y.js?v=20260622"></script>
+  <script defer src="fixes-b.js?v=20260819"></script>
+  <script defer src="lighthouse-a11y.js?v=20260819"></script>
+  <script defer src="/analytics-consent.js?v=20260819"></script>
+  <script defer src="/form-validation.js?v=20260819"></script>
+  <script defer src="mobile-nav.js?v=20260819"></script>
 </body>
 </html>

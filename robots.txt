@@ -1,17 +1,14 @@
 # Robots.txt — Portal do BPC
-# Coloque este arquivo na raiz do domínio (https://www.portaldobpc.com.br/robots.txt)
+# Política de rastreamento do site: https://www.portaldobpc.com.br/
 
 User-agent: *
 Allow: /
 
-# Permite tudo, sem páginas privadas (ainda).
-# Quando criar área do beneficiário (logada), adicione:
-# Disallow: /minha-conta/
-# Disallow: /admin/
-
+# Não há áreas privadas públicas neste momento.
+# Quando existirem áreas autenticadas, adicione Disallow específico.
 Sitemap: https://www.portaldobpc.com.br/sitemap.xml
 
-# Indexação por IA (ChatGPT, Perplexity, Gemini, Claude, Copilot, etc.)
+# Indexação por IA, busca e citação — política explicitamente permissiva.
 User-agent: GPTBot
 Allow: /
 

@@ -1,463 +1,464 @@
-This XML file does not appear to have any style information associated with it. The document tree is shown below.
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-<!--  Página principal  -->
-<url>
-<loc>https://www.portaldobpc.com.br/</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>weekly</changefreq>
-<priority>1.0</priority>
-</url>
-<!--  Páginas principais  -->
-<url>
-<loc>https://www.portaldobpc.com.br/simulador-v2.html</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/patologias.html</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.9</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/como-conseguir-bpc.html</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/checklist-pericia.html</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/guia-elegibilidade-bpc.html</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<!--  Seções  -->
-<url>
-<loc>https://www.portaldobpc.com.br/pericias</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/bpc-idoso</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/bpc-deficiente</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.8</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/bpc-estrangeiro</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<!--  60 doenças  -->
-<url>
-<loc>https://www.portaldobpc.com.br/autismo-tea.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-de-down.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/paralisia-cerebral.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/esclerose-multipla.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/doenca-de-parkinson.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/doenca-de-alzheimer.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sequelas-de-avc.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/ela.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/epilepsia-refrataria.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/esquizofrenia.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/transtorno-bipolar.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/deficiencia-visual.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/deficiencia-auditiva.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/cancer.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/insuficiencia-renal.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/cardiopatia-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hiv-aids.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hepatopatia-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/lupus-les.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/distrofia-muscular.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/amputacao.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/ansiedade-e-bpc.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/artrite-psoriasica.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/artrite-reumatoide.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/artrose-avancada.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/atrofia-muscular-espinhal.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/deficit-intelectual.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/depressao-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/diabetes-complicacoes.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/doenca-de-charcot.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/doenca-de-huntington.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/doenca-de-wilson.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/dores-cronicas.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/dpoc-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/esclerodermia.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/esclerose-tuberosa.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/espinha-bifida.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/fenilcetonuria.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/fibromialgia.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/fibrose-pulmonar.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hanseniase-sequelas.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hernia-de-disco.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hidrocefalia.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/hipertensao-e-bpc.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/insuficiencia-cardiaca-avancada.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/lesao-medular.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/lombalgia-cronica.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/miastenia-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/neurofibromatose.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/osteoporose-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/retinose-pigmentar.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-de-rett.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-de-williams.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-pos-covid.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-tunel-carpo.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/sindrome-x-fragil.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/tdah.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/transtorno-de-personalidade-grave.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/varizes-e-bpc.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/vertigo-e-bpc.html</loc>
-<lastmod>2026-06-10</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-<!--  Blog  -->
-<url>
-<loc>https://www.portaldobpc.com.br/blog/bpc-idoso-2026</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/blog/cadunico</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/blog/pericia-medica</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/blog/recurso-inss</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
-<url>
-<loc>https://www.portaldobpc.com.br/blog/portaria-inss-1962-2026</loc>
-<lastmod>2026-06-15</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.6</priority>
-</url>
   <url>
-    <loc>https://www.portaldobpc.com.br/blog/calendario-bpc-loas-2026</loc>
-    <lastmod>2026-06-21</lastmod>
+    <loc>https://www.portaldobpc.com.br/amputacao</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/ansiedade-e-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/artrite-psoriasica</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/artrite-reumatoide</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/artrose-avancada</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/atrofia-muscular-espinhal</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/autismo-tea</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/bpc-idoso-2026</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/cadunico</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/nova-identidade</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/pericia-medica</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/portaria-inss-1962-2026</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/blog/recurso-inss</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/bpc-deficiente</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/bpc-estrangeiro</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/bpc-idoso</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/cancer</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/cardiopatia-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/checklist-pericia</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/como-conseguir-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/deficiencia-auditiva</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/deficiencia-visual</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/deficit-intelectual</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/depressao-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/diabetes-complicacoes</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/distrofia-muscular</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/doenca-de-alzheimer</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/doenca-de-charcot</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/doenca-de-huntington</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/doenca-de-parkinson</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/doenca-de-wilson</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/dores-cronicas</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/dpoc-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/ela</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/epilepsia-refrataria</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/esclerodermia</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/esclerose-multipla</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/esclerose-tuberosa</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/espinha-bifida</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/esquizofrenia</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/fenilcetonuria</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/fibromialgia</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/fibrose-pulmonar</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/guia-elegibilidade-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hanseniase-sequelas</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hepatopatia-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hernia-de-disco</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hidrocefalia</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hipertensao-e-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/hiv-aids</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/insuficiencia-cardiaca-avancada</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/insuficiencia-renal</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/lesao-medular</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/lombalgia-cronica</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/lupus-les</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/miastenia-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/neurofibromatose</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/osteoporose-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/paralisia-cerebral</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/patologias</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/pericias</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/retinose-pigmentar</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sequelas-de-avc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/simulador-v2</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-de-down</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-de-rett</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-de-williams</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-pos-covid</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-tunel-carpo</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/sindrome-x-fragil</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/tdah</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/transtorno-bipolar</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/transtorno-de-personalidade-grave</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/varizes-e-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.portaldobpc.com.br/vertigo-e-bpc</loc>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
