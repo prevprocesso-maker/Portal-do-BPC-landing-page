@@ -56,7 +56,7 @@
       e('header', { className: `header ${scrolled ? 'scrolled' : ''}` },
         e('div', { className: 'container header-inner' },
           e('a', { href: '#/', className: 'header-logo', onClick: (ev) => { ev.preventDefault(); onNavigate('home'); } },
-            e('img', { src: 'assets/logo-portal-bpc-oficial.webp', alt: 'Portal do BPC', className: 'header-logo-mark', style: { objectFit: 'cover' } }),
+            e('img', { src: 'assets/logo-portal-bpc-oficial.webp?v=20260820-logo-clean', alt: 'Portal do BPC', className: 'header-logo-mark', style: { objectFit: 'cover' } }),
             e('span', { className: 'header-logo-text' },
               e('span', { className: 'header-logo-text-1' }, 'Portal do'),
               e('span', { className: 'header-logo-text-2' }, 'BPC', e('span', { className: 'header-logo-dot' }, '.')),
@@ -120,7 +120,7 @@
             onClick: (ev) => { ev.preventDefault(); setMenuOpen(false); onNavigate('home'); },
             style: { display: 'flex', alignItems: 'center', gap: 10, textDecoration: 'none' }
           },
-            e('img', { src: 'assets/logo-portal-bpc-oficial.webp', alt: 'Portal do BPC', style: { height: 42, width: 150, objectFit: 'cover', objectPosition: 'center' } }),
+            e('img', { src: 'assets/logo-portal-bpc-oficial.webp?v=20260820-logo-clean', alt: 'Portal do BPC', style: { height: 42, width: 150, objectFit: 'cover', objectPosition: 'center' } }),
             e('span', { className: 'header-logo-text' },
               e('span', { className: 'header-logo-text-1', style: { fontSize: 13 } }, 'Portal do'),
               e('span', { className: 'header-logo-text-2', style: { fontSize: 20 } }, 'BPC',
