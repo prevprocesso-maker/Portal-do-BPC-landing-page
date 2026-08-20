@@ -2258,3 +2258,46 @@ a.btn--secondary[href*="wa.me"]:hover,
   .legal header > .container > a:first-child { min-width: 154px; }
   .legal header > .container > a:first-child > img { width: 154px !important; height: 52px !important; }
 }
+
+/* ---- Pathology content trust blocks ---- */
+.pp-answer-direct {
+  max-width: 760px;
+  margin: 0 0 42px;
+  padding: 20px 22px;
+  background: rgba(196, 103, 58, 0.10);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--terra-500);
+  border-radius: 0 14px 14px 0;
+}
+.pp-answer-direct h2 {
+  margin: 0 0 8px;
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+}
+.pp-answer-direct p { margin: 0; }
+.editorial-trust {
+  max-width: 760px;
+  margin: 20px 0 0;
+  padding: 18px 20px;
+  background: rgba(250, 245, 235, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-align: left;
+}
+.editorial-trust p {
+  margin: 0 0 10px;
+  color: var(--ink-700);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.editorial-trust p:last-child { margin-bottom: 0; }
+.editorial-trust strong { color: var(--ink-900); }
+.editorial-trust a {
+  color: var(--terra-500);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+@media (max-width: 560px) {
+  .pp-answer-direct { padding: 16px 17px; margin-bottom: 32px; }
+  .editorial-trust { padding: 16px 17px; }
+  .editorial-trust p { font-size: 13.5px; }
+}
