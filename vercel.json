@@ -63,11 +63,11 @@
   ],
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         { "type": "host", "value": "portaldobpc.com.br" }
       ],
-      "destination": "https://www.portaldobpc.com.br/:path*",
+      "destination": "https://www.portaldobpc.com.br/$1",
       "statusCode": 301
     }
   ]
