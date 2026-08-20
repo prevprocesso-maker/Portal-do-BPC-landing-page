@@ -2224,9 +2224,10 @@ a.btn--secondary[href*="wa.me"]:hover,
 }
 .header-logo-mark {
   width: 220px !important;
-  height: 72px !important;
-  object-fit: cover !important;
+  height: 96px !important;
+  object-fit: contain !important;
   object-position: center center !important;
+  display: block !important;
   filter: drop-shadow(0 2px 12px rgba(196, 103, 58, 0.18));
 }
 .header-logo-text { display: none !important; }
@@ -2241,22 +2242,23 @@ a.btn--secondary[href*="wa.me"]:hover,
 }
 .legal header > .container > a:first-child > img {
   width: 210px !important;
-  height: 66px !important;
-  object-fit: cover !important;
+  height: 96px !important;
+  object-fit: contain !important;
   object-position: center center !important;
+  display: block !important;
 }
 .legal header > .container > a:first-child > span { display: none !important; }
 @media (max-width: 768px) {
   .header-logo { min-width: 176px; }
-  .header-logo-mark { width: 176px !important; height: 58px !important; }
+  .header-logo-mark { width: 176px !important; height: 80px !important; }
   .legal header > .container > a:first-child { min-width: 176px; }
-  .legal header > .container > a:first-child > img { width: 176px !important; height: 58px !important; }
+  .legal header > .container > a:first-child > img { width: 176px !important; height: 80px !important; }
 }
 @media (max-width: 480px) {
   .header-logo { min-width: 154px; }
-  .header-logo-mark { width: 154px !important; height: 52px !important; }
+  .header-logo-mark { width: 154px !important; height: 72px !important; }
   .legal header > .container > a:first-child { min-width: 154px; }
-  .legal header > .container > a:first-child > img { width: 154px !important; height: 52px !important; }
+  .legal header > .container > a:first-child > img { width: 154px !important; height: 72px !important; }
 }
 
 /* ---- Pathology content trust blocks ---- */

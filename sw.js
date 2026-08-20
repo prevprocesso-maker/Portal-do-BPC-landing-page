@@ -4,8 +4,8 @@
    Atualizado: 2026-06-09
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v7';
-const CACHE_STATIC  = 'pdbpc-static-v7';
+const CACHE_NAME    = 'pdbpc-v8';
+const CACHE_STATIC  = 'pdbpc-static-v8';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
