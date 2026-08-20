@@ -4,8 +4,8 @@
    Atualizado: 2026-06-09
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v5';
-const CACHE_STATIC  = 'pdbpc-static-v5';
+const CACHE_NAME    = 'pdbpc-v6';
+const CACHE_STATIC  = 'pdbpc-static-v6';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
@@ -13,8 +13,8 @@ const PRECACHE = [
   '/styles.css',
   '/mobile-nav.js',
   '/assets/icon-whatsapp.svg',
-  '/assets/logo-monograma-cc.png',
-  '/assets/favicon.svg',
+  '/assets/logo-portal-bpc-oficial.webp',
+  '/assets/favicon-portal-bpc.ico',
   '/assets/fonts/inter-400.woff2',
   '/assets/fonts/lora-700.woff2',
   '/analytics-consent.js?v=20260819',

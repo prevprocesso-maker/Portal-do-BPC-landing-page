@@ -149,7 +149,7 @@
     drawer.innerHTML =
       '<div class="mobile-drawer-header">' +
         '<a href="' + logoHref + '" style="display:flex;align-items:center;gap:10px;text-decoration:none;">' +
-          '<img src="/assets/logo-monograma-cc.png" alt="Portal do BPC" style="height:40px;width:40px;object-fit:contain;"/>' +
+          '<img src="/assets/logo-portal-bpc-oficial.webp" alt="Portal do BPC" style="height:42px;width:150px;object-fit:cover;object-position:center;"/>' +
           '<span class="header-logo-text">' +
             '<span class="header-logo-text-1" style="font-size:13px;">Portal do</span>' +
             '<span class="header-logo-text-2" style="font-size:20px;">BPC<span class="header-logo-dot">.</span></span>' +

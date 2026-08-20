@@ -2214,3 +2214,47 @@ a.btn--secondary[href*="wa.me"]:hover,
   .method-home-grid { grid-template-columns: 1fr; gap: 28px; }
   .method-home-list { padding-left: 18px; }
 }
+
+/* ---- Official Portal do BPC wordmark ---- */
+.header-logo {
+  gap: 0;
+  min-width: 220px;
+  height: var(--header-h);
+  overflow: visible;
+}
+.header-logo-mark {
+  width: 220px !important;
+  height: 72px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  filter: drop-shadow(0 2px 12px rgba(196, 103, 58, 0.18));
+}
+.header-logo-text { display: none !important; }
+.header-logo:hover .header-logo-mark {
+  transform: translateY(-1px) scale(1.01);
+  filter: drop-shadow(0 4px 20px rgba(196, 103, 58, 0.30));
+}
+.legal header > .container > a:first-child {
+  gap: 0 !important;
+  min-width: 210px;
+  overflow: hidden;
+}
+.legal header > .container > a:first-child > img {
+  width: 210px !important;
+  height: 66px !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.legal header > .container > a:first-child > span { display: none !important; }
+@media (max-width: 768px) {
+  .header-logo { min-width: 176px; }
+  .header-logo-mark { width: 176px !important; height: 58px !important; }
+  .legal header > .container > a:first-child { min-width: 176px; }
+  .legal header > .container > a:first-child > img { width: 176px !important; height: 58px !important; }
+}
+@media (max-width: 480px) {
+  .header-logo { min-width: 154px; }
+  .header-logo-mark { width: 154px !important; height: 52px !important; }
+  .legal header > .container > a:first-child { min-width: 154px; }
+  .legal header > .container > a:first-child > img { width: 154px !important; height: 52px !important; }
+}
