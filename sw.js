@@ -4,13 +4,14 @@
    Atualizado: 2026-06-09
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v9';
-const CACHE_STATIC  = 'pdbpc-static-v9';
+const CACHE_NAME    = 'pdbpc-v10';
+const CACHE_STATIC  = 'pdbpc-static-v10';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
   '/colors_and_type.css',
   '/styles.css',
+  '/fixes.css?v=20260820-a11y1',
   '/mobile-nav.js',
   '/assets/icon-whatsapp.svg',
   '/assets/logo-portal-bpc-oficial.webp?v=20260820-logo-clean',

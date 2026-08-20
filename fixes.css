@@ -218,3 +218,106 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* ============================================================
+   Rodada 1 de acessibilidade e qualidade visual — 2026-08-20
+   Correções por tokens/estados; sem alteração de conteúdo.
+   ============================================================ */
+:root {
+  --portal-action-bg: #a8542d;
+  --portal-action-hover: #813f22;
+  --portal-text-readable: #c7b8a7;
+  --portal-olive-readable: #b4c796;
+}
+
+/* CTAs preenchidos: branco sobre terra-700 passa AA; terra-500 fica reservado
+   para acentos e situações que não usam texto branco. */
+.btn--primary,
+.sim2 .card .btn--primary,
+a[style*="background:var(--terra-500"],
+a[style*="background: var(--terra-500"] {
+  background: var(--portal-action-bg) !important;
+  border-color: var(--portal-action-bg) !important;
+  color: #fff !important;
+}
+.btn--primary:hover,
+.btn--primary:focus-visible,
+.sim2 .card .btn--primary:hover,
+a[style*="background:var(--terra-500"]:hover,
+a[style*="background: var(--terra-500"]:hover {
+  background: var(--portal-action-hover) !important;
+  border-color: var(--portal-action-hover) !important;
+  color: #fff !important;
+}
+
+/* Barra superior das patologias: mesma função, contraste mais seguro. */
+.pp-topbar { background: var(--portal-action-bg) !important; }
+.pp-topbar a,
+.pp-topbar-cur { color: #fff !important; }
+
+/* Blocos claros precisam de texto escuro, não de ink claro herdado do tema dark. */
+.editorial-trust,
+.editorial-trust p { color: #2a2018 !important; }
+.editorial-trust strong { color: #1f1812 !important; }
+.editorial-trust a,
+.pp-nav-interna a,
+.inline-cta a { color: var(--portal-action-hover) !important; }
+
+/* Avisos LGPD e ponte institucional continuam discretos, mas legíveis. */
+.pp-cta .lgpd-notice,
+.pp-cta .institutional-bridge {
+  color: var(--portal-text-readable) !important;
+  font-size: 13px;
+}
+.pp-cta .institutional-bridge a {
+  color: var(--terra-300) !important;
+}
+
+/* Foco e estados sem depender apenas de hover ou cor. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus-ring) !important;
+  outline-offset: 3px !important;
+}
+:where(button, input, select, textarea, .btn)[disabled],
+:where(button, .btn)[aria-disabled="true"] {
+  opacity: .55;
+  cursor: not-allowed;
+  filter: saturate(.65);
+  transform: none !important;
+}
+:where(button, .btn)[aria-busy="true"] {
+  cursor: wait;
+}
+
+/* Labels sociais e navegação mobile acima do piso de legibilidade funcional. */
+.social-btn-label { font-size: 12px !important; }
+.mobile-tab { font-size: 12px !important; }
+.mobile-tab.active { color: var(--terra-300) !important; }
+
+/* Redução de ruído visual: preserva a identidade quente, remove halos que
+   competem com texto e CTA. */
+.header-logo-mark {
+  filter: drop-shadow(0 2px 8px rgba(196, 103, 58, .12)) !important;
+}
+.header-logo:hover .header-logo-mark {
+  filter: drop-shadow(0 3px 10px rgba(196, 103, 58, .18)) !important;
+}
+.header-nav .nav-link::before { display: none !important; }
+.header-nav .nav-link.active::after { box-shadow: none !important; }
+
+@media (max-width: 560px) {
+  .pp-cta .lgpd-notice,
+  .pp-cta .institutional-bridge { font-size: 13px !important; }
+}
+
+/* Mantém o botão claro do CTA-banner, que usa texto terra escuro sobre cream. */
+.cta-banner .btn--primary {
+  background: var(--cream) !important;
+  color: var(--terra-700) !important;
+}
+.cta-banner .btn--primary:hover,
+.cta-banner .btn--primary:focus-visible {
+  background: var(--ink-900) !important;
+  color: var(--terra-800) !important;
+}
