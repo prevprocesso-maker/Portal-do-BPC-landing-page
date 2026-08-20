@@ -8,7 +8,7 @@
   /* ---- PWA Service Worker ---- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js?v=20260820-sw12').catch(function () {});
+      navigator.serviceWorker.register('/sw.js?v=20260820-sw13').catch(function () {});
     });
   }
 
@@ -149,7 +149,7 @@
     drawer.innerHTML =
       '<div class="mobile-drawer-header">' +
         '<a href="' + logoHref + '" style="display:flex;align-items:center;gap:10px;text-decoration:none;">' +
-          '<img src="/assets/logo-portal-bpc-oficial.webp?v=20260820-logo-clean" alt="Portal do BPC" style="height:42px;width:150px;object-fit:cover;object-position:center;"/>' +
+          '<img src="/assets/logo-portal-bpc-header-200.webp?v=20260820-logoheader1" alt="Portal do BPC" style="height:42px;width:150px;object-fit:cover;object-position:center;"/>' +
           '<span class="header-logo-text">' +
             '<span class="header-logo-text-1" style="font-size:13px;">Portal do</span>' +
             '<span class="header-logo-text-2" style="font-size:20px;">BPC<span class="header-logo-dot">.</span></span>' +
