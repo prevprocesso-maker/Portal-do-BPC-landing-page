@@ -8,7 +8,7 @@
   /* ---- PWA Service Worker ---- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js?v=20260820-sw13').catch(function () {});
+      navigator.serviceWorker.register('/sw.js?v=20260820-sw14').catch(function () {});
     });
   }
 
@@ -98,6 +98,9 @@
   }
 
   function init() {
+    // The React homepage already mounts the mobile header/bar. Avoid a second
+    // legacy injection there; static subpages still use this helper.
+    if (window.__bpcReactMobilePatchLoaded && document.getElementById('root')) return;
     var headerInner = document.querySelector('.header-inner');
     if (!headerInner) return;
 

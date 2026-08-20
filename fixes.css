@@ -158,8 +158,8 @@
 /* Mobile tab bar — texto mais legível */
 @media (max-width: 900px) {
   .mobile-tab {
-    color: var(--ink-900) !important;
-    opacity: 0.7;
+    color: #f5ede0 !important;
+    opacity: 1;
   }
   .mobile-tab.active {
     color: #f0a06f !important;
@@ -293,7 +293,7 @@ a[style*="background: var(--terra-500"]:hover {
 /* Labels sociais e navegação mobile acima do piso de legibilidade funcional. */
 .social-btn-label { font-size: 12px !important; }
 .mobile-tab { font-size: 12px !important; }
-.mobile-tab.active { color: var(--terra-300) !important; }
+.mobile-tab.active { color: #f0a06f !important; }
 
 /* Redução de ruído visual: preserva a identidade quente, remove halos que
    competem com texto e CTA. */
@@ -320,4 +320,35 @@ a[style*="background: var(--terra-500"]:hover {
 .cta-banner .btn--primary:focus-visible {
   background: var(--ink-900) !important;
   color: var(--terra-800) !important;
+}
+
+
+/* Taste-skill pass — mobile motion and interaction restraint */
+@media (max-width: 767px) {
+  /* Keep mobile controls stable; hover is not a primary mobile interaction. */
+  .social-btn,
+  .social-btn::before,
+  .social-btn svg,
+  .social-btn-label {
+    transition-duration: 0.01ms !important;
+  }
+  .social-btn:hover,
+  .social-btn:focus-visible {
+    width: 44px;
+    transform: none;
+    box-shadow: none;
+  }
+  .social-btn:hover::before { opacity: 0; }
+  .social-btn:hover .social-btn-label {
+    opacity: 0;
+    width: 0;
+    margin-left: 0;
+  }
+  .review-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .review-card:hover::before { opacity: 0; }
+  .review-card:hover .review-card-qr-frame { transform: none; }
+  .hero-photo::before { display: none; }
 }

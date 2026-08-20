@@ -20,7 +20,7 @@
   });
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
-      navigator.serviceWorker.register('/sw.js?v=20260820-sw13').catch(function(){});
+      navigator.serviceWorker.register('/sw.js?v=20260820-sw14').catch(function(){});
     });
   }
   // Injeta botão "Instalar app" na tab bar (oculto até evento disparar)

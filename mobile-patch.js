@@ -94,8 +94,8 @@
           e('a', {
             className: 'btn btn--primary btn--sm header-cta-desktop',
             href: 'https://wa.me/5521964238080',
-            target: '_blank', rel: 'noreferrer'
-          }, 'Falar agora →'),
+            target: '_blank', rel: 'noopener noreferrer'
+          }, 'Falar no WhatsApp'),
           e('button', {
             className: `header-hamburger${menuOpen ? ' open' : ''}`,
             onClick: () => setMenuOpen(o => !o),
@@ -139,7 +139,7 @@
           }, n.label))
         ),
         e('div', { className: 'mobile-drawer-cta' },
-          e('a', { href: 'https://wa.me/5521964238080', target: '_blank', rel: 'noreferrer' },
+          e('a', { href: 'https://wa.me/5521964238080', target: '_blank', rel: 'noopener noreferrer' },
             e('img', { src: 'assets/icon-whatsapp.svg', alt: '', style: { width: 22, height: 22 } }),
             'Falar no WhatsApp'
           )
@@ -151,7 +151,7 @@
   /* ---- WhatsApp float + barra fixa ---- */
   function WhatsAppFloat() {
     return e(Fragment, null,
-      e('a', { className: 'wa-float', href: 'https://wa.me/5521964238080', target: '_blank', rel: 'noreferrer', 'aria-label': 'Falar no WhatsApp' },
+      e('a', { className: 'wa-float', href: 'https://wa.me/5521964238080', target: '_blank', rel: 'noopener noreferrer', 'aria-label': 'Falar no WhatsApp' },
         e('img', { src: 'assets/icon-whatsapp.svg', alt: '' })
       ),
       e('div', { className: 'mobile-tab-bar' },
@@ -183,7 +183,7 @@
           ),
           'Simulador'
         ),
-        e('a', { href: 'https://wa.me/5521964238080', className: 'mobile-tab mobile-tab--wa', target: '_blank', rel: 'noreferrer' },
+        e('a', { href: 'https://wa.me/5521964238080', className: 'mobile-tab mobile-tab--wa', target: '_blank', rel: 'noopener noreferrer' },
           e('img', { src: 'assets/icon-whatsapp.svg', alt: '', style: { width: 24, height: 24 } }),
           'WhatsApp'
         )
@@ -192,5 +192,6 @@
   }
 
   /* Substitui os componentes globais */
+  window.__bpcReactMobilePatchLoaded = true;
   Object.assign(window, { Header, WhatsAppFloat });
 })();

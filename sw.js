@@ -1,18 +1,18 @@
 /* ============================================================
-   Portal do BPC — Service Worker v12
+   Portal do BPC — Service Worker v14
    Cache-first para assets estáticos, network-first para HTML
    Atualizado: 2026-08-20
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v13';
-const CACHE_STATIC  = 'pdbpc-static-v13';
+const CACHE_NAME    = 'pdbpc-v14';
+const CACHE_STATIC  = 'pdbpc-static-v14';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
   '/colors_and_type.css',
   '/styles.css?v=20260820-footerwa1',
-  '/fixes.css?v=20260820-a11y1',
-  '/mobile-nav.js',
+  '/fixes.css?v=20260820-tastefix1',
+  '/mobile-nav.js?v=20260820-tastefix1',
   '/assets/icon-whatsapp.svg',
   '/assets/logo-portal-bpc-header-400.webp?v=20260820-logoheader1',
   '/assets/logo-portal-bpc-header-200.webp?v=20260820-logoheader1',
