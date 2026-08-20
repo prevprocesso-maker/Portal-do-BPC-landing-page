@@ -1,0 +1,100 @@
+{
+  "project_info": {
+    "title": "Crescimento Orgânico: Portal do BPC",
+    "created": 1787180879.176,
+    "last_updated": 1787181195.465,
+    "total_slides": 8
+  },
+  "slides": [
+    {
+      "id": "capa",
+      "state": "edited",
+      "pageNum": 1
+    },
+    {
+      "id": "diagnostico",
+      "state": "edited",
+      "pageNum": 2
+    },
+    {
+      "id": "auditoria_eeat",
+      "state": "edited",
+      "pageNum": 3
+    },
+    {
+      "id": "estrategia_conteudo",
+      "state": "edited",
+      "pageNum": 4
+    },
+    {
+      "id": "seo_local_iraja",
+      "state": "edited",
+      "pageNum": 5
+    },
+    {
+      "id": "link_building",
+      "state": "edited",
+      "pageNum": 6
+    },
+    {
+      "id": "metricas_rotina",
+      "state": "edited",
+      "pageNum": 7
+    },
+    {
+      "id": "encerramento",
+      "state": "edited",
+      "pageNum": 8
+    }
+  ],
+  "outline": [
+    {
+      "id": "capa",
+      "title": "Crescimento Orgânico: Portal do BPC",
+      "summary": "Capa da apresentação com título principal, subtítulo e identificação do domínio portaldobpc.com.br.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "diagnostico",
+      "title": "Diagnóstico de Partida",
+      "summary": "Visão geral do estado atual: infraestrutura técnica indexável, boa descoberta de marca, mas necessidade de construir autoridade temática e E-E-A-T.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "auditoria_eeat",
+      "title": "Auditoria E-E-A-T da Homepage",
+      "summary": "Resumo dos achados da auditoria E-E-A-T: experiência, especialidade, autoridade e confiança, com foco na transparência editorial.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "estrategia_conteudo",
+      "title": "Estratégia de Conteúdo e Cauda Longa",
+      "summary": "Clusters prioritários de conteúdo: regras de 2026, patologias (autismo, Down, etc.) e guia de negativa/recurso do BPC.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "seo_local_iraja",
+      "title": "Estrutura de SEO Local em Irajá",
+      "summary": "Recomendações para o Perfil da Empresa, consistência de NAP, página local dedicada e uso de dados estruturados LocalBusiness.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "link_building",
+      "title": "Link Building Ético e Ativos",
+      "summary": "Criação de materiais úteis (calendários, guias de documentos) para atrair citações naturais de entidades, imprensa e universidades.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "metricas_rotina",
+      "title": "Métricas e Rotina Operacional",
+      "summary": "Configuração do Search Console e Bing Webmaster Tools, acompanhamento de AI Performance e rotina mensal de análise de dados.",
+      "image_plan": "Use a suitable image if needed"
+    },
+    {
+      "id": "encerramento",
+      "title": "Próximos Passos",
+      "summary": "Prioridades de execução imediata: verificação de ferramentas, revisão de conteúdo pilar e criação de página local.",
+      "image_plan": "Use a suitable image if needed"
+    }
+  ]
+}

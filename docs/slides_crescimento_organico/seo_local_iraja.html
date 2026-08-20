@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --terra-500: #c4673a;
+            --wa: #075e54;
+            --ink-900: #2d2621;
+            --bone: #faf5eb;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: var(--bone);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: var(--ink-900);
+            padding-top: 60px; /* do not change */
+        }
+        .header {
+            padding: 0 80px;
+            margin-bottom: 40px; /* reduced from 60 to save vertical space */
+            border-left: 8px solid var(--terra-500);
+        }
+        .header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-900);
+        }
+        .content-row {
+            display: flex;
+            padding: 0 80px;
+            gap: 50px;
+            align-items: flex-start; /* prevent stretching to fill container */
+            /* removed flex: 1 to let the row size to its content */
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .icon-wrapper {
+            font-size: 48px;
+            color: var(--terra-500);
+            margin-bottom: 16px; /* reduced */
+        }
+        .column-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px; /* reduced */
+            color: var(--ink-900);
+            border-bottom: 2px solid var(--wa);
+            padding-bottom: 8px; /* reduced */
+        }
+        .recommendation-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .recommendation-list li {
+            font-size: 22px;
+            line-height: 1.5;
+            color: #5a4f45;
+            margin-bottom: 12px; /* reduced */
+            position: relative;
+            padding-left: 32px;
+        }
+        .recommendation-list li::before {
+            content: '\f0da';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 2px;
+            color: var(--wa);
+            font-size: 20px;
+        }
+        .highlight {
+            font-weight: 700;
+            color: var(--ink-900);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Estrutura de SEO Local em Irajá</h2>
+        </div>
+        
+        <div class="content-row">
+            <div class="column">
+                <div class="icon-wrapper">
+                    <i class="fas fa-store"></i>
+                </div>
+                <div class="column-title">Perfil da Empresa</div>
+                <ul class="recommendation-list">
+                    <li>Manter consistência absoluta de <span class="highlight">NAP</span> (Nome, Endereço, Telefone) em todas as plataformas.</li>
+                    <li>Garantir que a categoria principal reflita com precisão os serviços previdenciários.</li>
+                    <li>Solicitar <span class="highlight">avaliações reais</span> e orgânicas de clientes atendidos presencialmente.</li>
+                </ul>
+            </div>
+            
+            <div class="column">
+                <div class="icon-wrapper">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <div class="column-title">Página Local Dedicada</div>
+                <ul class="recommendation-list">
+                    <li>Criar uma página específica detalhando o <span class="highlight">atendimento em Irajá</span>.</li>
+                    <li>Incluir pontos de referência conhecidos (Metrô de Irajá, Av. Monsenhor Félix, BRT).</li>
+                    <li>Adicionar <span class="highlight">provas visuais</span>: fotos reais da fachada, recepção e recursos de acessibilidade.</li>
+                </ul>
+            </div>
+            
+            <div class="column">
+                <div class="icon-wrapper">
+                    <i class="fas fa-code"></i>
+                </div>
+                <div class="column-title">Dados Estruturados</div>
+                <ul class="recommendation-list">
+                    <li>Implementar marcação <span class="highlight">LocalBusiness</span> validada e sem erros.</li>
+                    <li>Fornecer coordenadas geográficas exatas (latitude e longitude com 5 casas decimais).</li>
+                    <li>Estabelecer conexão semântica com a entidade principal através da propriedade <span class="highlight">sameAs</span>.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

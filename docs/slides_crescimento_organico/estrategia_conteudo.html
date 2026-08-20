@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --terra-500: #c4673a;
+            --wa: #075e54;
+            --ink-900: #2d2621;
+            --bone: #faf5eb;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: var(--bone);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: var(--ink-900);
+            padding-top: 60px;
+        }
+        .header {
+            padding-left: 80px;
+            padding-right: 80px;
+            margin-bottom: 40px;
+            border-left: 8px solid var(--terra-500);
+        }
+        .header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-900);
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            padding-left: 80px;
+            padding-right: 80px;
+            flex: 1;
+        }
+        .cluster-box {
+            background-color: #ffffff;
+            border-top: 6px solid var(--wa);
+            padding-top: 24px;
+            padding-left: 24px;
+            padding-right: 24px;
+            display: flex;
+            flex-direction: column;
+        }
+        .cluster-box:nth-child(2) {
+            border-top-color: var(--terra-500);
+        }
+        .cluster-box:nth-child(3) {
+            border-top-color: var(--ink-900);
+        }
+        .cluster-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--ink-900);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--bone);
+            padding-top: 10px;
+        }
+        .keyword-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+        .keyword-list li {
+            font-size: 20px;
+            line-height: 1.4;
+            margin-bottom: 24px;
+            padding-left: 24px;
+            position: relative;
+        }
+        .keyword-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--terra-500);
+            font-weight: bold;
+        }
+        .intent-label {
+            display: inline-block;
+            font-size: 14px;
+            background-color: var(--bone);
+            padding-top: 4px;
+            padding-left: 8px;
+            padding-right: 8px;
+            margin-top: 8px;
+            color: var(--ink-900);
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .pillar-page {
+            font-size: 16px;
+            color: #5a4f45;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Estratégia de Conteúdo e Cauda Longa</h2>
+        </div>
+        
+        <div class="grid-container">
+            <!-- Cluster 1 -->
+            <div class="cluster-box">
+                <div class="cluster-title">Regras 2026</div>
+                <div class="pillar-page">Pilar: BPC/LOAS 2026: quem tem direito e como pedir</div>
+                <ul class="keyword-list">
+                    <li>
+                        "renda per capita BPC 2026 cálculo"
+                        <span class="intent-label">Informacional</span>
+                    </li>
+                    <li>
+                        "idade mínima BPC idoso quem nunca contribuiu"
+                        <span class="intent-label">Elegibilidade</span>
+                    </li>
+                    <li>
+                        "CadÚnico atualizado BPC documentos"
+                        <span class="intent-label">Processual</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Cluster 2 -->
+            <div class="cluster-box">
+                <div class="cluster-title">Patologias</div>
+                <div class="pillar-page">Pilar: Doenças e deficiências relacionadas ao BPC</div>
+                <ul class="keyword-list">
+                    <li>
+                        "autismo dá direito ao BPC LOAS em 2026"
+                        <span class="intent-label">Elegibilidade</span>
+                    </li>
+                    <li>
+                        "documentos para BPC autismo criança"
+                        <span class="intent-label">Documentos</span>
+                    </li>
+                    <li>
+                        "síndrome de Down BPC avaliação social"
+                        <span class="intent-label">Perícia</span>
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Cluster 3 -->
+            <div class="cluster-box">
+                <div class="cluster-title">Negativa e Recurso</div>
+                <div class="pillar-page">Pilar: BPC negado: motivos e recurso administrativo</div>
+                <ul class="keyword-list">
+                    <li>
+                        "BPC negado por renda o que fazer"
+                        <span class="intent-label">Solução</span>
+                    </li>
+                    <li>
+                        "INSS negou BPC por falta de documentos"
+                        <span class="intent-label">Solução</span>
+                    </li>
+                    <li>
+                        "como recorrer de BPC negado em 30 dias"
+                        <span class="intent-label">Prazo / Processo</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

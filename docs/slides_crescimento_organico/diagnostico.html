@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --terra-500: #c4673a;
+            --wa: #075e54;
+            --ink-900: #2d2621;
+            --bone: #faf5eb;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: var(--bone);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: var(--ink-900);
+            padding-top: 60px; /* do not change */
+        }
+        .header {
+            padding: 0 80px;
+            margin-bottom: 30px; /* reduced from 50 -> saves vertical space */
+            border-left: 8px solid var(--terra-500);
+        }
+        .header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-900);
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 80px;
+            gap: 60px;
+            flex: 1;
+        }
+        .column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .column-header {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px; /* reduced from 30 */
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+        }
+        .success-header { color: var(--wa); }
+        .challenge-header { color: var(--terra-500); }
+        
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 18px; /* reduced from 24 */
+            font-size: 24px;
+            line-height: 1.5;
+        }
+        .list-icon {
+            font-size: 28px;
+            margin-right: 16px;
+            margin-top: 2px;
+        }
+        .success-icon { color: var(--wa); }
+        .challenge-icon { color: var(--terra-500); }
+        
+        .highlight-box {
+            background-color: white;
+            padding: 20px; /* reduced from 30 */
+            border-radius: 12px;
+            margin-top: 12px; /* reduced from 20 */
+            font-size: 22px;
+            line-height: 1.6;
+            border-left: 6px solid var(--ink-900);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Diagnóstico de Partida</h2>
+        </div>
+        
+        <div class="content">
+            <div class="column">
+                <div class="column-header success-header">Infraestrutura Técnica (OK)</div>
+                <div class="list-item">
+                    <span class="list-icon success-icon">✓</span>
+                    <div>Homepage, <b>robots.txt</b> e <b>sitemap.xml</b> respondem HTTP 200.</div>
+                </div>
+                <div class="list-item">
+                    <span class="list-icon success-icon">✓</span>
+                    <div>Sitemap limpo com <b>77 URLs indexáveis</b>.</div>
+                </div>
+                <div class="list-item">
+                    <span class="list-icon success-icon">✓</span>
+                    <div>Homepage otimizada para AEO com bloco <b>FAQPage</b> contendo 48 perguntas estruturadas.</div>
+                </div>
+                <div class="list-item">
+                    <span class="list-icon success-icon">✓</span>
+                    <div>Política híbrida implementada para proteger contra raspagem e permitir robôs de citação (OAI-SearchBot).</div>
+                </div>
+            </div>
+            
+            <div class="column">
+                <div class="column-header challenge-header">Visibilidade e Autoridade</div>
+                <div class="list-item">
+                    <span class="list-icon challenge-icon">!</span>
+                    <div><b>Busca exata:</b> O domínio já lidera os resultados orgânicos para a marca.</div>
+                </div>
+                <div class="list-item">
+                    <span class="list-icon challenge-icon">!</span>
+                    <div><b>Busca genérica:</b> Termos amplos como "BPC LOAS 2026" são dominados por portais governamentais e de notícias.</div>
+                </div>
+                
+                <div class="highlight-box">
+                    <b>O Desafio:</b> A infraestrutura está pronta para indexação, mas a disputa por termos amplos exigirá páginas pilar mais robustas, atualização documental frequente e referências externas legítimas para construir autoridade temática.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

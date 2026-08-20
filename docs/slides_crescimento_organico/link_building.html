@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --terra-500: #c4673a;
+            --wa: #075e54;
+            --ink-900: #2d2621;
+            --bone: #faf5eb;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            background-color: var(--bone);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: var(--ink-900);
+            padding-top: 60px;
+        }
+        .header {
+            padding: 0 80px;
+            margin-bottom: 30px;
+            border-left: 8px solid var(--terra-500);
+        }
+        .header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-900);
+        }
+        .intro {
+            padding: 0 80px;
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+            color: #5a4f45;
+        }
+        .intro strong {
+            color: var(--terra-500);
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding: 0 80px;
+            flex: 1;
+        }
+        .asset-card {
+            background-color: white;
+            padding: 30px;
+            border-top: 6px solid var(--wa);
+            display: flex;
+            flex-direction: column;
+        }
+        .asset-card:nth-child(2) {
+            border-top-color: var(--terra-500);
+        }
+        .asset-card:nth-child(3) {
+            border-top-color: var(--ink-900);
+        }
+        .asset-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--ink-900);
+        }
+        .asset-desc {
+            font-size: 20px;
+            line-height: 1.5;
+            color: #5a4f45;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        .asset-target {
+            background-color: var(--bone);
+            padding: 15px;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--ink-900);
+            border-left: 4px solid var(--wa);
+        }
+        .asset-card:nth-child(2) .asset-target {
+            border-left-color: var(--terra-500);
+        }
+        .asset-card:nth-child(3) .asset-target {
+            border-left-color: var(--ink-900);
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Link Building Ético e Ativos</h2>
+        </div>
+        
+        <div class="intro">
+            O objetivo não é "comprar autoridade" (o que viola as políticas de spam do Google), mas produzir <strong>materiais de alto valor (Linkable Assets)</strong> que organizações legítimas tenham motivo real para citar e compartilhar.
+        </div>
+        
+        <div class="grid-container">
+            <div class="asset-card">
+                <div class="asset-title">Calendário BPC 2026</div>
+                <div class="asset-desc">
+                    Página atualizada com mudanças de regras, fontes oficiais, datas de pagamento e links para atos normativos.
+                </div>
+                <div class="asset-target">
+                    Alvo: Imprensa local, portais de notícias e blogs de finanças.
+                </div>
+            </div>
+            
+            <div class="asset-card">
+                <div class="asset-title">Guia de Documentos</div>
+                <div class="asset-desc">
+                    Checklist completo da perícia médica e social, com versão amigável para impressão e linguagem acessível.
+                </div>
+                <div class="asset-target">
+                    Alvo: CRAS, associações de bairro, ONGs e grupos de apoio.
+                </div>
+            </div>
+            
+            <div class="asset-card">
+                <div class="asset-title">Metodologia Editorial</div>
+                <div class="asset-desc">
+                    Página detalhando como o portal seleciona fontes, atualiza valores e separa informação de atuação judicial.
+                </div>
+                <div class="asset-target">
+                    Alvo: Universidades, projetos de extensão e clínicas jurídicas.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

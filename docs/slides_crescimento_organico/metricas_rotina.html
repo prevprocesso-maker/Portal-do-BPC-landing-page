@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --terra-500: #c4673a;
+            --wa: #075e54;
+            --ink-900: #2d2621;
+            --bone: #faf5eb;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px; /* keep as required */
+            background-color: var(--bone);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            color: var(--ink-900);
+            padding-top: 60px; /* do not change upper padding of title */
+        }
+        .header {
+            padding: 0 80px;
+            margin-bottom: 20px; /* reduced from 40 to save vertical space */
+            border-left: 8px solid var(--terra-500);
+        }
+        .header h2 {
+            font-size: 48px;
+            font-weight: 800;
+            color: var(--ink-900);
+        }
+        .content {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 80px;
+            gap: 24px; /* reduced gap */
+            flex: 1;
+        }
+        .column {
+            flex: 1;
+            background-color: white;
+            padding: 18px; /* reduced from 30 */
+            border-top: 4px solid var(--wa);
+            display: flex;
+            flex-direction: column;
+        }
+        .column:nth-child(2) { border-top-color: var(--terra-500); }
+        .column:nth-child(3) { border-top-color: var(--ink-900); }
+        .column-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px; /* reduced */
+            padding-bottom: 10px; /* reduced */
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            color: var(--ink-900);
+        }
+        .list-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px; /* reduced */
+            font-size: 20px; /* keep font size */
+            line-height: 1.5;
+            color: #5a4f45;
+        }
+        .list-icon {
+            font-size: 20px;
+            margin-right: 12px;
+            color: var(--terra-500);
+            font-weight: bold;
+            line-height: 1.2;
+            margin-top: 2px;
+        }
+        .column:nth-child(1) .list-icon { color: var(--wa); }
+        .column:nth-child(3) .list-icon { color: var(--ink-900); }
+        .highlight-text { font-weight: 600; color: var(--ink-900); }
+        /* Make descriptions concise to fit in a single line (no font-size change) */
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h2>Métricas e Rotina Operacional</h2>
+        </div>
+        <div class="content">
+            <div class="column">
+                <div class="column-title">Google Search Console</div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Configuração:</span> Propriedade de domínio via DNS.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Indexação:</span> Envio do sitemap e inspeção de URLs-chave.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Performance:</span> Monitorar cliques, impressões e CTR.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Filtros:</span> Separar consultas de marca e genéricas.</div></div>
+            </div>
+            <div class="column">
+                <div class="column-title">Bing Webmaster Tools</div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Integração:</span> Importar propriedade do GSC.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Search Performance:</span> Tráfego Web e Chat.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">AI Performance:</span> Relatório de citações em respostas IA.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Grounding:</span> Temas que geram citações do portal.</div></div>
+            </div>
+            <div class="column">
+                <div class="column-title">Rotina Mensal</div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Exportação:</span> Baixar dados do GSC e Bing (1ª seg.).</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Análise de CTR:</span> Revisar títulos/descrições com baixo clique.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Auditoria de IA:</span> Documentar citações visíveis em IA.</div></div>
+                <div class="list-item"><span class="list-icon">■</span><div><span class="highlight-text">Atualização:</span> Alterar dateModified só se relevante.</div></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
