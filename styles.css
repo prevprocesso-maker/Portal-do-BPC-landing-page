@@ -2303,3 +2303,11 @@ a.btn--secondary[href*="wa.me"]:hover,
   .editorial-trust { padding: 16px 17px; }
   .editorial-trust p { font-size: 13.5px; }
 }
+
+
+/* Aviso LGPD visível junto ao contato do Footer. */
+.footer-lgpd-notice { margin: 12px 0 0; max-width: 320px; color: var(--ink-900); opacity: .82; font-size: 12px; line-height: 1.5; }
+
+
+/* Aviso LGPD visível junto a links de WhatsApp em páginas estáticas. */
+.lgpd-notice { margin: 8px 0 0; max-width: 560px; color: var(--ink-900); opacity: .82; font-size: 12px; line-height: 1.5; }

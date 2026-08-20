@@ -59,12 +59,32 @@
 
   window.__pdbpcTrack = function (name, params) {
     if (!hasConsent()) return;
-    gtag('event', name, Object.assign({ page_location: window.location.href, page_title: document.title }, params || {}));
+    var payload = Object.assign({ page_location: window.location.href, page_title: document.title }, params || {});
+    gtag('event', name, payload);
+    window.dataLayer.push(Object.assign({ event: name }, payload));
   };
 
   document.addEventListener('click', function (event) {
     var link = event.target && event.target.closest ? event.target.closest('a[href*="wa.me"]') : null;
-    if (link) window.__pdbpcTrack('whatsapp_click', { link_url: link.href });
+    if (!link) return;
+    var location = link.closest('.footer') ? 'footer' : (link.classList.contains('wa-float') ? 'floating' : (link.closest('.pp-cta') ? 'cta' : 'contact'));
+    var isPathology = Boolean(document.querySelector('.pp-answer-direct, .pp-cta .institutional-bridge'));
+    var pageType = isPathology ? 'patologia' : location;
+    var heading = document.querySelector('h1');
+    var pathology = isPathology && heading ? heading.textContent.trim().slice(0, 120) : '';
+    window.__pdbpcTrack('whatsapp_click', {
+      site: 'portal_bpc',
+      page_type: pageType,
+      pathology: pathology,
+      origin: 'iraja',
+      link_location: location,
+      link_type: 'whatsapp',
+      link_url: link.href,
+      utm_source: 'portal_bpc',
+      utm_medium: 'whatsapp',
+      utm_campaign: isPathology ? 'bpc_patologia_iraja' : 'bpc_iraja',
+      utm_content: pageType
+    });
   }, true);
 
   function init() {
