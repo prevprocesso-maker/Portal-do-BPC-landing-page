@@ -1,11 +1,11 @@
 /* ============================================================
-   Portal do BPC — Service Worker v11
+   Portal do BPC — Service Worker v12
    Cache-first para assets estáticos, network-first para HTML
-   Atualizado: 2026-06-09
+   Atualizado: 2026-08-20
    ============================================================ */
 
-const CACHE_NAME    = 'pdbpc-v11';
-const CACHE_STATIC  = 'pdbpc-static-v11';
+const CACHE_NAME    = 'pdbpc-v12';
+const CACHE_STATIC  = 'pdbpc-static-v12';
 
 /* Assets pré-cacheados imediatamente (install) */
 const PRECACHE = [
@@ -20,7 +20,7 @@ const PRECACHE = [
   '/assets/dr-carlos-costa-820.webp',
   '/assets/fonts/inter-400.woff2',
   '/assets/fonts/lora-700.woff2',
-  '/analytics-consent.js?v=20260820-wa-footer1',
+  '/analytics-consent.js?v=20260820-consent2',
   '/form-validation.js?v=20260819',
   '/video-defer.js?v=20260819',
 ];

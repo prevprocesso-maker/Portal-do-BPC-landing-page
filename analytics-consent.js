@@ -11,6 +11,8 @@
   gtag('consent', 'default', {
     analytics_storage: 'denied',
     ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
     wait_for_update: 500
   });
 
@@ -33,7 +35,12 @@
     var banner = document.getElementById('pdbpc-cookie-banner');
     if (banner) banner.remove();
     if (value === 'granted') {
-      gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied' });
+      gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
       loadAnalytics();
     }
   }
@@ -43,8 +50,8 @@
     var banner = document.createElement('div');
     banner.id = 'pdbpc-cookie-banner';
     banner.setAttribute('role', 'dialog');
-    banner.setAttribute('aria-label', 'Preferências de cookies');
-    banner.innerHTML = '<p>Usamos cookies de análise para entender como o site é utilizado e melhorar a experiência. <a href="/privacidade">Saiba mais</a>.</p><div class="pdbpc-cookie-actions"><button type="button" data-consent="accept">Aceitar análise</button><button type="button" data-consent="reject">Recusar</button></div>';
+    banner.setAttribute('aria-labelledby', 'pdbpc-cookie-title');
+    banner.innerHTML = '<p id="pdbpc-cookie-title"><strong>Privacidade e cookies</strong></p><p>Usamos cookies de análise para entender como o site é utilizado e melhorar a experiência. A medição analítica só é ativada após sua escolha. <a href="/privacidade">Saiba mais</a>.</p><div class="pdbpc-cookie-actions"><button type="button" data-consent="accept">Aceitar análise</button><button type="button" data-consent="reject">Recusar</button></div>';
     var style = document.createElement('style');
     style.textContent = '#pdbpc-cookie-banner{position:fixed;z-index:9999;left:20px;right:20px;bottom:20px;max-width:560px;margin:auto;padding:18px 20px;background:#1f1812;color:#f5ede0;border:1px solid #4a382c;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.5);font:15px/1.5 Inter,system-ui,sans-serif}#pdbpc-cookie-banner p{margin:0 0 14px}#pdbpc-cookie-banner a{color:#f5c845;text-decoration:underline}#pdbpc-cookie-banner .pdbpc-cookie-actions{display:flex;gap:8px;flex-wrap:wrap}#pdbpc-cookie-banner button{min-width:120px;flex:1;padding:10px 14px;border-radius:999px;border:1px solid #075e54;background:#075e54;color:#fff;font:600 14px Inter,system-ui,sans-serif;cursor:pointer}#pdbpc-cookie-banner button[data-consent="reject"]{background:transparent;border-color:#b9a995;color:#f5ede0}@media(max-width:480px){#pdbpc-cookie-banner{left:12px;right:12px;bottom:12px;padding:16px}#pdbpc-cookie-banner .pdbpc-cookie-actions{display:grid;grid-template-columns:1fr 1fr}}';
     document.head.appendChild(style);
@@ -91,7 +98,12 @@
     var state = null;
     try { state = localStorage.getItem(CONSENT_KEY); } catch (e) {}
     if (state === 'granted') {
-      gtag('consent', 'update', { analytics_storage: 'granted', ad_storage: 'denied' });
+      gtag('consent', 'update', {
+        analytics_storage: 'granted',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
       loadAnalytics();
     } else if (state !== 'denied') {
       showBanner();

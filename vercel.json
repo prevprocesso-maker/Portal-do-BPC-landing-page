@@ -60,5 +60,15 @@
     { "source": "/termos",         "destination": "/termos.html" },
     { "source": "/checklist",      "destination": "/checklist-pericia.html" },
     { "source": "/como-conseguir", "destination": "/como-conseguir-bpc.html" }
+  ],
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        { "type": "host", "value": "portaldobpc.com.br" }
+      ],
+      "destination": "https://www.portaldobpc.com.br/:path*",
+      "statusCode": 301
+    }
   ]
 }

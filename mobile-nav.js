@@ -8,7 +8,7 @@
   /* ---- PWA Service Worker ---- */
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
-      navigator.serviceWorker.register('/sw.js').catch(function () {});
+      navigator.serviceWorker.register('/sw.js?v=20260820-sw12').catch(function () {});
     });
   }
 
